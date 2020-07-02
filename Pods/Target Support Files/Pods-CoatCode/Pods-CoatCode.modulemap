@@ -1,0 +1,6 @@
+framework module Pods_CoatCode {
+  umbrella header "Pods-CoatCode-umbrella.h"
+
+  export *
+  module * { export * }
+}

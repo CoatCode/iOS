@@ -7,6 +7,11 @@ target 'CoatCode' do
   pod 'RxSwift'
   pod 'RxCocoa'
 
+  pod 'Alamofire'
+  pod 'RxAlamofire'
+  
+  pod 'RealmSwift'
+
   # Pods for CoatCode
 
 end

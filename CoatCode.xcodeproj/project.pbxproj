@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		F231AEFA24A893CB00BA720B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEF824A893CB00BA720B /* Main.storyboard */; };
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
+		F27A9B1724D0595200960043 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A9B1624D0595200960043 /* Intro.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F231AEFB24A893CD00BA720B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F231AEFE24A893CD00BA720B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F231AF0024A893CD00BA720B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F27A9B1624D0595200960043 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,6 @@
 				249176EF3C2590EDDDE35285 /* Pods-CoatCode.debug.xcconfig */,
 				C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,8 +82,12 @@
 		F231AEF124A893CB00BA720B /* CoatCode */ = {
 			isa = PBXGroup;
 			children = (
-				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
-				F231AEF424A893CB00BA720B /* SceneDelegate.swift */,
+				F27A9B0E24D0058C00960043 /* Application */,
+				F2728F8A24D004F900123723 /* Presentation */,
+				F27A9B1224D006DC00960043 /* Domain */,
+				F27A9B1124D006CD00960043 /* Data */,
+				F27A9B1024D006AB00960043 /* Infrastructure */,
+				F27A9B0F24D0068B00960043 /* Resources */,
 				F231AEF624A893CB00BA720B /* ViewController.swift */,
 				F231AEF824A893CB00BA720B /* Main.storyboard */,
 				F231AEFB24A893CD00BA720B /* Assets.xcassets */,
@@ -90,6 +95,75 @@
 				F231AF0024A893CD00BA720B /* Info.plist */,
 			);
 			path = CoatCode;
+			sourceTree = "<group>";
+		};
+		F2728F8A24D004F900123723 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F27A9B1324D0562800960043 /* Intro */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F27A9B0E24D0058C00960043 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
+				F231AEF424A893CB00BA720B /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F27A9B0F24D0068B00960043 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F27A9B1024D006AB00960043 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		F27A9B1124D006CD00960043 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F27A9B1224D006DC00960043 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F27A9B1324D0562800960043 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				F27A9B1624D0595200960043 /* Intro.storyboard */,
+				F27A9B1424D0565C00960043 /* SignIn */,
+				F27A9B1524D0589300960043 /* SignUp */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		F27A9B1424D0565C00960043 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		F27A9B1524D0589300960043 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +229,7 @@
 				F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */,
 				F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */,
 				F231AEFA24A893CB00BA720B /* Main.storyboard in Resources */,
+				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

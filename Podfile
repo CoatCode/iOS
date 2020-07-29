@@ -11,6 +11,9 @@ target 'CoatCode' do
   pod 'RxAlamofire'
   
   pod 'RealmSwift'
+  pod 'KeychainAccess'
+  
+  pod 'CryptoSwift'
 
   # Pods for CoatCode
 

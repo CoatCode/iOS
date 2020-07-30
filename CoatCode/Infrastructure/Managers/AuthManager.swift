@@ -9,15 +9,18 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import KeychainAccess
 
-class AuthManger {
+let loggedIn = BehaviorRelay<Bool>(value: false)
+
+class AuthManager {
     
     /// The default singleton instance.
     static let shared = AuthManager()
 
     // MARK: - Properties
     fileprivate let tokenKey = "TokenKey"
-    fileprivate let keychain = Keychain(service: Configs.App.bundleIdentifier)
+    fileprivate let keychain = Keychain(service: "com.tistory.axe-num1.CoatCode")
 
     let tokenChanged = PublishSubject<Token?>()
 

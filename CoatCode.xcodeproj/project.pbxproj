@@ -8,9 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		3FE9012010AFA416A5EBB44B /* Pods_CoatCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E6D3FC4C5AF1E109FEDE98 /* Pods_CoatCode.framework */; };
+		F2153B9124D269F500BFD08F /* IntroCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2153B9024D269F500BFD08F /* IntroCoordinator.swift */; };
+		F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2153B9224D26A9000BFD08F /* IntroViewController.swift */; };
+		F2153B9524D272A100BFD08F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2153B9424D272A100BFD08F /* LoginViewController.swift */; };
 		F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231AEF224A893CB00BA720B /* AppDelegate.swift */; };
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
+		F264C98F24D2775500CE0251 /* SignupInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C98E24D2775500CE0251 /* SignupInputViewController.swift */; };
+		F264C99124D2779D00CE0251 /* EmailCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99024D2779D00CE0251 /* EmailCodeViewController.swift */; };
+		F264C99324D2834D00CE0251 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99224D2834D00CE0251 /* SetProfileViewController.swift */; };
+		F264C99524D2844E00CE0251 /* SocialLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99424D2844E00CE0251 /* SocialLoginViewController.swift */; };
+		F264C99724D2878A00CE0251 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99624D2878A00CE0251 /* LoginViewModel.swift */; };
+		F264C99924D288C000CE0251 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99824D288C000CE0251 /* IntroViewModel.swift */; };
+		F264C99B24D2EC1400CE0251 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99A24D2EC1400CE0251 /* AppCoordinator.swift */; };
 		F27A9B1724D0595200960043 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A9B1624D0595200960043 /* Intro.storyboard */; };
 		F27A9B2224D0FD2500960043 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2124D0FD2500960043 /* Endpoint.swift */; };
 		F27A9B2424D0FD4B00960043 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2324D0FD4B00960043 /* Network.swift */; };
@@ -22,11 +32,21 @@
 		249176EF3C2590EDDDE35285 /* Pods-CoatCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.debug.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.debug.xcconfig"; sourceTree = "<group>"; };
 		84E6D3FC4C5AF1E109FEDE98 /* Pods_CoatCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoatCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.release.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.release.xcconfig"; sourceTree = "<group>"; };
+		F2153B9024D269F500BFD08F /* IntroCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCoordinator.swift; sourceTree = "<group>"; };
+		F2153B9224D26A9000BFD08F /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		F2153B9424D272A100BFD08F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F231AEEF24A893CB00BA720B /* CoatCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F231AEF224A893CB00BA720B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F231AEFB24A893CD00BA720B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F231AEFE24A893CD00BA720B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F231AF0024A893CD00BA720B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F264C98E24D2775500CE0251 /* SignupInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputViewController.swift; sourceTree = "<group>"; };
+		F264C99024D2779D00CE0251 /* EmailCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCodeViewController.swift; sourceTree = "<group>"; };
+		F264C99224D2834D00CE0251 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
+		F264C99424D2844E00CE0251 /* SocialLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginViewController.swift; sourceTree = "<group>"; };
+		F264C99624D2878A00CE0251 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F264C99824D288C000CE0251 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
+		F264C99A24D2EC1400CE0251 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F27A9B1624D0595200960043 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		F27A9B2124D0FD2500960043 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F27A9B2324D0FD4B00960043 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -61,6 +81,40 @@
 				C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F2153B8C24D268DD00BFD08F /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				F2153B8D24D268EB00BFD08F /* Coordinator */,
+				F2153B8E24D269A400BFD08F /* ViewModel */,
+				F2153B8F24D269AC00BFD08F /* VIew */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		F2153B8D24D268EB00BFD08F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F2153B9024D269F500BFD08F /* IntroCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F2153B8E24D269A400BFD08F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F264C99824D288C000CE0251 /* IntroViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F2153B8F24D269AC00BFD08F /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				F2153B9224D26A9000BFD08F /* IntroViewController.swift */,
+			);
+			path = VIew;
 			sourceTree = "<group>";
 		};
 		F231AEE624A893CB00BA720B = {
@@ -107,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
+				F264C99A24D2EC1400CE0251 /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -138,20 +193,21 @@
 			isa = PBXGroup;
 			children = (
 				F27A9B1624D0595200960043 /* Intro.storyboard */,
-				F27A9B1424D0565C00960043 /* SignIn */,
+				F2153B8C24D268DD00BFD08F /* Intro */,
+				F27A9B1424D0565C00960043 /* LogIn */,
 				F27A9B1524D0589300960043 /* SignUp */,
 			);
 			path = IntroScene;
 			sourceTree = "<group>";
 		};
-		F27A9B1424D0565C00960043 /* SignIn */ = {
+		F27A9B1424D0565C00960043 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
 				F27A9B1A24D0F92E00960043 /* Coordinator */,
 				F27A9B1924D0F90A00960043 /* ViewModel */,
 				F27A9B1824D0F90300960043 /* View */,
 			);
-			path = SignIn;
+			path = LogIn;
 			sourceTree = "<group>";
 		};
 		F27A9B1524D0589300960043 /* SignUp */ = {
@@ -167,6 +223,8 @@
 		F27A9B1824D0F90300960043 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F2153B9424D272A100BFD08F /* LoginViewController.swift */,
+				F264C99424D2844E00CE0251 /* SocialLoginViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +232,7 @@
 		F27A9B1924D0F90A00960043 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F264C99624D2878A00CE0251 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -202,6 +261,9 @@
 		F27A9B1D24D0F95900960043 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F264C98E24D2775500CE0251 /* SignupInputViewController.swift */,
+				F264C99024D2779D00CE0251 /* EmailCodeViewController.swift */,
+				F264C99224D2834D00CE0251 /* SetProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,10 +419,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */,
+				F264C99324D2834D00CE0251 /* SetProfileViewController.swift in Sources */,
 				F27A9B2224D0FD2500960043 /* Endpoint.swift in Sources */,
+				F264C99924D288C000CE0251 /* IntroViewModel.swift in Sources */,
+				F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */,
 				F27A9B2424D0FD4B00960043 /* Network.swift in Sources */,
+				F2153B9524D272A100BFD08F /* LoginViewController.swift in Sources */,
+				F264C99724D2878A00CE0251 /* LoginViewModel.swift in Sources */,
+				F264C99524D2844E00CE0251 /* SocialLoginViewController.swift in Sources */,
 				F27A9B2824D0FEEE00960043 /* ViewModelType.swift in Sources */,
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,
+				F2153B9124D269F500BFD08F /* IntroCoordinator.swift in Sources */,
+				F264C99B24D2EC1400CE0251 /* AppCoordinator.swift in Sources */,
+				F264C99124D2779D00CE0251 /* EmailCodeViewController.swift in Sources */,
+				F264C98F24D2775500CE0251 /* SignupInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

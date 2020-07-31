@@ -17,7 +17,7 @@ protocol IntroCoordinator: AnyObject {
 
 extension IntroCoordinator {
     func pushToLogin(_ navigationController: UINavigationController) {
-        let vc = LoginViewController()
+        let vc = SignInViewController()
         navigationController.pushViewController(vc, animated: true)
     }
     

@@ -159,25 +159,19 @@
         <!--로그인-->
         <scene sceneID="4BN-dg-f1y">
             <objects>
-                <viewController id="5NR-ae-7na" customClass="LoginViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5NR-ae-7na" customClass="SignInViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1cr-9H-Cji">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlZ-Wd-BvO">
-                                <rect key="frame" x="171" y="171" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-ch-Pwq">
-                                <rect key="frame" x="171" y="213" width="97" height="34"/>
+                                <rect key="frame" x="159" y="171" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ls6-Pe-TqY">
-                                <rect key="frame" x="88" y="255" width="168" height="30"/>
+                                <rect key="frame" x="123" y="278" width="168" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="비밀번호를 잊어버리셨나요?"/>
                             </button>
@@ -186,6 +180,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="로그인"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-ch-Pwq">
+                                <rect key="frame" x="159" y="213" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="zoh-O6-iPo"/>
@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="emailField" destination="wlZ-Wd-BvO" id="hjE-hY-tfL"/>
                         <outlet property="pwField" destination="r7b-ch-Pwq" id="UKB-8B-aEh"/>
+                        <outlet property="signInButton" destination="wTZ-Vq-AdJ" id="xyL-St-565"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2da-Jk-juL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

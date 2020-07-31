@@ -2,16 +2,16 @@ PODS:
   - Alamofire (5.2.2)
   - CryptoSwift (1.3.1)
   - KeychainAccess (4.2.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
   - Realm (5.3.2):
     - Realm/Headers (= 5.3.2)
   - Realm/Headers (5.3.2)
   - RealmSwift (5.3.2):
     - Realm (= 5.3.2)
-  - RxAlamofire (5.6.0):
-    - RxAlamofire/Core (= 5.6.0)
-  - RxAlamofire/Core (5.6.0):
-    - Alamofire (~> 5.1)
-    - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -23,8 +23,8 @@ DEPENDENCIES:
   - Alamofire
   - CryptoSwift
   - KeychainAccess
+  - Moya/RxSwift
   - RealmSwift
-  - RxAlamofire
   - RxCocoa
   - RxSwift
 
@@ -33,9 +33,9 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - KeychainAccess
+    - Moya
     - Realm
     - RealmSwift
-    - RxAlamofire
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -44,13 +44,13 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Realm: c6794276ca8884808ba168a22f9d71362b170b85
   RealmSwift: 42ec6cec3170aeeda407f797f07268a7d055ebc7
-  RxAlamofire: f34ddbab56fa2a36f99737f4d4ecc22288a1384f
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 2ed25401a154ce7b0b1d973d647c9f30c1722f25
+PODFILE CHECKSUM: edadaed0249ce90546f8b4f4e7bcdd19b0e33f76
 
 COCOAPODS: 1.9.3

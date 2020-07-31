@@ -8,7 +8,7 @@ target 'CoatCode' do
   pod 'RxCocoa'
 
   pod 'Alamofire'
-  pod 'RxAlamofire'
+  pod 'Moya/RxSwift'
   
   pod 'RealmSwift'
   pod 'KeychainAccess'

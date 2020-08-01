@@ -10,8 +10,13 @@ import Foundation
 import RxSwift
 import Moya
 
-final class LoginService {
+final class LoginService: BaseService<LoginAPI> {
+    static let shared = LoginService()
+    private override init() {}
     
+    func login(email: String, password: String) -> Single<Response> {
+        return request(.login(email, password))
+    }
 }
 
 enum LoginAPI {
@@ -26,15 +31,14 @@ extension LoginAPI: BaseAPI {
         }
     }
     
-    var method: Method {
-        return .post
-    }
-    
+    var method: Moya.Method { .post }
+
     var task: Task {
         switch self {
         case .login(let email, let password):
             let param = ["email": email, "password": password]
-            return .requestParameters(parameters: param, encoding: JSONEncoding)
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
+    
 }

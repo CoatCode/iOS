@@ -31,10 +31,13 @@ class AuthManager {
     var token: Token? {
         get {
             guard let jsonString = keychain[tokenKey] else { return nil }
-            return Mapper<Token>().map(JSONString: jsonString)
+            let jsonData = jsonString.data(using: .utf8)!
+            let token = try! JSONDecoder().decode(Token.self, from: jsonData)
+            return token
         }
         set {
-            if let token = newValue, let jsonString = token.toJSONString() {
+            if let token = newValue, let jsonData = try? JSONEncoder().encode(token) {
+                let jsonString = String(data: jsonData, encoding: .utf8)
                 keychain[tokenKey] = jsonString
             } else {
                 keychain[tokenKey] = nil
@@ -59,4 +62,5 @@ class AuthManager {
     class func tokenValidated() {
         AuthManager.shared.token?.isValid = true
     }
+    
 }

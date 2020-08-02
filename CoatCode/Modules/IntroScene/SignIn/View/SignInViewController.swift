@@ -16,21 +16,23 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var pwField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     
-    private let disposeBag = DisposeBag()
-    private var viewModel: SignInViewModel!
+    let disposeBag = DisposeBag()
+    var viewModel: SignInViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel = SignInViewModel(authentication: <#T##Authentication#>)
+        bindViewModel()
     }
     
     private func bindViewModel() {
-        self.emailField.rx.text.orEmpty
-            .bind(to: self.viewModel.emailAddress)
+        emailField.rx.text.orEmpty
+            .bind(to: self.viewModel.id)
             .disposed(by: disposeBag)
         
-        
+        pwField.rx.text.orEmpty
+            .bind(to: self.viewModel.pw)
+            .disposed(by: disposeBag)
         
         
     }

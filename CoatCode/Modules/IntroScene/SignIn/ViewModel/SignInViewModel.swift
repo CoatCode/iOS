@@ -9,15 +9,16 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CryptoSwift
 
-class SignInViewModel {
+class SignInViewModel: ViewModelType {
     
     struct Input {
         let trigger: Observable<Void>
     }
     
     struct Output {
-        let response: Driver<PostLogin.Response>
+        let isLogin: Driver<Bool>
     }
     
     let disposeBag = DisposeBag()
@@ -25,25 +26,55 @@ class SignInViewModel {
     let isLoading = BehaviorRelay(value: false)
     let errorMsg = BehaviorRelay(value: "")
     
-    let networkClient = NetworkClient()
-    var loginRequest = PostLoginRequest()
+    
+    let loading = ActivityIndicator()
+    
+    
+    
+    let service = CoatCodeService.shared
+    
+    //    var loginRequest = PostLoginRequest()
     
     let id = BehaviorRelay(value: "")
     let pw = BehaviorRelay(value: "")
-
+    
     func transform(input: Input) -> Output {
         
-        loginRequest.id = self.id.value
-        loginRequest.pw = self.pw.value
+        //        loginRequest.id = self.id.value
+        //        loginRequest.pw = self.pw.value
         
-        let response = input.trigger
-            .do(onNext: { [weak self] in self?.isLoading.accept(true)})
-            .flatMapLatest {
-                self.networkClient.postRequest(PostLogin.Response.self, endpoint: "", param: self.loginRequest)
-            }
-            .do(onNext: { [weak self] in self?.isLoading.accept(false)})
+        //        let response = input.trigger
         
-        return Output(response: response.asDriver(onErrorJustReturn: .init()))
+        input.trigger.do { [weak self] in
+            guard let self = self else { return }
+            
+            self.service.signIn(email: self.id.value, password: self.pw.value.sha256())
+                .map(User.self)
+                .trackActivity(self.loading)
+                .subscribe(
+                    onNext: {
+                        AuthManager.setToken(token: $0.token)
+                    }, onError: {
+                        print("==== error: \($0)")
+                    }
+                ).disposed(by: self.disposeBag)
+        }
+            
+            
+//            .subscribe(
+//                onSuccess: {
+//                    AuthManager.setToken(token: $0.token)
+//
+//
+//
+//                    print("=== user: \($0)")
+//                },
+//                onError: {
+//                    print("==== error: \($0)")
+//                }
+//            ).disposed(by: disposeBag)
+        
+        return Output(isLogin: )
     }
     
     

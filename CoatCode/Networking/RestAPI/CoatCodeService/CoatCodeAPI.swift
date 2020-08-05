@@ -1,31 +1,14 @@
 //
-//  loginService.swift
+//  CoatCodeAPI.swift
 //  CoatCode
 //
-//  Created by 강민석 on 2020/07/31.
+//  Created by 강민석 on 2020/08/05.
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 import Moya
-
-final class CoatCodeService: BaseService<CoatCodeAPI> {
-    static let shared = CoatCodeService()
-    private override init() {}
-    
-    func signIn(email: String, password: String) -> Single<Response> {
-        return request(.signIn(email, password))
-    }
-    
-    func signUp(email: String, password: String) -> Single<Response> {
-        return request(.signUp(email, password))
-    }
-    
-    func emailCheck(emailAuthCode: String) -> Single<Response> {
-        return request(.checkEmail(emailAuthCode))
-    }
-}
 
 enum CoatCodeAPI {
     
@@ -36,8 +19,7 @@ enum CoatCodeAPI {
     case checkEmail(String)
     
     // MARK: - Authentication is required
-    // MARK: - 프로필 관련
-    
+    // MARK: -
     
 }
 
@@ -55,7 +37,7 @@ extension CoatCodeAPI: BaseAPI {
     
     var method: Moya.Method {
         switch self {
-        case .checkEmail, .signIn, .signUp:
+        case .signIn, .signUp, .checkEmail:
             return .post
         default:
             return .get
@@ -64,7 +46,7 @@ extension CoatCodeAPI: BaseAPI {
     
     var headers: [String: String]? {
         if let token = AuthManager.shared.token {
-            return ["Authorization": "token \(token)"]
+            return ["Authorization": "\(token)"]
 //            switch token.type() {
 //            case .basic(let token):
 //                return ["Authorization": "Basic \(token)"]
@@ -78,6 +60,16 @@ extension CoatCodeAPI: BaseAPI {
         return nil
     }
     
+    var task: Task {
+        switch self {
+        default:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+            }
+            return .requestPlain
+        }
+    }
+    
     var parameters: [String: Any]? {
         var params: [String: Any] = [:]
         switch self {
@@ -89,31 +81,19 @@ extension CoatCodeAPI: BaseAPI {
             params["password"] = password
         case .checkEmail(let emailAuthCode):
             params["authCode"] = emailAuthCode
-            
         default: break
         }
         return params
     }
-    
-    var task: Task {
-        switch self {
-        default:
-            if let parameters = parameters {
-                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-            }
-            return .requestPlain
-        }
-    }
-    
-    var sampleData: Data {
-        var dataUrl: URL?
-        switch self {
-            
-        }
-        if let url = dataUrl, let data = try? Data(contentsOf: url) {
-            return data
-        }
-        return Data()
-    }
-    
+
+//    var sampleData: Data {
+//        var dataUrl: URL?
+//        switch self {
+//
+//        }
+//        if let url = dataUrl, let data = try? Data(contentsOf: url) {
+//            return data
+//        }
+//        return Data()
+//    }
 }

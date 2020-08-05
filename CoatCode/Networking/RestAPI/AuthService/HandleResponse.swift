@@ -1,5 +1,5 @@
 //
-//  handleResponse.swift
+//  HandleResponse.swift
 //  CoatCode
 //
 //  Created by 강민석 on 2020/07/31.
@@ -16,8 +16,7 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
         return flatMap { response in
             // 토큰 재발급 받았을 때 토큰 변경함
             if let newToken = try? response.map(Token.self) {
-                AuthManager.shared.token?.accessToken = newToken.accessToken
-                AuthManager.shared.token?.refreshToken = newToken.refreshToken
+                AuthManager.shared.token = newToken
             }
             
             if (200 ... 299) ~= response.statusCode {

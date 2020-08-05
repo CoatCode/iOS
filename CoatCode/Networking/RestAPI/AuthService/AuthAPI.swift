@@ -1,25 +1,14 @@
 //
-//  AuthService.swift
+//  AuthAPI.swift
 //  CoatCode
 //
-//  Created by 강민석 on 2020/07/31.
+//  Created by 강민석 on 2020/08/05.
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
 import Foundation
-import Moya
 import RxSwift
-
-/// 인증 관련 API
-final class AuthService: BaseService<AuthAPI> {
-    static let shared = AuthService()
-    private override init() {}
-    
-    /// 토큰 재발급
-    func renewalToken(refreshToken: String) -> Single<Response> {
-        return request(.renewalToken(refreshToken))
-    }
-}
+import Moya
 
 // MARK: - API
 enum AuthAPI {

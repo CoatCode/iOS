@@ -34,6 +34,8 @@
 		F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2B24D123AB00960043 /* AuthManager.swift */; };
 		F27ACAC324D4517600C3A30B /* CoatCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27ACAC224D4517600C3A30B /* CoatCodeService.swift */; };
 		F28EE8B524D6F22100D9A9DD /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28EE8B424D6F22100D9A9DD /* ActivityIndicator.swift */; };
+		F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */; };
+		F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1524DAF30000D36E17 /* AuthAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		F27A9B2B24D123AB00960043 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		F27ACAC224D4517600C3A30B /* CoatCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeService.swift; sourceTree = "<group>"; };
 		F28EE8B424D6F22100D9A9DD /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeAPI.swift; sourceTree = "<group>"; };
+		F2D91C1524DAF30000D36E17 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,15 +172,6 @@
 			path = CoatCode;
 			sourceTree = "<group>";
 		};
-		F259144824D662EA0062E6B5 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				F264C9AE24D3C7AA00CE0251 /* BaseAPI.swift */,
-				F264C9B324D3ECD600CE0251 /* BaseService.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
 		F264C9A524D3BABB00CE0251 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,8 +208,7 @@
 		F264C9A924D3BB2100CE0251 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F2788D3924D4170E00BD74D7 /* Service */,
-				F264C9BB24D3F1A700CE0251 /* HandleResponse.swift */,
+				F2D91C1724DAF3B800D36E17 /* RestAPI */,
 				F264C9B524D3F04D00CE0251 /* CustomPlugin */,
 			);
 			path = Networking;
@@ -250,14 +244,13 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		F2788D3924D4170E00BD74D7 /* Service */ = {
+		F2788D3924D4170E00BD74D7 /* CoatCodeService */ = {
 			isa = PBXGroup;
 			children = (
-				F259144824D662EA0062E6B5 /* Base */,
-				F264C9B924D3F12E00CE0251 /* AuthService.swift */,
 				F27ACAC224D4517600C3A30B /* CoatCodeService.swift */,
+				F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */,
 			);
-			path = Service;
+			path = CoatCodeService;
 			sourceTree = "<group>";
 		};
 		F27A9B0E24D0058C00960043 /* Application */ = {
@@ -383,6 +376,35 @@
 			path = RxActivityIndicator;
 			sourceTree = "<group>";
 		};
+		F2D91C1124DAF17C00D36E17 /* BaseService */ = {
+			isa = PBXGroup;
+			children = (
+				F264C9B324D3ECD600CE0251 /* BaseService.swift */,
+				F264C9AE24D3C7AA00CE0251 /* BaseAPI.swift */,
+			);
+			path = BaseService;
+			sourceTree = "<group>";
+		};
+		F2D91C1424DAF2A100D36E17 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				F264C9B924D3F12E00CE0251 /* AuthService.swift */,
+				F2D91C1524DAF30000D36E17 /* AuthAPI.swift */,
+				F264C9BB24D3F1A700CE0251 /* HandleResponse.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		F2D91C1724DAF3B800D36E17 /* RestAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F2D91C1124DAF17C00D36E17 /* BaseService */,
+				F2D91C1424DAF2A100D36E17 /* AuthService */,
+				F2788D3924D4170E00BD74D7 /* CoatCodeService */,
+			);
+			path = RestAPI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,6 +528,7 @@
 				F264C9B724D3F07400CE0251 /* RequestLoggingPlugin.swift in Sources */,
 				F264C99E24D3B68D00CE0251 /* User.swift in Sources */,
 				F264C9BC24D3F1A700CE0251 /* HandleResponse.swift in Sources */,
+				F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */,
 				F2153B9524D272A100BFD08F /* SignInViewController.swift in Sources */,
 				F264C9B424D3ECD600CE0251 /* BaseService.swift in Sources */,
 				F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */,
@@ -513,6 +536,7 @@
 				F28EE8B524D6F22100D9A9DD /* ActivityIndicator.swift in Sources */,
 				F27A9B2824D0FEEE00960043 /* ViewModelType.swift in Sources */,
 				F264C9BA24D3F12E00CE0251 /* AuthService.swift in Sources */,
+				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,
 				F2153B9124D269F500BFD08F /* IntroCoordinator.swift in Sources */,
 				F264C9A424D3BA4800CE0251 /* Token.swift in Sources */,

@@ -9,16 +9,13 @@
 import Foundation
 
 struct Token: Codable {
-    
     var isValid: Bool
-    var tokenType: String
     var accessToken: String
     var refreshToken: String
     var expiresAt: TimeInterval
     
     private enum CodingKeys: String, CodingKey {
-        case isValid
-        case tokenType = "token_type"
+        case isValid = "is_valid"
         case accessToken = "access_token"
         case refreshToken = "refresh_token"
         case expiresAt = "expires_at"

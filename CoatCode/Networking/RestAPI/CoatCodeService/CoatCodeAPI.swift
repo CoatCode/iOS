@@ -19,7 +19,8 @@ enum CoatCodeAPI {
     case checkEmail(String)
     
     // MARK: - Authentication is required
-    // MARK: -
+    // MARK: - 유저 관련
+    case profile
     
 }
 
@@ -32,6 +33,8 @@ extension CoatCodeAPI: BaseAPI {
             return "/auth/registration"
         case .checkEmail:
             return "/auth/checkEmail"
+        case .profile:
+            return ""
         }
     }
     
@@ -45,19 +48,7 @@ extension CoatCodeAPI: BaseAPI {
     }
     
     var headers: [String: String]? {
-        if let token = AuthManager.shared.token {
-            return ["Authorization": "\(token)"]
-//            switch token.type() {
-//            case .basic(let token):
-//                return ["Authorization": "Basic \(token)"]
-//            case .personal(let token):
-//                return ["Authorization": "token \(token)"]
-//            case .oAuth(let token):
-//                return ["Authorization": "token \(token)"]
-//            case .unauthorized: break
-//            }
-        }
-        return nil
+        return ["Authorization": AuthManager.getAccessToken()]
     }
     
     var task: Task {

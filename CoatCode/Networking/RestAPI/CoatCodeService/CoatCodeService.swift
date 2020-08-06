@@ -25,5 +25,9 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     func checkEmail(emailAuthCode: String) -> Single<Response> {
         return request(.checkEmail(emailAuthCode))
     }
+    
+    func profile() -> Single<Response> {
+        return request(.profile)
+    }
 }
 

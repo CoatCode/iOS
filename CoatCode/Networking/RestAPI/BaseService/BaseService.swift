@@ -33,7 +33,7 @@ class BaseService<API: TargetType> {
         }
         .retryWhen { (error: Observable<TokenError>) in
             error.flatMap { error -> Single<Response> in
-                AuthService.shared.renewalToken(refreshToken: AuthManager.shared.token?.refreshToken ?? "") // 토큰 재발급 받기
+                AuthService.shared.renewalToken(refreshToken: AuthManager.getRefreshToken()) // 토큰 재발급 받기
             }
         }
         .handleResponse()

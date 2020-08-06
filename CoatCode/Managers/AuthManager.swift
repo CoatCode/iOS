@@ -46,6 +46,22 @@ class AuthManager {
             loggedIn.accept(hasValidToken)
         }
     }
+    
+    class func getAccessToken() -> String {
+        if let token = AuthManager.shared.token {
+            return token.accessToken
+        } else {
+            return "AccessTokenError"
+        }
+    }
+    
+    class func getRefreshToken() -> String {
+        if let token = AuthManager.shared.token {
+            return token.refreshToken
+        } else {
+            return "RefreshTokenError"
+        }
+    }
 
     var hasValidToken: Bool {
         return token?.isValid == true
@@ -62,7 +78,5 @@ class AuthManager {
     class func tokenValidated() {
         AuthManager.shared.token?.isValid = true
     }
-    
-    
     
 }

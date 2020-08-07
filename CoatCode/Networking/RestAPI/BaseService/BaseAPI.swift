@@ -11,8 +11,11 @@ import Moya
 
 protocol BaseAPI: TargetType {}
 
+// 외부 IP: http://gi399819.pythonanywhere.com/
+// 내부 IP: http://10.80.161.202:8080
+
 extension BaseAPI {
-    var baseURL: URL { URL(string: "http://10.80.161.202:8080")! }
+    var baseURL: URL { URL(string: "http://gi399819.pythonanywhere.com")! }
     
     var method: Moya.Method { .get }
     

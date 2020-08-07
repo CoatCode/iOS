@@ -19,6 +19,8 @@ class SignInViewController: UIViewController {
     let disposeBag = DisposeBag()
     var viewModel: SignInViewModel!
     
+    let isLoading = BehaviorRelay(value: false)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,9 +36,19 @@ class SignInViewController: UIViewController {
             .bind(to: self.viewModel.pw)
             .disposed(by: disposeBag)
         
+        viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
+        
+        isLoading.subscribe(onNext: { isLoading in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        }).disposed(by: disposeBag)
+        
+        let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asObservable())
+        let output = viewModel.transform(input: input)
+        
+        output.loginButtonEnabled
+            .drive(onNext: { [weak self] isEnabled in
+                self?.signInButton.isEnabled = isEnabled
+            }).disposed(by: disposeBag)
         
     }
-
-    
-    
 }

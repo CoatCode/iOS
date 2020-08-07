@@ -48,7 +48,13 @@ extension CoatCodeAPI: BaseAPI {
     }
     
     var headers: [String: String]? {
-        return ["Authorization": AuthManager.getAccessToken()]
+        switch self {
+        case .signIn, .signUp, .checkEmail:
+            break
+        default:
+            return ["access": AuthManager.getAccessToken()]
+        }
+        return nil
     }
     
     var task: Task {

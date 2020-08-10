@@ -18,11 +18,9 @@ enum AuthAPI {
 
 extension AuthAPI: BaseAPI {
     var path: String {
-        let apiPath = "/api-as/v1"
-        
         switch self {
         case .renewalToken:
-            return "\(apiPath)/\("renewalToken".lowercased())"
+            return "/refresh"
         }
     }
     
@@ -37,7 +35,7 @@ extension AuthAPI: BaseAPI {
         switch self {
         case let .renewalToken(refreshToken):
             return .requestParameters(
-                parameters: ["refreshToken": refreshToken],
+                parameters: ["refresh": refreshToken],
                 encoding: JSONEncoding.default
             )
         }

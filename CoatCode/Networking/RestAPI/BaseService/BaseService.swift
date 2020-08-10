@@ -26,7 +26,12 @@ class BaseService<API: TargetType> {
             .flatMap {
                 // 401(Unauthorized) 발생 시 자동으로 토큰을 재발급 받는다
                 if $0.statusCode == 401 {
-                    throw TokenError.tokenExpired
+                    // refresh 토큰이 없다면 로그인을 하지 않은것이니 그대로 return
+                    if AuthManager.getRefreshToken() == "" {
+                        return Single.just($0)
+                    } else {
+                        throw TokenError.tokenExpired
+                    }
                 } else {
                     return Single.just($0)
                 }

@@ -1,14 +1,14 @@
 //
-//  SetProfileViewController.swift
+//  CreateProfileViewController.swift
 //  CoatCode
 //
-//  Created by 강민석 on 2020/07/30.
+//  Created by 강민석 on 2020/08/10.
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
 import UIKit
 
-class SetProfileViewController: UIViewController {
+class CreateProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

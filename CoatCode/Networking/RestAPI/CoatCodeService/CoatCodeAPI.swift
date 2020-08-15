@@ -13,15 +13,11 @@ import Moya
 enum CoatCodeAPI {
     
     // MARK: - Authentication is not required
-    // MARK: - 로그인 & 회원가입 관련
     case signIn(String, String)
     case signUp(String, String)
-    case checkEmail(String)
     
     // MARK: - Authentication is required
-    // MARK: - 유저 관련
     case profile
-    
 }
 
 extension CoatCodeAPI: BaseAPI {
@@ -30,17 +26,15 @@ extension CoatCodeAPI: BaseAPI {
         case .signIn:
             return "/auth/login"
         case .signUp:
-            return "/auth/registration"
-        case .checkEmail:
-            return "/auth/checkEmail"
+            return "/auth/signUp"
         case .profile:
-            return ""
+            return "/user"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signIn, .signUp, .checkEmail:
+        case .signIn, .signUp:
             return .post
         default:
             return .get
@@ -49,10 +43,10 @@ extension CoatCodeAPI: BaseAPI {
     
     var headers: [String: String]? {
         switch self {
-        case .signIn, .signUp, .checkEmail:
+        case .signIn, .signUp:
             break
         default:
-            return ["access": AuthManager.getAccessToken()]
+            return ["authorization": "bearer \(AuthManager.getAccessToken())"]
         }
         return nil
     }
@@ -76,8 +70,6 @@ extension CoatCodeAPI: BaseAPI {
         case .signUp(let email, let password):
             params["email"] = email
             params["password"] = password
-        case .checkEmail(let emailAuthCode):
-            params["authCode"] = emailAuthCode
         default: break
         }
         return params

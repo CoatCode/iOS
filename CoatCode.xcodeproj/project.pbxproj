@@ -21,7 +21,10 @@
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
 		F23CE60724DB0BFB00717A3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CE60624DB0BFB00717A3F /* User.swift */; };
+		F24E952324E82C27009B06BD /* MainTabBarFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952224E82C27009B06BD /* MainTabBarFlow.swift */; };
 		F259256624E6906400A09270 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256524E6906400A09270 /* ViewModelBased.swift */; };
+		F259256924E692F600A09270 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256824E692F600A09270 /* AppFlow.swift */; };
+		F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256A24E6952300A09270 /* CoatCodeStep.swift */; };
 		F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99624D2878A00CE0251 /* SignInViewModel.swift */; };
 		F264C99924D288C000CE0251 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99824D288C000CE0251 /* IntroViewModel.swift */; };
 		F264C99E24D3B68D00CE0251 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99D24D3B68D00CE0251 /* SignIn.swift */; };
@@ -63,7 +66,10 @@
 		F231AEFE24A893CD00BA720B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F231AF0024A893CD00BA720B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F23CE60624DB0BFB00717A3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F24E952224E82C27009B06BD /* MainTabBarFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFlow.swift; sourceTree = "<group>"; };
 		F259256524E6906400A09270 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
+		F259256824E692F600A09270 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		F259256A24E6952300A09270 /* CoatCodeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeStep.swift; sourceTree = "<group>"; };
 		F264C99624D2878A00CE0251 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		F264C99824D288C000CE0251 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		F264C99D24D3B68D00CE0251 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -248,6 +254,9 @@
 		F259256724E690F700A09270 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				F259256A24E6952300A09270 /* CoatCodeStep.swift */,
+				F259256824E692F600A09270 /* AppFlow.swift */,
+				F24E952224E82C27009B06BD /* MainTabBarFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -621,12 +630,15 @@
 				F264C9BC24D3F1A700CE0251 /* HandleResponse.swift in Sources */,
 				F259256624E6906400A09270 /* ViewModelBased.swift in Sources */,
 				F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */,
+				F259256924E692F600A09270 /* AppFlow.swift in Sources */,
+				F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */,
 				F2153B9524D272A100BFD08F /* SignInViewController.swift in Sources */,
 				F21DF6B724DFA78700F44B96 /* StoreViewController.swift in Sources */,
 				F264C9B424D3ECD600CE0251 /* BaseService.swift in Sources */,
 				F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */,
 				F265B70824E14F8C008F70A9 /* CreateProfileViewController.swift in Sources */,
 				F28EE8B524D6F22100D9A9DD /* ActivityIndicator.swift in Sources */,
+				F24E952324E82C27009B06BD /* MainTabBarFlow.swift in Sources */,
 				F27A9B2824D0FEEE00960043 /* ViewModelType.swift in Sources */,
 				F264C9BA24D3F12E00CE0251 /* AuthService.swift in Sources */,
 				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,

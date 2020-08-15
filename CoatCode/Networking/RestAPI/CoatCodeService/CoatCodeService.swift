@@ -18,12 +18,8 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.signIn(email, password))
     }
     
-    func signUp(email: String, password: String) -> Single<Response> {
+    func signUp(email: String, password: String, userName: String) -> Single<Response> {
         return request(.signUp(email, password))
-    }
-    
-    func checkEmail(emailAuthCode: String) -> Single<Response> {
-        return request(.checkEmail(emailAuthCode))
     }
     
     func profile() -> Single<Response> {

@@ -11,8 +11,6 @@ import RxSwift
 import Moya
 
 final class CoatCodeService: BaseService<CoatCodeAPI> {
-    static let shared = CoatCodeService()
-    private override init() {}
     
     func signIn(email: String, password: String) -> Single<Response> {
         return request(.signIn(email, password))
@@ -26,4 +24,3 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.profile)
     }
 }
-

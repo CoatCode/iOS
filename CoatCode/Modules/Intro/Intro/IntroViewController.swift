@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Reusable
 import RxSwift
 import RxCocoa
+import RxFlow
 
-class IntroViewController: UIViewController {
-
+class IntroViewController: UIViewController, StoryboardBased, Stepper {
+    
     @IBOutlet weak var socialLoginButton: UIButton!
     @IBOutlet weak var emailLoginButton: UIButton!
     @IBOutlet weak var emailSignupButton: UIButton!
+    
+    var steps: PublishRelay<Step>
     
     let disposeBag = DisposeBag()
     var viewModel: IntroViewModel?

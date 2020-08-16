@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var coordinator = FlowCoordinator()
     lazy var appService = {
-        return CoatCodeService.shared
+        return CoatCodeService()
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("did navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
 
-        let appFlow = AppFlow(services: self.appServices)
-        let appStepper = AppStepper(withServices: self.appServices)
+        let appFlow = AppFlow(services: self.appService)
+        let appStepper = AppStepper(withServices: self.appService)
 
         self.coordinator.coordinate(flow: appFlow, with: appStepper)
 

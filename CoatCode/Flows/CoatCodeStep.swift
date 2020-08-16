@@ -10,8 +10,9 @@ import RxFlow
 
 enum CoatCodeStep: Step {
     
-    // signIn
-    case loginIs
+    case tabBarIsRequired
+    case introIsRequired
+    case logoutIsRequired
     
     
 }

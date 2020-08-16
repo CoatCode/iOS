@@ -21,7 +21,13 @@
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
 		F23CE60724DB0BFB00717A3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CE60624DB0BFB00717A3F /* User.swift */; };
-		F24E952324E82C27009B06BD /* MainTabBarFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952224E82C27009B06BD /* MainTabBarFlow.swift */; };
+		F24E952324E82C27009B06BD /* TabBarFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952224E82C27009B06BD /* TabBarFlow.swift */; };
+		F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952624E8486F009B06BD /* FeedFlow.swift */; };
+		F24E952924E8487D009B06BD /* StoreFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952824E8487D009B06BD /* StoreFlow.swift */; };
+		F24E952B24E8488A009B06BD /* WritingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952A24E8488A009B06BD /* WritingFlow.swift */; };
+		F24E952D24E8489D009B06BD /* FavoriteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952C24E8489D009B06BD /* FavoriteFlow.swift */; };
+		F24E952F24E848A8009B06BD /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952E24E848A8009B06BD /* SettingFlow.swift */; };
+		F24E953124E8566E009B06BD /* IntroFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E953024E8566E009B06BD /* IntroFlow.swift */; };
 		F259256624E6906400A09270 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256524E6906400A09270 /* ViewModelBased.swift */; };
 		F259256924E692F600A09270 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256824E692F600A09270 /* AppFlow.swift */; };
 		F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256A24E6952300A09270 /* CoatCodeStep.swift */; };
@@ -66,7 +72,13 @@
 		F231AEFE24A893CD00BA720B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F231AF0024A893CD00BA720B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F23CE60624DB0BFB00717A3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F24E952224E82C27009B06BD /* MainTabBarFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFlow.swift; sourceTree = "<group>"; };
+		F24E952224E82C27009B06BD /* TabBarFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFlow.swift; sourceTree = "<group>"; };
+		F24E952624E8486F009B06BD /* FeedFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlow.swift; sourceTree = "<group>"; };
+		F24E952824E8487D009B06BD /* StoreFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlow.swift; sourceTree = "<group>"; };
+		F24E952A24E8488A009B06BD /* WritingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFlow.swift; sourceTree = "<group>"; };
+		F24E952C24E8489D009B06BD /* FavoriteFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFlow.swift; sourceTree = "<group>"; };
+		F24E952E24E848A8009B06BD /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
+		F24E953024E8566E009B06BD /* IntroFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFlow.swift; sourceTree = "<group>"; };
 		F259256524E6906400A09270 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		F259256824E692F600A09270 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		F259256A24E6952300A09270 /* CoatCodeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeStep.swift; sourceTree = "<group>"; };
@@ -124,26 +136,10 @@
 		F2153B8C24D268DD00BFD08F /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				F2153B8F24D269AC00BFD08F /* VIew */,
-				F2153B8E24D269A400BFD08F /* ViewModel */,
-			);
-			path = Intro;
-			sourceTree = "<group>";
-		};
-		F2153B8E24D269A400BFD08F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
+				F2153B9224D26A9000BFD08F /* IntroViewController.swift */,
 				F264C99824D288C000CE0251 /* IntroViewModel.swift */,
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F2153B8F24D269AC00BFD08F /* VIew */ = {
-			isa = PBXGroup;
-			children = (
-				F2153B9224D26A9000BFD08F /* IntroViewController.swift */,
-			);
-			path = VIew;
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		F21DF69724DF9D3200F44B96 /* Main */ = {
@@ -220,8 +216,8 @@
 		F231AEF124A893CB00BA720B /* CoatCode */ = {
 			isa = PBXGroup;
 			children = (
+				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
 				F259256724E690F700A09270 /* Flows */,
-				F27A9B0E24D0058C00960043 /* Application */,
 				F27A9B2524D0FEC400960043 /* Common */,
 				F264C9A524D3BABB00CE0251 /* Configs */,
 				F264C9A624D3BAD700CE0251 /* Extensions */,
@@ -251,12 +247,26 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
+		F24E952424E84847009B06BD /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F24E952224E82C27009B06BD /* TabBarFlow.swift */,
+				F24E952624E8486F009B06BD /* FeedFlow.swift */,
+				F24E952824E8487D009B06BD /* StoreFlow.swift */,
+				F24E952A24E8488A009B06BD /* WritingFlow.swift */,
+				F24E952C24E8489D009B06BD /* FavoriteFlow.swift */,
+				F24E952E24E848A8009B06BD /* SettingFlow.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		F259256724E690F700A09270 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
 				F259256A24E6952300A09270 /* CoatCodeStep.swift */,
 				F259256824E692F600A09270 /* AppFlow.swift */,
-				F24E952224E82C27009B06BD /* MainTabBarFlow.swift */,
+				F24E953024E8566E009B06BD /* IntroFlow.swift */,
+				F24E952424E84847009B06BD /* TabBar */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -367,14 +377,6 @@
 				F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */,
 			);
 			path = CoatCodeService;
-			sourceTree = "<group>";
-		};
-		F27A9B0E24D0058C00960043 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		F27A9B1324D0562800960043 /* Intro */ = {
@@ -638,7 +640,8 @@
 				F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */,
 				F265B70824E14F8C008F70A9 /* CreateProfileViewController.swift in Sources */,
 				F28EE8B524D6F22100D9A9DD /* ActivityIndicator.swift in Sources */,
-				F24E952324E82C27009B06BD /* MainTabBarFlow.swift in Sources */,
+				F24E952D24E8489D009B06BD /* FavoriteFlow.swift in Sources */,
+				F24E952324E82C27009B06BD /* TabBarFlow.swift in Sources */,
 				F27A9B2824D0FEEE00960043 /* ViewModelType.swift in Sources */,
 				F264C9BA24D3F12E00CE0251 /* AuthService.swift in Sources */,
 				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,
@@ -646,11 +649,16 @@
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,
 				F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */,
 				F264C9A424D3BA4800CE0251 /* Token.swift in Sources */,
+				F24E953124E8566E009B06BD /* IntroFlow.swift in Sources */,
 				F21DF6B924DFA79800F44B96 /* WritingViewController.swift in Sources */,
 				F21DF6BB24DFA7B700F44B96 /* FavoritesViewController.swift in Sources */,
 				F264C9AF24D3C7AA00CE0251 /* BaseAPI.swift in Sources */,
+				F24E952F24E848A8009B06BD /* SettingFlow.swift in Sources */,
 				F21DF6BD24DFA7C300F44B96 /* SettingViewController.swift in Sources */,
+				F24E952924E8487D009B06BD /* StoreFlow.swift in Sources */,
 				F27ACAC324D4517600C3A30B /* CoatCodeService.swift in Sources */,
+				F24E952B24E8488A009B06BD /* WritingFlow.swift in Sources */,
+				F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */,
 				F21DF69624DD7B9900F44B96 /* DatabaseManager.swift in Sources */,
 				F265B70624E14EF1008F70A9 /* SignUpViewController.swift in Sources */,
 			);

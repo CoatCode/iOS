@@ -14,5 +14,10 @@ enum CoatCodeStep: Step {
     case introIsRequired
     case logoutIsRequired
     
+    // Intro
+    case socialLoginIsRequired
+    case emailSignInIsRequired
+    case emailSignUpIsRequired
+    case socialLoginIsComplete
     
 }

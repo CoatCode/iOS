@@ -44,8 +44,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="51S-KY-Nny"/>
                     <connections>
-                        <outlet property="emailLoginButton" destination="4xH-0N-Oaq" id="cbg-9M-tQI"/>
-                        <outlet property="emailSignupButton" destination="AjI-qu-Lxj" id="az0-Vu-6Uw"/>
+                        <outlet property="emailSignInButton" destination="4xH-0N-Oaq" id="cbg-9M-tQI"/>
+                        <outlet property="emailSignUpButton" destination="AjI-qu-Lxj" id="az0-Vu-6Uw"/>
                         <outlet property="socialLoginButton" destination="DLP-KR-74H" id="5CC-en-xOr"/>
                     </connections>
                 </viewController>

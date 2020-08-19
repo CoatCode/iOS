@@ -12,10 +12,13 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class SignInViewController: UIViewController, StoryboardBased, ViewModelBased {
+class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+    
+    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var pwField: UITextField!
+    @IBOutlet weak var forgetPwButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
     let disposeBag = DisposeBag()
@@ -30,8 +33,6 @@ class SignInViewController: UIViewController, StoryboardBased, ViewModelBased {
     }
     
     private func bindViewModel() {
-        
-        guard let viewModel = viewModel else { return }
         
         emailField.rx.text.orEmpty
             .bind(to: viewModel.id)

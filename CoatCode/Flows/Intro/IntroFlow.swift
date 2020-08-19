@@ -18,6 +18,8 @@ class IntroFlow: Flow {
         return self.rootViewController
     }
     
+//    let rootViewController = UINavigationController()
+    
     private lazy var rootViewController: UINavigationController = {
         let viewController = UINavigationController()
         viewController.setNavigationBarHidden(true, animated: false)
@@ -36,14 +38,22 @@ class IntroFlow: Flow {
         guard let step = step as? CoatCodeStep else { return .none }
         
         switch step {
+            // 첫 인트로 화면
         case .introIsRequired:
-            return navigationToIntro()
+            return navigateToIntro()
+            // 소셜 로그인 화면
         case .socialLoginIsRequired:
             return navigationToSocialLogin()
+            // 이메일 로그인 화면
         case .emailSignInIsRequired:
             return navigationToEmailSignIn()
+            // 이메일 회원가입 화면
         case .emailSignUpIsRequired:
             return navigationToEmailSignUp()
+            // 프로필 생성 화면
+        case .createProfileIsRequired(let viewModel):
+            return navigationToCreateProfile(with: viewModel)
+            // 소셜 로그인 dismiss
         case .socialLoginIsComplete:
             return dismissSocialLogin()
         default:
@@ -51,8 +61,9 @@ class IntroFlow: Flow {
         }
     }
     
-    private func navigationToIntro() -> FlowContributors {
+    private func navigateToIntro() -> FlowContributors {
         let introViewController = IntroViewController.instantiate()
+        introViewController.title = "Login"
         self.rootViewController.pushViewController(introViewController, animated: false)
         return .one(flowContributor: .contribute(withNext: introViewController))
     }
@@ -69,8 +80,11 @@ class IntroFlow: Flow {
     private func navigationToEmailSignIn() -> FlowContributors {
         let signInViewModel = SignInViewModel()
         let signInViewController = SignInViewController.instantiate(withViewModel: signInViewModel)
+        signInViewController.title = "SignIn"
         
         self.rootViewController.pushViewController(signInViewController, animated: true)
+//        self.rootViewController.setNavigationBarHidden(false, animated: false)
+        
         return .one(flowContributor: .contribute(withNextPresentable: signInViewController,
                                                  withNextStepper: signInViewModel))
     }
@@ -80,12 +94,22 @@ class IntroFlow: Flow {
         let signUpViewControlelr = SignUpViewController.instantiate(withViewModel: signUpViewModel)
         
         self.rootViewController.pushViewController(signUpViewControlelr, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: , withNextStepper: ))
+        return .one(flowContributor: .contribute(withNextPresentable: signUpViewControlelr,
+                                                 withNextStepper: signUpViewModel))
+    }
+    
+    private func navigationToCreateProfile(with viewModel: SignUpViewModel) -> FlowContributors {
+        let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+        
+        self.rootViewController.pushViewController(createProfileViewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: createProfileViewController,
+                                                 withNextStepper: viewModel))
     }
     
     private func dismissSocialLogin() -> FlowContributors {
         if let socialLoginViewController = self.rootViewController.presentedViewController {
             socialLoginViewController.dismiss(animated: true)
         }
+        return .none
     }
 }

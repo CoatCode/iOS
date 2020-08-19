@@ -12,7 +12,9 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-class IntroViewController: UIViewController, StoryboardBased, Stepper {
+class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
+    
+    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var socialLoginButton: UIButton!
     @IBOutlet weak var emailSignInButton: UIButton!

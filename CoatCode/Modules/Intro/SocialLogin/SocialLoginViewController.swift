@@ -12,7 +12,11 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class SocialLoginViewController: UIViewController, StoryboardBased, ViewModelBased {
+class SocialLoginViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+    
+    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
+    
+    @IBOutlet weak var dismissButton: UIButton!
     
     var viewModel: SocialLoginViewModel!
     let disposeBag = DisposeBag()
@@ -20,12 +24,13 @@ class SocialLoginViewController: UIViewController, StoryboardBased, ViewModelBas
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindUI()
     }
     
     func bindUI() {
         dismissButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.
+                self?.viewModel.dismiss()
             }).disposed(by: disposeBag)
     }
 }

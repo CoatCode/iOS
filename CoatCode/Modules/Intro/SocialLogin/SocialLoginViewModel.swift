@@ -19,6 +19,6 @@ class SocialLoginViewModel: Stepper, ServicesViewModel {
     var services: Services!
     
     func dismiss() {
-        steps.accept(CoatCodeStep.)
+        steps.accept(CoatCodeStep.socialLoginIsComplete)
     }
 }

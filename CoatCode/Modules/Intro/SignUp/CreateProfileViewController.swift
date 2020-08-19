@@ -7,24 +7,37 @@
 //
 
 import UIKit
+import Reusable
+import RxSwift
+import RxCocoa
+import RxFlow
 
-class CreateProfileViewController: UIViewController {
-
+class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+    
+    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameValidationLabel: UILabel!
+    @IBOutlet weak var completeButton: UIButton!
+    
+    let disposeBag = DisposeBag()
+    var viewModel: SignUpViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bindUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func bindUI() {
+        
+        completeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.complete()
+            }).disposed(by: disposeBag)
+        
     }
-    */
+    
 
 }

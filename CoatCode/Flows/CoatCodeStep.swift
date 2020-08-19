@@ -12,12 +12,12 @@ enum CoatCodeStep: Step {
     
     case tabBarIsRequired
     case introIsRequired
-    case logoutIsRequired
     
     // Intro
     case socialLoginIsRequired
     case emailSignInIsRequired
     case emailSignUpIsRequired
     case socialLoginIsComplete
+    case createProfileIsRequired(withViewModel: SignUpViewModel)
     
 }

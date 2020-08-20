@@ -43,6 +43,8 @@
 		F265B70624E14EF1008F70A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70524E14EF1008F70A9 /* SignUpViewController.swift */; };
 		F265B70824E14F8C008F70A9 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */; };
 		F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70924E15024008F70A9 /* SocialLoginViewController.swift */; };
+		F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */; };
+		F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */; };
 		F27A9B1724D0595200960043 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A9B1624D0595200960043 /* Intro.storyboard */; };
 		F27A9B2824D0FEEE00960043 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2724D0FEEE00960043 /* ViewModelType.swift */; };
 		F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2B24D123AB00960043 /* AuthManager.swift */; };
@@ -94,6 +96,8 @@
 		F265B70524E14EF1008F70A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F265B70924E15024008F70A9 /* SocialLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginViewController.swift; sourceTree = "<group>"; };
+		F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratSubrayada-Regular.ttf"; sourceTree = "<group>"; };
 		F27A9B1624D0595200960043 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		F27A9B2724D0FEEE00960043 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		F27A9B2B24D123AB00960043 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -346,6 +350,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		F2762A2C24ED19D500CB6434 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		F2788D3924D4170E00BD74D7 /* CoatCodeService */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +393,7 @@
 			children = (
 				F265B70524E14EF1008F70A9 /* SignUpViewController.swift */,
 				F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */,
+				F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -398,6 +411,7 @@
 		F27A9B2924D1039B00960043 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2762A2C24ED19D500CB6434 /* Fonts */,
 				F231AF0024A893CD00BA720B /* Info.plist */,
 				F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */,
 				F231AEFB24A893CD00BA720B /* Assets.xcassets */,
@@ -521,6 +535,7 @@
 				F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */,
 				F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
+				F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */,
 				F21DF6AB24DFA6C500F44B96 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +591,7 @@
 			files = (
 				F23CE60724DB0BFB00717A3F /* User.swift in Sources */,
 				F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */,
+				F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */,
 				F264C9A024D3B77B00CE0251 /* ResponseProtocol.swift in Sources */,
 				F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */,
 				F264C9B724D3F07400CE0251 /* RequestLoggingPlugin.swift in Sources */,

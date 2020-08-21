@@ -24,9 +24,7 @@ class AuthManager {
 
     let tokenChanged = PublishSubject<Token?>()
 
-    init() {
-        loggedIn.accept(hasValidToken)
-    }
+    private init() { }
 
     var token: Token? {
         get {
@@ -43,7 +41,6 @@ class AuthManager {
                 keychain[tokenKey] = nil
             }
             tokenChanged.onNext(newValue)
-            loggedIn.accept(hasValidToken)
         }
     }
     
@@ -63,10 +60,6 @@ class AuthManager {
         }
     }
 
-    var hasValidToken: Bool {
-        return token?.isValid == true
-    }
-
     class func setToken(token: Token) {
         AuthManager.shared.token = token
     }
@@ -74,9 +67,13 @@ class AuthManager {
     class func removeToken() {
         AuthManager.shared.token = nil
     }
-
-    class func tokenValidated() {
-        AuthManager.shared.token?.isValid = true
-    }
     
+    /// refreshToken의 만료일을 확인합니다.
+//    @discardableResult
+//    class func checkRefreshTokenValid() -> Bool {
+//        AuthManager.shared.token?.refreshTokenExpiresAt
+//
+//        // 만료날짜를 확인 하여 결과를 반환
+//    }
+
 }

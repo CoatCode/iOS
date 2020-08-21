@@ -15,7 +15,7 @@ import RxCocoa
 class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var pwField: UITextField!
     @IBOutlet weak var forgetPwButton: UIButton!
@@ -32,7 +32,38 @@ class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBas
         bindViewModel()
     }
     
+    private func configureUI() {
+        navigationController?.title = "SignIn"
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        if let navigationBarItem = navigationController?.navigationBar.items?[0] {
+            navigationBarItem.setLeftBarButton(UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"),
+                                                               style: UIBarButtonItem.Style.plain,
+                                                               target: self,
+                                                               action: #selector(popView)),
+                                               animated: true)
+        }
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+}
+
+// MARK: - BindViewModel
+extension SignInViewController {
     private func bindViewModel() {
+        
+        let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asObservable())
+        let output = viewModel.transform(input: input)
+        
+        viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
+        
+        isLoading.subscribe(onNext: { isLoading in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        }).disposed(by: disposeBag)
         
         emailField.rx.text.orEmpty
             .bind(to: viewModel.id)
@@ -42,24 +73,14 @@ class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBas
             .bind(to: viewModel.pw)
             .disposed(by: disposeBag)
         
-        viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
-        
-        isLoading.subscribe(onNext: { isLoading in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
-        }).disposed(by: disposeBag)
-        
-        let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asObservable())
-        let output = viewModel.transform(input: input)
-        
         output.loginButtonEnabled
-            .drive(onNext: { [weak self] isEnabled in
-                self?.signInButton.isEnabled = isEnabled
-            }).disposed(by: disposeBag)
+            .drive(signInButton.rx.isHidden)
+            .disposed(by: disposeBag)
         
-        output.isLoginSuccess
-            .subscribe { [weak self] in
-                self?.presentedViewController?.dismiss(animated: true)
-            }.disposed(by: disposeBag)
+//        output.isLoginSuccess
+//            .subscribe { [weak self] in
+//                self?.presentedViewController?.dismiss(animated: true)
+//        }.disposed(by: disposeBag)
         
     }
 }

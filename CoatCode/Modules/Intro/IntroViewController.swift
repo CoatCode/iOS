@@ -28,7 +28,10 @@ class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
 
         bindUI()
     }
-    
+}
+
+// MARK: - BindUI
+extension IntroViewController {
     func bindUI() {
         socialLoginButton.rx.tap
             .map { CoatCodeStep.socialLoginIsRequired }

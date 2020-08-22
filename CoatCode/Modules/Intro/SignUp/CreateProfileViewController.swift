@@ -14,30 +14,39 @@ import RxFlow
 
 class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var nameValidationLabel: UILabel!
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     let disposeBag = DisposeBag()
-    var viewModel: SignUpViewModel!
+    var viewModel: CreateProfileViewModel!
     
+    let isLoading = BehaviorRelay(value: false)
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bindViewModel()
+    }
+}
 
-        bindUI()
+// MARK: - BindViewModel
+extension CreateProfileViewController {
+    func bindViewModel() {
+        
+        let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asDriver())
+        let output = viewModel.transform(input: input)
+        
+        
+        
+        
+        
     }
     
-    func bindUI() {
-        
-        completeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.complete()
-            }).disposed(by: disposeBag)
-        
-    }
     
-
 }

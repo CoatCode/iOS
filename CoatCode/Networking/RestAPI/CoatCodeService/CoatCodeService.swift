@@ -16,11 +16,41 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.signIn(email, password))
     }
     
-    func signUp(email: String, password: String, userName: String) -> Single<Response> {
-        return request(.signUp(email, password))
+    func signUp(email: String, password: String, userName: String, profile: String) -> Single<Response> {
+        return request(.signUp(email, password, userName, profile))
     }
     
     func profile() -> Single<Response> {
         return request(.profile)
     }
+    
+}
+
+extension CoatCodeService {
+//    private func request(_ target: GithubAPI) -> Single<Any> {
+//        return githubProvider.request(target)
+//            .mapJSON()
+//            .observeOn(MainScheduler.instance)
+//            .asSingle()
+//    }
+//
+//    private func requestWithoutMapping(_ target: GithubAPI) -> Single<Moya.Response> {
+//        return githubProvider.request(target)
+//            .observeOn(MainScheduler.instance)
+//            .asSingle()
+//    }
+//
+//    private func requestObject<T: BaseMappable>(_ target: GithubAPI, type: T.Type) -> Single<T> {
+//        return githubProvider.request(target)
+//            .mapObject(T.self)
+//            .observeOn(MainScheduler.instance)
+//            .asSingle()
+//    }
+//
+//    private func requestArray<T: BaseMappable>(_ target: GithubAPI, type: T.Type) -> Single<[T]> {
+//        return githubProvider.request(target)
+//            .mapArray(T.self)
+//            .observeOn(MainScheduler.instance)
+//            .asSingle()
+//    }
 }

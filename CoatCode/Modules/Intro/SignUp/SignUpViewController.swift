@@ -17,9 +17,9 @@ class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var pwField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailValidationLabel: UILabel!
-    @IBOutlet weak var pwValidationLabel: UILabel!
+    @IBOutlet weak var passwordValidationLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
     let disposeBag = DisposeBag()
@@ -27,25 +27,47 @@ class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bindUI()
+        
+        bindViewModel()
     }
-    
-    func bindUI() {
+}
+
+// MARK: - BindViewModel
+extension SignUpViewController {
+    func bindViewModel() {
+        let emailControlEvents: Observable<Bool> = Observable.merge([
+            emailField.rx.controlEvent(.editingDidBegin).map { true },
+            emailField.rx.controlEvent(.editingDidEnd).map { false }
+        ])
+        
+        let passwordControlEvents: Observable<Bool> = Observable.merge([
+            passwordField.rx.controlEvent(.editingDidBegin).map { true },
+            passwordField.rx.controlEvent(.editingDidEnd).map { false }
+        ])
+        
+        let input = SignUpViewModel.Input(nextTrigger: nextButton.rx.tap.asDriver(),
+                                          emailEvents: emailControlEvents,
+                                          passwordEvents: passwordControlEvents)
+        let output = viewModel.transform(input: input)
         
         emailField.rx.text.orEmpty
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
         
-        pwField.rx.text.orEmpty
+        passwordField.rx.text.orEmpty
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
         
-        nextButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.next()
-            }).disposed(by: disposeBag)
+        output.nextButtonEnabled
+            .drive(nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
         
+        output.emailValidation
+            .drive(self.emailValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.passwordValidation
+            .drive(self.passwordValidationLabel.rx.text)
+            .disposed(by: disposeBag)
     }
-    
 }

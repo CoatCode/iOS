@@ -52,8 +52,8 @@ class IntroFlow: Flow {
         case .emailSignUpIsRequired:
             return navigationToEmailSignUp()
         // 프로필 생성 화면
-        case .createProfileIsRequired(let viewModel):
-            return navigationToCreateProfile(with: viewModel)
+        case .createProfileIsRequired(let email, let password):
+            return navigationToCreateProfile(email: email, password: password)
         // 소셜 로그인 dismiss
         case .socialLoginIsComplete:
             return dismissSocialLogin()
@@ -113,12 +113,13 @@ extension IntroFlow {
 
 // MARK: - Navigate to CreateProfile
 extension IntroFlow {
-    private func navigationToCreateProfile(with viewModel: SignUpViewModel) -> FlowContributors {
-        let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+    private func navigationToCreateProfile(email: String, password: String) -> FlowContributors {
+        let createProfileViewModel = CreateProfileViewModel(email: email, password: password)
+        let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: createProfileViewModel, andServices: self.services)
         
         self.rootViewController.pushViewController(createProfileViewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: createProfileViewController,
-                                                 withNextStepper: viewModel))
+                                                 withNextStepper: createProfileViewModel))
     }
 }
 

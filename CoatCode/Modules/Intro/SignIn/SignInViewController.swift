@@ -48,8 +48,6 @@ class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     @objc func popView() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
 // MARK: - BindViewModel
@@ -66,21 +64,15 @@ extension SignInViewController {
         }).disposed(by: disposeBag)
         
         emailField.rx.text.orEmpty
-            .bind(to: viewModel.id)
+            .bind(to: viewModel.email)
             .disposed(by: disposeBag)
         
         pwField.rx.text.orEmpty
-            .bind(to: viewModel.pw)
+            .bind(to: viewModel.password)
             .disposed(by: disposeBag)
         
         output.loginButtonEnabled
-            .drive(signInButton.rx.isHidden)
+            .drive(signInButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
-//        output.isLoginSuccess
-//            .subscribe { [weak self] in
-//                self?.presentedViewController?.dismiss(animated: true)
-//        }.disposed(by: disposeBag)
-        
     }
 }

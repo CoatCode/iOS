@@ -12,7 +12,7 @@ import RxCocoa
 import Reusable
 
 class CreateProfileViewModel: ServicesViewModel, Stepper {
-
+    
     // MARK: - Properties
     var steps = PublishRelay<Step>()
     var services: CoatCodeService!
@@ -21,6 +21,7 @@ class CreateProfileViewModel: ServicesViewModel, Stepper {
     
     let username = BehaviorRelay(value: "")
     let profileImage = BehaviorRelay(value: UIImage())
+    
     
     // MARK: - Init
     init(email: String, password: String) {
@@ -42,16 +43,17 @@ class CreateProfileViewModel: ServicesViewModel, Stepper {
 extension CreateProfileViewModel {
     func transform(input: Input) -> Output {
         
-        let profileRequest = input.signUpTrigger.flatMapLatest { [weak self] in
-            
-            
-            return self.services.signUp(email: self?.email, password: self?.password, userName: self?.username, profile: <#T##String#>)
+        let profileRequest = input.signUpTrigger.flatMapLatest { in
+            return self.services.signUp(email: self.email,
+                                        password: self.password,
+                                        userName: self.username.value,
+                                        profile: String.toBase64(self.profileImage.value))
                 .map(Void)
                 .trackActivity(self.loading)
         }
         
         profileRequest.subscribe(onNext: { [weak self] response in
-            guard let self = self = else { return }
+            guard let self = self else { return }
             
             
         })

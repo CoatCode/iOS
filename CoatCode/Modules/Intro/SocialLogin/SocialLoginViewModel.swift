@@ -11,7 +11,17 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class SocialLoginViewModel: Stepper, ServicesViewModel {
+class SocialLoginViewModel: ServicesViewModel, Stepper {
+
+    struct Input {
+    }
+    
+    struct Output {
+    }
+    
+    func transform(input: Input) -> Output {
+        return Output()
+    }
     
     var steps = PublishRelay<Step>()
     typealias Services = CoatCodeService

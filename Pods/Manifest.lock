@@ -23,6 +23,9 @@ PODS:
   - RxFlow (2.9.0):
     - RxCocoa (>= 5.1.1)
     - RxSwift (>= 5.1.1)
+  - RxGesture (3.0.2):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -36,6 +39,7 @@ DEPENDENCIES:
   - Reusable
   - RxCocoa
   - RxFlow
+  - RxGesture
   - RxSwift
 
 SPEC REPOS:
@@ -49,6 +53,7 @@ SPEC REPOS:
     - Reusable
     - RxCocoa
     - RxFlow
+    - RxGesture
     - RxRelay
     - RxSwift
 
@@ -62,9 +67,10 @@ SPEC CHECKSUMS:
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxFlow: a7f993ba4791174d414509a0ec03bfeff530a826
+  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: d7ab535ec708b24a75886fca5410c74734468cb2
+PODFILE CHECKSUM: 0f88b96a72432fa25a958e632286d14dbe095912
 
 COCOAPODS: 1.9.3

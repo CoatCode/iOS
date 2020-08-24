@@ -4,20 +4,26 @@
 target 'CoatCode' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  # Pods for CoatCode
+  
+  # Rx
   pod 'RxSwift'
   pod 'RxCocoa'
+  
+  # RxSwiftCommunity
   pod 'RxFlow'
+  pod "RxGesture"
 
+  # networking
   pod 'Alamofire'
   pod 'Moya/RxSwift'
   
+  # data
   pod 'RealmSwift'
   pod 'KeychainAccess'
   
+  # etc
   pod 'CryptoSwift'
-  
   pod 'Reusable'
-
-  # Pods for CoatCode
 
 end

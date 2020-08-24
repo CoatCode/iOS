@@ -11,7 +11,7 @@
         <!--Feed View Controller-->
         <scene sceneID="jmu-dI-c64">
             <objects>
-                <viewController id="2Fc-Wj-7yV" customClass="FeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" id="2Fc-Wj-7yV" customClass="FeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5bZ-uh-ryn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Store View Controller-->
         <scene sceneID="YBp-SH-Unl">
             <objects>
-                <viewController id="9j0-5j-wTT" customClass="StoreViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreViewController" id="9j0-5j-wTT" customClass="StoreViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTC-jk-w3P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
         <!--Setting View Controller-->
         <scene sceneID="7S4-5S-C8A">
             <objects>
-                <viewController id="6Bk-Vf-96b" customClass="SettingViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" id="6Bk-Vf-96b" customClass="SettingViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R0z-BK-8XA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
         <!--Writing View Controller-->
         <scene sceneID="b6m-eY-1md">
             <objects>
-                <viewController id="bMn-Rl-i1C" customClass="WritingViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WritingViewController" id="bMn-Rl-i1C" customClass="WritingViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MF6-44-6Jt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
         <!--Favorites View Controller-->
         <scene sceneID="HCD-oN-s6P">
             <objects>
-                <viewController id="7CQ-sD-HrS" customClass="FavoritesViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesViewController" id="7CQ-sD-HrS" customClass="FavoritesViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AEL-cw-uSb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

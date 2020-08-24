@@ -11,6 +11,7 @@ import Reusable
 import RxSwift
 import RxCocoa
 import RxFlow
+import RxGesture
 
 class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
@@ -32,6 +33,7 @@ class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewM
         super.viewDidLoad()
         
         bindViewModel()
+        bindImagePicker()
     }
 }
 
@@ -39,8 +41,13 @@ class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewM
 extension CreateProfileViewController {
     func bindViewModel() {
         
+        nameField.rx.text.orEmpty
+            .bind(to: viewModel.username)
+            .disposed(by: disposeBag)
+        
+        
         let imageObs: Observable<UIImage?> = self.profileImageView.rx.observe(UIImage.self, "image")
-        let defaultImage = UIImage(named: "defaultImage")!
+        let defaultImage = UIImage(named: "user")!
         let imageWithDefaultObs: Observable<UIImage> = imageObs.map {
             return $0 ?? defaultImage
         }
@@ -49,51 +56,88 @@ extension CreateProfileViewController {
             .bind(to: viewModel.profileImage)
             .disposed(by: disposeBag)
         
-        let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asDriver())
+        let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
 }
 
 // MARK: - BindImagePicker
 extension CreateProfileViewController {
     func bindImagePicker() {
         
-        cell.addImageView.isUserInteractionEnabled = true
-        cell.addImageView.tag = row //
-        cell.addImageView.rx.tapGesture().subscribe(onNext: { (_) in
-            print("TAP: \(item.firstName) \(item.lastName)")
-        }).disposed(by: cell.bag)
-        
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.rx.tapGesture().subscribe
-        
-        
-        galleryButton.rx.tap
-            .flatMapLatest { [weak self] _ in
-                return UIImagePickerController.rx.createWithParent(self) { picker in
-                    picker.sourceType = .photoLibrary
-                    picker.allowsEditing = false
-                }.flatMap {
-                    $0.rx.didFinishPickingMediaWithInfo
-                }.take(1)
-        }.map { info in
-            return info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage
-        }
-        .bind(to: imageView.rx.image)
-        .disposed(by: disposeBag)
+        let imagePicker = imagePickerScene(
+            on: self,
+            modalPresentationStyle: .formSheet,
+            modalTransitionStyle: .none
+        )
+
+        profileImageView.rx.tapGesture()
+            .flatMapLatest { _ in Observable.create(imagePicker) }
+            .compactMap { $0[.originalImage] as? UIImage }
+            .bind { image in
+                self.profileImageView.clipsToBounds = true
+                self.profileImageView.image = image
+            }
+            .disposed(by: disposeBag)
     }
-    
-    
-    
-    
+}
+
+//MARK: - SetUI
+extension CreateProfileViewController {
+    //    func setUI() {
+    //        self.profileImageView.
+    //    }
+}
+
+func imagePickerScene(on presenter: UIViewController, modalPresentationStyle: UIModalPresentationStyle? = nil, modalTransitionStyle: UIModalTransitionStyle? = nil) -> (_ observer: AnyObserver<[UIImagePickerController.InfoKey: AnyObject]>) -> Disposable {
+    return { [weak presenter] observer in
+        let controller = UIImagePickerController()
+        if let presentationStyle = modalPresentationStyle {
+            controller.modalPresentationStyle = presentationStyle
+        }
+        if let transitionStyle = modalTransitionStyle {
+            controller.modalTransitionStyle = transitionStyle
+        }
+        presenter?.present(controller, animated: true)
+        return controller.rx.didFinishPickingMediaWithInfo
+            .do(onNext: { _ in
+                presenter?.dismiss(animated: true)
+            })
+            .subscribe(observer)
+    }
+}
+
+final class RxImagePickerDelegateProxy: DelegateProxy<UIImagePickerController, UINavigationControllerDelegate & UIImagePickerControllerDelegate>, DelegateProxyType, UINavigationControllerDelegate & UIImagePickerControllerDelegate {
+
+    static func currentDelegate(for object: UIImagePickerController) -> (UIImagePickerControllerDelegate & UINavigationControllerDelegate)? {
+        return object.delegate
+    }
+
+    static func setCurrentDelegate(_ delegate: (UIImagePickerControllerDelegate & UINavigationControllerDelegate)?, to object: UIImagePickerController) {
+        object.delegate = delegate
+    }
+
+    static func registerKnownImplementations() {
+        self.register { RxImagePickerDelegateProxy(parentObject: $0, delegateProxy: RxImagePickerDelegateProxy.self) }
+     }
+}
+
+extension Reactive where Base: UIImagePickerController {
+
+    var didFinishPickingMediaWithInfo: Observable<[UIImagePickerController.InfoKey: AnyObject]> {
+        return RxImagePickerDelegateProxy.proxy(for: base)
+            .methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:)))
+            .map({ (a) in
+                return try castOrThrow(Dictionary<UIImagePickerController.InfoKey, AnyObject>.self, a[1])
+            })
+    }
+}
+
+func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
+    guard let returnValue = object as? T else {
+        throw RxCocoaError.castingError(object: object, targetType: resultType)
+    }
+
+    return returnValue
 }

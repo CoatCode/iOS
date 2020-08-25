@@ -72,7 +72,7 @@ extension SignUpViewModel {
         let isPasswordValid = password
             .throttle(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
                 .map { [weak self] text -> Bool in
-                    guard let isValid = self?.validatePassword(text: text, size: (6, 15)) else { return false }
+                    guard let isValid = self?.validatePassword(text: text, size: (8, 15)) else { return false }
                     return !text.isEmpty && isValid
             }.distinctUntilChanged()
         
@@ -96,7 +96,7 @@ extension SignUpViewModel {
                 return Observable.from(optional: "")
             } else if editingDidEnd {
                 self?.passwordValid.accept(false)
-                return Observable.from(optional: "6 ~ 15 자리로 구성된 비밀번호를 입력해주세요.")
+                return Observable.from(optional: "8 ~ 15 자리로 구성된 비밀번호를 입력해주세요.")
             } else {
                 self?.passwordValid.accept(false)
                 return .empty()

@@ -19,12 +19,12 @@ class CreateProfileViewModel: ServicesViewModel, Stepper {
     var services: CoatCodeService!
     let disposeBag = DisposeBag()
     let loading = ActivityIndicator()
+    let profileImage = BehaviorRelay(value: UIImage())
+    let buttonStatus = BehaviorRelay(value: false)
     
     let email: String
     let password: String
     let username = BehaviorRelay(value: "")
-    let profileImage = BehaviorRelay(value: UIImage())
-    
     
     // MARK: - Init
     init(email: String, password: String) {
@@ -35,10 +35,17 @@ class CreateProfileViewModel: ServicesViewModel, Stepper {
     // MARK: - Struct
     struct Input {
         let signUpTrigger: Observable<Void>
+        let nameEvents: Observable<Bool>
     }
     
     struct Output {
-        
+        let signUpButtonEnabled: Driver<Bool>
+        let nameValidation: Driver<String>
+    }
+    
+    // MARK: - Regular Expression
+    func validateName(_ string: String) -> Bool {
+        return string.range(of: "^[가-힣]{2,4}+$", options: .regularExpression) != nil
     }
 }
 
@@ -46,19 +53,49 @@ class CreateProfileViewModel: ServicesViewModel, Stepper {
 extension CreateProfileViewModel {
     func transform(input: Input) -> Output {
         
-        let imageData = self.profileImage.value.jpegData(compressionQuality: 1)
-        let imageBase64String = imageData?.base64EncodedString()
-        
-        input.signUpTrigger.flatMapLatest {
-            return self.services.signUp(email: self.email,
-                                        password: self.password.sha256(),
-                                        userName: self.username.value,
-                                        profile: imageBase64String ?? "")
-                .trackActivity(self.loading)
+        // MARK: - Button Trigger
+        let signUpRequest = input.signUpTrigger
+            .flatMapLatest { _ -> Observable<Void> in
+                let imageData = self.profileImage.value.jpegData(compressionQuality: 1)
+                let imageBase64String = imageData?.base64EncodedString()
+                
+                return self.services.signUp(email: self.email,
+                                            password: self.password.sha512(),
+                                            userName: self.username.value,
+                                            profile: imageBase64String ?? "")
+                    .trackActivity(self.loading)
         }
-        .subscribe(onNext: { _ in
-            print("asldfkjs;aldkjf")
+        
+        signUpRequest.subscribe(onNext: {
+            print("SignUp Success")
+        }, onError: { error in
+            print(error.localizedDescription)
         }).disposed(by: disposeBag)
-        return Output()
+        
+        // MARK: - Valid Check
+        let isNameValid = username
+            .throttle(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
+            .map { [weak self] text -> Bool in
+                guard let isValid = self?.validateName(text) else { return false }
+                return !text.isEmpty && isValid
+        }.distinctUntilChanged()
+        
+        // MARK: - Validation Observable
+        let nameValidation = Observable.combineLatest(isNameValid, input.nameEvents).flatMap { [weak self] (isValid: Bool, editingDidEnd: Bool) -> Observable<String> in
+            if isValid {
+                self?.buttonStatus.accept(true)
+                return Observable.from(optional: " ")
+            } else if editingDidEnd {
+                self?.buttonStatus.accept(false)
+                return Observable.from(optional: "올바르지 않은 이름 형식입니다.")
+            } else {
+                self?.buttonStatus.accept(false)
+                return .empty()
+            }
+        }.distinctUntilChanged()
+        
+        // MARK: - Return Output
+        return Output(signUpButtonEnabled: buttonStatus.asDriver(onErrorJustReturn: false),
+                      nameValidation: nameValidation.asDriver(onErrorJustReturn: ""))
     }
 }

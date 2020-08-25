@@ -38,8 +38,9 @@ class SignInViewModel: ServicesViewModel, Stepper {
 extension SignInViewModel {
     func transform(input: Input) -> Output {
         
+        // MARK: - Button Trigger
         let tokenRequest = input.signInTrigger.flatMapLatest {
-            return self.services.signIn(email: self.email.value, password: self.password.value.sha256())
+            return self.services.signIn(email: self.email.value, password: self.password.value.sha512())
                 .map(SignIn.self)
                 .trackActivity(self.loading)
         }

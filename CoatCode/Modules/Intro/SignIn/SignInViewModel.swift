@@ -41,7 +41,7 @@ extension SignInViewModel {
         // MARK: - Button Trigger
         let tokenRequest = input.signInTrigger.flatMapLatest {
             return self.services.signIn(email: self.email.value, password: self.password.value.sha512())
-                .map(SignIn.self)
+                .map(SignInResponse.self)
                 .trackActivity(self.loading)
         }
         
@@ -53,9 +53,10 @@ extension SignInViewModel {
             AuthManager.removeToken()
         }).disposed(by: disposeBag)
         
-        let profileRequest = tokenSaved.flatMapLatest {
+        let profileRequest = tokenSaved.flatMapLatest { _ -> Observable<ProfileResponse> in
+            print("sadkjf;lsdkfj")
             return self.services.profile()
-                .map(User.self)
+                .map(ProfileResponse.self)
                 .trackActivity(self.loading)
         }
         

@@ -14,6 +14,7 @@ import RxCocoa
 
 class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var emailField: UITextField!
@@ -26,27 +27,12 @@ class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     
     let isLoading = BehaviorRelay(value: false)
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bindViewModel()
-    }
-    
-    private func configureUI() {
-        navigationController?.title = "SignIn"
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        if let navigationBarItem = navigationController?.navigationBar.items?[0] {
-            navigationBarItem.setLeftBarButton(UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"),
-                                                               style: UIBarButtonItem.Style.plain,
-                                                               target: self,
-                                                               action: #selector(popView)),
-                                               animated: true)
-        }
-    }
-    
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
+        configureUI()
     }
 }
 
@@ -74,5 +60,17 @@ extension SignInViewController {
         output.loginButtonEnabled
             .drive(signInButton.rx.isEnabled)
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Configure UI
+extension SignInViewController {
+    private func configureUI() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

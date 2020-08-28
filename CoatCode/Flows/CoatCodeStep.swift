@@ -19,5 +19,24 @@ enum CoatCodeStep: Step {
     case emailSignUpIsRequired
     case socialLoginIsComplete
     case createProfileIsRequired(email: String, password: String)
+    case createProfileIsComplete
+    
+    // MARK: - Feed
+    case feedHomeIsRequired
+    
+    // MARK: - Store
+    case storeHomeIsRequired
+    
+    // MARK: - Writing
+    case writingHomeIsRequired
+//    case postIsRequired
+//    case productIsRequired
+    
+    // MARK: - Favorites
+    case favoritesHomeIsRequired
+    
+    // MARK: - Setting
+    case settingHomeIsRequired
+    
     
 }

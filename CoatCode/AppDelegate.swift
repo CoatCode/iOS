@@ -14,16 +14,22 @@ import RxCocoa
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Properties
     let disposeBag = DisposeBag()
     var window: UIWindow?
+    let appStepper = AppStepper()
     var coordinator = FlowCoordinator()
+    
     lazy var appService = {
         return CoatCodeService()
     }()
-
+    
+    lazy var rootFlow: AppFlow = {
+        guard let window = window else { fatalError("Cannot get window: UIWindow?") }
+        return AppFlow(window: window, services: self.appService)
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        guard let window = self.window else { return false }
 
         self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
             print("will navigate to flow=\(flow) and step=\(step)")
@@ -32,16 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
             print("did navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
+        
+        self.coordinator.coordinate(flow: self.rootFlow, with: self.appStepper)
 
-        let appFlow = AppFlow(services: self.appService)
-        let appStepper = AppStepper(withServices: self.appService)
-
-        self.coordinator.coordinate(flow: appFlow, with: appStepper)
-
-        Flows.use(appFlow, when: .created) { root in
-            window.rootViewController = root
-            window.makeKeyAndVisible()
-        }
+//        Flows.use(appFlow, when: .created) { root in
+//            window.rootViewController = root
+//            window.makeKeyAndVisible()
+//        }
         
         return true
     }

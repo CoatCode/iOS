@@ -14,20 +14,17 @@ import RxSwift
 class AppFlow: Flow {
     
     // MARK: - Properties
+    private let window: UIWindow
     private let services: CoatCodeService
     
+    // dummy
     var root: Presentable {
-        return self.rootViewController
+        return UIViewController()
     }
     
-    private lazy var rootViewController: UINavigationController = {
-        let viewController = UINavigationController()
-        viewController.setNavigationBarHidden(true, animated: false)
-        return viewController
-    }()
-    
     // MARK: - Init
-    init(services: CoatCodeService) {
+    init(window: UIWindow, services: CoatCodeService) {
+        self.window = window
         self.services = services
     }
     
@@ -42,8 +39,8 @@ class AppFlow: Flow {
         switch step {
         case .introIsRequired:
             return navigateToIntro()
-            //        case .tabBarIsRequired:
-        //            return navigationToTabBar()
+        case .tabBarIsRequired:
+            return navigationToTabBar()
         default:
             return .none
         }
@@ -51,18 +48,18 @@ class AppFlow: Flow {
 }
 
 // MARK: - Navigate to TabBar
-//extension AppFlow {
-//    private func navigationToTabBar() -> FlowContributors {
-//        let tabBarFlow = TabBarFlow(withServices: self.services)
-//
-//        Flows.use(tabBarFlow, when: .created) { [unowned self] root in
-//            self.rootViewController = root
-//        }
-//
-//        return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
-//                                                 withNextStepper: OneStepper(withSingleStep: CoatCodeStep.tabBarIsRequired)))
-//    }
-//}
+extension AppFlow {
+    private func navigationToTabBar() -> FlowContributors {
+        let tabBarFlow = TabBarFlow(withServices: self.services)
+
+        Flows.use(tabBarFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+        }
+
+        return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
+                                                 withNextStepper: OneStepper(withSingleStep: CoatCodeStep.tabBarIsRequired)))
+    }
+}
 
 // MARK: - Navigate to Intro
 extension AppFlow {
@@ -70,7 +67,7 @@ extension AppFlow {
         let introFlow = IntroFlow(withServices: self.services)
         
         Flows.use(introFlow, when: .created) { [unowned self] root in
-            self.rootViewController = root
+            self.window.rootViewController = root
         }
         
         return .one(flowContributor: .contribute(withNextPresentable: introFlow,
@@ -83,21 +80,16 @@ extension AppFlow {
 class AppStepper: Stepper {
     
     let disposeBag = DisposeBag()
-    
     let steps = PublishRelay<Step>()
-    private let appServices: CoatCodeService
-    
-    init(withServices services: CoatCodeService) {
-        self.appServices = services
-    }
     
     // 로그인 여부를 확인하여 Intro화면을 보여줄지 TabBar화면(main)을 줄지를 결정한다.
     var initialStep: Step {
-        if loggedIn.value {
-            return CoatCodeStep.tabBarIsRequired
-        } else {
-            return CoatCodeStep.introIsRequired
-        }
+        return CoatCodeStep.introIsRequired
+//        if loggedIn.value {
+//            return CoatCodeStep.tabBarIsRequired
+//        } else {
+//            return CoatCodeStep.introIsRequired
+//        }
     }
     
     // 로그인 성공시 실행되는 콜백 메서드

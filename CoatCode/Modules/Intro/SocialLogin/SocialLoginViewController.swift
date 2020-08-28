@@ -14,20 +14,25 @@ import RxCocoa
 
 class SocialLoginViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var dismissButton: UIButton!
     
     var viewModel: SocialLoginViewModel!
     let disposeBag = DisposeBag()
-
+    
+    // View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bindUI()
+        
+        bindViewModel()
     }
-    
-    func bindUI() {
+}
+
+// MARK: - BindViewModel
+extension SocialLoginViewController {
+    func bindViewModel() {
         dismissButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.dismiss()

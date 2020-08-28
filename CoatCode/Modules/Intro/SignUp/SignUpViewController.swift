@@ -14,6 +14,7 @@ import RxCocoa
 
 class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
     
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var emailField: UITextField!
@@ -25,10 +26,12 @@ class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     let disposeBag = DisposeBag()
     var viewModel: SignUpViewModel!
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bindViewModel()
+        configureUI()
     }
 }
 
@@ -69,5 +72,17 @@ extension SignUpViewController {
         output.passwordValidation
             .drive(self.passwordValidationLabel.rx.text)
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Configure UI
+extension SignUpViewController {
+    private func configureUI() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

@@ -21,7 +21,10 @@ class IntroFlow: Flow {
     
     private lazy var rootViewController: UINavigationController = {
         let viewController = UINavigationController()
-        viewController.setNavigationBarHidden(true, animated: false)
+        // Navigation Bar를 transparent하게
+        viewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        viewController.navigationBar.shadowImage = UIImage()
+        viewController.navigationBar.isTranslucent = true
         return viewController
     }()
     
@@ -44,19 +47,21 @@ class IntroFlow: Flow {
             return navigateToIntro()
         // 소셜 로그인 화면
         case .socialLoginIsRequired:
-            return navigationToSocialLogin()
+            return navigateToSocialLogin()
         // 이메일 로그인 화면
         case .emailSignInIsRequired:
-            return navigationToEmailSignIn()
+            return navigateToEmailSignIn()
         // 이메일 회원가입 화면
         case .emailSignUpIsRequired:
-            return navigationToEmailSignUp()
+            return navigateToEmailSignUp()
         // 프로필 생성 화면
         case .createProfileIsRequired(let email, let password):
-            return navigationToCreateProfile(email: email, password: password)
+            return navigateToCreateProfile(email: email, password: password)
         // 소셜 로그인 dismiss
         case .socialLoginIsComplete:
             return dismissSocialLogin()
+        case .createProfileIsComplete:
+            return popToRootView()
         default:
             return .none
         }
@@ -67,6 +72,7 @@ class IntroFlow: Flow {
 extension IntroFlow {
     private func navigateToIntro() -> FlowContributors {
         let introViewController = IntroViewController.instantiate()
+        
         self.rootViewController.pushViewController(introViewController, animated: false)
         return .one(flowContributor: .contribute(withNext: introViewController))
     }
@@ -74,7 +80,7 @@ extension IntroFlow {
 
 // MARK: - Navigate to SocialLogin
 extension IntroFlow {
-    private func navigationToSocialLogin() -> FlowContributors {
+    private func navigateToSocialLogin() -> FlowContributors {
         let socialLoginViewModel = SocialLoginViewModel()
         let socialLoginViewController = SocialLoginViewController.instantiate(withViewModel: socialLoginViewModel)
         
@@ -86,11 +92,10 @@ extension IntroFlow {
 
 // MARK: - Navigate to EmailSignIn
 extension IntroFlow {
-    private func navigationToEmailSignIn() -> FlowContributors {
+    private func navigateToEmailSignIn() -> FlowContributors {
         let signInViewModel = SignInViewModel()
-        let signInViewController = SignInViewController.instantiate(withViewModel: signInViewModel, andServices: self.services)
-        //        self.rootViewController.setNavigationBarHidden(false, animated: false)
-        //        self.rootViewController.title = "SignIn"
+        let signInViewController = SignInViewController.instantiate(withViewModel: signInViewModel,
+                                                                    andServices: self.services)
         
         self.rootViewController.pushViewController(signInViewController, animated: true)
         
@@ -101,7 +106,7 @@ extension IntroFlow {
 
 // MARK: - Navigate to EmailSignUp
 extension IntroFlow {
-    private func navigationToEmailSignUp() -> FlowContributors {
+    private func navigateToEmailSignUp() -> FlowContributors {
         let signUpViewModel = SignUpViewModel()
         let signUpViewControlelr = SignUpViewController.instantiate(withViewModel: signUpViewModel)
         
@@ -113,9 +118,10 @@ extension IntroFlow {
 
 // MARK: - Navigate to CreateProfile
 extension IntroFlow {
-    private func navigationToCreateProfile(email: String, password: String) -> FlowContributors {
+    private func navigateToCreateProfile(email: String, password: String) -> FlowContributors {
         let createProfileViewModel = CreateProfileViewModel(email: email, password: password)
-        let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: createProfileViewModel, andServices: self.services)
+        let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: createProfileViewModel,
+                                                                                  andServices: self.services)
         
         self.rootViewController.pushViewController(createProfileViewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: createProfileViewController,
@@ -123,12 +129,23 @@ extension IntroFlow {
     }
 }
 
-// MARK: - Navigate to DismissSocialLogin
+// MARK: - Dismiss SocialLogin
 extension IntroFlow {
     private func dismissSocialLogin() -> FlowContributors {
         if let socialLoginViewController = self.rootViewController.presentedViewController {
             socialLoginViewController.dismiss(animated: true)
         }
+        return .none
+    }
+}
+
+// MARK: - Dismiss to RootViewController
+extension IntroFlow {
+    private func popToRootView() -> FlowContributors {
+//        if let createProfileViewController = rootViewController.presentedViewController {
+//            createProfileViewController.
+//        }
+        self.rootViewController.popToRootViewController(animated: true)
         return .none
     }
 }

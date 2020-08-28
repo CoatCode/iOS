@@ -66,8 +66,9 @@ extension CreateProfileViewModel {
                     .trackActivity(self.loading)
         }
         
-        signUpRequest.subscribe(onNext: {
+        signUpRequest.subscribe(onNext: { [weak self] in
             print("SignUp Success")
+            self?.steps.accept(CoatCodeStep.createProfileIsComplete)
         }, onError: { error in
             print(error.localizedDescription)
         }).disposed(by: disposeBag)

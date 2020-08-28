@@ -28,13 +28,15 @@ class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewM
     
     let isLoading = BehaviorRelay(value: false)
     
-    // MARK: - LifeCycle
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
         bindViewModel()
         bindImagePicker()
+        
+        setProfileImageView()
+        configureUI()
     }
 }
 
@@ -87,15 +89,24 @@ extension CreateProfileViewController {
     }
 }
 
-//MARK: - SetUI
+// MARK: - Configure UI
 extension CreateProfileViewController {
-        func setUI() {
-            profileImageView.layer.cornerRadius = profileImageView.frame.height/2
-            profileImageView.layer.borderWidth = 1
-            profileImageView.layer.borderColor = UIColor.clear.cgColor
-            profileImageView.clipsToBounds = true
-            
-            self.profileImageView.image = UIImage(named: "user")
-            viewModel.profileImage.accept(UIImage(named: "user")!)
-        }
+    private func configureUI() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setProfileImageView() {
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.layer.borderWidth = 2
+        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        profileImageView.clipsToBounds = true
+        
+        self.profileImageView.image = UIImage(named: "user")
+        viewModel.profileImage.accept(UIImage(named: "user")!)
+    }
 }

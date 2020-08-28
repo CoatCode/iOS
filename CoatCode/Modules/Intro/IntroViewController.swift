@@ -14,6 +14,7 @@ import RxFlow
 
 class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
     
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var socialLoginButton: UIButton!
@@ -23,16 +24,22 @@ class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
     var steps = PublishRelay<Step>()
     let disposeBag = DisposeBag()
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindUI()
+        bindViewModel()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 
-// MARK: - BindUI
+// MARK: - BindViewModel
 extension IntroViewController {
-    func bindUI() {
+    func bindViewModel() {
         socialLoginButton.rx.tap
             .map { CoatCodeStep.socialLoginIsRequired }
             .bind(to: steps)

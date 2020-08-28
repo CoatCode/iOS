@@ -7,24 +7,29 @@
 //
 
 import UIKit
+import RxFlow
+import RxSwift
+import RxCocoa
+import Reusable
 
-class WritingViewController: UIViewController {
+class WritingViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
 
+    static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+    
+    var services: CoatCodeService!
+    var viewModel: WritingViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - BindViewModel
+extension WritingViewController {
+    func bindViewModel() {
+        
     }
-    */
-
 }

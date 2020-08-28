@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  SettingsViewController.swift
 //  CoatCode
 //
 //  Created by 강민석 on 2020/08/09.
@@ -12,23 +12,23 @@ import RxSwift
 import RxCocoa
 import Reusable
 
-class FavoritesViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class SettingsViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
 
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
     
     var services: CoatCodeService!
-    var viewModel: FavoritesViewModel!
+    var viewModel: SettingsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
- 
+
 }
 
 // MARK: - BindViewModel
-extension FavoritesViewController {
+extension SettingsViewController {
     func bindViewModel() {
         
     }

@@ -8,21 +8,11 @@
 
 import Foundation
 import RealmSwift
-import Realm
 
-struct User: Codable, ResponseProtocol {
-    var status: Int?
-    var message: String?
+class User: Object {
+
+    @objc dynamic var email = ""
+    @objc dynamic var username = ""
+    @objc dynamic var profile = ""
     
-    var email: String
-    var name: String
-    var avatarUrl: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case status
-        case message
-        case email
-        case name
-        case avatarUrl = "avatar_url"
-    }
 }

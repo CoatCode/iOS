@@ -12,6 +12,8 @@ import RxCocoa
 import UIKit
 
 class StoreFlow: Flow {
+    
+    // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
     }
@@ -19,16 +21,34 @@ class StoreFlow: Flow {
     private let rootViewController = UINavigationController()
     private let services: CoatCodeService
     
+    // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-
+    
     deinit {
         print("\(type(of: self)): \(#function)")
     }
     
+    // MARK: - Navigation Swtich
     func navigate(to step: Step) -> FlowContributors {
-        <#code#>
+        guard let step = step as? CoatCodeStep else { return .none }
+        switch step {
+        case .storeHomeIsRequired:
+            return navigateToStore()
+        default:
+            return .none
+        }
     }
-    
+}
+
+// MARK: - Navigate to Store
+extension StoreFlow {
+    func navigateToStore() -> FlowContributors {
+        let viewModel = StoreViewModel()
+        let viewController = StoreViewController.instantiate(withViewModel: viewModel,
+                                                             andServices: self.services)
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .none
+    }
 }

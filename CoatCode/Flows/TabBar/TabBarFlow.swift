@@ -11,12 +11,12 @@ import RxFlow
 
 class TabBarFlow: Flow {
     
-    let rootViewController = UITabBarController()
-    private let services: CoatCodeService
-    
     var root: Presentable {
         return self.rootViewController
     }
+    
+    let rootViewController = UITabBarController()
+    private let services: CoatCodeService
     
     init(withServices services: CoatCodeService) {
         self.services = services
@@ -48,11 +48,11 @@ class TabBarFlow: Flow {
         
         Flows.use(feedFlow, storeFlow, writingFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5 : UINavigationController) in
             
-            let tabBarItem1 = UITabBarItem()
-            let tabBarItem2 = UITabBarItem()
-            let tabBarItem3 = UITabBarItem()
-            let tabBarItem4 = UITabBarItem()
-            let tabBarItem5 = UITabBarItem()
+            let tabBarItem1 = UITabBarItem(title: nil, image: UIImage(named: "FeedIcon"), selectedImage: nil)
+            let tabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "StoreIcon"), selectedImage: nil)
+            let tabBarItem3 = UITabBarItem(title: nil, image: UIImage(named: "WritingIcon"), selectedImage: nil)
+            let tabBarItem4 = UITabBarItem(title: nil, image: UIImage(named: "FavoritesIcon"), selectedImage: nil)
+            let tabBarItem5 = UITabBarItem(title: nil, image: UIImage(named: "SettingsIcon"), selectedImage: nil)
             root1.tabBarItem = tabBarItem1
             root1.title = "Feed"
             root2.tabBarItem = tabBarItem2
@@ -67,16 +67,18 @@ class TabBarFlow: Flow {
             self.rootViewController.setViewControllers([root1, root2, root3, root4, root5], animated: false)
         }
         
-        return .multiple(flowContributors: [.contribute(withNextPresentable: feedFlow,
-                                                        withNextStepper: ),
-                                            .contribute(withNextPresentable: storeFlow,
-                                                        withNextStepper: ),
-                                            .contribute(withNextPresentable: writingFlow,
-                                                        withNextStepper: ),
-                                            .contribute(withNextPresentable: favoriteFlow,
-                                                        withNextStepper: ),
-                                            .contribute(withNextPresentable: settingFlow,
-                                                        withNextStepper: )])
+        return .multiple(flowContributors: [
+            .contribute(withNextPresentable: feedFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.feedHomeIsRequired)),
+            .contribute(withNextPresentable: storeFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.storeHomeIsRequired)),
+            .contribute(withNextPresentable: writingFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.writingHomeIsRequired)),
+            .contribute(withNextPresentable: favoriteFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.favoritesHomeIsRequired)),
+            .contribute(withNextPresentable: settingFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.settingHomeIsRequired))
+        ])
         
     }
 }

@@ -12,23 +12,46 @@ import RxCocoa
 import UIKit
 
 class FeedFlow: Flow {
+    
+    // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
     }
     
-    private let rootViewController = UINavigationController()
+    let rootViewController = UINavigationController()
     private let services: CoatCodeService
     
+    // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-
+    
     deinit {
         print("\(type(of: self)): \(#function)")
     }
     
+    // MARK: - Navigation Switch
     func navigate(to step: Step) -> FlowContributors {
-        <#code#>
+        guard let step = step as? CoatCodeStep else { return .none }
+        
+        switch step {
+        case .feedHomeIsRequired:
+            return navigateToFeed()
+        default:
+            return .none
+        }
     }
     
+}
+
+// MARK: - Navigate to Feed
+extension FeedFlow {
+    private func navigateToFeed() -> FlowContributors {
+        let viewModel = FeedViewModel()
+        let viewController = FeedViewController.instantiate(withViewModel: viewModel,
+                                                            andServices: self.services)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .none
+    }
 }

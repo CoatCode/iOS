@@ -21,11 +21,13 @@ target 'CoatCode' do
   # Data
   pod 'RealmSwift'
   pod 'KeychainAccess'
+
+  # UI
+  pod 'NVActivityIndicatorView/Extended'
+  pod 'SwiftMessages'
   
   # etc
   pod 'CryptoSwift'
   pod 'Reusable'
-  pod 'NVActivityIndicatorView/Extended'
-
-
+  
 end

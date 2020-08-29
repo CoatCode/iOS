@@ -7,6 +7,9 @@ PODS:
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
+  - NVActivityIndicatorView/Base (5.0.1)
+  - NVActivityIndicatorView/Extended (5.0.1):
+    - NVActivityIndicatorView/Base
   - Realm (5.3.2):
     - Realm/Headers (= 5.3.2)
   - Realm/Headers (5.3.2)
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - CryptoSwift
   - KeychainAccess
   - Moya/RxSwift
+  - NVActivityIndicatorView/Extended
   - RealmSwift
   - Reusable
   - RxCocoa
@@ -48,6 +52,7 @@ SPEC REPOS:
     - CryptoSwift
     - KeychainAccess
     - Moya
+    - NVActivityIndicatorView
     - Realm
     - RealmSwift
     - Reusable
@@ -62,6 +67,7 @@ SPEC CHECKSUMS:
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  NVActivityIndicatorView: 738e843cb8924e9e4fc3e559d0728031624bf860
   Realm: c6794276ca8884808ba168a22f9d71362b170b85
   RealmSwift: 42ec6cec3170aeeda407f797f07268a7d055ebc7
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
@@ -71,6 +77,6 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 0f88b96a72432fa25a958e632286d14dbe095912
+PODFILE CHECKSUM: f40d56f388742aebfe5afdf3eb42463a3ba3bd83
 
 COCOAPODS: 1.9.3

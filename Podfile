@@ -14,16 +14,18 @@ target 'CoatCode' do
   pod 'RxFlow'
   pod "RxGesture"
 
-  # networking
+  # Networking
   pod 'Alamofire'
   pod 'Moya/RxSwift'
   
-  # data
+  # Data
   pod 'RealmSwift'
   pod 'KeychainAccess'
   
   # etc
   pod 'CryptoSwift'
   pod 'Reusable'
+  pod 'NVActivityIndicatorView/Extended'
+
 
 end

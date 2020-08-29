@@ -12,12 +12,27 @@ import RealmSwift
 class DatabaseManager {
     
     static let shared = DatabaseManager()
-    private init() {}
     
-    private let realm = try! Realm()
+    private let realm: Realm
     
-    func saveUser(userData: User) {
-        
+    private init() {
+        self.realm = try! Realm()
+    }
+    
+    /**
+     realm 로컬 DB로 사용자 정보를 저장합니다.
+     
+     - parameters:
+        - userData: DB에 추가할 사용자 정보
+     */
+    func saveUser(_ userData: User) {
+        do {
+            try realm.write {
+                realm.add(userData)
+            }
+        } catch {
+            fatalError("DB Error!")
+        }
     }
     
     func removeCurrentUser() {

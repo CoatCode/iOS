@@ -10,10 +10,9 @@ import UIKit
 import Reusable
 import RxSwift
 import RxCocoa
-import RxFlow
 import RxGesture
 
-class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class CreateProfileViewController: ViewController, StoryboardSceneBased {
     
     // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
@@ -23,26 +22,19 @@ class CreateProfileViewController: UIViewController, StoryboardSceneBased, ViewM
     @IBOutlet weak var nameValidationLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
-    let disposeBag = DisposeBag()
-    var viewModel: CreateProfileViewModel!
-    
-    let isLoading = BehaviorRelay(value: false)
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
         bindImagePicker()
-        
         setProfileImageView()
         configureUI()
     }
-}
 
-// MARK: - BindViewModel
-extension CreateProfileViewController {
-    func bindViewModel() {
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
         
         let nameControlEvents: Observable<Bool> = Observable.merge([
             nameField.rx.controlEvent(.editingDidBegin).map { true },
@@ -70,6 +62,7 @@ extension CreateProfileViewController {
 // MARK: - BindImagePicker
 extension CreateProfileViewController {
     func bindImagePicker() {
+        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
         
         let imagePicker = imagePickerScene(
             on: self,
@@ -83,7 +76,7 @@ extension CreateProfileViewController {
             .bind { image in
                 self.profileImageView.clipsToBounds = true
                 self.profileImageView.image = image
-                self.viewModel.profileImage.accept(image)
+                viewModel.profileImage.accept(image)
             }
             .disposed(by: disposeBag)
     }
@@ -101,6 +94,7 @@ extension CreateProfileViewController {
     }
     
     func setProfileImageView() {
+        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor

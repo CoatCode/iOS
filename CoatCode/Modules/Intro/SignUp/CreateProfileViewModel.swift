@@ -10,15 +10,10 @@ import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
-import CryptoSwift
 
-class CreateProfileViewModel: ServicesViewModel, Stepper {
+class CreateProfileViewModel: ServicesBaseViewModel {
     
     // MARK: - Properties
-    var steps = PublishRelay<Step>()
-    var services: CoatCodeService!
-    let disposeBag = DisposeBag()
-    let loading = ActivityIndicator()
     let profileImage = BehaviorRelay(value: UIImage())
     let buttonStatus = BehaviorRelay(value: false)
     
@@ -60,7 +55,7 @@ extension CreateProfileViewModel {
                 let imageBase64String = imageData?.base64EncodedString()
                 
                 return self.services.signUp(email: self.email,
-                                            password: self.password.sha512(),
+                                            password: self.password,
                                             userName: self.username.value,
                                             profile: imageBase64String ?? "")
                     .trackActivity(self.loading)
@@ -69,8 +64,8 @@ extension CreateProfileViewModel {
         signUpRequest.subscribe(onNext: { [weak self] in
             print("SignUp Success")
             self?.steps.accept(CoatCodeStep.createProfileIsComplete)
-        }, onError: { error in
-            print(error.localizedDescription)
+        }, onError: { [weak self] error in
+            self?.error.onNext(error as! ResponseError)
         }).disposed(by: disposeBag)
         
         // MARK: - Valid Check

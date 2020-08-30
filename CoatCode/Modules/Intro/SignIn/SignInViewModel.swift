@@ -6,27 +6,19 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import RxFlow
 import RxSwift
 import RxCocoa
-import CryptoSwift
 
-class SignInViewModel: ServicesViewModel, Stepper {
+class SignInViewModel: ServicesBaseViewModel {
     
     // MARK: - Properties
-    let disposeBag = DisposeBag()
-    let steps = PublishRelay<Step>()
-    var services: CoatCodeService!
-    
-    let loading = ActivityIndicator()
     var tokenSaved = PublishSubject<Void>()
-    
     let email = BehaviorRelay(value: "")
     let password = BehaviorRelay(value: "")
     
     // MARK: - Struct
     struct Input {
-        let signInTrigger: Observable<Void>
+        let signInTrigger: Driver<Void>
     }
     
     struct Output {
@@ -37,43 +29,59 @@ class SignInViewModel: ServicesViewModel, Stepper {
 // MARK: - Transform
 extension SignInViewModel {
     func transform(input: Input) -> Output {
-        
         // MARK: - Button Trigger
-        let tokenRequest = input.signInTrigger.flatMapLatest {
-            return self.services.signIn(email: self.email.value, password: self.password.value.sha512())
-                .map(SignInResponse.self)
-                .trackActivity(self.loading)
-        }
-        
-        tokenRequest.subscribe(onNext: { [weak self] response in
-            guard let token = response.token else { return }
-            AuthManager.setToken(token: token)
-            self?.tokenSaved.onNext(())
-        }, onError: { error in
-            AuthManager.removeToken()
-        }).disposed(by: disposeBag)
-        
-        let profileRequest = tokenSaved.flatMapLatest { _ -> Observable<ProfileResponse> in
-            print("sadkjf;lsdkfj")
-            return self.services.profile()
-                .map(ProfileResponse.self)
-                .trackActivity(self.loading)
-        }
-        
-        profileRequest.subscribe(onNext: { user in
-            // user response값 저장
-            
-            
-            // Stepping (callback to AppStepper)
-            loggedIn.accept(true)
-        }, onError: { error in
-            AuthManager.removeToken()
-        }).disposed(by: disposeBag)
+        input.signInTrigger
+            .drive(onNext: {
+                self.signInRequest()
+            }).disposed(by: disposeBag)
         
         let loginButtonEnabled = BehaviorRelay.combineLatest(email, password, self.loading.asObservable()) {
             return !$0.isEmpty && !$1.isEmpty && !$2
         }.asDriver(onErrorJustReturn: false)
         
         return Output(loginButtonEnabled: loginButtonEnabled)
+    }
+}
+
+// MARK: - Functions
+extension SignInViewModel {
+    func signInRequest() {
+        self.services.signIn(email: self.email.value, password: self.password.value)
+            .map(SignInResponse.self)
+            .trackActivity(self.loading)
+            .subscribe(
+                onNext: { [weak self] response in
+                    guard let token = response.token else { return }
+                    AuthManager.setToken(token: token)
+                    // 프로필 정보 요청
+                    self?.profileRequest()
+                },
+                onError: { [weak self] error in
+                    self?.error.onNext(error as! ResponseError)
+                    AuthManager.removeToken()
+            }).disposed(by: disposeBag)
+    }
+    
+    func profileRequest() {
+        return self.services.profile()
+            .map(ProfileResponse.self)
+            .trackActivity(self.loading)
+            .subscribe(
+                onNext: { profile in
+                    // user response값 저장
+                    let user = User()
+                    user.email = profile.email ?? ""
+                    user.profile = profile.profile ?? ""
+                    user.username = profile.username ?? ""
+                    
+                    DatabaseManager.shared.saveUser(user)
+                    
+                    // Stepping (callback to AppStepper)
+                    loggedIn.accept(true)
+                },
+                onError: { [weak self] error in
+                    self?.error.onNext(error as! ResponseError)
+                    AuthManager.removeToken()
+            }).disposed(by: disposeBag)
     }
 }

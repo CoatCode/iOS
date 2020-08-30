@@ -8,11 +8,10 @@
 
 import UIKit
 import Reusable
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class SignInViewController: ViewController, StoryboardSceneBased {
     
     // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
@@ -22,32 +21,21 @@ class SignInViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     @IBOutlet weak var forgetPwButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
-    let disposeBag = DisposeBag()
-    var viewModel: SignInViewModel!
-    
-    let isLoading = BehaviorRelay(value: false)
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
         configureUI()
     }
-}
-
-// MARK: - BindViewModel
-extension SignInViewController {
-    private func bindViewModel() {
+    
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
         
-        let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asObservable())
+        guard let viewModel = viewModel as? SignInViewModel else { fatalError("FatalError!") }
+        
+        let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
-        
-        viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
-        
-        isLoading.subscribe(onNext: { isLoading in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
-        }).disposed(by: disposeBag)
         
         emailField.rx.text.orEmpty
             .bind(to: viewModel.email)

@@ -8,11 +8,10 @@
 
 import UIKit
 import Reusable
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class SignUpViewController: ViewController, StoryboardSceneBased {
     
     // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
@@ -23,21 +22,18 @@ class SignUpViewController: UIViewController, StoryboardSceneBased, ViewModelBas
     @IBOutlet weak var passwordValidationLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
-    let disposeBag = DisposeBag()
-    var viewModel: SignUpViewModel!
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
         configureUI()
     }
-}
 
-// MARK: - BindViewModel
-extension SignUpViewController {
-    func bindViewModel() {
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        guard let viewModel = viewModel as? SignUpViewModel else { fatalError("FatalError!") }
+        
         let emailControlEvents: Observable<Bool> = Observable.merge([
             emailField.rx.controlEvent(.editingDidBegin).map { true },
             emailField.rx.controlEvent(.editingDidEnd).map { false }

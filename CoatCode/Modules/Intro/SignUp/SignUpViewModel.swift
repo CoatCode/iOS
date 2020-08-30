@@ -6,16 +6,12 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SignUpViewModel: ViewModel, Stepper {
+class SignUpViewModel: ServicesBaseViewModel {
     
     // MARK: - Properties
-    let disposeBag = DisposeBag()
-    var steps = PublishRelay<Step>()
-    
     let email = BehaviorRelay(value: "")
     let password = BehaviorRelay(value: "")
     

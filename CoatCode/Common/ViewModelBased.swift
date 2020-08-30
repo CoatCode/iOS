@@ -9,6 +9,7 @@
 import UIKit
 import Reusable
 
+// MARK: - For ViewModel
 protocol ViewModel {
     associatedtype Input
     associatedtype Output
@@ -21,11 +22,13 @@ protocol ServicesViewModel: ViewModel {
     var services: Services! { get set }
 }
 
+// MARK: - For ViewController
 protocol ViewModelBased: class {
     associatedtype ViewModelType: ViewModel
     var viewModel: ViewModelType! { get set }
 }
 
+// MARK: - For Instantiate
 extension ViewModelBased where Self: StoryboardSceneBased & UIViewController {
     static func instantiate<ViewModelType> (withViewModel viewModel: ViewModelType) -> Self where ViewModelType == Self.ViewModelType {
         let viewController = Self.instantiate()

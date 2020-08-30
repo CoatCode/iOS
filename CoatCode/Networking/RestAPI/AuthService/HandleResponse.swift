@@ -19,18 +19,18 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
                 AuthManager.setToken(token: newToken)
             }
             
-            if (200 ... 299) ~= response.statusCode {
+            if (200...299) ~= response.statusCode {
                 return Single.just(response)
             }
             
             if var error = try? response.map(ResponseError.self) {
-                error.statusCode = response.statusCode
+                error.status = response.statusCode
                 return Single.error(error)
             }
             
             // Its an error and can't decode error details from server, push generic message
             let genericError = ResponseError(
-                statusCode: response.statusCode,
+                status: response.statusCode,
                 message: "empty message",
                 documentation_url: "doc url")
             return Single.error(genericError)
@@ -39,7 +39,7 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 }
 
 struct ResponseError: Decodable, Error {
-    var statusCode: Int?
+    var status: Int?
     let message: String
     let documentation_url: String
 }

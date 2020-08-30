@@ -22,6 +22,9 @@
 		F21DF6B924DFA79800F44B96 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6B824DFA79800F44B96 /* WritingViewController.swift */; };
 		F21DF6BB24DFA7B700F44B96 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */; };
 		F21DF6BD24DFA7C300F44B96 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */; };
+		F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */; };
+		F22D9FF124FB809A00CE0F8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF024FB809A00CE0F8C /* ViewController.swift */; };
+		F22D9FF324FBBA0400CE0F8C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF224FBBA0400CE0F8C /* ViewModel.swift */; };
 		F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231AEF224A893CB00BA720B /* AppDelegate.swift */; };
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
@@ -80,6 +83,9 @@
 		F21DF6B824DFA79800F44B96 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 		F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessage.swift; sourceTree = "<group>"; };
+		F22D9FF024FB809A00CE0F8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F22D9FF224FBBA0400CE0F8C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F231AEEF24A893CB00BA720B /* CoatCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F231AEF224A893CB00BA720B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F231AEFB24A893CD00BA720B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -425,6 +431,9 @@
 			children = (
 				F264C99F24D3B77B00CE0251 /* ResponseProtocol.swift */,
 				F259256524E6906400A09270 /* ViewModelBased.swift */,
+				F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */,
+				F22D9FF024FB809A00CE0F8C /* ViewController.swift */,
+				F22D9FF224FBBA0400CE0F8C /* ViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -614,6 +623,7 @@
 				F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */,
 				F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */,
 				F264C9A024D3B77B00CE0251 /* ResponseProtocol.swift in Sources */,
+				F22D9FF124FB809A00CE0F8C /* ViewController.swift in Sources */,
 				F20CAA4B24F91699009082B0 /* ProfileResponse.swift in Sources */,
 				F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */,
 				F264C9B724D3F07400CE0251 /* RequestLoggingPlugin.swift in Sources */,
@@ -625,6 +635,7 @@
 				F259256924E692F600A09270 /* AppFlow.swift in Sources */,
 				F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */,
 				F2153B9524D272A100BFD08F /* SignInViewController.swift in Sources */,
+				F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */,
 				F21DF6B724DFA78700F44B96 /* StoreViewController.swift in Sources */,
 				F20541A124F7372F000F932F /* SettingViewModel.swift in Sources */,
 				F264C9B424D3ECD600CE0251 /* BaseService.swift in Sources */,
@@ -638,6 +649,7 @@
 				F281DC9E24EA269100DFE1BC /* SocialLoginViewModel.swift in Sources */,
 				F278FF6524F28EA4001F27E9 /* UIImagePickerController+Rx.swift in Sources */,
 				F21DF6B524DFA77A00F44B96 /* FeedViewController.swift in Sources */,
+				F22D9FF324FBBA0400CE0F8C /* ViewModel.swift in Sources */,
 				F2828F9624F0A6E800F14BDB /* CreateProfileViewModel.swift in Sources */,
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,
 				F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */,

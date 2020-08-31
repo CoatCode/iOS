@@ -16,23 +16,27 @@ import SwiftMessages
 
 class ViewController: UIViewController, ViewModelBased, NVActivityIndicatorViewable {
     
+    // MARK: - Properties
     let disposeBag = DisposeBag()
     
-    var viewModel: ServicesBaseViewModel!
+    var viewModel: BaseViewModel!
     let isLoading = BehaviorRelay(value: false)
     let error = PublishSubject<ResponseError>()
     
+    // MARK: - View life cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         bindViewModel()
     }
  
+    // MARK: - BindViewModel
     func bindViewModel() {
         viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
         viewModel.error.bind(to: self.error).disposed(by: disposeBag)
         
-        isLoading.subscribe(onNext: { isLoading in
+        isLoading.subscribe(onNext: { [weak self] isLoading in
+            self?.view.endEditing(true)
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         }).disposed(by: disposeBag)
         

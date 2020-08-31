@@ -40,7 +40,6 @@
 		F259256924E692F600A09270 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256824E692F600A09270 /* AppFlow.swift */; };
 		F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256A24E6952300A09270 /* CoatCodeStep.swift */; };
 		F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99624D2878A00CE0251 /* SignInViewModel.swift */; };
-		F264C99E24D3B68D00CE0251 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99D24D3B68D00CE0251 /* SignInResponse.swift */; };
 		F264C9A024D3B77B00CE0251 /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C99F24D3B77B00CE0251 /* ResponseProtocol.swift */; };
 		F264C9A424D3BA4800CE0251 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C9A324D3BA4800CE0251 /* Token.swift */; };
 		F264C9AF24D3C7AA00CE0251 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264C9AE24D3C7AA00CE0251 /* BaseAPI.swift */; };
@@ -103,7 +102,6 @@
 		F259256824E692F600A09270 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		F259256A24E6952300A09270 /* CoatCodeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeStep.swift; sourceTree = "<group>"; };
 		F264C99624D2878A00CE0251 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		F264C99D24D3B68D00CE0251 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		F264C99F24D3B77B00CE0251 /* ResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProtocol.swift; sourceTree = "<group>"; };
 		F264C9A324D3BA4800CE0251 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		F264C9AE24D3C7AA00CE0251 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 		F23CE60824DB0D9900717A3F /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				F264C99D24D3B68D00CE0251 /* SignInResponse.swift */,
 				F20CAA4A24F91699009082B0 /* ProfileResponse.swift */,
 			);
 			path = Response;
@@ -627,7 +624,6 @@
 				F20CAA4B24F91699009082B0 /* ProfileResponse.swift in Sources */,
 				F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */,
 				F264C9B724D3F07400CE0251 /* RequestLoggingPlugin.swift in Sources */,
-				F264C99E24D3B68D00CE0251 /* SignInResponse.swift in Sources */,
 				F2762A3E24EE949700CB6434 /* FeedViewModel.swift in Sources */,
 				F264C9BC24D3F1A700CE0251 /* HandleResponse.swift in Sources */,
 				F259256624E6906400A09270 /* ViewModelBased.swift in Sources */,

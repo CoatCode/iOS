@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class SignUpViewModel: ServicesBaseViewModel {
+class SignUpViewModel: BaseViewModel {
     
     // MARK: - Properties
     let email = BehaviorRelay(value: "")

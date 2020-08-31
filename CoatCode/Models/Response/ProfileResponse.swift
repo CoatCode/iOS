@@ -8,18 +8,12 @@
 
 import Foundation
 
-class ProfileResponse: Codable, ResponseProtocol {
-    var status: Int?
-    var message: String?
-    
+class ProfileResponse: Codable {
     var email: String?
     var username: String?
     var profile: String?
     
     private enum CodingKeys: String, CodingKey {
-        case status
-        case message
-        
         case email
         case username
         case profile

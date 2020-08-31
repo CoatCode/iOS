@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class SignInViewModel: ServicesBaseViewModel {
+class SignInViewModel: BaseViewModel {
     
     // MARK: - Properties
     var tokenSaved = PublishSubject<Void>()
@@ -47,12 +47,11 @@ extension SignInViewModel {
 extension SignInViewModel {
     func signInRequest() {
         self.services.signIn(email: self.email.value, password: self.password.value)
-            .map(SignInResponse.self)
+            .map(Token.self)
             .trackActivity(self.loading)
             .subscribe(
                 onNext: { [weak self] response in
-                    guard let token = response.token else { return }
-                    AuthManager.setToken(token: token)
+                    AuthManager.setToken(token: response)
                     // 프로필 정보 요청
                     self?.profileRequest()
                 },

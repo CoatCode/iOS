@@ -17,7 +17,7 @@ class SignInViewController: ViewController, StoryboardSceneBased {
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var pwField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var forgetPwButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
@@ -41,7 +41,7 @@ class SignInViewController: ViewController, StoryboardSceneBased {
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
         
-        pwField.rx.text.orEmpty
+        passwordField.rx.text.orEmpty
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
         

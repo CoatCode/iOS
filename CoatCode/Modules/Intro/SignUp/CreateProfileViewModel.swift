@@ -11,15 +11,14 @@ import RxSwift
 import RxCocoa
 import Reusable
 
-class CreateProfileViewModel: ServicesBaseViewModel {
+class CreateProfileViewModel: BaseViewModel {
     
     // MARK: - Properties
     let profileImage = BehaviorRelay(value: UIImage())
     let buttonStatus = BehaviorRelay(value: false)
-    
+    let username = BehaviorRelay(value: "")
     let email: String
     let password: String
-    let username = BehaviorRelay(value: "")
     
     // MARK: - Init
     init(email: String, password: String) {
@@ -29,7 +28,7 @@ class CreateProfileViewModel: ServicesBaseViewModel {
     
     // MARK: - Struct
     struct Input {
-        let signUpTrigger: Observable<Void>
+        let signUpTrigger: Driver<Void>
         let nameEvents: Observable<Bool>
     }
     
@@ -49,24 +48,10 @@ extension CreateProfileViewModel {
     func transform(input: Input) -> Output {
         
         // MARK: - Button Trigger
-        let signUpRequest = input.signUpTrigger
-            .flatMapLatest { _ -> Observable<Void> in
-                let imageData = self.profileImage.value.jpegData(compressionQuality: 1)
-                let imageBase64String = imageData?.base64EncodedString()
-                
-                return self.services.signUp(email: self.email,
-                                            password: self.password,
-                                            userName: self.username.value,
-                                            profile: imageBase64String ?? "")
-                    .trackActivity(self.loading)
-        }
-        
-        signUpRequest.subscribe(onNext: { [weak self] in
-            print("SignUp Success")
-            self?.steps.accept(CoatCodeStep.createProfileIsComplete)
-        }, onError: { [weak self] error in
-            self?.error.onNext(error as! ResponseError)
-        }).disposed(by: disposeBag)
+        input.signUpTrigger
+            .drive(onNext: { [weak self] in
+                self?.signUpRequest()
+            }).disposed(by: disposeBag)
         
         // MARK: - Valid Check
         let isNameValid = username
@@ -93,5 +78,24 @@ extension CreateProfileViewModel {
         // MARK: - Return Output
         return Output(signUpButtonEnabled: buttonStatus.asDriver(onErrorJustReturn: false),
                       nameValidation: nameValidation.asDriver(onErrorJustReturn: ""))
+    }
+}
+
+// MARK: - Functions
+extension CreateProfileViewModel {
+    func signUpRequest() {
+        let imageData = self.profileImage.value.jpegData(compressionQuality: 1)
+        let imageBase64String = imageData?.base64EncodedString()
+        
+        return self.services.signUp(email: self.email,
+                                    password: self.password,
+                                    userName: self.username.value,
+                                    profile: imageBase64String ?? "")
+            .trackActivity(self.loading)
+            .subscribe(onNext: { [weak self] in
+                self?.steps.accept(CoatCodeStep.createProfileIsComplete)
+                }, onError: { [weak self] error in
+                    self?.error.onNext(error as! ResponseError)
+            }).disposed(by: disposeBag)
     }
 }

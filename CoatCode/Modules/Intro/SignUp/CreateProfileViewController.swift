@@ -41,7 +41,7 @@ class CreateProfileViewController: ViewController, StoryboardSceneBased {
             nameField.rx.controlEvent(.editingDidEnd).map { false }
         ])
         
-        let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asObservable(),
+        let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asDriver(),
                                                  nameEvents: nameControlEvents)
         let output = viewModel.transform(input: input)
         
@@ -94,13 +94,11 @@ extension CreateProfileViewController {
     }
     
     func setProfileImageView() {
-        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         profileImageView.clipsToBounds = true
         
         self.profileImageView.image = UIImage(named: "user")
-        viewModel.profileImage.accept(UIImage(named: "user")!)
     }
 }

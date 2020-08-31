@@ -31,8 +31,7 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
             // Its an error and can't decode error details from server, push generic message
             let genericError = ResponseError(
                 status: response.statusCode,
-                message: "empty message",
-                documentation_url: "doc url")
+                message: "Empty Message...")
             return Single.error(genericError)
         }
     }
@@ -41,5 +40,5 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 struct ResponseError: Decodable, Error {
     var status: Int?
     let message: String
-    let documentation_url: String
+//    let documentation_url: String
 }

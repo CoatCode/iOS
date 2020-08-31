@@ -46,13 +46,18 @@ extension CoatCodeAPI: BaseAPI {
         case .signIn, .signUp:
             break
         default:
-            return ["authorization": "bearer \(AuthManager.getAccessToken())"]
+            return ["authorization": "Bearer \(AuthManager.getAccessToken())"]
         }
         return nil
     }
     
     var task: Task {
         switch self {
+        case .profile:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            }   
+            return .requestPlain
         default:
             if let parameters = parameters {
                 return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)

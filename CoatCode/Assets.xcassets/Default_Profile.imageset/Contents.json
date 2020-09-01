@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "COCO_default_Profile_Img 1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "COCO_default_Profile_Img 2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "COCO_default_Profile_Img 3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -14,7 +14,7 @@ enum CoatCodeAPI {
     
     // MARK: - Authentication is not required
     case signIn(String, String)
-    case signUp(String, String, String, String)
+    case signUp(String, String, String, String?)
     
     // MARK: - Authentication is required
     case profile
@@ -56,7 +56,7 @@ extension CoatCodeAPI: BaseAPI {
         case .profile:
             if let parameters = parameters {
                 return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
-            }   
+            }
             return .requestPlain
         default:
             if let parameters = parameters {

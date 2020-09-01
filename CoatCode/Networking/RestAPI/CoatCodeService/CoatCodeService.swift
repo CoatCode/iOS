@@ -17,7 +17,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.signIn(email, password.sha512()))
     }
     
-    func signUp(email: String, password: String, userName: String, profile: String) -> Single<Void> {
+    func signUp(email: String, password: String, userName: String, profile: String?) -> Single<Void> {
         return request(.signUp(email, password.sha512(), userName, profile)).map { _ in }
     }
     

@@ -94,11 +94,11 @@ extension CreateProfileViewController {
     }
     
     func setProfileImageView() {
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         profileImageView.clipsToBounds = true
         
-        self.profileImageView.image = UIImage(named: "user")
+        self.profileImageView.image = UIImage(named: "Default_Profile")
     }
 }

@@ -84,18 +84,29 @@ extension CreateProfileViewModel {
 // MARK: - Functions
 extension CreateProfileViewModel {
     func signUpRequest() {
-        let imageData = self.profileImage.value.jpegData(compressionQuality: 1)
+        let imageData = self.profileImage.value.jpegData(compressionQuality: 0.5)
         let imageBase64String = imageData?.base64EncodedString()
         
         return self.services.signUp(email: self.email,
-                                    password: self.password,
-                                    userName: self.username.value,
-                                    profile: imageBase64String ?? "")
-            .trackActivity(self.loading)
-            .subscribe(onNext: { [weak self] in
-                self?.steps.accept(CoatCodeStep.createProfileIsComplete)
-                }, onError: { [weak self] error in
-                    self?.error.onNext(error as! ResponseError)
-            }).disposed(by: disposeBag)
+                                password: self.password,
+                                userName: self.username.value,
+                                profile: imageBase64String)
+        .trackActivity(self.loading)
+        .subscribe(onNext: { [weak self] in
+            self?.steps.accept(CoatCodeStep.createProfileIsComplete)
+            }, onError: { [weak self] error in
+                self?.error.onNext(error as! ResponseError)
+        }).disposed(by: self.disposeBag)
     }
 }
+
+//func resize(image: UIImage, scale: CGFloat, completionHandler: ((UIImage?) -> Void)?) {
+//    let transform = CGAffineTransform(scaleX: scale, y: scale)
+//    let size = image.size.applying(transform)
+//    UIGraphicsBeginImageContext(size)
+//    image.draw(in: CGRect(origin: .zero, size: size))
+//    let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+//    UIGraphicsEndImageContext()
+//
+//    completionHandler!(resultImage)
+//}

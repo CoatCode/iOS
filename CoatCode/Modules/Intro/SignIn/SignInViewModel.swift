@@ -76,6 +76,7 @@ extension SignInViewModel {
                     DatabaseManager.shared.saveUser(user)
                     
                     // Stepping (callback to AppStepper)
+                    UserDefaults.standard.set(true, forKey: "loginState")
                     loggedIn.accept(true)
                 },
                 onError: { [weak self] error in

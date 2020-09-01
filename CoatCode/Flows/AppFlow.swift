@@ -51,11 +51,17 @@ class AppFlow: Flow {
 extension AppFlow {
     private func navigationToTabBar() -> FlowContributors {
         let tabBarFlow = TabBarFlow(withServices: self.services)
-
+        
         Flows.use(tabBarFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root
+            
+            UIView.transition(with: self.window,
+                              duration: 0.5,
+                              options: [.transitionCrossDissolve],
+                              animations: nil,
+                              completion: nil)
         }
-
+        
         return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
                                                  withNextStepper: OneStepper(withSingleStep: CoatCodeStep.tabBarIsRequired)))
     }
@@ -68,6 +74,12 @@ extension AppFlow {
         
         Flows.use(introFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root
+            
+            UIView.transition(with: self.window,
+                              duration: 0.5,
+                              options: [.transitionCrossDissolve],
+                              animations: nil,
+                              completion: nil)
         }
         
         return .one(flowContributor: .contribute(withNextPresentable: introFlow,
@@ -84,12 +96,12 @@ class AppStepper: Stepper {
     
     // 로그인 여부를 확인하여 Intro화면을 보여줄지 TabBar화면(main)을 줄지를 결정한다.
     var initialStep: Step {
-        return CoatCodeStep.introIsRequired
-//        if loggedIn.value {
-//            return CoatCodeStep.tabBarIsRequired
-//        } else {
-//            return CoatCodeStep.introIsRequired
-//        }
+        let isLogin = UserDefaults.standard.bool(forKey: "loginState")
+        if isLogin {
+            return CoatCodeStep.tabBarIsRequired
+        } else {
+            return CoatCodeStep.introIsRequired
+        }
     }
     
     // 로그인 성공시 실행되는 콜백 메서드

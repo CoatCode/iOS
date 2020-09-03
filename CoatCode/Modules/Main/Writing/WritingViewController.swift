@@ -7,29 +7,25 @@
 //
 
 import UIKit
-import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
 
-class WritingViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class WritingViewController: ViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-    
-    var services: CoatCodeService!
-    var viewModel: WritingViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-}
-
-// MARK: - BindViewModel
-extension WritingViewController {
-    func bindViewModel() {
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? WritingViewModel else { fatalError("ViewModel Casting Falid!") }
+        
         
     }
 }

@@ -7,29 +7,32 @@
 //
 
 import UIKit
-import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
 
-class FeedViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class FeedViewController: ViewController, StoryboardSceneBased {
 
+    // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
     
-    var services: CoatCodeService!
-    var viewModel: FeedViewModel!
+    @IBOutlet weak var feedTableView: UITableView!
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindViewModel()
     }
     
-}
-
-// MARK: - BindViewModel
-extension FeedViewController {
-    func bindViewModel() {
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
+        
+        
+        
         
     }
+    
 }

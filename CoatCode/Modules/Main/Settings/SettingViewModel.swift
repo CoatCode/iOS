@@ -6,14 +6,10 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SettingsViewModel: Stepper, ViewModel {
-    
-    var services: CoatCodeService!
-    var steps = PublishRelay<Step>()
+class SettingsViewModel: BaseViewModel {
     
     struct Input {
         
@@ -22,7 +18,6 @@ class SettingsViewModel: Stepper, ViewModel {
     struct Output {
         
     }
-    
     
 }
 

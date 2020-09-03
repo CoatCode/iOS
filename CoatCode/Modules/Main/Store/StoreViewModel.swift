@@ -6,14 +6,10 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class StoreViewModel: Stepper, ServicesViewModel {
-    
-    var services: CoatCodeService!
-    var steps = PublishRelay<Step>()
+class StoreViewModel: BaseViewModel {
     
     struct Input {
         

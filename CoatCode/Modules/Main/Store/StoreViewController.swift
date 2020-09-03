@@ -7,29 +7,24 @@
 //
 
 import UIKit
-import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
 
-class StoreViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class StoreViewController: ViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-    
-    var services: CoatCodeService!
-    var viewModel: StoreViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-}
-
-// MARK: - BindViewModel
-extension StoreViewController {
-    func bindViewModel() {
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? StoreViewModel else { fatalError("ViewModel Casting Falid!") }
         
     }
 }

@@ -7,29 +7,25 @@
 //
 
 import UIKit
-import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
 
-class FavoritesViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class FavoritesViewController: ViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-    
-    var services: CoatCodeService!
-    var viewModel: FavoritesViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
- 
-}
-
-// MARK: - BindViewModel
-extension FavoritesViewController {
-    func bindViewModel() {
+    
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? FavoritesViewModel else { fatalError("ViewModel Casting Falid!") }
         
     }
+    
 }

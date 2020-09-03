@@ -7,29 +7,26 @@
 //
 
 import UIKit
-import RxFlow
 import RxSwift
 import RxCocoa
 import Reusable
 
-class SettingsViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class SettingsViewController: ViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-    
-    var services: CoatCodeService!
-    var viewModel: SettingsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
-}
-
-// MARK: - BindViewModel
-extension SettingsViewController {
-    func bindViewModel() {
+    
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? SettingsViewModel else { fatalError("ViewModel Casting Falid!") }
+        
         
     }
+
 }

@@ -25,14 +25,14 @@ class SignInViewController: ViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        backBarButton()
     }
     
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
         
-        guard let viewModel = viewModel as? SignInViewModel else { fatalError("FatalError!") }
+        guard let viewModel = viewModel as? SignInViewModel else { fatalError("ViewModel Casting Falid!") }
         
         let input = SignInViewModel.Input(signInTrigger: signInButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
@@ -48,17 +48,5 @@ class SignInViewController: ViewController, StoryboardSceneBased {
         output.loginButtonEnabled
             .drive(signInButton.rx.isEnabled)
             .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Configure UI
-extension SignInViewController {
-    private func configureUI() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
     }
 }

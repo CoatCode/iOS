@@ -26,13 +26,14 @@ class SignUpViewController: ViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        backBarButton()
     }
 
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = viewModel as? SignUpViewModel else { fatalError("FatalError!") }
+        
+        guard let viewModel = viewModel as? SignUpViewModel else { fatalError("ViewModel Casting Falid!") }
         
         let emailControlEvents: Observable<Bool> = Observable.merge([
             emailField.rx.controlEvent(.editingDidBegin).map { true },
@@ -68,17 +69,5 @@ class SignUpViewController: ViewController, StoryboardSceneBased {
         output.passwordValidation
             .drive(self.passwordValidationLabel.rx.text)
             .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Configure UI
-extension SignUpViewController {
-    private func configureUI() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
     }
 }

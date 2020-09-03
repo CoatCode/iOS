@@ -26,15 +26,16 @@ class CreateProfileViewController: ViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindImagePicker()
+        bindProfileImage()
+        backBarButton()
         setProfileImageView()
-        configureUI()
     }
 
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
+        
+        guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("ViewModel Casting Falid!") }
         
         let nameControlEvents: Observable<Bool> = Observable.merge([
             nameField.rx.controlEvent(.editingDidBegin).map { true },
@@ -61,7 +62,7 @@ class CreateProfileViewController: ViewController, StoryboardSceneBased {
 
 // MARK: - BindImagePicker
 extension CreateProfileViewController {
-    func bindImagePicker() {
+    func bindProfileImage() {
         guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
         
         let imagePicker = imagePickerScene(
@@ -84,15 +85,6 @@ extension CreateProfileViewController {
 
 // MARK: - Configure UI
 extension CreateProfileViewController {
-    private func configureUI() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func setProfileImageView() {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.layer.borderWidth = 2

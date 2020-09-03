@@ -21,15 +21,14 @@ class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
     @IBOutlet weak var emailSignInButton: UIButton!
     @IBOutlet weak var emailSignUpButton: UIButton!
     
-    var steps = PublishRelay<Step>()
     let disposeBag = DisposeBag()
+    var steps = PublishRelay<Step>()
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bindViewModel()
         
+        stepper()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,9 +36,9 @@ class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
     }
 }
 
-// MARK: - BindViewModel
+// MARK: - Stepper
 extension IntroViewController {
-    func bindViewModel() {
+    func stepper() {
         socialLoginButton.rx.tap
             .map { CoatCodeStep.socialLoginIsRequired }
             .bind(to: steps)

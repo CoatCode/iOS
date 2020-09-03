@@ -56,7 +56,7 @@ class AuthManager {
         if let token = AuthManager.shared.token {
             return token.refreshToken
         } else {
-            return "RefreshTokenError"
+            return "RefreshTokenEmpty"
         }
     }
 

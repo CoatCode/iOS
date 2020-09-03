@@ -27,7 +27,7 @@ class BaseService<API: TargetType> {
                 // 401(Unauthorized) 발생 시 자동으로 토큰을 재발급 받는다
                 if $0.statusCode == 401 {
                     // refresh 토큰이 없다면 로그인을 하지 않은것이니 그대로 return
-                    if AuthManager.getRefreshToken() == "RefreshTokenError" {
+                    if AuthManager.getRefreshToken() == "RefreshTokenEmpty" {
                         return Single.just($0)
                     } else {
                         throw TokenError.tokenExpired
@@ -48,6 +48,6 @@ class BaseService<API: TargetType> {
 }
 
 /// 토큰 만료 에러
-enum TokenError: Swift.Error {
+enum TokenError: Error {
     case tokenExpired
 }

@@ -6,12 +6,10 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import Foundation
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SocialLoginViewModel: ServicesViewModel, Stepper {
+class SocialLoginViewModel: BaseViewModel {
 
     struct Input {
     }
@@ -22,11 +20,6 @@ class SocialLoginViewModel: ServicesViewModel, Stepper {
     func transform(input: Input) -> Output {
         return Output()
     }
-    
-    var steps = PublishRelay<Step>()
-    typealias Services = CoatCodeService
-    
-    var services: Services!
     
     func dismiss() {
         steps.accept(CoatCodeStep.socialLoginIsComplete)

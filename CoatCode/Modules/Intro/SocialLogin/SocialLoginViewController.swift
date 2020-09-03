@@ -8,34 +8,31 @@
 
 import UIKit
 import Reusable
-import RxFlow
 import RxSwift
 import RxCocoa
 
-class SocialLoginViewController: UIViewController, StoryboardSceneBased, ViewModelBased {
+class SocialLoginViewController: ViewController, StoryboardSceneBased {
     
     // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
     
     @IBOutlet weak var dismissButton: UIButton!
     
-    var viewModel: SocialLoginViewModel!
-    let disposeBag = DisposeBag()
-    
     // View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
     }
-}
-
-// MARK: - BindViewModel
-extension SocialLoginViewController {
-    func bindViewModel() {
+    
+    // MARK: - BindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = self.viewModel as? SocialLoginViewModel else { fatalError("ViewModel Casting Falid!") }
+            
         dismissButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.dismiss()
+            .subscribe(onNext: {
+                viewModel.dismiss()
             }).disposed(by: disposeBag)
     }
 }

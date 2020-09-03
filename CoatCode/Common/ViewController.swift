@@ -31,7 +31,7 @@ class ViewController: UIViewController, ViewModelBased, NVActivityIndicatorViewa
     }
  
     // MARK: - BindViewModel
-    func bindViewModel() {
+    public func bindViewModel() {
         viewModel.loading.asObservable().bind(to: self.isLoading).disposed(by: disposeBag)
         viewModel.error.bind(to: self.error).disposed(by: disposeBag)
         
@@ -51,5 +51,15 @@ class ViewController: UIViewController, ViewModelBased, NVActivityIndicatorViewa
             errorView.button?.isHidden = true
             SwiftMessages.show(view: errorView)
         }).disposed(by: disposeBag)
+    }
+    
+    // MARK: - BackBarButton
+    public func backBarButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

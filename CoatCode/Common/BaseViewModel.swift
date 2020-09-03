@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  BaseViewModel.swift
 //  CoatCode
 //
 //  Created by 강민석 on 2020/08/30.

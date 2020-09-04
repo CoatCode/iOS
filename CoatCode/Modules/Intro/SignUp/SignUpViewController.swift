@@ -11,7 +11,7 @@ import Reusable
 import RxSwift
 import RxCocoa
 
-class SignUpViewController: ViewController, StoryboardSceneBased {
+class SignUpViewController: BaseViewController, StoryboardSceneBased {
     
     // MARK: - Properties
     static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)

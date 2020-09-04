@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All Feed View Controller-->
+        <scene sceneID="Qir-nB-yJf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGx-sA-WPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="AllFeedViewController" id="E9W-pL-XAC" customClass="AllFeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JaB-9B-gyu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="gFt-tb-qAM"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-626" y="587"/>
+        </scene>
+        <!--Follow Feed View Controller-->
+        <scene sceneID="Jqc-C6-QVa">
+            <objects>
+                <viewController storyboardIdentifier="FollowFeedViewController" id="8UV-kG-0Xm" customClass="FollowFeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gKw-o3-ubg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="poc-8u-KRl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bmN-Qi-SRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184" y="587"/>
+        </scene>
+        <!--Popular Feed View Controller-->
+        <scene sceneID="4jj-G1-cip">
+            <objects>
+                <viewController storyboardIdentifier="PopularFeedViewController" id="JUt-zX-9GD" customClass="PopularFeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Fk-IG-4T0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="otd-W3-L5z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LI9-hC-gud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="587"/>
+        </scene>
+        <!--Feed View Controller-->
+        <scene sceneID="vwb-qA-zty">
+            <objects>
+                <viewController storyboardIdentifier="FeedViewController" id="QFa-Lb-7Zt" customClass="FeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5eO-hE-VzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngg-Dt-dh2">
+                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
+                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="owG-Xv-zEe" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="88" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6xZ-IS-ub6"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qqp-XU-lW4">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="owG-Xv-zEe" firstAttribute="leading" secondItem="5eO-hE-VzZ" secondAttribute="leading" id="051-Qh-DWS"/>
+                            <constraint firstItem="owG-Xv-zEe" firstAttribute="trailing" secondItem="5eO-hE-VzZ" secondAttribute="trailing" id="7c4-bY-6bG"/>
+                            <constraint firstItem="owG-Xv-zEe" firstAttribute="top" secondItem="d4A-Db-Dc6" secondAttribute="top" id="NjW-yQ-tAU"/>
+                            <constraint firstItem="ngg-Dt-dh2" firstAttribute="top" secondItem="owG-Xv-zEe" secondAttribute="bottom" id="Pci-qJ-jK6"/>
+                            <constraint firstItem="ngg-Dt-dh2" firstAttribute="leading" secondItem="5eO-hE-VzZ" secondAttribute="leading" id="YWk-Q0-dJT"/>
+                            <constraint firstItem="ngg-Dt-dh2" firstAttribute="trailing" secondItem="5eO-hE-VzZ" secondAttribute="trailing" id="lFU-XU-7cL"/>
+                            <constraint firstAttribute="bottom" secondItem="ngg-Dt-dh2" secondAttribute="bottom" id="urx-vl-Beg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d4A-Db-Dc6"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="owG-Xv-zEe" id="vZs-MP-1Qo"/>
+                        <outlet property="containerView" destination="ngg-Dt-dh2" id="maY-0m-hUF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7XT-IJ-Ag5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182.60869565217394" y="-96.428571428571431"/>
+        </scene>
+    </scenes>
+</document>

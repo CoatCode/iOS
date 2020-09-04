@@ -35,6 +35,7 @@ PODS:
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
+  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift
   - SwiftMessages
+  - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
@@ -66,6 +68,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SwiftMessages
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
@@ -82,7 +85,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: e6f514478f983f1957280213334efeef73dc4935
+PODFILE CHECKSUM: 84f6e87400ffad8e48da9f29a1e3cdf039597cd0
 
 COCOAPODS: 1.9.3

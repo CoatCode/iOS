@@ -25,6 +25,7 @@ target 'CoatCode' do
   # UI
   pod 'NVActivityIndicatorView/Extended'
   pod 'SwiftMessages'
+  pod 'XLPagerTabStrip'
   
   # etc
   pod 'CryptoSwift'

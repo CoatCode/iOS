@@ -37,6 +37,8 @@ class FeedFlow: Flow {
         switch step {
         case .feedHomeIsRequired:
             return navigateToFeed()
+        case .profileIsRequired(let userId):
+            return navigateToProfile(with: userId)
         default:
             return .none
         }
@@ -44,7 +46,7 @@ class FeedFlow: Flow {
     
 }
 
-// MARK: - Navigate to Feed
+// MARK: - Navigate to Feed(Home)
 extension FeedFlow {
     private func navigateToFeed() -> FlowContributors {
         let viewModel = FeedViewModel()
@@ -52,6 +54,20 @@ extension FeedFlow {
                                                             andServices: self.services)
         
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .none
+        return .one(flowContributor: .contribute(withNextPresentable: viewController,
+                                                 withNextStepper: viewModel))
+    }
+}
+
+// MARK: - Navigate to Profile
+extension FeedFlow {
+    private func navigateToProfile(with userId: Int) -> FlowContributors {
+        let viewModel = ProfileViewModel(userId: userId)
+        let viewController = ProfileViewController.instantiate(withViewModel: viewModel,
+                                                               andServices: self.services)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController,
+                                                 withNextStepper: viewModel))
     }
 }

@@ -53,6 +53,7 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
         }).disposed(by: disposeBag)
     }
     
+    // MARK: - SetCustomTabBar
     public func setCustomTabBar() {
         // change selected bar color
         settings.style.buttonBarBackgroundColor = .white
@@ -70,6 +71,17 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
             oldCell?.label.textColor = .lightGray
             newCell?.label.textColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
         }
+    }
+    
+    // MARK: - ProfileShortcutBarButton
+    func profileShortcutBarButton() {
+        let profileBarButton = ImageBarButton(withImage: UIImage(named: "Default_Profile"))
+        profileBarButton.button.addTarget(self, action: #selector(requestProfileView), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = profileBarButton.load()
+    }
+    
+    @objc func requestProfileView() {
+        self.viewModel.steps.accept(CoatCodeStep.profileIsRequired(uesrId: 1234)) // 사용자 userId
     }
     
 }

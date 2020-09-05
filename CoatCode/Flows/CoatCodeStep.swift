@@ -21,6 +21,12 @@ enum CoatCodeStep: Step {
     case createProfileIsRequired(email: String, password: String)
     case createProfileIsComplete
     
+    // MARK: - Profile
+    case profileIsRequired(uesrId: Int)
+    
+    case postDetailIsRequired(postId: Int)
+    case productDetailIsRequired(productId: Int)
+    
     // MARK: - Feed
     case feedHomeIsRequired
     

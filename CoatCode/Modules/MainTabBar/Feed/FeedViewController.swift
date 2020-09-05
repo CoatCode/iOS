@@ -23,7 +23,8 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        profileShortcutBarButton()
+        setSearchBar()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -41,9 +42,19 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
         
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         
+    }
+    
+    func setSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
         
+        self.navigationItem.titleView = searchController.searchBar
+        self.navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
         
+        searchController.rx.
         
     }
+    
+
+    
     
 }

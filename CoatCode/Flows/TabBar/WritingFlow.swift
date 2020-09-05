@@ -49,7 +49,11 @@ extension WritingFlow {
         let viewController = WritingViewController.instantiate(withViewModel: viewModel,
                                                                andServices: self.services)
         
+//        DispatchQueue.main.async {
+//            self.rootViewController.present(viewController, animated: true, completion: nil)
+//        }
         self.rootViewController.pushViewController(viewController, animated: true)
+
         return .none
     }
     

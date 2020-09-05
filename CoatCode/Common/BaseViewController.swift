@@ -53,8 +53,8 @@ class BaseViewController: UIViewController, ViewModelBased, NVActivityIndicatorV
     
     // MARK: - BackBarButton
     public func backBarButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "BT_LeftArrow"), style: .plain, target: self, action: #selector(popView))
     }
     
     @objc func popView() {

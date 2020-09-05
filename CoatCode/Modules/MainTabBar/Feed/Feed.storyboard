@@ -11,15 +11,30 @@
         <!--All Feed View Controller-->
         <scene sceneID="Qir-nB-yJf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bGx-sA-WPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AllFeedViewController" id="E9W-pL-XAC" customClass="AllFeedViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JaB-9B-gyu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GHB-J0-542">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GHB-J0-542" firstAttribute="top" secondItem="gFt-tb-qAM" secondAttribute="top" id="9al-AK-Hud"/>
+                            <constraint firstItem="gFt-tb-qAM" firstAttribute="bottom" secondItem="GHB-J0-542" secondAttribute="bottom" id="BjL-Jd-kYW"/>
+                            <constraint firstItem="gFt-tb-qAM" firstAttribute="trailing" secondItem="GHB-J0-542" secondAttribute="trailing" id="GCA-98-83D"/>
+                            <constraint firstItem="GHB-J0-542" firstAttribute="leading" secondItem="gFt-tb-qAM" secondAttribute="leading" id="yhF-bx-8VI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gFt-tb-qAM"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="GHB-J0-542" id="SpN-rM-Jf5"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGx-sA-WPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-626" y="587"/>
         </scene>

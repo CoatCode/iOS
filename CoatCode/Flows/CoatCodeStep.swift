@@ -27,6 +27,9 @@ enum CoatCodeStep: Step {
     case postDetailIsRequired(postId: Int)
     case productDetailIsRequired(productId: Int)
     
+    // MARK: - Search
+    case searchIsRequired
+    
     // MARK: - Feed
     case feedHomeIsRequired
     

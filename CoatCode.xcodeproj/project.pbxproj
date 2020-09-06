@@ -34,6 +34,7 @@
 		F24905D92503837100BD86FF /* ImageBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24905D82503837100BD86FF /* ImageBarButton.swift */; };
 		F24905DC2503A93100BD86FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24905DB2503A93100BD86FF /* SearchViewController.swift */; };
 		F24905DE2503A94600BD86FF /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24905DD2503A94600BD86FF /* Search.storyboard */; };
+		F24905E025047C0500BD86FF /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24905DF25047C0500BD86FF /* Configs.swift */; };
 		F24E952324E82C27009B06BD /* TabBarFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952224E82C27009B06BD /* TabBarFlow.swift */; };
 		F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952624E8486F009B06BD /* FeedFlow.swift */; };
 		F24E952924E8487D009B06BD /* StoreFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952824E8487D009B06BD /* StoreFlow.swift */; };
@@ -41,6 +42,7 @@
 		F24E952D24E8489D009B06BD /* FavoriteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952C24E8489D009B06BD /* FavoriteFlow.swift */; };
 		F24E952F24E848A8009B06BD /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E952E24E848A8009B06BD /* SettingFlow.swift */; };
 		F24E953124E8566E009B06BD /* IntroFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E953024E8566E009B06BD /* IntroFlow.swift */; };
+		F251610E2504B40B00932004 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251610D2504B40B00932004 /* SearchFlow.swift */; };
 		F259256624E6906400A09270 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256524E6906400A09270 /* ViewModelBased.swift */; };
 		F259256924E692F600A09270 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256824E692F600A09270 /* AppFlow.swift */; };
 		F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256A24E6952300A09270 /* CoatCodeStep.swift */; };
@@ -109,6 +111,7 @@
 		F24905D82503837100BD86FF /* ImageBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBarButton.swift; sourceTree = "<group>"; };
 		F24905DB2503A93100BD86FF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F24905DD2503A94600BD86FF /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		F24905DF25047C0500BD86FF /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		F24E952224E82C27009B06BD /* TabBarFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFlow.swift; sourceTree = "<group>"; };
 		F24E952624E8486F009B06BD /* FeedFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlow.swift; sourceTree = "<group>"; };
 		F24E952824E8487D009B06BD /* StoreFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlow.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		F24E952C24E8489D009B06BD /* FavoriteFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFlow.swift; sourceTree = "<group>"; };
 		F24E952E24E848A8009B06BD /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
 		F24E953024E8566E009B06BD /* IntroFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFlow.swift; sourceTree = "<group>"; };
+		F251610D2504B40B00932004 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		F259256524E6906400A09270 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		F259256824E692F600A09270 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		F259256A24E6952300A09270 /* CoatCodeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeStep.swift; sourceTree = "<group>"; };
@@ -328,11 +332,20 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		F251610C2504B3ED00932004 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F251610D2504B40B00932004 /* SearchFlow.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		F259256724E690F700A09270 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
 				F259256A24E6952300A09270 /* CoatCodeStep.swift */,
 				F259256824E692F600A09270 /* AppFlow.swift */,
+				F251610C2504B3ED00932004 /* Search */,
 				F288AB4A24EA36AE00D8D274 /* Intro */,
 				F24E952424E84847009B06BD /* TabBar */,
 			);
@@ -342,6 +355,7 @@
 		F264C9A524D3BABB00CE0251 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				F24905DF25047C0500BD86FF /* Configs.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -722,6 +736,7 @@
 				F2EC1A2925025166000FC848 /* PopularFeedViewController.swift in Sources */,
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,
 				F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */,
+				F251610E2504B40B00932004 /* SearchFlow.swift in Sources */,
 				F264C9A424D3BA4800CE0251 /* Token.swift in Sources */,
 				F24905D92503837100BD86FF /* ImageBarButton.swift in Sources */,
 				F205419E24F73715000F932F /* FavoritesViewModel.swift in Sources */,
@@ -741,6 +756,7 @@
 				F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */,
 				F21DF69624DD7B9900F44B96 /* DatabaseManager.swift in Sources */,
 				F265B70624E14EF1008F70A9 /* SignUpViewController.swift in Sources */,
+				F24905E025047C0500BD86FF /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

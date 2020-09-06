@@ -451,10 +451,10 @@
 		F2728F8A24D004F900123723 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F27A9B1324D0562800960043 /* Intro */,
 				F25161112504EC8A00932004 /* PostDetail */,
 				F24905DA2503A8A100BD86FF /* Search */,
 				F24905D0250351FF00BD86FF /* Profile */,
-				F27A9B1324D0562800960043 /* Intro */,
 				F21DF69724DF9D3200F44B96 /* MainTabBar */,
 			);
 			path = Modules;

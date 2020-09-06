@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Reusable
 import XLPagerTabStrip
+import RxGesture
 
 class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
 
@@ -23,38 +24,23 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        profileShortcutBarButton()
-        setSearchBar()
+        configureBaseNaviBar()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let allContentView = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "AllFeedViewController")
-        let followContentView = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "FollowFeedViewController")
-        let popularContentView = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "PopularFeedViewController")
+        let allContentView = AllFeedViewController.instantiate(withViewModel: self.viewModel)
+        let followContentView = FollowFeedViewController.instantiate(withViewModel: self.viewModel)
+        let popularContentView = PopularFeedViewController.instantiate(withViewModel: self.viewModel)
         
         return [allContentView, followContentView, popularContentView]
     }
     
     // MARK: - BindViewModel
-    override func bindViewModel() {
-        super.bindViewModel()
-        
-        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
-        
-    }
-    
-    func setSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        
-        self.navigationItem.titleView = searchController.searchBar
-        self.navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
-        
-        searchController.rx.
-        
-    }
-    
-
-    
+//    override func bindViewModel() {
+//        super.bindViewModel()
+//        
+//        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
+//    }
     
 }

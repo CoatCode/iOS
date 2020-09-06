@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Reusable
 import XLPagerTabStrip
 
-class PopularFeedViewController: UIViewController, IndicatorInfoProvider {
+class PopularFeedViewController: BaseViewController, StoryboardSceneBased, IndicatorInfoProvider {
+    
+    static let sceneStoryboard = UIStoryboard(name: "Feed", bundle: nil)
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "인기"
@@ -18,18 +21,7 @@ class PopularFeedViewController: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

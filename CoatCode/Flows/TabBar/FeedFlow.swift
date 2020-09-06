@@ -39,6 +39,10 @@ class FeedFlow: Flow {
             return navigateToFeed()
         case .profileIsRequired(let userId):
             return navigateToProfile(with: userId)
+        case .searchIsRequired:
+            return navigateToSearch()
+        case .postDetailIsRequired(let postId):
+            return navigateToPostDetail()
         default:
             return .none
         }
@@ -70,4 +74,32 @@ extension FeedFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))
     }
+}
+
+// MARK: - Navigate to Search
+extension FeedFlow {
+    private func navigateToSearch() -> FlowContributors {
+        let viewModel = SearchViewModel()
+        let viewController = SearchViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController,
+                                                 withNextStepper: viewModel))
+    }
+}
+
+// MARK: - Navigate to Post(Feed) Detail
+extension FeedFlow {
+    private func navigateToPostDetail() -> FlowContributors {
+        let viewModel = PostDetailViewModel()
+        let viewController = PostDetailViewController.instantiate(withViewModel: viewModel)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .none
+    }
+}
+
+// MARK: - Navigate to Search Result
+extension FeedFlow {
+    
 }

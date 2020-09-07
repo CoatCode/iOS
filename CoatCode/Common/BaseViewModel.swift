@@ -21,6 +21,8 @@ class BaseViewModel: ServicesViewModel, Stepper {
     let loading = ActivityIndicator()
     let error = PublishSubject<ResponseError>()
     
+    var page = 1
+    
     // MARK: - Dummy
     struct Input {
     }

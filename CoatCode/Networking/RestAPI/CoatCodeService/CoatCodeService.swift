@@ -25,6 +25,19 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.profile)
     }
     
+    func allFeedPosts(page: Int) -> Single<Response> {
+        return request(.allFeedPosts(page))
+    }
+    
+    func followFeedPosts(page: Int) -> Single<Response> {
+        return request(.followFeedPosts(page))
+    }
+    
+    func popularFeedPosts(page: Int) -> Single<Response> {
+        return request(.popularFeedPosts(page))
+    }
+    
+    
 }
 
 extension CoatCodeService {

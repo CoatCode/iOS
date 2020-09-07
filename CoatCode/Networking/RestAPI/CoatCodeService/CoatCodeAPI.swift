@@ -18,6 +18,9 @@ enum CoatCodeAPI {
     
     // MARK: - Authentication is required
     case profile
+    case allFeedPosts(Int)
+    case followFeedPosts(Int)
+    case popularFeedPosts(Int)
 }
 
 extension CoatCodeAPI: BaseAPI {
@@ -29,6 +32,12 @@ extension CoatCodeAPI: BaseAPI {
             return "/auth/signUp"
         case .profile:
             return "/user"
+        case .allFeedPosts:
+            return "/"
+        case .followFeedPosts:
+            return "/"
+        case .popularFeedPosts:
+            return "/"
         }
     }
     
@@ -77,6 +86,12 @@ extension CoatCodeAPI: BaseAPI {
             params["password"] = password
             params["username"] = username
             params["profile"] = profile
+        case .allFeedPosts(let page):
+            params["page"] = page
+        case .followFeedPosts(let page):
+            params["page"] = page
+        case .popularFeedPosts(let page):
+            params["page"] = page
         default: break
         }
         return params

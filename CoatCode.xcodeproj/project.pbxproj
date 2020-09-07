@@ -47,6 +47,7 @@
 		F25161132504ED1700932004 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25161122504ED1700932004 /* PostDetailViewController.swift */; };
 		F25161152504ED3300932004 /* PostDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F25161142504ED3300932004 /* PostDetail.storyboard */; };
 		F25161172504F1FF00932004 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25161162504F1FF00932004 /* PostDetailViewModel.swift */; };
+		F2516119250638A300932004 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2516118250638A300932004 /* Post.swift */; };
 		F259256624E6906400A09270 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256524E6906400A09270 /* ViewModelBased.swift */; };
 		F259256924E692F600A09270 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256824E692F600A09270 /* AppFlow.swift */; };
 		F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259256A24E6952300A09270 /* CoatCodeStep.swift */; };
@@ -128,6 +129,7 @@
 		F25161122504ED1700932004 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		F25161142504ED3300932004 /* PostDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
 		F25161162504F1FF00932004 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		F2516118250638A300932004 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F259256524E6906400A09270 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		F259256824E692F600A09270 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		F259256A24E6952300A09270 /* CoatCodeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeStep.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				F23CE60624DB0BFB00717A3F /* User.swift */,
+				F2516118250638A300932004 /* Post.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				F264C9AF24D3C7AA00CE0251 /* BaseAPI.swift in Sources */,
 				F24E952F24E848A8009B06BD /* SettingFlow.swift in Sources */,
 				F21DF6BD24DFA7C300F44B96 /* SettingsViewController.swift in Sources */,
+				F2516119250638A300932004 /* Post.swift in Sources */,
 				F24E952924E8487D009B06BD /* StoreFlow.swift in Sources */,
 				F27ACAC324D4517600C3A30B /* CoatCodeService.swift in Sources */,
 				F24905DC2503A93100BD86FF /* SearchViewController.swift in Sources */,

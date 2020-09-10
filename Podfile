@@ -13,6 +13,7 @@ target 'CoatCode' do
   # RxSwiftCommunity
   pod 'RxFlow'
   pod "RxGesture"
+  pod "RxDataSources"
 
   # Networking
   pod 'Alamofire'
@@ -30,5 +31,6 @@ target 'CoatCode' do
   # etc
   pod 'CryptoSwift'
   pod 'Reusable'
+#  pod 'Kingfisher'
   
 end

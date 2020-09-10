@@ -31,6 +31,6 @@ target 'CoatCode' do
   # etc
   pod 'CryptoSwift'
   pod 'Reusable'
-#  pod 'Kingfisher'
+  pod 'Kingfisher'
   
 end

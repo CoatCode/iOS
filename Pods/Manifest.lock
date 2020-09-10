@@ -3,6 +3,9 @@ PODS:
   - CryptoSwift (1.3.1)
   - Differentiator (4.0.1)
   - KeychainAccess (4.2.0)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -46,6 +49,7 @@ DEPENDENCIES:
   - Alamofire
   - CryptoSwift
   - KeychainAccess
+  - Kingfisher
   - Moya/RxSwift
   - NVActivityIndicatorView/Extended
   - RealmSwift
@@ -64,6 +68,7 @@ SPEC REPOS:
     - CryptoSwift
     - Differentiator
     - KeychainAccess
+    - Kingfisher
     - Moya
     - NVActivityIndicatorView
     - Realm
@@ -83,6 +88,7 @@ SPEC CHECKSUMS:
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   NVActivityIndicatorView: 738e843cb8924e9e4fc3e559d0728031624bf860
   Realm: c6794276ca8884808ba168a22f9d71362b170b85
@@ -97,6 +103,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: a5ac4a0dcc5d4e5dc00bacef9eaf17215819de7b
+PODFILE CHECKSUM: 49f6b954e389ac0bd72d437d2e4a53298c94e273
 
 COCOAPODS: 1.9.3

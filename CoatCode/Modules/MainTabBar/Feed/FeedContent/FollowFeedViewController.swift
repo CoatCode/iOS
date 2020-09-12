@@ -22,5 +22,12 @@ class FollowFeedViewController: BaseViewController, StoryboardSceneBased, Indica
         super.viewDidLoad()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
+        viewModel.filter.accept(FeedFilter.followContent)
+    }
 
 }

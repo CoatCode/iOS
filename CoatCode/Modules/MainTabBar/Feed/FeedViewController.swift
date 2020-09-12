@@ -35,12 +35,4 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
         
         return [allContentView, followContentView, popularContentView]
     }
-    
-    // MARK: - BindViewModel
-//    override func bindViewModel() {
-//        super.bindViewModel()
-//        
-//        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
-//    }
-    
 }

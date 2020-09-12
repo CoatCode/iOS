@@ -21,6 +21,8 @@ enum CoatCodeAPI {
     case allFeedPosts(Int)
     case followFeedPosts(Int)
     case popularFeedPosts(Int)
+    
+    
 }
 
 extension CoatCodeAPI: BaseAPI {

@@ -23,5 +23,11 @@ class PopularFeedViewController: BaseViewController, StoryboardSceneBased, Indic
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
+        viewModel.filter.accept(FeedFilter.popularContent)
+    }
     
 }

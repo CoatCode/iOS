@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileResponse: Codable {
+struct ProfileResponse: Codable {
     var email: String?
     var username: String?
     var profile: String?

@@ -25,16 +25,16 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.profile)
     }
     
-    func allFeedPosts(page: Int) -> Single<Response> {
-        return request(.allFeedPosts(page))
+    func allFeedPosts(page: Int) -> Single<[Response]> {
+        return request(.allFeedPosts(page)).map { [$0] }
     }
     
-    func followFeedPosts(page: Int) -> Single<Response> {
-        return request(.followFeedPosts(page))
+    func followFeedPosts(page: Int) -> Single<[Response]> {
+        return request(.followFeedPosts(page)).map { [$0] }
     }
     
-    func popularFeedPosts(page: Int) -> Single<Response> {
-        return request(.popularFeedPosts(page))
+    func popularFeedPosts(page: Int) -> Single<[Response]> {
+        return request(.popularFeedPosts(page)).map { [$0] }
     }
     
     

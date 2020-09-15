@@ -45,9 +45,14 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         
         let input = FeedViewModel.Input(headerRefresh: headerRefreshTrigger,
-                                        footerRefresh: footerRefreshTrigger)
+                                        footerRefresh: footerRefreshTrigger,
+                                        selection: tableView.rx.modelSelected(FeedCellViewModel.self).asDriver())
         let output = viewModel.transform(input: input)
 
+        
+        
+        
+        
     }
     
     func bindTableView() {

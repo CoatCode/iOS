@@ -24,9 +24,9 @@ class FeedCellViewModel {
     init(with post: Post) {
         self.post = post
         
-        profileName.accept(post.owner.name)
-        profileImageUrl.accept(post.owner.profileImage)
-        contentImageUrl.accept(post.contentImageUrl)
+//        profileName.accept(post.owner.name)
+//        profileImageUrl.accept(post.owner.profileImage)
+        contentImageUrl.accept(post.contentImages.first!)
         content.accept(post.content)
         likeCount.accept(post.likeCount)
         commentCount.accept(post.commentCount)

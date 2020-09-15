@@ -20,14 +20,14 @@ class FeedViewModel: BaseViewModel {
     struct Input {
         let headerRefresh: Observable<Void>
         let footerRefresh: Observable<Void>
+        let selection: Driver<FeedCellViewModel>
     }
     
     struct Output{
-        
+        let items: BehaviorRelay<[FeedCellViewModel]>
     }
     
     let filter = BehaviorRelay(value: FeedFilter.allContent)
-    
     
 }
 
@@ -35,44 +35,47 @@ class FeedViewModel: BaseViewModel {
 extension FeedViewModel {
     func transform(input: Input) -> Output {
         
-        let elements = BehaviorRelay<[Post]>(value: [])
+        let elements = BehaviorRelay<[FeedCellViewModel]>(value: [])
         
-        input.headerRefresh.flatMapLatest({ [weak self] () -> Observable<[Post]> in
+        // Header Refresh
+        input.headerRefresh.flatMapLatest({ [weak self] () -> Observable<[FeedCellViewModel]> in
             guard let self = self else { return Observable.just([]) }
             self.page = 1
             return self.request()
-            
+                .trackActivity(self.loading)
         }).subscribe(onNext: { items in
             elements.accept(items)
         }).disposed(by: disposeBag)
         
-        input.footerRefresh.flatMapLatest({ [weak self] () -> Observable<[Post]> in
-            guard let self = self else { return Observable.of([]) }
+        // Footer Refresh
+        input.footerRefresh.flatMapLatest({ [weak self] () -> Observable<[FeedCellViewModel]> in
+            guard let self = self else { return Observable.just([]) }
             self.page += 1
-            return request()
-            
+            return self.request()
+                .trackActivity(self.loading)
         }).subscribe(onNext: { items in
-            elements.accept(items)
+            elements.accept(elements.value + items)
         }).disposed(by: disposeBag)
         
-        
-        
-        return Output()
+        return Output(items: elements)
     }
     
     // 필터에 따른 게시물 요청
-    func request() -> Observable<[Post]> {
+    func request() -> Observable<[FeedCellViewModel]> {
+        var request: Single<[Post]>
         
         switch self.filter.value {
         case .allContent:
-            return self.services.allFeedPosts(page: <#T##Int#>)
+            request = self.services.allFeedPosts(page: self.page).map(Post)
         case .followContent:
-            return
+            request = self.services.followFeedPosts(page: self.page).map(Post)
         case .popularContent:
-            return
+            request = self.services.popularFeedPosts(page: self.page).map(Post)
         }
         
-        
+        return request
+            .trackActivity(loading)
+            .map { $0.map { FeedCellViewModel(with: $0) } }
     }
     
 }

@@ -57,6 +57,12 @@ extension FeedViewModel {
             elements.accept(elements.value + items)
         }).disposed(by: disposeBag)
         
+        // 선택된 셀의 내용을 상세보기 화면으로 넘겨줌
+        input.selection
+            .drive(onNext: { [weak self] cellViewModel in
+                self?.steps.accept(CoatCodeStep.postDetailIsRequired(post: cellViewModel.post))
+            }).disposed(by: disposeBag)
+        
         return Output(items: elements)
     }
     

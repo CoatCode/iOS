@@ -81,8 +81,8 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         setIconBar() // Left
-        setProfileShortcutBar() // Title
-        setSearchBar() // Right
+        setProfileShortcutBar() // Right
+        setSearchBar() // Title
     }
     
     func setIconBar() {

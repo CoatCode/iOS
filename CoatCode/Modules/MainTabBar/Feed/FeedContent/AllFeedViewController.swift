@@ -49,7 +49,10 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
                                         selection: tableView.rx.modelSelected(FeedCellViewModel.self).asDriver())
         let output = viewModel.transform(input: input)
 
-        
+        output.items.asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items(cellIdentifier: "FeedCell", cellType: FeedCell.self)) { tableView, viewModel, cell in
+                cell.bind(to: viewModel)
+            }.disposed(by: disposeBag)
         
         
         

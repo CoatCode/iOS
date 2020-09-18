@@ -18,6 +18,7 @@ class FeedCellViewModel {
     let likeCount = BehaviorRelay<Int?>(value: nil)
     let commentCount = BehaviorRelay<Int?>(value: nil)
     let viewCount = BehaviorRelay<Int?>(value: nil)
+    let isLiked = BehaviorRelay<Bool?>(value: nil)
     
     let post: Post
     
@@ -31,6 +32,7 @@ class FeedCellViewModel {
         likeCount.accept(post.likeCount)
         commentCount.accept(post.commentCount)
         viewCount.accept(post.viewCount)
+        isLiked.accept(post.viewerHasLiked)
         
     }
     

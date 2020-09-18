@@ -18,7 +18,7 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     
     static let sceneStoryboard = UIStoryboard(name: "Feed", bundle: nil)
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     let headerRefreshTrigger = PublishSubject<Void>()
     let footerRefreshTrigger = PublishSubject<Void>()
@@ -46,32 +46,23 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         let input = FeedViewModel.Input(headerRefresh: headerRefreshTrigger,
                                         footerRefresh: footerRefreshTrigger,
-                                        selection: tableView.rx.modelSelected(FeedCellViewModel.self).asDriver())
+                                        selection: collectionView.rx.modelSelected(FeedCellViewModel.self).asDriver())
         let output = viewModel.transform(input: input)
 
         output.items.asDriver(onErrorJustReturn: [])
-            .drive(tableView.rx.items(cellIdentifier: "FeedCell", cellType: FeedCell.self)) { tableView, viewModel, cell in
+            .drive(collectionView.rx.items(cellIdentifier: "FeedCell", cellType: FeedCell.self)) { tableView, viewModel, cell in
                 cell.bind(to: viewModel)
             }.disposed(by: disposeBag)
-        
-        
         
     }
     
     func bindTableView() {
-        tableView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
+        collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
             self?.headerRefreshTrigger.onNext(())
         })
         
-        tableView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
+        collectionView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
             self?.footerRefreshTrigger.onNext(())
         })
-        
-        
-        
-        
     }
-    
-
-
 }

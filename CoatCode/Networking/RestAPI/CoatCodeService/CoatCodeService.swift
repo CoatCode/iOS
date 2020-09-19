@@ -25,7 +25,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return request(.profile)
     }
     
-    func allFeedPosts(page: Int) -> Single<[Response]> {
+    func allFeedPosts(page: Int) -> Single<[Post]> {
         return request(.allFeedPosts(page)).map { [$0] }
     }
     
@@ -41,17 +41,17 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
 }
 
 extension CoatCodeService {
-    //    private func request(_ target: CoatCodeAPI) -> Single<Any> {
-    //        return request(target)
-    //            .mapJSON()
-    //            .observeOn(MainScheduler.instance)
-    //    }
-    //
-    //    private func requestWithoutMapping(_ target: CoatCodeAPI) -> Single<Moya.Response> {
-    //        return request(target)
-    //            .observeOn(MainScheduler.instance)
-    ////            .asSingle()
-    //    }
+//        private func request(_ target: CoatCodeAPI) -> Single<Any> {
+//            return request(target)
+//                .mapJSON()
+//                .observeOn(MainScheduler.instance)
+//        }
+//
+//        private func requestWithoutMapping(_ target: CoatCodeAPI) -> Single<Moya.Response> {
+//            return request(target)
+//                .observeOn(MainScheduler.instance)
+//    //            .asSingle()
+//        }
     //
     //    private func requestObject<T: BaseMappable>(_ target: GithubAPI, type: T.Type) -> Single<T> {
     //        return githubProvider.request(target)
@@ -60,10 +60,10 @@ extension CoatCodeService {
     //            .asSingle()
     //    }
     //
-    //    private func requestArray<T: BaseMappable>(_ target: GithubAPI, type: T.Type) -> Single<[T]> {
-    //        return githubProvider.request(target)
-    //            .mapArray(T.self)
-    //            .observeOn(MainScheduler.instance)
-    //            .asSingle()
-    //    }
+        private func requestArray<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<[T]> {
+            return request(target)
+                .map([T.self])
+//                .observeOn(MainScheduler.instance)
+//                .asSingle()
+        }
 }

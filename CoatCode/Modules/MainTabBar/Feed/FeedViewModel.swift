@@ -73,11 +73,10 @@ extension FeedViewModel {
         switch self.filter.value {
         case .allContent:
             request = self.services.allFeedPosts(page: self.page)
-            
         case .followContent:
-            request = self.services.followFeedPosts(page: self.page).map { $0 as? Array<Post> ?? [] }
+            request = self.services.followFeedPosts(page: self.page)
         case .popularContent:
-            request = self.services.popularFeedPosts(page: self.page).map { $0 as? [Post] ?? [] }
+            request = self.services.popularFeedPosts(page: self.page)
         }
         
         return request

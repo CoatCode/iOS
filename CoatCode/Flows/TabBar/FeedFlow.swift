@@ -41,8 +41,8 @@ class FeedFlow: Flow {
             return navigateToProfile(with: userId)
         case .searchIsRequired:
             return navigateToSearch()
-        case .postDetailIsRequired(let postId):
-            return navigateToPostDetail()
+        case .postDetailIsRequired(let post):
+            return navigateToPostDetail(with: post)
         default:
             return .none
         }
@@ -90,8 +90,8 @@ extension FeedFlow {
 
 // MARK: - Navigate to Post(Feed) Detail
 extension FeedFlow {
-    private func navigateToPostDetail() -> FlowContributors {
-        let viewModel = PostDetailViewModel()
+    private func navigateToPostDetail(with post: Post) -> FlowContributors {
+        let viewModel = PostDetailViewModel(with: post)
         let viewController = PostDetailViewController.instantiate(withViewModel: viewModel)
         
         self.rootViewController.pushViewController(viewController, animated: true)

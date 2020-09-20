@@ -11,5 +11,24 @@ import RxCocoa
 
 class PostDetailViewModel: BaseViewModel {
     
+    let post: Post
     
+    init(with post: Post) {
+        self.post = post
+    }
+    
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+}
+
+extension PostDetailViewModel {
+    func transform(input: Input) -> Output {
+        return Output()
+    }
 }

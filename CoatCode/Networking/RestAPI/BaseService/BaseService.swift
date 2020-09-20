@@ -35,15 +35,15 @@ class BaseService<API: TargetType> {
                 } else {
                     return Single.just($0)
                 }
-        }
-        .retryWhen { (error: Observable<TokenError>) in
-            error.flatMap { error -> Single<Response> in
-                AuthService.shared.renewalToken(refreshToken: AuthManager.getRefreshToken()) // 토큰 재발급 받기
             }
-        }
-        .handleResponse()
-        .filterSuccessfulStatusCodes()
-        .retry(2)
+            .retryWhen { (error: Observable<TokenError>) in
+                error.flatMap { error -> Single<Response> in
+                    AuthService.shared.renewalToken(refreshToken: AuthManager.getRefreshToken()) // 토큰 재발급 받기
+                }
+            }
+            .handleResponse()
+            .filterSuccessfulStatusCodes()
+            .retry(2)
     }
 }
 

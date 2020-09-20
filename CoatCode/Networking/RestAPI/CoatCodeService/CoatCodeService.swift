@@ -13,57 +13,46 @@ import CryptoSwift
 
 final class CoatCodeService: BaseService<CoatCodeAPI> {
     
-    func signIn(email: String, password: String) -> Single<Response> {
-        return request(.signIn(email, password.sha512()))
+    func signIn(email: String, password: String) -> Single<Token> {
+        return requestObject(.signIn(email, password.sha512()), type: Token.self)
     }
     
     func signUp(email: String, password: String, userName: String, profile: String?) -> Single<Void> {
-        return request(.signUp(email, password.sha512(), userName, profile)).map { _ in }
+        return requestWithoutMapping(.signUp(email, password.sha512(), userName, profile))
     }
     
-    func profile() -> Single<Response> {
-        return request(.profile)
+    func profile() -> Single<ProfileResponse> {
+        return requestObject(.profile, type: ProfileResponse.self)
     }
     
     func allFeedPosts(page: Int) -> Single<[Post]> {
-        return request(.allFeedPosts(page)).map { [$0] }
+        return requestArray(.allFeedPosts(page), type: Post.self)
     }
     
-    func followFeedPosts(page: Int) -> Single<[Response]> {
-        return request(.followFeedPosts(page)).map { [$0] }
+    func followFeedPosts(page: Int) -> Single<[Post]> {
+        return requestArray(.followFeedPosts(page), type: Post.self)
     }
     
-    func popularFeedPosts(page: Int) -> Single<[Response]> {
-        return request(.popularFeedPosts(page)).map { [$0] }
+    func popularFeedPosts(page: Int) -> Single<[Post]> {
+        return requestArray(.popularFeedPosts(page), type: Post.self)
     }
-    
     
 }
 
 extension CoatCodeService {
-//        private func request(_ target: CoatCodeAPI) -> Single<Any> {
-//            return request(target)
-//                .mapJSON()
-//                .observeOn(MainScheduler.instance)
-//        }
-//
-//        private func requestWithoutMapping(_ target: CoatCodeAPI) -> Single<Moya.Response> {
-//            return request(target)
-//                .observeOn(MainScheduler.instance)
-//    //            .asSingle()
-//        }
-    //
-    //    private func requestObject<T: BaseMappable>(_ target: GithubAPI, type: T.Type) -> Single<T> {
-    //        return githubProvider.request(target)
-    //            .mapObject(T.self)
-    //            .observeOn(MainScheduler.instance)
-    //            .asSingle()
-    //    }
-    //
-        private func requestArray<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<[T]> {
-            return request(target)
-                .map([T.self])
-//                .observeOn(MainScheduler.instance)
-//                .asSingle()
-        }
+    
+    private func requestWithoutMapping(_ target: CoatCodeAPI) -> Single<Void> {
+        return request(target)
+            .map { _ in }
+    }
+    
+    private func requestObject<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<T> {
+        return request(target)
+            .map(T.self)
+    }
+    
+    private func requestArray<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<[T]> {
+        return request(target)
+            .map([T].self)
+    }
 }

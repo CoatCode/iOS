@@ -47,7 +47,6 @@ extension SignInViewModel {
 extension SignInViewModel {
     func signInRequest() {
         self.services.signIn(email: self.email.value, password: self.password.value)
-            .map(Token.self)
             .trackActivity(self.loading)
             .subscribe(
                 onNext: { [weak self] response in
@@ -63,7 +62,6 @@ extension SignInViewModel {
     
     func profileRequest() {
         return self.services.profile()
-            .map(ProfileResponse.self)
             .trackActivity(self.loading)
             .subscribe(
                 onNext: { profile in

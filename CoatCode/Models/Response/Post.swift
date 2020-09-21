@@ -19,6 +19,7 @@ struct Post: Codable {
     var commentCount: Int? // 댓글 수
     var viewCount: Int? // 조회수
     var viewerHasLiked: Bool? // 좋아요를 했는지 여부
+    var tag: String? // 태그
     
     private enum CodingKeys: String, CodingKey {
         case postID = "post_id"
@@ -30,6 +31,7 @@ struct Post: Codable {
         case commentCount = "comment_count"
         case viewCount = "view_count"
         case viewerHasLiked = "viewer_has_liked"
+        case tag
     }
 }
 
@@ -47,5 +49,6 @@ struct Post: Codable {
 //    "like_count": 0,
 //    "comment_count": 0,
 //    "view_count": 0,
-//    "viewer_has_liked": false
+//    "viewer_has_liked": false,
+//    "tag": "#a#b#c"
 //}

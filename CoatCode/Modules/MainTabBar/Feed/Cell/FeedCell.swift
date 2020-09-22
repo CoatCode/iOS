@@ -22,9 +22,9 @@ class FeedCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var likeImageView: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeCountLabel: UILabel!
-    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var commentImageView: UIImageView! // 버튼으로 수정 예정
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var viewCountLabel: UILabel!
     
@@ -54,9 +54,9 @@ class FeedCell: UICollectionViewCell {
         viewModel.isLiked.asDriver()
             .drive(onNext: { [weak self] isLiked in
                 if isLiked ?? false {
-                    self?.likeImageView.image = UIImage(named: "") // Like
+                    self?.likeButton.setImage(UIImage(named: "Like_Icon"), for: .normal) // Like
                 } else {
-                    self?.likeImageView.image = UIImage(named: "") // UnLike
+                    self?.likeButton.setImage(UIImage(named: "UnLike_Icon"), for: .normal) // UnLike
                 }
             }).disposed(by: disposeBag)
         

@@ -76,6 +76,8 @@
 		F2C90559250CDF7C00B485BA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */; };
 		F2C90563250DB71400B485BA /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90561250DB71400B485BA /* FeedCell.swift */; };
 		F2C90564250DB71400B485BA /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C90562250DB71400B485BA /* FeedCell.xib */; };
+		F2D7FCA6251A424D00AB3CEF /* PostDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */; };
+		F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */; };
 		F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */; };
 		F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1524DAF30000D36E17 /* AuthAPI.swift */; };
 		F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EC1A0F250203BA000FC848 /* Feed.storyboard */; };
@@ -163,6 +165,8 @@
 		F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		F2C90561250DB71400B485BA /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F2C90562250DB71400B485BA /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCell.swift; sourceTree = "<group>"; };
+		F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailCell.xib; sourceTree = "<group>"; };
 		F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeAPI.swift; sourceTree = "<group>"; };
 		F2D91C1524DAF30000D36E17 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		F2EC1A0F250203BA000FC848 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
@@ -370,6 +374,8 @@
 				F25161142504ED3300932004 /* PostDetail.storyboard */,
 				F25161122504ED1700932004 /* PostDetailViewController.swift */,
 				F25161162504F1FF00932004 /* PostDetailViewModel.swift */,
+				F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */,
+				F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -686,6 +692,7 @@
 				F25161152504ED3300932004 /* PostDetail.storyboard in Resources */,
 				F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */,
 				F24905D72503550900BD86FF /* Profile.storyboard in Resources */,
+				F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */,
 				F2EC1A1625020500000FC848 /* Favorites.storyboard in Resources */,
 				F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
@@ -808,6 +815,7 @@
 				F24E952B24E8488A009B06BD /* WritingFlow.swift in Sources */,
 				F2EC1A1C250233D7000FC848 /* CustomTabBarViewController.swift in Sources */,
 				F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */,
+				F2D7FCA6251A424D00AB3CEF /* PostDetailCell.swift in Sources */,
 				F21DF69624DD7B9900F44B96 /* DatabaseManager.swift in Sources */,
 				F265B70624E14EF1008F70A9 /* SignUpViewController.swift in Sources */,
 				F24905E025047C0500BD86FF /* Configs.swift in Sources */,

@@ -371,19 +371,17 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		F25161112504EC8A00932004 /* PostDetail */ = {
+		F25161112504EC8A00932004 /* Post Details */ = {
 			isa = PBXGroup;
 			children = (
+				F29D52FF251B0D01000B1351 /* CommentCell */,
+				F29D52FE251B0CDD000B1351 /* PostDetailCell */,
 				F29B74332519F96700D7A669 /* PostDetailSection.swift */,
 				F25161142504ED3300932004 /* PostDetail.storyboard */,
 				F25161122504ED1700932004 /* PostDetailViewController.swift */,
 				F25161162504F1FF00932004 /* PostDetailViewModel.swift */,
-				F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */,
-				F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */,
-				F2D7FCA9251A42AF00AB3CEF /* CommentCell.swift */,
-				F2D7FCAA251A42AF00AB3CEF /* CommentCell.xib */,
 			);
-			path = PostDetail;
+			path = "Post Details";
 			sourceTree = "<group>";
 		};
 		F259256724E690F700A09270 /* Flows */ = {
@@ -479,7 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				F27A9B1324D0562800960043 /* Intro */,
-				F25161112504EC8A00932004 /* PostDetail */,
+				F25161112504EC8A00932004 /* Post Details */,
 				F24905DA2503A8A100BD86FF /* Search */,
 				F24905D0250351FF00BD86FF /* Profile */,
 				F21DF69724DF9D3200F44B96 /* MainTabBar */,
@@ -583,6 +581,24 @@
 				F28EE8B424D6F22100D9A9DD /* ActivityIndicator.swift */,
 			);
 			path = RxActivityIndicator;
+			sourceTree = "<group>";
+		};
+		F29D52FE251B0CDD000B1351 /* PostDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */,
+				F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */,
+			);
+			path = PostDetailCell;
+			sourceTree = "<group>";
+		};
+		F29D52FF251B0D01000B1351 /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7FCAA251A42AF00AB3CEF /* CommentCell.xib */,
+				F2D7FCA9251A42AF00AB3CEF /* CommentCell.swift */,
+			);
+			path = CommentCell;
 			sourceTree = "<group>";
 		};
 		F2C90560250DB6D200B485BA /* Cell */ = {

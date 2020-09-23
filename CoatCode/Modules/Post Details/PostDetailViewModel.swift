@@ -11,10 +11,11 @@ import RxCocoa
 
 class PostDetailViewModel: BaseViewModel {
     
-    let post: Post
+    let post: BehaviorRelay<Post>
     
     init(with post: Post) {
-        self.post = post
+        self.post = BehaviorRelay(value: post)
+        
     }
     
     struct Input {
@@ -22,13 +23,25 @@ class PostDetailViewModel: BaseViewModel {
     }
     
     struct Output {
-        
+        let items: Observable<[PostDetailSection]>
     }
     
 }
 
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
-        return Output()
+        
+        
+        let items = post.map { post -> [PostDetailSection] in
+            var items: [PostDetailSectionItem] = []
+            
+            let postDetailCellViewModel = PostDetailCellViewModel(with: self.post.value)
+            
+            items.append(PostDetailSectionItem.contentItem(viewModel: postDetailCellViewModel))
+            
+            return [PostDetailSection.post(title: "", items: items)]
+        }
+        
+        return Output(items: items)
     }
 }

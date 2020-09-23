@@ -26,22 +26,28 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     override func bindViewModel() {
         super.bindViewModel()
         
-        let input = PostDetailViewModel.Input()
-        let ouput = viewModel.transform(input: input)
+        guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
         
-        let dataSource = RxTableViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, tableView, indexPath, item in
+        let input = PostDetailViewModel.Input()
+        let output = viewModel.transform(input: input)
+        
+        let dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch item {
-            case.contentItem(let viewModel):
+            case .contentItem(let viewModel):
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? PostDetailCell)!
                 cell.bind(to: viewModel)
                 return cell
             case .commentItem(let viewModel):
-                let cell (tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? CommentCell)!
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? CommentCell)!
                 cell.bind(to: viewModel)
                 return cell
             }
             
         })
+        
+        output.items
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
         
     }

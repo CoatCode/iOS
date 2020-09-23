@@ -95,7 +95,7 @@ extension FeedFlow {
         let viewController = PostDetailViewController.instantiate(withViewModel: viewModel)
         
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .none
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
     }
 }
 

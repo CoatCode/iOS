@@ -20,6 +20,10 @@ class PostDetailCellViewModel {
     let isLiked = BehaviorRelay<Bool?>(value: nil)
     let tag = BehaviorRelay<String?>(value: nil)
     
+    let post: Post
     
+    init(with post: Post) {
+        self.post = post
+    }
     
 }

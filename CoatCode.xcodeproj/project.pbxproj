@@ -73,6 +73,7 @@
 		F28EE8B524D6F22100D9A9DD /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28EE8B424D6F22100D9A9DD /* ActivityIndicator.swift */; };
 		F29B74342519F96700D7A669 /* PostDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B74332519F96700D7A669 /* PostDetailSection.swift */; };
 		F29D5304251B186C000B1351 /* PostDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29D5303251B186C000B1351 /* PostDetailCellViewModel.swift */; };
+		F2A74B71251B8EF8007E3298 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A74B70251B8EF8007E3298 /* CommentCellViewModel.swift */; };
 		F2C0B153251052B500D9DB71 /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0B152251052B500D9DB71 /* FeedCellViewModel.swift */; };
 		F2C90559250CDF7C00B485BA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */; };
 		F2C90563250DB71400B485BA /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90561250DB71400B485BA /* FeedCell.swift */; };
@@ -165,6 +166,7 @@
 		F28EE8B424D6F22100D9A9DD /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		F29B74332519F96700D7A669 /* PostDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailSection.swift; sourceTree = "<group>"; };
 		F29D5303251B186C000B1351 /* PostDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCellViewModel.swift; sourceTree = "<group>"; };
+		F2A74B70251B8EF8007E3298 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
 		F2C0B152251052B500D9DB71 /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 		F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		F2C90561250DB71400B485BA /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 			children = (
 				F2D7FCAA251A42AF00AB3CEF /* CommentCell.xib */,
 				F2D7FCA9251A42AF00AB3CEF /* CommentCell.swift */,
+				F2A74B70251B8EF8007E3298 /* CommentCellViewModel.swift */,
 			);
 			path = CommentCell;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */,
 				F21DF6B724DFA78700F44B96 /* StoreViewController.swift in Sources */,
 				F2C90563250DB71400B485BA /* FeedCell.swift in Sources */,
+				F2A74B71251B8EF8007E3298 /* CommentCellViewModel.swift in Sources */,
 				F20541A124F7372F000F932F /* SettingsViewModel.swift in Sources */,
 				F264C9B424D3ECD600CE0251 /* BaseService.swift in Sources */,
 				F264C99724D2878A00CE0251 /* SignInViewModel.swift in Sources */,

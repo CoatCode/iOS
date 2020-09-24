@@ -317,23 +317,6 @@
 			path = CoatCode;
 			sourceTree = "<group>";
 		};
-		F23CE60824DB0D9900717A3F /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				F2516118250638A300932004 /* Post.swift */,
-				F2F71A52251C485A00B10371 /* Comment.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		F23CE60924DCDBF400717A3F /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				F23CE60624DB0BFB00717A3F /* User.swift */,
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
 		F24905D0250351FF00BD86FF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,9 +412,10 @@
 		F264C9A824D3BB0900CE0251 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F23CE60924DCDBF400717A3F /* DB */,
-				F23CE60824DB0D9900717A3F /* Response */,
 				F264C9A324D3BA4800CE0251 /* Token.swift */,
+				F23CE60624DB0BFB00717A3F /* User.swift */,
+				F2516118250638A300932004 /* Post.swift */,
+				F2F71A52251C485A00B10371 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

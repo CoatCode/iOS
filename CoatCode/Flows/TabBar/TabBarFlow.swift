@@ -48,11 +48,11 @@ class TabBarFlow: Flow {
         
         Flows.use(feedFlow, storeFlow, writingFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5 : UINavigationController) in
             
-            let tabBarItem1 = UITabBarItem(title: nil, image: UIImage(named: "FeedIcon"), selectedImage: nil)
-            let tabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "StoreIcon"), selectedImage: nil)
-            let tabBarItem3 = UITabBarItem(title: nil, image: UIImage(named: "WritingIcon"), selectedImage: nil)
-            let tabBarItem4 = UITabBarItem(title: nil, image: UIImage(named: "FavoritesIcon"), selectedImage: nil)
-            let tabBarItem5 = UITabBarItem(title: nil, image: UIImage(named: "SettingsIcon"), selectedImage: nil)
+            let tabBarItem1 = UITabBarItem(title: nil, image: UIImage(named: "Feed_Icon"), selectedImage: nil)
+            let tabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "Store_Icon"), selectedImage: nil)
+            let tabBarItem3 = UITabBarItem(title: nil, image: UIImage(named: "Writing_Icon"), selectedImage: nil)
+            let tabBarItem4 = UITabBarItem(title: nil, image: UIImage(named: "Favorites_Icon"), selectedImage: nil)
+            let tabBarItem5 = UITabBarItem(title: nil, image: UIImage(named: "Settings_Icon"), selectedImage: nil)
             root1.tabBarItem = tabBarItem1
             root1.title = "Feed"
             root2.tabBarItem = tabBarItem2

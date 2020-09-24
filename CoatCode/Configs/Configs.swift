@@ -11,11 +11,13 @@ import UIKit
 struct Configs {
     
     struct App {
-        static let bundleIdentifier = ""
+        static let bundleIdentifier = "com.tistory.axe-num1.CoatCode"
     }
     
+    // 외부 IP: http://gi399819.pythonanywhere.com
+    // 내부 IP: http://10.80.161.202:8080
     struct Network {
-        static let baseURL = ""
+        static let baseURL = URL(string: "http://10.80.161.202:8080")!
     }
     
     struct BaseDimensions {

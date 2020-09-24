@@ -9,13 +9,10 @@
 import Foundation
 import Moya
 
-protocol BaseAPI: TargetType {}
-
-// 외부 IP: http://gi399819.pythonanywhere.com
-// 내부 IP: http://10.80.161.202:8080
+protocol BaseAPI: TargetType { }
 
 extension BaseAPI {
-    var baseURL: URL { URL(string: "http://10.80.161.202:8080")! }
+    var baseURL: URL { Configs.Network.baseURL }
     
     var method: Moya.Method { .get }
     

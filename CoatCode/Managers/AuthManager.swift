@@ -20,7 +20,7 @@ class AuthManager {
 
     // MARK: - Properties
     fileprivate let tokenKey = "TokenKey"
-    fileprivate let keychain = Keychain(service: "com.tistory.axe-num1.CoatCode")
+    fileprivate let keychain = Keychain(service: Configs.App.bundleIdentifier)
 
     let tokenChanged = PublishSubject<Token?>()
 

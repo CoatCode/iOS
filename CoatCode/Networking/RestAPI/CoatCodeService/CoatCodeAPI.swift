@@ -13,15 +13,15 @@ import Moya
 enum CoatCodeAPI {
     
     // MARK: - Authentication is not required
-    case signIn(String, String)
-    case signUp(String, String, String, String?)
+    case signIn(email: String, password: String)
+    case signUp(email: String, password: String, username: String, profile: String?)
     
     // MARK: - Authentication is required
     case profile
-    case allFeedPosts(Int)
-    case followFeedPosts(Int)
-    case popularFeedPosts(Int)
-    
+    case allFeedPosts(page: Int)
+    case followFeedPosts(page: Int)
+    case popularFeedPosts(page: Int)
+    case feedComments(postId: Int)
     
 }
 
@@ -35,11 +35,13 @@ extension CoatCodeAPI: BaseAPI {
         case .profile:
             return "/user"
         case .allFeedPosts:
-            return "/"
+            return "/feed/post/all"
         case .followFeedPosts:
-            return "/"
+            return "/feed/post/follow"
         case .popularFeedPosts:
-            return "/"
+            return "/feed/post/popular"
+        case .feedComments(let postId):
+            return "/feed/\(postId)/comments"
         }
     }
     
@@ -64,16 +66,18 @@ extension CoatCodeAPI: BaseAPI {
     
     var task: Task {
         switch self {
-        case .profile:
-            if let parameters = parameters {
-                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
-            }
-            return .requestPlain
-        default:
+        // Post
+        case .signIn, .signUp:
             if let parameters = parameters {
                 return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             }
             return .requestPlain
+        default:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            }
+            return .requestPlain
+            
         }
     }
     

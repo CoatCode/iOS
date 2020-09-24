@@ -14,7 +14,7 @@ enum PostDetailSection {
 }
 
 enum PostDetailSectionItem {
-    case contentItem(viewModel: PostDetailCellViewModel)
+    case postDetailItem(viewModel: PostDetailCellViewModel)
     case commentItem(viewModel: CommentCellViewModel)
 }
 

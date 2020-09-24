@@ -15,7 +15,6 @@ class PostDetailViewModel: BaseViewModel {
     
     init(with post: Post) {
         self.post = BehaviorRelay(value: post)
-        
     }
     
     struct Input {
@@ -30,14 +29,10 @@ class PostDetailViewModel: BaseViewModel {
 
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
-        
-        
         let items = post.map { post -> [PostDetailSection] in
             var items: [PostDetailSectionItem] = []
-            
             let postDetailCellViewModel = PostDetailCellViewModel(with: self.post.value)
-            
-            items.append(PostDetailSectionItem.contentItem(viewModel: postDetailCellViewModel))
+            items.append(PostDetailSectionItem.postDetailItem(viewModel: postDetailCellViewModel))
             
             return [PostDetailSection.post(title: "", items: items)]
         }

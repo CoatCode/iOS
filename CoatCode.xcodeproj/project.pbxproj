@@ -93,6 +93,7 @@
 		F2EC1A2525025045000FC848 /* AllFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2425025045000FC848 /* AllFeedViewController.swift */; };
 		F2EC1A2725025058000FC848 /* FollowFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */; };
 		F2EC1A2925025166000FC848 /* PopularFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */; };
+		F2F71A53251C485A00B10371 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F71A52251C485A00B10371 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +187,7 @@
 		F2EC1A2425025045000FC848 /* AllFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedViewController.swift; sourceTree = "<group>"; };
 		F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedViewController.swift; sourceTree = "<group>"; };
 		F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFeedViewController.swift; sourceTree = "<group>"; };
+		F2F71A52251C485A00B10371 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 			children = (
 				F2516118250638A300932004 /* Post.swift */,
 				F20CAA4A24F91699009082B0 /* ProfileResponse.swift */,
+				F2F71A52251C485A00B10371 /* Comment.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				F24E952924E8487D009B06BD /* StoreFlow.swift in Sources */,
 				F27ACAC324D4517600C3A30B /* CoatCodeService.swift in Sources */,
 				F24905DC2503A93100BD86FF /* SearchViewController.swift in Sources */,
+				F2F71A53251C485A00B10371 /* Comment.swift in Sources */,
 				F24E952B24E8488A009B06BD /* WritingFlow.swift in Sources */,
 				F2EC1A1C250233D7000FC848 /* CustomTabBarViewController.swift in Sources */,
 				F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */,

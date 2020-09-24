@@ -23,6 +23,10 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     let headerRefreshTrigger = PublishSubject<Void>()
     let footerRefreshTrigger = PublishSubject<Void>()
     
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return "전체"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,10 +37,6 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         viewModel.filter.accept(FeedFilter.allContent)
-    }
-    
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return "전체"
     }
     
     override func bindViewModel() {

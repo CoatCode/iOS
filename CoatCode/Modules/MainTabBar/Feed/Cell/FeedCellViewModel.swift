@@ -32,7 +32,7 @@ class FeedCellViewModel {
         likeCount.accept(post.likeCount)
         commentCount.accept(post.commentCount)
         viewCount.accept(post.viewCount)
-        isLiked.accept(post.viewerHasLiked)
+        isLiked.accept(post.isLiked)
         
     }
     

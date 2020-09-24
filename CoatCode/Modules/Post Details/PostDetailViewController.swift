@@ -31,14 +31,14 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         let input = PostDetailViewModel.Input()
         let output = viewModel.transform(input: input)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, tableView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
             switch item {
             case .contentItem(let viewModel):
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? PostDetailCell)!
+                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath) as? PostDetailCell)!
                 cell.bind(to: viewModel)
                 return cell
             case .commentItem(let viewModel):
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? CommentCell)!
+                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath) as? CommentCell)!
                 cell.bind(to: viewModel)
                 return cell
             }

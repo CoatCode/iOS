@@ -13,7 +13,7 @@ class User: Object, Codable {
 
     @objc dynamic var email = ""
     @objc dynamic var username = ""
-    @objc dynamic var profile = ""
+    @objc dynamic var profile: String? = ""
     
     private enum CodingKeys: String, CodingKey {
         case email

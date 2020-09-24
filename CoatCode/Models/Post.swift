@@ -14,7 +14,7 @@ struct Post: Codable {
     var owner: User // 작성자 모델 (get User와 동일한 값)
     var likedPeoples: [String]? // 좋아요 한 사람
     var content: String? // 내용 (타이틀)
-    var contentImages: [String]? // 이미지 url들
+    var imageURLs: [URL]? // 이미지 url들
     var likeCount: Int // 좋아요 수
     var commentCount: Int // 댓글 수
     var viewCount: Int // 조회수
@@ -27,7 +27,7 @@ struct Post: Codable {
         case owner
         case likedPeoples = "liked_peoples"
         case content
-        case contentImages = "content_images"
+        case imageURLs = "content_images"
         case likeCount = "like_count"
         case commentCount = "comment_count"
         case viewCount = "view_count"

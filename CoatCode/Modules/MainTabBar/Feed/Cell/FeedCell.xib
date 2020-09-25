@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCell" id="f9k-ij-XrT" customClass="FeedCell" customModule="CoatCode" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cLO-VP-CdP">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8ST-Yd-irl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhP-DO-N3k">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -57,15 +57,15 @@
                                 <edgeInsets key="layoutMargins" top="-34" left="14" bottom="10" right="14"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EpM-BC-faD">
-                                <rect key="frame" x="0.0" y="50" width="375" height="266"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="268"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ecw-0J-5tF">
-                                <rect key="frame" x="0.0" y="316" width="375" height="42"/>
+                                <rect key="frame" x="0.0" y="318" width="375" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWP-uT-jsS">
-                                        <rect key="frame" x="14" y="10" width="35.5" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="14" y="10" width="41.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uBP-k3-n0Y">
@@ -145,13 +145,13 @@
             <connections>
                 <outlet property="commentCountLabel" destination="d4i-w5-XsH" id="N2R-az-qso"/>
                 <outlet property="commentImageView" destination="OuM-2i-gck" id="2rw-S3-AMS"/>
-                <outlet property="contentLabel" destination="nWP-uT-jsS" id="Dfr-gW-voy"/>
                 <outlet property="likeButton" destination="Dm6-4Y-j8V" id="aZi-TL-pIk"/>
                 <outlet property="likeCountLabel" destination="6TB-8g-3pI" id="nn3-6Q-UV3"/>
                 <outlet property="moreButton" destination="T3z-4p-41e" id="Jnl-LX-Nwb"/>
                 <outlet property="profileImageView" destination="2ur-RJ-zyz" id="mzl-PU-wkC"/>
                 <outlet property="profileNameLabel" destination="srl-6H-GO3" id="X97-pD-Vrr"/>
                 <outlet property="thumbnailImageView" destination="EpM-BC-faD" id="AV5-82-mMx"/>
+                <outlet property="titleLabel" destination="nWP-uT-jsS" id="Dfr-gW-voy"/>
                 <outlet property="viewCountLabel" destination="AuX-TD-JOU" id="Eeb-0M-ddx"/>
             </connections>
             <point key="canvasLocation" x="538.40579710144937" y="614.0625"/>

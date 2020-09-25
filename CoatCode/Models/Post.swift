@@ -13,7 +13,8 @@ struct Post: Codable {
     var id: Int // 게시물 아이디
     var owner: User // 작성자 모델 (get User와 동일한 값)
     var likedPeoples: [String]? // 좋아요 한 사람
-    var content: String? // 내용 (타이틀)
+    var title: String? // 제목
+    var content: String? // 내용
     var imageURLs: [URL]? // 이미지 url들
     var likeCount: Int // 좋아요 수
     var commentCount: Int // 댓글 수
@@ -23,9 +24,10 @@ struct Post: Codable {
     var createdAt: Date // 생성날짜
     
     private enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id
         case owner
         case likedPeoples = "liked_peoples"
+        case title
         case content
         case imageURLs = "content_images"
         case likeCount = "like_count"

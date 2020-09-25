@@ -13,7 +13,7 @@ class FeedCellViewModel {
     
     let profileName = BehaviorRelay<String?>(value: nil)
     let profileImageUrl = BehaviorRelay<String?>(value: nil)
-    let contentImageUrl = BehaviorRelay<String?>(value: nil)
+    let contentImageUrl = BehaviorRelay<URL?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
     let likeCount = BehaviorRelay<Int?>(value: nil)
     let commentCount = BehaviorRelay<Int?>(value: nil)
@@ -27,7 +27,7 @@ class FeedCellViewModel {
         
 //        profileName.accept(post.owner.name)
 //        profileImageUrl.accept(post.owner.profileImage)
-        contentImageUrl.accept(post.contentImages.first!)
+        contentImageUrl.accept(post.imageURLs?.first)
         content.accept(post.content)
         likeCount.accept(post.likeCount)
         commentCount.accept(post.commentCount)

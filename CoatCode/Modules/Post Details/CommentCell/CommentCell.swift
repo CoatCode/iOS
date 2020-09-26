@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 class CommentCell: UICollectionViewCell {
+    
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,7 +26,27 @@ class CommentCell: UICollectionViewCell {
     }
 
     func bind(to viewModel: CommentCellViewModel) {
+        viewModel.writerName.asDriver().drive(nameLabel.rx.text).disposed(by: disposeBag)
         
+        viewModel.writerImageUrl.asDriver()
+            .drive(onNext: { [weak self] urlString in
+                guard let url = URL(string: urlString ?? "") else { return }
+                self?.profileImageView.kf.setImage(with: url)
+            }).disposed(by: disposeBag)
+        
+        viewModel.createTime.asDriver()
+            .drive(onNext: { [weak self] date in
+                self?.createTimeLabel.text = date?.timeAgoDisplay()
+            }).disposed(by: disposeBag)
+        
+        viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
     }
-    
+}
+
+extension Date {
+    func timeAgoDisplay() -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: self, relativeTo: Date())
+    }
 }

@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.2.2)
   - CryptoSwift (1.3.1)
   - Differentiator (4.0.1)
+  - ImageSlideshow (1.9.1):
+    - ImageSlideshow/Core (= 1.9.1)
+  - ImageSlideshow/Core (1.9.1)
   - KafkaRefresh (1.4.8):
     - KafkaRefresh/Category (= 1.4.8)
     - KafkaRefresh/Configuration (= 1.4.8)
@@ -83,6 +86,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - CryptoSwift
+  - ImageSlideshow
   - KafkaRefresh
   - KeychainAccess
   - Kingfisher
@@ -103,6 +107,7 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - Differentiator
+    - ImageSlideshow
     - KafkaRefresh
     - KeychainAccess
     - Kingfisher
@@ -124,6 +129,7 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   KafkaRefresh: aaae4ff23197f2ef38b6b22ca320740beac4bbb4
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
@@ -141,6 +147,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: bf322d606f95a06beaa0f3b6875f35d033c5ce1a
+PODFILE CHECKSUM: 0d7be9a7ffde6e6c0913fabcbcd99d7b26ad2ac3
 
 COCOAPODS: 1.9.3

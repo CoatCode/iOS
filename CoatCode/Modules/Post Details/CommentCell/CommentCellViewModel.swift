@@ -12,16 +12,18 @@ import RxCocoa
 
 class CommentCellViewModel {
     
-    let owner = BehaviorRelay<User?>(value: nil)
+    let writerName = BehaviorRelay<String?>(value: nil)
+    let writerImageUrl = BehaviorRelay<String?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
     let createTime = BehaviorRelay<Date?>(value: nil)
     
     let comment: Comment
     
-    init(comment: Comment) {
+    init(with comment: Comment) {
         self.comment = comment
         
-        self.owner.accept(comment.owner)
+        self.writerName.accept(comment.owner.username)
+        self.writerImageUrl.accept(comment.owner.profile)
         self.content.accept(comment.content)
         self.createTime.accept(comment.createdAt)
     }

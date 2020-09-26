@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PostDetailCell: UICollectionViewCell {
+    
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -33,6 +37,44 @@ class PostDetailCell: UICollectionViewCell {
     
     func bind(to viewModel: PostDetailCellViewModel) {
         
+        viewModel.contentImageUrls.asDriver()
+            .drive(onNext: { images in
+                
+            }).disposed(by: disposeBag)
+        
+        viewModel.title.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)
+        
+        viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
+        
+        viewModel.commentCount.asDriver()
+            .drive(onNext: { [weak self] count in
+                self?.likeCountLabel.text = "\(count ?? 0) Likes"
+            }).disposed(by: disposeBag)
+        
+        viewModel.viewCount.asDriver()
+            .drive(onNext: { [weak self] count in
+                self?.viewCountLabel.text = "\(count ?? 0) Views"
+            }).disposed(by: disposeBag)
+        
+        viewModel.commentCount.asDriver()
+            .drive(onNext: { [weak self] count in
+                self?.commentCountLabel.text = "\(count ?? 0) Comments"
+            }).disposed(by: disposeBag)
+        
+        viewModel.isLiked.asDriver()
+            .drive(onNext: { [weak self] isLiked in
+                if isLiked ?? false {
+                    self?.likeButton.setImage(UIImage(named: "Like_Icon"), for: .normal) // Like
+                } else {
+                    self?.likeButton.setImage(UIImage(named: "UnLike_Icon"), for: .normal) // UnLike
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel.tag.asDriver().drive(tagLabel.rx.text).disposed(by: disposeBag)
+        
+        viewModel.createdTime.asDriver()
+            .drive(onNext: { [weak self] date in
+                self?.createTimeLabel.text = date?.timeAgoDisplay()
+            }).disposed(by: disposeBag)
     }
-
 }

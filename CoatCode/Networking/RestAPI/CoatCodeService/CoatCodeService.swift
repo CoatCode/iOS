@@ -41,6 +41,18 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestArray(.feedComments(postId: postId), type: Comment.self)
     }
     
+    func checkLiking(postId: Int) -> Single<Void> {
+        return requestWithoutMapping(.checkLiking(postId: postId))
+    }
+    
+    func likePost(postId: Int) -> Single<Void> {
+        return requestWithoutMapping(.likePost(postId: postId))
+    }
+    
+    func unlikePost(postId: Int) -> Single<Void > {
+        return requestWithoutMapping(.unlikePost(postId: postId))
+    }
+    
 }
 
 extension CoatCodeService {

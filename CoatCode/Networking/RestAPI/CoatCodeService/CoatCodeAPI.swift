@@ -18,10 +18,16 @@ enum CoatCodeAPI {
     
     // MARK: - Authentication is required
     case profile
+    
     case allFeedPosts(page: Int)
     case followFeedPosts(page: Int)
     case popularFeedPosts(page: Int)
+    
     case feedComments(postId: Int)
+    
+    case checkLiking(postId: Int)
+    case likePost(postId: Int)
+    case unlikePost(postId: Int)
     
 }
 
@@ -42,6 +48,10 @@ extension CoatCodeAPI: BaseAPI {
             return "/feed/post/popular"
         case .feedComments(let postId):
             return "/feed/\(postId)/comments"
+        case .checkLiking(let postId),
+             .likePost(let postId),
+             .unlikePost(let postId):
+            return "/user/liked/\(postId)"
         }
     }
     
@@ -49,6 +59,10 @@ extension CoatCodeAPI: BaseAPI {
         switch self {
         case .signIn, .signUp:
             return .post
+        case .likePost:
+            return .put
+        case .unlikePost:
+            return .delete
         default:
             return .get
         }
@@ -56,8 +70,10 @@ extension CoatCodeAPI: BaseAPI {
     
     var headers: [String: String]? {
         switch self {
+        // None Authentication
         case .signIn, .signUp:
             break
+        // Authentication
         default:
             return ["authorization": "Bearer \(AuthManager.getAccessToken())"]
         }
@@ -102,15 +118,15 @@ extension CoatCodeAPI: BaseAPI {
         }
         return params
     }
-
-//    var sampleData: Data {
-//        var dataUrl: URL?
-//        switch self {
-//
-//        }
-//        if let url = dataUrl, let data = try? Data(contentsOf: url) {
-//            return data
-//        }
-//        return Data()
-//    }
+    
+    //    var sampleData: Data {
+    //        var dataUrl: URL?
+    //        switch self {
+    //
+    //        }
+    //        if let url = dataUrl, let data = try? Data(contentsOf: url) {
+    //            return data
+    //        }
+    //        return Data()
+    //    }
 }

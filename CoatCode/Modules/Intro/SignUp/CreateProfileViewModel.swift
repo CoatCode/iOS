@@ -87,7 +87,7 @@ extension CreateProfileViewModel {
         
         return self.services.signUp(email: self.email,
                                 password: self.password,
-                                userName: self.username.value,
+                                username: self.username.value,
                                 profile: imageBase64String)
         .trackActivity(self.loading)
         .subscribe(onNext: { [weak self] in

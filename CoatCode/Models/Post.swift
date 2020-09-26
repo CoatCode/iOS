@@ -19,7 +19,7 @@ struct Post: Codable {
     var likeCount: Int // 좋아요 수
     var commentCount: Int // 댓글 수
     var viewCount: Int // 조회수
-    var isLiked: Bool // 좋아요를 했는지 여부
+    var isLiked: Bool? // 좋아요는 서버에서 받는거 아님!
     var tag: String? // 태그
     var createdAt: Date // 생성날짜
     
@@ -33,7 +33,6 @@ struct Post: Codable {
         case likeCount = "like_count"
         case commentCount = "comment_count"
         case viewCount = "view_count"
-        case isLiked = "viewer_has_liked"
         case tag
         case createdAt = "created_at"
     }

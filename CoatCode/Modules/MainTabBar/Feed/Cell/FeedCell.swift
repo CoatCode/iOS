@@ -44,9 +44,8 @@ class FeedCell: UICollectionViewCell {
         viewModel.profileName.asDriver().drive(profileNameLabel.rx.text).disposed(by: disposeBag)
         
         viewModel.contentImageUrl.asDriver()
-            .drive(onNext: { [weak self] urlString in
-                guard let url = URL(string: urlString ?? "") else { return }
-                self?.thumbnailImageView.kf.setImage(with: url)
+            .drive(onNext: { [weak self] imageUrl in
+                self?.thumbnailImageView.kf.setImage(with: imageUrl)
             }).disposed(by: disposeBag)
         
         viewModel.content.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)

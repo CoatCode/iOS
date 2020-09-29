@@ -29,7 +29,7 @@ struct Post: Codable {
         case likedPeoples = "liked_peoples"
         case title
         case content
-        case imageURLs = "content_images"
+        case imageURLs = "image_urls"
         case likeCount = "like_count"
         case commentCount = "comment_count"
         case viewCount = "view_count"
@@ -47,12 +47,12 @@ struct Post: Codable {
 //        "profile": ""
 //    },
 //    "liked_peoples": ["user1_id", "user2_id",  ...],
+//    "title": "",
 //    "content": "",
-//    "contentImages": ["image_url1", "image_url2", ...],
+//    "content_images": ["image_url1", "image_url2", ...],
 //    "like_count": 0,
 //    "comment_count": 0,
 //    "view_count": 0,
-//    "is_liked": false,
 //    "tag": "#a#b#c",
 //    "created_at": ""
 //}

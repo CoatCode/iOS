@@ -29,7 +29,7 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +44,11 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         
-        let input = FeedViewModel.Input(headerRefresh: headerRefreshTrigger,
+        let input = FeedViewModel.Input(headerRefresh: Observable.of(Observable.just(()), headerRefreshTrigger).merge(),
                                         footerRefresh: footerRefreshTrigger,
                                         selection: collectionView.rx.modelSelected(FeedCellViewModel.self).asDriver())
         let output = viewModel.transform(input: input)
-
+        
         output.items.asDriver(onErrorJustReturn: [])
             .drive(collectionView.rx.items(cellIdentifier: "FeedCell", cellType: FeedCell.self)) { tableView, viewModel, cell in
                 cell.bind(to: viewModel)
@@ -58,10 +58,12 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     
     func bindTableView() {
         collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
+            print("headerRefresh")
             self?.headerRefreshTrigger.onNext(())
         })
         
         collectionView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
+            print("footerRefresh")
             self?.footerRefreshTrigger.onNext(())
         })
     }

@@ -20,7 +20,7 @@ extension AuthAPI: BaseAPI {
     var path: String {
         switch self {
         case .renewalToken:
-            return "/refresh"
+            return "/auth/renewalToken"
         }
     }
     

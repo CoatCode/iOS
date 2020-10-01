@@ -25,7 +25,7 @@ enum CoatCodeAPI {
     
     case feedComments(postId: Int)
     
-    case checkLiking(postId: Int)
+    case isLikedPost(postId: Int)
     case likePost(postId: Int)
     case unlikePost(postId: Int)
     
@@ -47,11 +47,11 @@ extension CoatCodeAPI: BaseAPI {
         case .popularFeedPosts:
             return "/feed/post/popular"
         case .feedComments(let postId):
-            return "/feed/\(postId)/comments"
-        case .checkLiking(let postId),
+            return "/post/\(postId)/comments"
+        case .isLikedPost(let postId),
              .likePost(let postId),
              .unlikePost(let postId):
-            return "/user/liked/\(postId)"
+            return "/post/\(postId)/like"
         }
     }
     

@@ -42,7 +42,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     }
     
     func checkLiking(postId: Int) -> Single<Void> {
-        return requestWithoutMapping(.checkLiking(postId: postId))
+        return requestWithoutMapping(.isLikedPost(postId: postId))
     }
     
     func likePost(postId: Int) -> Single<Void> {

@@ -17,6 +17,8 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     static let sceneStoryboard = UIStoryboard(name: "PostDetail", bundle: nil)
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var commentField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

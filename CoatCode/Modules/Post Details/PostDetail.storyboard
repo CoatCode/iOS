@@ -28,26 +28,58 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D0-o2-1ZT">
+                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHH-U6-iAt">
+                                        <rect key="frame" x="14" y="11" width="350" height="18.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzX-Bq-bHj">
+                                        <rect key="frame" x="378" y="9" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="SbW-uf-8jO"/>
+                                            <constraint firstAttribute="height" constant="22" id="mxI-zI-yuB"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="Plane_Icon"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="26M-Iw-D2s"/>
+                                    <constraint firstItem="lHH-U6-iAt" firstAttribute="centerY" secondItem="8D0-o2-1ZT" secondAttribute="centerY" id="X2C-xI-i8p"/>
+                                    <constraint firstItem="zzX-Bq-bHj" firstAttribute="leading" secondItem="lHH-U6-iAt" secondAttribute="trailing" constant="14" id="d1t-d3-sYb"/>
+                                    <constraint firstItem="zzX-Bq-bHj" firstAttribute="centerY" secondItem="8D0-o2-1ZT" secondAttribute="centerY" id="eB3-1L-7Xz"/>
+                                    <constraint firstAttribute="trailing" secondItem="zzX-Bq-bHj" secondAttribute="trailing" constant="14" id="eZU-fF-hsG"/>
+                                    <constraint firstItem="lHH-U6-iAt" firstAttribute="leading" secondItem="8D0-o2-1ZT" secondAttribute="leading" constant="14" id="nqZ-SX-2cW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yc1-d1-ryF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FqM-wD-7QI" firstAttribute="leading" secondItem="Yc1-d1-ryF" secondAttribute="leading" id="0qM-e1-gCC"/>
-                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="trailing" secondItem="FqM-wD-7QI" secondAttribute="trailing" id="9Yi-cM-Kf3"/>
-                            <constraint firstItem="FqM-wD-7QI" firstAttribute="top" secondItem="Yc1-d1-ryF" secondAttribute="top" id="c6F-BF-CUb"/>
-                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="bottom" secondItem="FqM-wD-7QI" secondAttribute="bottom" id="wl0-CH-MIZ"/>
+                            <constraint firstItem="8D0-o2-1ZT" firstAttribute="leading" secondItem="Yc1-d1-ryF" secondAttribute="leading" id="0ff-V0-wAU"/>
+                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="bottom" secondItem="8D0-o2-1ZT" secondAttribute="bottom" id="3CF-SY-sCP"/>
+                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="trailing" secondItem="FqM-wD-7QI" secondAttribute="trailing" id="DJI-g6-vUY"/>
+                            <constraint firstItem="FqM-wD-7QI" firstAttribute="leading" secondItem="Yc1-d1-ryF" secondAttribute="leading" id="abU-ZG-NSr"/>
+                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="bottom" secondItem="FqM-wD-7QI" secondAttribute="bottom" id="h1R-hn-aIm"/>
+                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="trailing" secondItem="8D0-o2-1ZT" secondAttribute="trailing" id="tBz-9G-pQn"/>
+                            <constraint firstItem="FqM-wD-7QI" firstAttribute="top" secondItem="Yc1-d1-ryF" secondAttribute="top" id="vgh-uP-fXU"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="FqM-wD-7QI" id="Z01-Kd-Za0"/>
+                        <outlet property="commentField" destination="lHH-U6-iAt" id="DJf-AG-0eS"/>
+                        <outlet property="sendButton" destination="zzX-Bq-bHj" id="xL0-lj-P60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMa-Gj-jll" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Plane_Icon" width="32" height="31.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

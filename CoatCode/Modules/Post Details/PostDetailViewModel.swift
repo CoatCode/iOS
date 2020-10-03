@@ -14,12 +14,14 @@ class PostDetailViewModel: BaseViewModel {
     let post: BehaviorRelay<Post>
     let comment = BehaviorRelay<[Comment]>(value: [Comment(id: -1, owner: User(), content: "", createdAt: Date())])
     
+    let commentText = BehaviorRelay(value: "")
+    
     init(with post: Post) {
         self.post = BehaviorRelay(value: post)
     }
     
     struct Input {
-        
+        let sendButtonTrigger: Driver<Void>
     }
     
     struct Output {
@@ -30,6 +32,11 @@ class PostDetailViewModel: BaseViewModel {
 
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
+        
+        input.sendButtonTrigger
+            .drive(onNext: { [weak self] in
+                self?.writeCommentRequest()
+            }).disposed(by: disposeBag)
         
         let items = post.map { post -> [PostDetailSection] in
             var items: [PostDetailSectionItem] = []
@@ -45,12 +52,6 @@ extension PostDetailViewModel {
                     self?.comment.accept(comment)
                 }).disposed(by: self.disposeBag)
             
-//            if let comments = self.comment.value.map({ CommentCellViewModel(with: $0) }) {
-//                comments.forEach({ (cellViewModel) in
-//                    items.append(PostDetailSectionItem.commentItem(viewModel: cellViewModel))
-//                })
-//            }
-            
             let comments = self.comment.value.map { CommentCellViewModel(with: $0) }
             comments.forEach { (cellViewModel) in
                 items.append(PostDetailSectionItem.commentItem(viewModel: cellViewModel))
@@ -61,4 +62,18 @@ extension PostDetailViewModel {
         
         return Output(items: items)
     }
+}
+
+extension PostDetailViewModel {
+    
+    func writeCommentRequest() {
+        self.services.writeComment(postId: self.post.value.id, content: self.commentText.value)
+            .trackActivity(self.loading)
+            .subscribe(onNext: {
+                print("write comment successfully")
+            }, onError: { [weak self] error in
+                self?.error.onNext(error as! ResponseError)
+            }).disposed(by: disposeBag)
+    }
+    
 }

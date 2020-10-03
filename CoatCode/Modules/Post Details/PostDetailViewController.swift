@@ -30,7 +30,16 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
         
-        let input = PostDetailViewModel.Input()
+        commentField.rx.text.orEmpty
+            .bind(to: viewModel.commentText)
+            .disposed(by: disposeBag)
+        
+        sendButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.view.endEditing(true)
+            }).disposed(by: disposeBag)
+        
+        let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
         let dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in

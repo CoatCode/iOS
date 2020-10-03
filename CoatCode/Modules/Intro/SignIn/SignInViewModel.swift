@@ -67,9 +67,9 @@ extension SignInViewModel {
                 onNext: { profile in
                     // user response값 저장
                     let user = User()
-                    user.email = profile.email ?? ""
+                    user.email = profile.email
                     user.profile = profile.profile ?? ""
-                    user.username = profile.username ?? ""
+                    user.username = profile.username
                     
                     DatabaseManager.shared.saveUser(user)
                     

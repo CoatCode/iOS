@@ -9,12 +9,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ImageSlideshow
 
 class PostDetailCell: UICollectionViewCell {
     
     let disposeBag = DisposeBag()
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var slideshow: ImageSlideshow!
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -38,8 +39,12 @@ class PostDetailCell: UICollectionViewCell {
     func bind(to viewModel: PostDetailCellViewModel) {
         
         viewModel.contentImageUrls.asDriver()
-            .drive(onNext: { images in
-                
+            .drive(onNext: { [weak self] images in
+                let a = []
+                for image in images {
+                    a.append(KingfisherSource(image))
+                }
+                self?.slideshow.setImageInputs(a)
             }).disposed(by: disposeBag)
         
         viewModel.title.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)

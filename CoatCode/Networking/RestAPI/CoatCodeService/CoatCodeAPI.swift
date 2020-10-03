@@ -24,6 +24,7 @@ enum CoatCodeAPI {
     case popularFeedPosts(page: Int)
     
     case feedComments(postId: Int)
+    case writeComment(postId: Int, content: String)
     
     case isLikedPost(postId: Int)
     case likePost(postId: Int)
@@ -52,12 +53,14 @@ extension CoatCodeAPI: BaseAPI {
              .likePost(let postId),
              .unlikePost(let postId):
             return "/post/\(postId)/like"
+        case .writeComment(let postId, _):
+            return "/post/\(postId)/comment"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signIn, .signUp:
+        case .signIn, .signUp, .writeComment:
             return .post
         case .likePost:
             return .put
@@ -83,7 +86,7 @@ extension CoatCodeAPI: BaseAPI {
     var task: Task {
         switch self {
         // Post
-        case .signIn, .signUp:
+        case .signIn, .signUp, .writeComment:
             if let parameters = parameters {
                 return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             }
@@ -114,6 +117,8 @@ extension CoatCodeAPI: BaseAPI {
             params["page"] = page
         case .popularFeedPosts(let page):
             params["page"] = page
+        case .writeComment(_, let content):
+            params["content"] = content
         default: break
         }
         return params

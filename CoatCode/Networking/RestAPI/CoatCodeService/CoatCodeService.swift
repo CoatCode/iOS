@@ -49,8 +49,12 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestWithoutMapping(.likePost(postId: postId))
     }
     
-    func unlikePost(postId: Int) -> Single<Void > {
+    func unlikePost(postId: Int) -> Single<Void> {
         return requestWithoutMapping(.unlikePost(postId: postId))
+    }
+    
+    func writeComment(postId: Int, content: String) -> Single<Void> {
+        return requestWithoutMapping(.writeComment(postId: postId, content: content))
     }
     
 }

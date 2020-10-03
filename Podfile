@@ -28,7 +28,7 @@ target 'CoatCode' do
   pod 'SwiftMessages'
   pod 'XLPagerTabStrip'
   pod 'KafkaRefresh'
-  pod 'ImageSlideshow'
+  pod 'ImageSlideshow/Kingfisher'
   
   # etc
   pod 'CryptoSwift'

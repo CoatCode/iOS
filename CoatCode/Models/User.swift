@@ -11,14 +11,20 @@ import RealmSwift
 
 class User: Object, Codable {
 
+    @objc dynamic var id = -1
     @objc dynamic var email = ""
     @objc dynamic var username = ""
     @objc dynamic var profile: String? = ""
+    @objc dynamic var followers = -1
+    @objc dynamic var following = -1
     
     private enum CodingKeys: String, CodingKey {
+        case id
         case email
         case username
         case profile
+        case followers
+        case following
     }
     
 }

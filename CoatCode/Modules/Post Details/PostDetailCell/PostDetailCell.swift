@@ -40,11 +40,11 @@ class PostDetailCell: UICollectionViewCell {
         
         viewModel.contentImageUrls.asDriver()
             .drive(onNext: { [weak self] images in
-                let a = []
-                for image in images {
-                    a.append(KingfisherSource(image))
+                var imageInputs = [KingfisherSource]()
+                for image in images! {
+                    imageInputs.append(KingfisherSource(url: image))
                 }
-                self?.slideshow.setImageInputs(a)
+                self?.slideshow.setImageInputs(imageInputs)
             }).disposed(by: disposeBag)
         
         viewModel.title.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)

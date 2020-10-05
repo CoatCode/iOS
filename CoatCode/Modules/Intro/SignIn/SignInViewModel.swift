@@ -66,12 +66,10 @@ extension SignInViewModel {
             .subscribe(
                 onNext: { profile in
                     // user response값 저장
-                    let user = User()
-                    user.email = profile.email
-                    user.profile = profile.profile ?? ""
-                    user.username = profile.username
+                    DatabaseManager.shared.saveUser(profile)
                     
-                    DatabaseManager.shared.saveUser(user)
+                    // keychain에 username값 저장
+                    KeychainManager.shared.username = profile.username
                     
                     // Stepping (callback to AppStepper)
                     UserDefaults.standard.set(true, forKey: "loginState")

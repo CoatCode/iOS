@@ -74,14 +74,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5Za-kV-qJs">
                                                 <rect key="frame" x="0.0" y="0.0" width="29.5" height="22"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm6-4Y-j8V">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnLike_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Xly-xE-q0x">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="22" id="S6H-U2-zxz"/>
-                                                            <constraint firstAttribute="width" constant="22" id="oXj-fv-uZD"/>
+                                                            <constraint firstAttribute="width" constant="22" id="PJ4-BS-wTD"/>
+                                                            <constraint firstAttribute="height" constant="22" id="Tee-k5-LwC"/>
                                                         </constraints>
-                                                        <state key="normal" image="UnLike_Icon"/>
-                                                    </button>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TB-8g-3pI">
                                                         <rect key="frame" x="24" y="0.0" width="5.5" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -145,8 +144,8 @@
             <connections>
                 <outlet property="commentCountLabel" destination="d4i-w5-XsH" id="N2R-az-qso"/>
                 <outlet property="commentImageView" destination="OuM-2i-gck" id="2rw-S3-AMS"/>
-                <outlet property="likeButton" destination="Dm6-4Y-j8V" id="aZi-TL-pIk"/>
                 <outlet property="likeCountLabel" destination="6TB-8g-3pI" id="nn3-6Q-UV3"/>
+                <outlet property="likeImage" destination="Xly-xE-q0x" id="vZ1-5A-XKT"/>
                 <outlet property="moreButton" destination="T3z-4p-41e" id="Jnl-LX-Nwb"/>
                 <outlet property="profileImageView" destination="2ur-RJ-zyz" id="mzl-PU-wkC"/>
                 <outlet property="profileNameLabel" destination="srl-6H-GO3" id="X97-pD-Vrr"/>

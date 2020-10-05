@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import KeychainAccess
 
 let loggedIn = BehaviorRelay<Bool>(value: false)
 
@@ -20,7 +19,7 @@ class AuthManager {
 
     // MARK: - Properties
     fileprivate let tokenKey = "TokenKey"
-    fileprivate let keychain = Keychain(service: Configs.App.bundleIdentifier)
+    fileprivate let keychain = KeychainManager.shared.keychain
 
     let tokenChanged = PublishSubject<Token?>()
 

@@ -15,6 +15,7 @@ struct Post: Codable {
     var title: String? // 제목
     var content: String? // 내용
     var imageURLs: [URL]? // 이미지 url들
+    var likedPeoples: [Int]?
     var likeCount: Int // 좋아요 수
     var commentCount: Int // 댓글 수
     var viewCount: Int // 조회수
@@ -28,6 +29,7 @@ struct Post: Codable {
         case title
         case content
         case imageURLs = "image_urls"
+        case likedPeoples = "liked_peoples"
         case likeCount = "like_count"
         case commentCount = "comment_count"
         case viewCount = "view_count"

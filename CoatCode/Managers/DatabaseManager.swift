@@ -39,6 +39,10 @@ class DatabaseManager {
         
     }
     
+    func getCurrentUser() -> User {
+        realm.objects(User.self).filter("username == '\(KeychainManager.shared.username ?? "")'").first!
+    }
+    
     
     
 }

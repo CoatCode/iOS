@@ -17,7 +17,7 @@ class FeedCell: UICollectionViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
-    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var createdTimeLabel: UILabel!
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
@@ -48,7 +48,7 @@ class FeedCell: UICollectionViewCell {
                 self?.thumbnailImageView.kf.setImage(with: imageUrl)
             }).disposed(by: disposeBag)
         
-        viewModel.content.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)
+        viewModel.title.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)
         
         viewModel.isLiked.asDriver()
             .drive(onNext: { [weak self] isLiked in
@@ -74,9 +74,18 @@ class FeedCell: UICollectionViewCell {
                 self?.commentCountLabel.text = "\(count ?? 0)"
             }).disposed(by: disposeBag)
         
-//        moreButton.rx.tap
-//            .bind(to: viewMdoel.moreButtonClicked)
-//            .disposed(by: disposeBag)
+        viewModel.createdTime.asDriver()
+            .drive(onNext: { [weak self] date in
+                self?.createdTimeLabel.text = date?.timeAgoDisplay()
+            }).disposed(by: disposeBag)
+        
+        self.likeImage.rx.tapGesture()
+            .subscribe(onNext: { _ in
+                if viewModel.isLiked.value ?? false {
+                    viewModel.unLike()
+                } else {
+                    viewModel.like()
+                }
+            }).disposed(by: disposeBag)
     }
-    
 }

@@ -23,8 +23,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhP-DO-N3k">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="blS-lP-X7V">
-                                        <rect key="frame" x="14" y="10" width="317" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="blS-lP-X7V">
+                                        <rect key="frame" x="14" y="10" width="316" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ur-RJ-zyz">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -33,26 +33,20 @@
                                                     <constraint firstAttribute="height" constant="30" id="izW-C5-EXI"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srl-6H-GO3">
-                                                <rect key="frame" x="40" y="0.0" width="277" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srl-6H-GO3">
+                                                <rect key="frame" x="40" y="0.0" width="276" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="io9-0t-miQ">
-                                        <rect key="frame" x="331" y="10" width="30" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3z-4p-41e">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="COz-nJ-DPZ"/>
-                                                </constraints>
-                                                <state key="normal" image="More_Icon"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBW-oQ-Ktt">
+                                        <rect key="frame" x="330" y="10" width="31" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="-34" left="14" bottom="10" right="14"/>
                             </stackView>
@@ -144,9 +138,9 @@
             <connections>
                 <outlet property="commentCountLabel" destination="d4i-w5-XsH" id="N2R-az-qso"/>
                 <outlet property="commentImageView" destination="OuM-2i-gck" id="2rw-S3-AMS"/>
+                <outlet property="createdTimeLabel" destination="iBW-oQ-Ktt" id="g87-dp-HFd"/>
                 <outlet property="likeCountLabel" destination="6TB-8g-3pI" id="nn3-6Q-UV3"/>
                 <outlet property="likeImage" destination="Xly-xE-q0x" id="vZ1-5A-XKT"/>
-                <outlet property="moreButton" destination="T3z-4p-41e" id="Jnl-LX-Nwb"/>
                 <outlet property="profileImageView" destination="2ur-RJ-zyz" id="mzl-PU-wkC"/>
                 <outlet property="profileNameLabel" destination="srl-6H-GO3" id="X97-pD-Vrr"/>
                 <outlet property="thumbnailImageView" destination="EpM-BC-faD" id="AV5-82-mMx"/>
@@ -158,7 +152,6 @@
     </objects>
     <resources>
         <image name="Comment_Icon" width="20" height="20"/>
-        <image name="More_Icon" width="20" height="20"/>
         <image name="UnLike_Icon" width="22" height="22"/>
         <image name="View_Icon" width="22" height="22"/>
     </resources>

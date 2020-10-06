@@ -47,7 +47,7 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
         error.subscribe(onNext: { error in
             let errorView = MessageView.viewFromNib(layout: .cardView)
             errorView.configureTheme(.error)
-            errorView.configureContent(title: "\(error.status!) 에러", body: error.message)
+            errorView.configureContent(title: "\(error.status!) 에러", body: error.message.first!)
             errorView.button?.isHidden = true
             SwiftMessages.show(view: errorView)
         }).disposed(by: disposeBag)

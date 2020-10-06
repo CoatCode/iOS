@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,7 +126,7 @@
             <connections>
                 <outlet property="commentCountLabel" destination="diu-pK-ujV" id="tM3-B8-7E8"/>
                 <outlet property="contentLabel" destination="q6o-2U-yLE" id="50P-Mg-I5m"/>
-                <outlet property="createTimeLabel" destination="wvq-To-of2" id="ITU-fi-bjk"/>
+                <outlet property="createdTimeLabel" destination="wvq-To-of2" id="ITU-fi-bjk"/>
                 <outlet property="likeButton" destination="s1X-MY-llU" id="aOC-0r-2of"/>
                 <outlet property="likeCountLabel" destination="PB2-GA-KRt" id="NHK-f5-GNu"/>
                 <outlet property="shareButton" destination="OcJ-Mm-Riv" id="Wcq-8Q-FZ7"/>

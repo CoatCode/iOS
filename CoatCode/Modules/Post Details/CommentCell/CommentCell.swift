@@ -42,11 +42,3 @@ class CommentCell: UICollectionViewCell {
         viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
     }
 }
-
-extension Date {
-    func timeAgoDisplay() -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        return formatter.localizedString(for: self, relativeTo: Date())
-    }
-}

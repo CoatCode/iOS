@@ -29,7 +29,7 @@ class PostDetailCell: UICollectionViewCell {
     @IBOutlet weak var viewCountLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
     
-    @IBOutlet weak var createTimeLabel: UILabel!
+    @IBOutlet weak var createdTimeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -79,7 +79,7 @@ class PostDetailCell: UICollectionViewCell {
         
         viewModel.createdTime.asDriver()
             .drive(onNext: { [weak self] date in
-                self?.createTimeLabel.text = date?.timeAgoDisplay()
+                self?.createdTimeLabel.text = date?.timeAgoDisplay()
             }).disposed(by: disposeBag)
     }
 }

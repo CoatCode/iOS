@@ -25,6 +25,10 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestObject(.profile, type: User.self)
     }
     
+    func writePost(images: [UIImage], title: String, content: String, tag: String) -> Single<Void> {
+        return requestWithoutMapping(.writePost(images: images, title: title, content: content, tag: tag))
+    }
+    
     func allFeedPosts(page: Int) -> Single<[Post]> {
         return requestArray(.allFeedPosts(page: page), type: Post.self)
     }
@@ -37,16 +41,23 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestArray(.popularFeedPosts(page: page), type: Post.self)
     }
     
-    func feedComments(postId: Int) -> Single<[Comment]> {
-        return requestArray(.feedComments(postId: postId), type: Comment.self)
+    func modifyPost(postId: Int, images: [UIImage], title: String, content: String, tag: String) -> Single<Void> {
+        return requestWithoutMapping(.modifyPost(postId: postId, images: images, title: title, content: content, tag: tag))
     }
     
-    func checkLiking(postId: Int) -> Single<Void> {
-        return requestWithoutMapping(.isLikedPost(postId: postId))
+    func deletePost(postId: Int) -> Single<Void> {
+        return requestWithoutMapping(.deletePost(postId: postId))
+    }
+    
+    func likedPeoples(postId: Int) -> Single<Void> {
+        return requestWithoutMapping(.likedPeoples(postId: postId))
     }
     
     func likePost(postId: Int) -> Single<Void> {
         return requestWithoutMapping(.likePost(postId: postId))
+    }
+    func isLikedPost(postId: Int) -> Single<Void> {
+        return requestWithoutMapping(.isLikedPost(postId: postId))
     }
     
     func unlikePost(postId: Int) -> Single<Void> {
@@ -55,6 +66,50 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     
     func writeComment(postId: Int, content: String) -> Single<Void> {
         return requestWithoutMapping(.writeComment(postId: postId, content: content))
+    }
+        
+    func postComments(postId: Int) -> Single<[Comment]> {
+        return requestArray(.postComments(postId: postId), type: Comment.self)
+    }
+    
+    func modifyComment(postId: Int, commentId: Int, content: String) -> Single<Void> {
+        return requestWithoutMapping(.modifyComment(postId: postId, commentId: commentId, content: content))
+    }
+    
+    func deleteComment(postId: Int, commentId: Int) -> Single<Void> {
+        return requestWithoutMapping(.deleteComment(postId: postId, commentId: commentId))
+    }
+    
+    func searchPost(page: Int, query: String) -> Single<[Post]> {
+        return requestArray(.searchPost(page: page, query: query), type: Post.self)
+    }
+    
+//    func searchProduct() {
+//        return requestArray(.searchProduct(page: <#T##Int#>, query: <#T##String#>), type: <#T##(Decodable & Encodable).Protocol#>)
+//    }
+    
+    func searchUser(page: Int, query: String) -> Single<[User]> {
+        return requestArray(.searchUser(page: page, query: query), type: User.self)
+    }
+    
+    func follower(userId: Int) -> Single<[User]> {
+        return requestArray(.follower(userId: userId), type: User.self)
+    }
+    
+    func following(userId: Int) -> Single<[User]> {
+        return requestArray(.following(userId: userId), type: User.self)
+    }
+    
+    func followUser(userId: Int) -> Single<Void> {
+        return requestWithoutMapping(.followUser(userId: userId))
+    }
+    
+    func isFollowUser(userId: Int) -> Single<Void> {
+        return requestWithoutMapping(.isFollowUser(userId: userId))
+    }
+    
+    func unFollowUser(userId: Int) -> Single<Void>{
+        return requestWithoutMapping(.unFollowUser(userId: userId))
     }
     
 }

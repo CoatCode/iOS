@@ -46,7 +46,7 @@ extension PostDetailViewModel {
             items.append(PostDetailSectionItem.postDetailItem(viewModel: postDetailCellViewModel))
             
             // Comment
-            self.services.feedComments(postId: post.id)
+            self.services.postComments(postId: post.id)
                 .trackActivity(self.loading)
                 .subscribe(onNext: { [weak self] comment in
                     self?.comment.accept(comment)

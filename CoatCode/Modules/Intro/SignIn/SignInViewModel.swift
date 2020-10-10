@@ -55,7 +55,7 @@ extension SignInViewModel {
                     self?.profileRequest()
                 },
                 onError: { [weak self] error in
-                    self?.error.onNext(error as! ResponseError)
+                    self?.error.onNext(error as! ErrorResponse)
                     AuthManager.removeToken()
             }).disposed(by: disposeBag)
     }
@@ -76,7 +76,7 @@ extension SignInViewModel {
                     loggedIn.accept(true)
                 },
                 onError: { [weak self] error in
-                    self?.error.onNext(error as! ResponseError)
+                    self?.error.onNext(error as! ErrorResponse)
                     AuthManager.removeToken()
             }).disposed(by: disposeBag)
     }

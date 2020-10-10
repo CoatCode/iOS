@@ -19,7 +19,7 @@ class BaseViewModel: ServicesViewModel, Stepper {
     var services: CoatCodeService!
     
     let loading = ActivityIndicator()
-    let error = PublishSubject<ResponseError>()
+    let error = PublishSubject<ErrorResponse>()
     
     var page = 1
     

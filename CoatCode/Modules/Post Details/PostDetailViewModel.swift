@@ -72,7 +72,7 @@ extension PostDetailViewModel {
             .subscribe(onNext: {
                 print("write comment successfully")
             }, onError: { [weak self] error in
-                self?.error.onNext(error as! ResponseError)
+                self?.error.onNext(error as! ErrorResponse)
             }).disposed(by: disposeBag)
     }
     

@@ -93,7 +93,7 @@ extension CreateProfileViewModel {
         .subscribe(onNext: { [weak self] in
             self?.steps.accept(CoatCodeStep.createProfileIsComplete)
             }, onError: { [weak self] error in
-                self?.error.onNext(error as! ResponseError)
+                self?.error.onNext(error as! ErrorResponse)
         }).disposed(by: self.disposeBag)
     }
 }

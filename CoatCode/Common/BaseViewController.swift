@@ -19,7 +19,7 @@ class BaseViewController: UIViewController, ViewModelBased, NVActivityIndicatorV
     
     var viewModel: BaseViewModel!
     let isLoading = BehaviorRelay(value: false)
-    let error = PublishSubject<ResponseError>()
+    let error = PublishSubject<ErrorResponse>()
     
     // MARK: - View life cycle
     override public func viewDidLoad() {

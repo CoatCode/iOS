@@ -23,21 +23,16 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
                 return Single.just(response)
             }
             
-            if var error = try? response.map(ResponseError.self) {
+            if var error = try? response.map(ErrorResponse.self) {
                 error.status = response.statusCode
                 return Single.error(error)
             }
             
             // Its an error and can't decode error details from server, push generic message
-            let genericError = ResponseError(
+            let genericError = ErrorResponse(
                 status: response.statusCode,
                 message: ["Empty Message..."])
             return Single.error(genericError)
         }
     }
-}
-
-struct ResponseError: Decodable, Error {
-    var status: Int?
-    let message: [String]
 }

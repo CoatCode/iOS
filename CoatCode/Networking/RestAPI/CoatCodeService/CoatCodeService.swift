@@ -108,7 +108,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestWithoutMapping(.isFollowUser(userId: userId))
     }
     
-    func unFollowUser(userId: Int) -> Single<Void>{
+    func unFollowUser(userId: Int) -> Single<Void> {
         return requestWithoutMapping(.unFollowUser(userId: userId))
     }
     
@@ -122,12 +122,16 @@ extension CoatCodeService {
     }
     
     private func requestObject<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<T> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         return request(target)
-            .map(T.self)
+            .map(T.self, atKeyPath: "", using: decoder)
     }
     
     private func requestArray<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<[T]> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         return request(target)
-            .map([T].self)
+            .map([T].self, atKeyPath: "", using: decoder)
     }
 }

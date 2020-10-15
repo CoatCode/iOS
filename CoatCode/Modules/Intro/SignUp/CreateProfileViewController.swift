@@ -72,6 +72,7 @@ extension CreateProfileViewController {
         )
 
         profileImageView.rx.tapGesture()
+            .when(.recognized)
             .flatMapLatest { _ in Observable.create(imagePicker) }
             .compactMap { $0[.originalImage] as? UIImage }
             .bind { image in
@@ -86,7 +87,7 @@ extension CreateProfileViewController {
 // MARK: - Configure UI
 extension CreateProfileViewController {
     func setProfileImageView() {
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.roundCorners(.allCorners, radius: profileImageView.frame.width)
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         profileImageView.clipsToBounds = true

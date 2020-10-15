@@ -11,9 +11,9 @@ import Foundation
 struct Token: Codable {
     var tokenType: String
     var accessToken: String
-    var expiresAt: String
+    var expiresAt: Date
     var refreshToken: String
-    var refreshTokenExpiresAt: String
+    var refreshTokenExpiresAt: Date
     
     private enum CodingKeys: String, CodingKey {
         case tokenType = "token_type"

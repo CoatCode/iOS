@@ -29,7 +29,7 @@ struct Post: Codable {
         case title
         case content
         case imageURLs = "image_urls"
-        case likedPeoples = "liked_peoples"
+        case likedPeoples = "liked_people"
         case likeCount = "like_count"
         case commentCount = "comment_count"
         case viewCount = "view_count"

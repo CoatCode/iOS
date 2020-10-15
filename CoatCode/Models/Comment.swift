@@ -16,7 +16,7 @@ struct Comment: Codable {
     var createdAt: Date // 생성날짜
     
     private enum CodingKeys: String, CodingKey {
-        case id
+        case id = "comment_id"
         case owner
         case content
         case createdAt = "created_at"

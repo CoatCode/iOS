@@ -67,7 +67,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     func writeComment(postId: Int, content: String) -> Single<Void> {
         return requestWithoutMapping(.writeComment(postId: postId, content: content))
     }
-        
+    
     func postComments(postId: Int) -> Single<[Comment]> {
         return requestArray(.postComments(postId: postId), type: Comment.self)
     }
@@ -84,9 +84,9 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestArray(.searchPost(page: page, query: query), type: Post.self)
     }
     
-//    func searchProduct() {
-//        return requestArray(.searchProduct(page: <#T##Int#>, query: <#T##String#>), type: <#T##(Decodable & Encodable).Protocol#>)
-//    }
+    //    func searchProduct() {
+    //        return requestArray(.searchProduct(page: <#T##Int#>, query: <#T##String#>), type: <#T##(Decodable & Encodable).Protocol#>)
+    //    }
     
     func searchUser(page: Int, query: String) -> Single<[User]> {
         return requestArray(.searchUser(page: page, query: query), type: User.self)
@@ -125,13 +125,13 @@ extension CoatCodeService {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return request(target)
-            .map(T.self, atKeyPath: "", using: decoder)
+            .map(T.self, using: decoder)
     }
     
     private func requestArray<T: Codable>(_ target: CoatCodeAPI, type: T.Type) -> Single<[T]> {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return request(target)
-            .map([T].self, atKeyPath: "", using: decoder)
+            .map([T].self, using: decoder)
     }
 }

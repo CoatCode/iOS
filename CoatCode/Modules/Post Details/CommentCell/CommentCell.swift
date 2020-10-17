@@ -19,12 +19,17 @@ class CommentCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var createTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        profileImageView.roundCorners(.allCorners, radius: 0.5 * profileImageView.frame.width)
+        
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
     }
-
+    
     func bind(to viewModel: CommentCellViewModel) {
         viewModel.writerName.asDriver().drive(nameLabel.rx.text).disposed(by: disposeBag)
         
@@ -40,5 +45,10 @@ class CommentCell: UICollectionViewCell {
             }).disposed(by: disposeBag)
         
         viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
+        
+        self.moreButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                //                self?.showAler
+            }).disposed(by: disposeBag)
     }
 }

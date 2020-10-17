@@ -4,64 +4,83 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentCell" id="ie8-w4-yt6" customClass="CommentCell" customModule="CoatCode" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentCell" id="qVk-jy-7g9" customClass="CommentCell" customModule="CoatCode" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TLK-89-q7T">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Rn-EL-QCQ">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yu3-w8-3F5">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TsZ-4c-os1">
                         <rect key="frame" x="15" y="10" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Nbb-C5-pk6"/>
-                            <constraint firstAttribute="height" constant="40" id="on1-5m-auk"/>
+                            <constraint firstAttribute="width" constant="40" id="5Ru-O4-KZj"/>
+                            <constraint firstAttribute="height" constant="40" id="G8J-xw-Udu"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41S-he-2Vt">
-                        <rect key="frame" x="63" y="10" width="37.5" height="17"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.7960071690035182" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5R-OH-dJH">
+                        <rect key="frame" x="63" y="10" width="40" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" name="Signature"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-GX-ept">
-                        <rect key="frame" x="103.5" y="13.5" width="22" height="10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.7960071690035182" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5Y-JX-3rP">
+                        <rect key="frame" x="108" y="11" width="34" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWO-sI-LTR">
-                        <rect key="frame" x="63" y="30" width="27" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.7960071690035182" colorSpace="calibratedRGB"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-gC-WZl">
+                        <rect key="frame" x="345" y="10" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="Nqk-zL-FH5"/>
+                            <constraint firstAttribute="height" constant="15" id="zWO-a4-wYt"/>
+                        </constraints>
+                        <state key="normal" image="SmallMore_Icon"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1G-ro-4wT">
+                        <rect key="frame" x="63" y="33" width="297" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <color key="textColor" name="Signature"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="41S-he-2Vt" firstAttribute="leading" secondItem="yu3-w8-3F5" secondAttribute="trailing" constant="8" id="0tm-uI-vKf"/>
-                    <constraint firstItem="1VB-GX-ept" firstAttribute="centerY" secondItem="41S-he-2Vt" secondAttribute="centerY" id="5EZ-tE-xpH"/>
-                    <constraint firstItem="yu3-w8-3F5" firstAttribute="centerY" secondItem="TLK-89-q7T" secondAttribute="centerY" id="dNL-wE-Fe9"/>
-                    <constraint firstItem="41S-he-2Vt" firstAttribute="top" secondItem="yu3-w8-3F5" secondAttribute="top" id="jrZ-cH-5yf"/>
-                    <constraint firstItem="yu3-w8-3F5" firstAttribute="leading" secondItem="TLK-89-q7T" secondAttribute="leading" constant="15" id="l6h-lw-47N"/>
-                    <constraint firstItem="jWO-sI-LTR" firstAttribute="leading" secondItem="41S-he-2Vt" secondAttribute="leading" id="tue-5e-GMt"/>
-                    <constraint firstItem="jWO-sI-LTR" firstAttribute="top" secondItem="41S-he-2Vt" secondAttribute="bottom" constant="3" id="uXK-GS-j9S"/>
-                    <constraint firstItem="1VB-GX-ept" firstAttribute="leading" secondItem="41S-he-2Vt" secondAttribute="trailing" constant="3" id="zCm-N2-e2N"/>
+                    <constraint firstItem="TsZ-4c-os1" firstAttribute="leading" secondItem="0Rn-EL-QCQ" secondAttribute="leading" constant="15" id="1WR-z6-nzR"/>
+                    <constraint firstItem="TsZ-4c-os1" firstAttribute="top" secondItem="0Rn-EL-QCQ" secondAttribute="top" constant="10" id="3WZ-2u-5Te"/>
+                    <constraint firstItem="R5Y-JX-3rP" firstAttribute="centerY" secondItem="f5R-OH-dJH" secondAttribute="centerY" id="A3e-H6-QXN"/>
+                    <constraint firstItem="R5Y-JX-3rP" firstAttribute="leading" secondItem="f5R-OH-dJH" secondAttribute="trailing" constant="5" id="BeZ-Mb-ARR"/>
+                    <constraint firstItem="i1G-ro-4wT" firstAttribute="leading" secondItem="f5R-OH-dJH" secondAttribute="leading" id="F8b-6e-uPo"/>
+                    <constraint firstItem="i1G-ro-4wT" firstAttribute="top" secondItem="f5R-OH-dJH" secondAttribute="bottom" constant="5" id="GXA-lG-dDx"/>
+                    <constraint firstAttribute="bottom" secondItem="i1G-ro-4wT" secondAttribute="bottom" constant="10" id="Odl-VC-O1L"/>
+                    <constraint firstAttribute="trailing" secondItem="dyi-gC-WZl" secondAttribute="trailing" constant="15" id="WnO-A8-aiD"/>
+                    <constraint firstItem="f5R-OH-dJH" firstAttribute="leading" secondItem="TsZ-4c-os1" secondAttribute="trailing" constant="8" id="a62-md-nTH"/>
+                    <constraint firstItem="f5R-OH-dJH" firstAttribute="top" secondItem="TsZ-4c-os1" secondAttribute="top" id="eKw-aX-con"/>
+                    <constraint firstItem="dyi-gC-WZl" firstAttribute="top" secondItem="0Rn-EL-QCQ" secondAttribute="top" constant="10" id="hWb-3Y-Xhi"/>
+                    <constraint firstItem="i1G-ro-4wT" firstAttribute="trailing" secondItem="dyi-gC-WZl" secondAttribute="trailing" id="jfP-Ug-emj"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="374" height="50"/>
             <connections>
-                <outlet property="contentLabel" destination="jWO-sI-LTR" id="1PW-QC-zoD"/>
-                <outlet property="createTimeLabel" destination="1VB-GX-ept" id="8X7-8w-Y5M"/>
-                <outlet property="nameLabel" destination="41S-he-2Vt" id="Xbj-1N-ptJ"/>
-                <outlet property="profileImageView" destination="yu3-w8-3F5" id="tH3-JL-K0u"/>
+                <outlet property="contentLabel" destination="i1G-ro-4wT" id="Y4K-4Y-ual"/>
+                <outlet property="createTimeLabel" destination="R5Y-JX-3rP" id="qk3-5Q-LLn"/>
+                <outlet property="moreButton" destination="dyi-gC-WZl" id="Hvb-GT-xqt"/>
+                <outlet property="nameLabel" destination="f5R-OH-dJH" id="AaH-X6-are"/>
+                <outlet property="profileImageView" destination="TsZ-4c-os1" id="LoL-W8-ONq"/>
             </connections>
-            <point key="canvasLocation" x="258.69565217391306" y="334.82142857142856"/>
+            <point key="canvasLocation" x="258.69565217391306" y="500.89285714285711"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="SmallMore_Icon" width="15" height="15"/>
+        <namedColor name="Signature">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

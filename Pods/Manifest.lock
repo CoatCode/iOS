@@ -79,6 +79,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SkeletonView (1.10.0)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - RxFlow
   - RxGesture
   - RxSwift
+  - SkeletonView
   - SwiftMessages
   - XLPagerTabStrip
 
@@ -123,6 +125,7 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - SkeletonView
     - SwiftMessages
     - XLPagerTabStrip
 
@@ -145,9 +148,10 @@ SPEC CHECKSUMS:
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 38e9b2556b0a4eb14b21c679e8896a3071d2cc7c
+PODFILE CHECKSUM: 57eb3a2f801ba807fbf7c90a52f09558f7c878f5
 
 COCOAPODS: 1.9.3

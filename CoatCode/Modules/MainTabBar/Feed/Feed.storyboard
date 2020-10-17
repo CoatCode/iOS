@@ -19,8 +19,8 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-sm-PJs">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FHz-fC-Rr9">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FHz-fC-Rr9">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -30,12 +30,11 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gFt-tb-qAM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gFt-tb-qAM" firstAttribute="trailing" secondItem="3jS-sm-PJs" secondAttribute="trailing" id="OGg-jY-yVr"/>
-                            <constraint firstItem="gFt-tb-qAM" firstAttribute="bottom" secondItem="3jS-sm-PJs" secondAttribute="bottom" id="Tke-N7-gLq"/>
-                            <constraint firstItem="3jS-sm-PJs" firstAttribute="leading" secondItem="gFt-tb-qAM" secondAttribute="leading" id="egW-zo-VCp"/>
-                            <constraint firstItem="3jS-sm-PJs" firstAttribute="top" secondItem="gFt-tb-qAM" secondAttribute="top" id="pQs-G6-sox"/>
+                            <constraint firstItem="3jS-sm-PJs" firstAttribute="trailing" secondItem="gFt-tb-qAM" secondAttribute="trailing" id="FZd-K0-aWZ"/>
+                            <constraint firstItem="3jS-sm-PJs" firstAttribute="top" secondItem="gFt-tb-qAM" secondAttribute="top" id="aD1-4B-aRe"/>
+                            <constraint firstItem="3jS-sm-PJs" firstAttribute="bottom" secondItem="gFt-tb-qAM" secondAttribute="bottom" id="hBS-hB-tIj"/>
+                            <constraint firstItem="3jS-sm-PJs" firstAttribute="leading" secondItem="gFt-tb-qAM" secondAttribute="leading" id="mKk-iX-peW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -54,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="poc-8u-KRl"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmN-Qi-SRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="otd-W3-L5z"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LI9-hC-gud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -85,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngg-Dt-dh2">
-                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="685"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="owG-Xv-zEe" customClass="ButtonBarView" customModule="XLPagerTabStrip">
                                 <rect key="frame" x="0.0" y="88" width="414" height="40"/>
@@ -103,7 +102,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d4A-Db-Dc6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="owG-Xv-zEe" firstAttribute="leading" secondItem="5eO-hE-VzZ" secondAttribute="leading" id="051-Qh-DWS"/>
                             <constraint firstItem="owG-Xv-zEe" firstAttribute="trailing" secondItem="5eO-hE-VzZ" secondAttribute="trailing" id="7c4-bY-6bG"/>
@@ -111,7 +110,7 @@
                             <constraint firstItem="ngg-Dt-dh2" firstAttribute="top" secondItem="owG-Xv-zEe" secondAttribute="bottom" id="Pci-qJ-jK6"/>
                             <constraint firstItem="ngg-Dt-dh2" firstAttribute="leading" secondItem="5eO-hE-VzZ" secondAttribute="leading" id="YWk-Q0-dJT"/>
                             <constraint firstItem="ngg-Dt-dh2" firstAttribute="trailing" secondItem="5eO-hE-VzZ" secondAttribute="trailing" id="lFU-XU-7cL"/>
-                            <constraint firstAttribute="bottom" secondItem="ngg-Dt-dh2" secondAttribute="bottom" id="urx-vl-Beg"/>
+                            <constraint firstItem="d4A-Db-Dc6" firstAttribute="bottom" secondItem="ngg-Dt-dh2" secondAttribute="bottom" id="liw-xE-Jtn"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -129,12 +128,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,8 +14,10 @@ import RxSwift
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
     func handleResponse() -> Single<Element> {
         return flatMap { response in
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             // 토큰 재발급 받았을 때 토큰 변경함
-            if let newToken = try? response.map(Token.self) {
+            if let newToken = try? response.map(Token.self, using: decoder) {
                 AuthManager.setToken(token: newToken)
             }
             

@@ -19,8 +19,8 @@ class PostDetailCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var likeImageView: UIImageView!
+    @IBOutlet weak var shareImageView: UIImageView!
     
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
@@ -34,6 +34,7 @@ class PostDetailCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.slideshow.contentScaleMode = .scaleAspectFill
     }
     
     func bind(to viewModel: PostDetailCellViewModel) {
@@ -51,7 +52,7 @@ class PostDetailCell: UICollectionViewCell {
         
         viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
         
-        viewModel.commentCount.asDriver()
+        viewModel.likeCount.asDriver()
             .drive(onNext: { [weak self] count in
                 self?.likeCountLabel.text = "\(count ?? 0) Likes"
             }).disposed(by: disposeBag)
@@ -69,9 +70,9 @@ class PostDetailCell: UICollectionViewCell {
         viewModel.isLiked.asDriver()
             .drive(onNext: { [weak self] isLiked in
                 if isLiked ?? false {
-                    self?.likeButton.setImage(UIImage(named: "Like_Icon"), for: .normal) // Like
+                    self?.likeImageView.image = UIImage(named: "Like_Icon")
                 } else {
-                    self?.likeButton.setImage(UIImage(named: "UnLike_Icon"), for: .normal) // UnLike
+                    self?.likeImageView.image = UIImage(named: "UnLike_Icon")
                 }
             }).disposed(by: disposeBag)
         
@@ -81,5 +82,17 @@ class PostDetailCell: UICollectionViewCell {
             .drive(onNext: { [weak self] date in
                 self?.createdTimeLabel.text = date?.timeAgoDisplay()
             }).disposed(by: disposeBag)
+        
+        self.likeImageView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                if viewModel.isLiked.value ?? false {
+                    viewModel.unLike()
+                } else {
+                    viewModel.like()
+                }
+            }).disposed(by: disposeBag)
+        
+        
     }
 }

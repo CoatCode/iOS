@@ -22,11 +22,12 @@ class FeedCellViewModel {
     let createdTime = BehaviorRelay<Date?>(value: nil)
     
     let disposeBag = DisposeBag()
-    var services: CoatCodeService!
+    var services: CoatCodeService
     var post: Post
     
-    init(with post: Post) {
+    init(post: Post, services: CoatCodeService) {
         self.post = post
+        self.services = services
         
         self.profileName.accept(post.owner.username)
         self.profileImageUrl.accept(post.owner.profile)
@@ -38,42 +39,36 @@ class FeedCellViewModel {
         self.createdTime.accept(post.createdAt)
         
         // 좋아요 여부
-        guard let isLiked = post.likedPeoples?.contains(DatabaseManager.shared.getCurrentUser().id) else { return }
-        
-        if isLiked {
-            self.isLiked.accept(true)
+        if let isLiked = post.likedPeoples?.contains(DatabaseManager.shared.getCurrentUser().id) {
+            self.isLiked.accept(isLiked)
         } else {
             self.isLiked.accept(false)
         }
     }
     
     func like() {
-        self.isLiked.accept(true)
-        self.likeCount.accept((self.likeCount.value ?? 0) + 1)
-        self.post.likeCount = (self.likeCount.value ?? 0) + 1
-
         self.services.likePost(postId: post.id)
             .asObservable()
-            .subscribe(onNext: { _ in
-                
-            }, onError: { _ in
-                
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.isLiked.accept(true)
+                self.likeCount.accept((self.likeCount.value ?? 0) + 1)
+                self.post.likeCount = (self.likeCount.value ?? 0) + 1
+            }, onError: { [weak self] error in
+                self?.unLike()
             }).disposed(by: disposeBag)
     }
     
     func unLike() {
-        self.isLiked.accept(false)
-        self.likeCount.accept((self.likeCount.value ?? 0) - 1)
-        self.post.likeCount = (self.likeCount.value ?? 0) - 1
-        
-        // unlike service
         self.services.unlikePost(postId: post.id)
             .asObservable()
-            .subscribe(onNext: { _ in
-                
-            }, onError: { _ in
-                
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.isLiked.accept(false)
+                self.likeCount.accept((self.likeCount.value ?? 0) - 1)
+                self.post.likeCount = (self.likeCount.value ?? 0) - 1
+            }, onError: { [weak self] error in
+                self?.like()
             }).disposed(by: disposeBag)
     }
-    
 }

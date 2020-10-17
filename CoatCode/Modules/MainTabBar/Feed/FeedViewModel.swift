@@ -23,7 +23,7 @@ class FeedViewModel: BaseViewModel {
         let selection: Driver<FeedCellViewModel>
     }
     
-    struct Output{
+    struct Output {
         let items: BehaviorRelay<[FeedCellViewModel]>
     }
     
@@ -81,7 +81,7 @@ extension FeedViewModel {
         
         return request
             .trackActivity(loading)
-            .map { $0.map { FeedCellViewModel(with: $0) } }
+            .map { $0.map { FeedCellViewModel(post: $0, services: self.services) } }
     }
     
 }

@@ -22,15 +22,15 @@ class FeedCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var likeImage: UIImageView!
+    @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var likeCountLabel: UILabel!
-    @IBOutlet weak var commentImageView: UIImageView! // 버튼으로 수정 예정
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var viewCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.profileImageView.roundCorners(.allCorners, radius: self.profileImageView.frame.width / 2)
     }
     
     func bind(to viewModel: FeedCellViewModel) {
@@ -53,9 +53,9 @@ class FeedCell: UICollectionViewCell {
         viewModel.isLiked.asDriver()
             .drive(onNext: { [weak self] isLiked in
                 if isLiked ?? false {
-                    self?.likeImage.image = UIImage(named: "Like_Icon") // Like
+                    self?.likeImageView.image = UIImage(named: "Like_Icon") // Like
                 } else {
-                    self?.likeImage.image = UIImage(named: "Like_Icon") // UnLike
+                    self?.likeImageView.image = UIImage(named: "UnLike_Icon") // UnLike
                 }
             }).disposed(by: disposeBag)
         
@@ -79,7 +79,8 @@ class FeedCell: UICollectionViewCell {
                 self?.createdTimeLabel.text = date?.timeAgoDisplay()
             }).disposed(by: disposeBag)
         
-        self.likeImage.rx.tapGesture()
+        self.likeImageView.rx.tapGesture()
+            .when(.recognized)
             .subscribe(onNext: { _ in
                 if viewModel.isLiked.value ?? false {
                     viewModel.unLike()

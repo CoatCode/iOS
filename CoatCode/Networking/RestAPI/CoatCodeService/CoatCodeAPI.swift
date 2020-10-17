@@ -72,16 +72,16 @@ extension CoatCodeAPI: BaseAPI {
             return "/feed/post/\(postId)"
             
         case .likedPeoples(let postId):
-            return "/post/\(postId)/liked-peoples"
+            return "/feed/post/\(postId)/liked-peoples"
         case .likePost(let postId),
              .isLikedPost(let postId),
              .unlikePost(let postId):
-            return "/post/\(postId)/like"
+            return "feed/post/\(postId)/like"
             
         case .writeComment(let postId, _):
-            return "/post/\(postId)/comment"
+            return "/feed/post/\(postId)/comment"
         case .postComments(let postId):
-            return "/post/\(postId)/comments"
+            return "/feed/post/\(postId)/comments"
         case .modifyComment(let postId, let commentId, _),
              .deleteComment(let postId, let commentId):
             return "/feed/post/\(postId)/comment/\(commentId)"
@@ -143,7 +143,7 @@ extension CoatCodeAPI: BaseAPI {
              .modifyPost(_, let images, let title, let content, let tag):
             var formData = [MultipartFormData]()
             
-            for (index, image) in images.enumerated() {
+            images.enumerated().forEach { index, image in
                 if let data = image.jpegData(compressionQuality: 1.0) {
                     formData.append(MultipartFormData(provider: .data(data), name: "image\(index)", fileName: "image\(index).jpeg", mimeType: "image/jpeg"))
                 }

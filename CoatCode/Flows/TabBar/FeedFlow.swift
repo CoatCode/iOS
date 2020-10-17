@@ -92,7 +92,7 @@ extension FeedFlow {
 extension FeedFlow {
     private func navigateToPostDetail(with post: Post) -> FlowContributors {
         let viewModel = PostDetailViewModel(with: post)
-        let viewController = PostDetailViewController.instantiate(withViewModel: viewModel)
+        let viewController = PostDetailViewController.instantiate(withViewModel: viewModel, andServices: self.services)
         
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))

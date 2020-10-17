@@ -30,6 +30,10 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        collectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,4 +71,13 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
             self?.footerRefreshTrigger.onNext(())
         })
     }
+}
+
+extension AllFeedViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = collectionView.bounds.width
+        return CGSize(width: cellWidth, height: cellWidth * 0.984) // 1 : 0.984 -> 게시물 비율
+    }
+
 }

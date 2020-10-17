@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-wD-7QI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kc1-2o-O0Q">
                                     <size key="itemSize" width="128" height="128"/>
@@ -29,29 +29,43 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D0-o2-1ZT">
-                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHH-U6-iAt">
-                                        <rect key="frame" x="14" y="11" width="350" height="18.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UD9-P0-MgT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="qxJ-Vs-Ncy"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력해주세요..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHH-U6-iAt">
+                                        <rect key="frame" x="14" y="5" width="342" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4fv-86-qyz"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzX-Bq-bHj">
-                                        <rect key="frame" x="378" y="9" width="22" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzX-Bq-bHj">
+                                        <rect key="frame" x="370" y="10" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="SbW-uf-8jO"/>
-                                            <constraint firstAttribute="height" constant="22" id="mxI-zI-yuB"/>
+                                            <constraint firstAttribute="width" constant="30" id="SbW-uf-8jO"/>
+                                            <constraint firstAttribute="height" constant="30" id="mxI-zI-yuB"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="Plane_Icon"/>
+                                        <state key="normal" image="Plane_Icon"/>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="26M-Iw-D2s"/>
+                                    <constraint firstAttribute="height" constant="50" id="26M-Iw-D2s"/>
+                                    <constraint firstItem="UD9-P0-MgT" firstAttribute="top" secondItem="8D0-o2-1ZT" secondAttribute="top" id="ECv-Vv-uvu"/>
+                                    <constraint firstAttribute="trailing" secondItem="UD9-P0-MgT" secondAttribute="trailing" id="EpL-d4-6S0"/>
                                     <constraint firstItem="lHH-U6-iAt" firstAttribute="centerY" secondItem="8D0-o2-1ZT" secondAttribute="centerY" id="X2C-xI-i8p"/>
                                     <constraint firstItem="zzX-Bq-bHj" firstAttribute="leading" secondItem="lHH-U6-iAt" secondAttribute="trailing" constant="14" id="d1t-d3-sYb"/>
                                     <constraint firstItem="zzX-Bq-bHj" firstAttribute="centerY" secondItem="8D0-o2-1ZT" secondAttribute="centerY" id="eB3-1L-7Xz"/>
                                     <constraint firstAttribute="trailing" secondItem="zzX-Bq-bHj" secondAttribute="trailing" constant="14" id="eZU-fF-hsG"/>
                                     <constraint firstItem="lHH-U6-iAt" firstAttribute="leading" secondItem="8D0-o2-1ZT" secondAttribute="leading" constant="14" id="nqZ-SX-2cW"/>
+                                    <constraint firstItem="UD9-P0-MgT" firstAttribute="leading" secondItem="8D0-o2-1ZT" secondAttribute="leading" id="rNl-po-oqu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -62,9 +76,9 @@
                             <constraint firstItem="Yc1-d1-ryF" firstAttribute="bottom" secondItem="8D0-o2-1ZT" secondAttribute="bottom" id="3CF-SY-sCP"/>
                             <constraint firstItem="Yc1-d1-ryF" firstAttribute="trailing" secondItem="FqM-wD-7QI" secondAttribute="trailing" id="DJI-g6-vUY"/>
                             <constraint firstItem="FqM-wD-7QI" firstAttribute="leading" secondItem="Yc1-d1-ryF" secondAttribute="leading" id="abU-ZG-NSr"/>
-                            <constraint firstItem="Yc1-d1-ryF" firstAttribute="bottom" secondItem="FqM-wD-7QI" secondAttribute="bottom" id="h1R-hn-aIm"/>
                             <constraint firstItem="Yc1-d1-ryF" firstAttribute="trailing" secondItem="8D0-o2-1ZT" secondAttribute="trailing" id="tBz-9G-pQn"/>
                             <constraint firstItem="FqM-wD-7QI" firstAttribute="top" secondItem="Yc1-d1-ryF" secondAttribute="top" id="vgh-uP-fXU"/>
+                            <constraint firstItem="8D0-o2-1ZT" firstAttribute="top" secondItem="FqM-wD-7QI" secondAttribute="bottom" id="zDd-RJ-szE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -80,6 +94,9 @@
     </scenes>
     <resources>
         <image name="Plane_Icon" width="32" height="31.5"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

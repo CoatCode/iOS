@@ -20,9 +20,18 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
+    var dataSource: RxCollectionViewSectionedReloadDataSource<PostDetailSection>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionView.register(UINib(nibName: "PostDetailCell", bundle: nil), forCellWithReuseIdentifier: "PostDetailCell")
+        collectionView.register(UINib(nibName: "CommentCell", bundle: nil), forCellWithReuseIdentifier: "CommentCell")
+        
+//        if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        }
+        
     }
     
     override func bindViewModel() {
@@ -42,7 +51,7 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
+        self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
             switch item {
             case .postDetailItem(let viewModel):
                 let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "PostDetailCell", for: indexPath) as? PostDetailCell)!
@@ -59,9 +68,9 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        
+        output.sendButtonEnabled
+            .drive(self.sendButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
-    
-    
 
 }

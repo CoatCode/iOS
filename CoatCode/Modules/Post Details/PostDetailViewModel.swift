@@ -12,8 +12,7 @@ import RxCocoa
 class PostDetailViewModel: BaseViewModel {
     
     let post: BehaviorRelay<Post>
-    let comment = BehaviorRelay<[Comment]>(value: [Comment(id: -1, owner: User(), content: "", createdAt: Date())])
-    
+    let comments = PublishSubject<[Comment]>()
     let commentText = BehaviorRelay(value: "")
     
     init(with post: Post) {
@@ -26,6 +25,7 @@ class PostDetailViewModel: BaseViewModel {
     
     struct Output {
         let items: Observable<[PostDetailSection]>
+        let sendButtonEnabled: Driver<Bool>
     }
     
 }
@@ -38,29 +38,39 @@ extension PostDetailViewModel {
                 self?.writeCommentRequest()
             }).disposed(by: disposeBag)
         
-        let items = post.map { post -> [PostDetailSection] in
+        
+        post.subscribe(onNext: { [weak self] _ in
+            self?.getCommentsRequest()
+        }).disposed(by: disposeBag)
+        
+        
+//        post.flatMapLatest { [weak self] post -> Observable<[Comment]> in
+//            guard let self = self else { return Observable.just([]) }
+//            return self.services.postComments(postId: post.id)
+//                .trackActivity(self.loading)
+//        }.subscribe(onNext: { [weak self] comments in
+//            self?.comments.onNext(comments)
+//        }).disposed(by: disposeBag)
+        
+        let items = comments.map { comments -> [PostDetailSection] in
             var items: [PostDetailSectionItem] = []
             
-            // Post
-            let postDetailCellViewModel = PostDetailCellViewModel(with: self.post.value)
+            let postDetailCellViewModel = PostDetailCellViewModel(post: self.post.value, services: self.services)
             items.append(PostDetailSectionItem.postDetailItem(viewModel: postDetailCellViewModel))
             
-            // Comment
-            self.services.postComments(postId: post.id)
-                .trackActivity(self.loading)
-                .subscribe(onNext: { [weak self] comment in
-                    self?.comment.accept(comment)
-                }).disposed(by: self.disposeBag)
-            
-            let comments = self.comment.value.map { CommentCellViewModel(with: $0) }
-            comments.forEach { (cellViewModel) in
+            let commentCellViewModels = comments.map { CommentCellViewModel(with: $0) }
+            commentCellViewModels.forEach { (cellViewModel) in
                 items.append(PostDetailSectionItem.commentItem(viewModel: cellViewModel))
             }
             
-            return [PostDetailSection.post(title: "", items: items)] 
+            return [PostDetailSection.post(title: "", items: items)]
         }
         
-        return Output(items: items)
+        let sendButtonEnabled = BehaviorRelay.combineLatest(self.commentText, self.loading.asObservable()) {
+            return !$0.isEmpty && !$1
+        }.asDriver(onErrorJustReturn: false)
+        
+        return Output(items: items, sendButtonEnabled: sendButtonEnabled)
     }
 }
 
@@ -69,11 +79,19 @@ extension PostDetailViewModel {
     func writeCommentRequest() {
         self.services.writeComment(postId: self.post.value.id, content: self.commentText.value)
             .trackActivity(self.loading)
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
                 print("write comment successfully")
+                self?.getCommentsRequest()
             }, onError: { [weak self] error in
                 self?.error.onNext(error as! ErrorResponse)
             }).disposed(by: disposeBag)
     }
     
+    func getCommentsRequest() {
+        self.services.postComments(postId: self.post.value.id)
+            .trackActivity(self.loading)
+            .subscribe(onNext: { [weak self] comments in
+                self?.comments.onNext(comments)
+            }).disposed(by: disposeBag)
+    }
 }

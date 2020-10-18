@@ -9,10 +9,9 @@
 import Foundation
 
 struct Comment: Codable {
-    
     var id: Int // 댓글 아이디
     var owner: User // 작성자
-    var content: String? // 댓글 내용
+    var content: String // 댓글 내용
     var createdAt: Date // 생성날짜
     
     private enum CodingKeys: String, CodingKey {
@@ -21,16 +20,4 @@ struct Comment: Codable {
         case content
         case createdAt = "created_at"
     }
-    
 }
-
-//{
-//    "comment_id": 0,
-//    "owner": {
-//        "email": "",
-//        "username": "user1",
-//        "profile": ""
-//    },
-//    "content": "",
-//    "created_at": ""
-//}

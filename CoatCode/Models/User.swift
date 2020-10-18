@@ -26,5 +26,4 @@ class User: Object, Codable {
         case followers
         case following
     }
-    
 }

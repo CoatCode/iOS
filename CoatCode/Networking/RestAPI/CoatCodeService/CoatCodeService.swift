@@ -42,7 +42,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     }
     
     func modifyPost(postId: Int, images: [UIImage], title: String, content: String, tag: String) -> Single<Void> {
-        return requestWithoutMapping(.modifyPost(postId: postId, images: images, title: title, content: content, tag: tag))
+        return requestWithoutMapping(.editPost(postId: postId, images: images, title: title, content: content, tag: tag))
     }
     
     func deletePost(postId: Int) -> Single<Void> {
@@ -50,7 +50,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     }
     
     func likedPeoples(postId: Int) -> Single<Void> {
-        return requestWithoutMapping(.likedPeoples(postId: postId))
+        return requestWithoutMapping(.likes(postId: postId))
     }
     
     func likePost(postId: Int) -> Single<Void> {
@@ -69,11 +69,11 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
     }
     
     func postComments(postId: Int) -> Single<[Comment]> {
-        return requestArray(.postComments(postId: postId), type: Comment.self)
+        return requestArray(.comments(postId: postId), type: Comment.self)
     }
     
     func modifyComment(postId: Int, commentId: Int, content: String) -> Single<Void> {
-        return requestWithoutMapping(.modifyComment(postId: postId, commentId: commentId, content: content))
+        return requestWithoutMapping(.editComment(postId: postId, commentId: commentId, content: content))
     }
     
     func deleteComment(postId: Int, commentId: Int) -> Single<Void> {

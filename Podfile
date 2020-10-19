@@ -10,18 +10,27 @@ target 'CoatCode' do
   pod 'RxSwift'
   pod 'RxCocoa'
   
-  # RxSwiftCommunity
+  # Rx Extensions
   pod 'RxFlow'
-  pod "RxGesture"
-  pod "RxDataSources"
+  pod 'RxGesture'
+  pod 'RxDataSources'
 
   # Networking
   pod 'Alamofire'
   pod 'Moya/RxSwift'
   
-  # Data
+  # Tools
+  pod 'Reusable'
+  
+  # Image
+  pod 'Kingfisher'
+  
+  # DataBase
   pod 'RealmSwift'
+  
+  # Security
   pod 'KeychainAccess'
+  pod 'CryptoSwift'
 
   # UI
   pod 'NVActivityIndicatorView/Extended'
@@ -29,11 +38,6 @@ target 'CoatCode' do
   pod 'XLPagerTabStrip'
   pod 'KafkaRefresh'
   pod 'ImageSlideshow/Kingfisher'
-  pod "SkeletonView"
-  
-  # etc
-  pod 'CryptoSwift'
-  pod 'Reusable'
-  pod 'Kingfisher'
-  
+  pod 'SkeletonView'
+  pod 'RxTags'
 end

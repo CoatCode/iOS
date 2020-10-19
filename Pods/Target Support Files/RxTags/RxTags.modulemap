@@ -1,0 +1,6 @@
+framework module RxTags {
+  umbrella header "RxTags-umbrella.h"
+
+  export *
+  module * { export * }
+}

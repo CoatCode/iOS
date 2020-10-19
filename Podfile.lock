@@ -79,10 +79,15 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - RxTags (0.3.0):
+    - RxCocoa
+    - RxSwift
+    - Tags
   - SkeletonView (1.10.0)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
+  - Tags (0.3.1)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
@@ -101,6 +106,7 @@ DEPENDENCIES:
   - RxFlow
   - RxGesture
   - RxSwift
+  - RxTags
   - SkeletonView
   - SwiftMessages
   - XLPagerTabStrip
@@ -125,8 +131,10 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - RxTags
     - SkeletonView
     - SwiftMessages
+    - Tags
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
@@ -148,10 +156,12 @@ SPEC CHECKSUMS:
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxTags: 100689fecd5002276b0bfcc7513a0d07a692a16d
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
+  Tags: 77420a200531fb338563b07279858edb51d080c5
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 57eb3a2f801ba807fbf7c90a52f09558f7c878f5
+PODFILE CHECKSUM: 18fad1958cfe99d82ef9357ae41696c55faf8eb4
 
 COCOAPODS: 1.9.3

@@ -97,6 +97,7 @@
 		F2EC1A2525025045000FC848 /* AllFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2425025045000FC848 /* AllFeedViewController.swift */; };
 		F2EC1A2725025058000FC848 /* FollowFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */; };
 		F2EC1A2925025166000FC848 /* PopularFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */; };
+		F2ECF8DD253E667800F0E830 /* FeedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECF8DC253E667800F0E830 /* FeedSection.swift */; };
 		F2F71A53251C485A00B10371 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F71A52251C485A00B10371 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		F2EC1A2425025045000FC848 /* AllFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedViewController.swift; sourceTree = "<group>"; };
 		F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedViewController.swift; sourceTree = "<group>"; };
 		F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFeedViewController.swift; sourceTree = "<group>"; };
+		F2ECF8DC253E667800F0E830 /* FeedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSection.swift; sourceTree = "<group>"; };
 		F2F71A52251C485A00B10371 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,7 +244,9 @@
 		F21DF69B24DF9EA500F44B96 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				F2C90560250DB6D200B485BA /* Cell */,
+				F2ECF8DF253E671200F0E830 /* CommentPreviewCell */,
+				F2C90560250DB6D200B485BA /* PostCell */,
+				F2ECF8DC253E667800F0E830 /* FeedSection.swift */,
 				F2EC1A0F250203BA000FC848 /* Feed.storyboard */,
 				F21DF6B424DFA77A00F44B96 /* FeedViewController.swift */,
 				F2762A3D24EE949700CB6434 /* FeedViewModel.swift */,
@@ -614,13 +618,13 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		F2C90560250DB6D200B485BA /* Cell */ = {
+		F2C90560250DB6D200B485BA /* PostCell */ = {
 			isa = PBXGroup;
 			children = (
 				F2C90562250DB71400B485BA /* FeedCell.xib */,
 				F2C90561250DB71400B485BA /* FeedCell.swift */,
 			);
-			path = Cell;
+			path = PostCell;
 			sourceTree = "<group>";
 		};
 		F2D91C1124DAF17C00D36E17 /* BaseService */ = {
@@ -661,6 +665,13 @@
 				F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */,
 			);
 			path = FeedContent;
+			sourceTree = "<group>";
+		};
+		F2ECF8DF253E671200F0E830 /* CommentPreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommentPreviewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -863,6 +874,7 @@
 				F2C00F5E2535FD3200EAE60C /* UIView.swift in Sources */,
 				F24905E025047C0500BD86FF /* Configs.swift in Sources */,
 				F29B74342519F96700D7A669 /* PostDetailSection.swift in Sources */,
+				F2ECF8DD253E667800F0E830 /* FeedSection.swift in Sources */,
 				F260F140253205E4007C6188 /* ErrorResponse.swift in Sources */,
 				F25161102504BAEC00932004 /* SearchViewModel.swift in Sources */,
 			);

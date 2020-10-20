@@ -43,7 +43,7 @@ class BaseService<API: TargetType> {
             }
             .handleResponse()
             .filterSuccessfulStatusCodes()
-            .retry(2)
+//            .retry(2)
     }
 }
 

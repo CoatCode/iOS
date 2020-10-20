@@ -165,7 +165,7 @@ extension CoatCodeAPI: BaseAPI {
             
             images.enumerated().forEach { index, image in
                 if let data = image.jpegData(compressionQuality: 1.0) {
-                    formData.append(MultipartFormData(provider: .data(data), name: "image\(index)", fileName: "image\(index).jpeg", mimeType: "image/jpeg"))
+                    formData.append(.init(provider: .data(data), name: "image\(index)", fileName: "image\(index).jpeg", mimeType: "image/jpeg"))
                 }
             }
             

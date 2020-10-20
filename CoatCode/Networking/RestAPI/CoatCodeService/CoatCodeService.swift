@@ -17,15 +17,19 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestObject(.signIn(email: email, password: password.sha512()), type: Token.self)
     }
     
-    func signUp(email: String, password: String, username: String, profile: String?) -> Single<Void> {
-        return requestWithoutMapping(.signUp(email: email, password: password.sha512(), username: username, profile: profile))
+    func signUp(email: String, password: String, username: String, image: UIImage?) -> Single<Void> {
+        return requestWithoutMapping(.signUp(email: email, password: password.sha512(), username: username, image: image))
     }
     
     func profile() -> Single<User> {
         return requestObject(.profile, type: User.self)
     }
     
-    func writePost(images: [UIImage], title: String, content: String, tag: String) -> Single<Void> {
+    func userPosts(userId: Int) -> Single<[Post]> {
+        return requestArray(.userPosts(userId: userId), type: Post.self)
+    }
+    
+    func writePost(images: [UIImage], title: String, content: String?, tag: [String]?) -> Single<Void> {
         return requestWithoutMapping(.writePost(images: images, title: title, content: content, tag: tag))
     }
     
@@ -41,7 +45,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestArray(.popularFeedPosts(page: page), type: Post.self)
     }
     
-    func modifyPost(postId: Int, images: [UIImage], title: String, content: String, tag: String) -> Single<Void> {
+    func editPost(postId: Int, images: [UIImage], title: String, content: String?, tag: [String]?) -> Single<Void> {
         return requestWithoutMapping(.editPost(postId: postId, images: images, title: title, content: content, tag: tag))
     }
     
@@ -72,7 +76,7 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestArray(.comments(postId: postId), type: Comment.self)
     }
     
-    func modifyComment(postId: Int, commentId: Int, content: String) -> Single<Void> {
+    func editComment(postId: Int, commentId: Int, content: String) -> Single<Void> {
         return requestWithoutMapping(.editComment(postId: postId, commentId: commentId, content: content))
     }
     

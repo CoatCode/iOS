@@ -67,6 +67,9 @@
 		F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */; };
 		F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */; };
 		F2762A3E24EE949700CB6434 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A3D24EE949700CB6434 /* FeedViewModel.swift */; };
+		F277AD81253E693E005D30E9 /* CommentPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F277AD7F253E693E005D30E9 /* CommentPreviewCell.swift */; };
+		F277AD82253E693E005D30E9 /* CommentPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F277AD80253E693E005D30E9 /* CommentPreviewCell.xib */; };
+		F277AD85253E6989005D30E9 /* CommentPreviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F277AD84253E6989005D30E9 /* CommentPreviewCellViewModel.swift */; };
 		F278FF6524F28EA4001F27E9 /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F278FF6424F28EA4001F27E9 /* UIImagePickerController+Rx.swift */; };
 		F27A9B1724D0595200960043 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A9B1624D0595200960043 /* Intro.storyboard */; };
 		F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9B2B24D123AB00960043 /* AuthManager.swift */; };
@@ -166,6 +169,9 @@
 		F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratSubrayada-Regular.ttf"; sourceTree = "<group>"; };
 		F2762A3D24EE949700CB6434 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		F277AD7F253E693E005D30E9 /* CommentPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreviewCell.swift; sourceTree = "<group>"; };
+		F277AD80253E693E005D30E9 /* CommentPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentPreviewCell.xib; sourceTree = "<group>"; };
+		F277AD84253E6989005D30E9 /* CommentPreviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreviewCellViewModel.swift; sourceTree = "<group>"; };
 		F278FF6424F28EA4001F27E9 /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
 		F27A9B1624D0595200960043 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		F27A9B2B24D123AB00960043 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -670,6 +676,9 @@
 		F2ECF8DF253E671200F0E830 /* CommentPreviewCell */ = {
 			isa = PBXGroup;
 			children = (
+				F277AD80253E693E005D30E9 /* CommentPreviewCell.xib */,
+				F277AD7F253E693E005D30E9 /* CommentPreviewCell.swift */,
+				F277AD84253E6989005D30E9 /* CommentPreviewCellViewModel.swift */,
 			);
 			path = CommentPreviewCell;
 			sourceTree = "<group>";
@@ -746,6 +755,7 @@
 				F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */,
 				F24905DE2503A94600BD86FF /* Search.storyboard in Resources */,
 				F2EC1A14250204EB000FC848 /* Writing.storyboard in Resources */,
+				F277AD82253E693E005D30E9 /* CommentPreviewCell.xib in Resources */,
 				F2C90564250DB71400B485BA /* FeedCell.xib in Resources */,
 				F2EC1A12250204C2000FC848 /* Store.storyboard in Resources */,
 				F2EC1A1825020519000FC848 /* Settings.storyboard in Resources */,
@@ -830,6 +840,7 @@
 				F24E952324E82C27009B06BD /* TabBarFlow.swift in Sources */,
 				F2694A79252B542C007D8796 /* KeychainManager.swift in Sources */,
 				F264C9BA24D3F12E00CE0251 /* AuthService.swift in Sources */,
+				F277AD85253E6989005D30E9 /* CommentPreviewCellViewModel.swift in Sources */,
 				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,
 				F24905D52503527700BD86FF /* ProfileViewModel.swift in Sources */,
 				F25161172504F1FF00932004 /* PostDetailViewModel.swift in Sources */,
@@ -871,6 +882,7 @@
 				F2D7FCA6251A424D00AB3CEF /* PostDetailCell.swift in Sources */,
 				F21DF69624DD7B9900F44B96 /* DatabaseManager.swift in Sources */,
 				F265B70624E14EF1008F70A9 /* SignUpViewController.swift in Sources */,
+				F277AD81253E693E005D30E9 /* CommentPreviewCell.swift in Sources */,
 				F2C00F5E2535FD3200EAE60C /* UIView.swift in Sources */,
 				F24905E025047C0500BD86FF /* Configs.swift in Sources */,
 				F29B74342519F96700D7A669 /* PostDetailSection.swift in Sources */,

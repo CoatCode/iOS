@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import RxFlow
 
 class PostCellViewModel {
     
@@ -24,7 +25,7 @@ class PostCellViewModel {
     let commentCount = BehaviorRelay<Int?>(value: nil)
     let viewCount = BehaviorRelay<Int?>(value: nil)
     
-    let tag = BehaviorRelay<String?>(value: nil)
+    let tag = BehaviorRelay<[String]?>(value: nil)
     let createdTime = BehaviorRelay<Date?>(value: nil)
     
     let isLiked = BehaviorRelay<Bool?>(value: nil)
@@ -38,7 +39,7 @@ class PostCellViewModel {
         self.services = services
         
         self.username.accept(post.owner.username)
-        self.profileImageUrl.accept(post.owner.profile)
+        self.profileImageUrl.accept(post.owner.image)
         self.imageUrls.accept(post.imageURLs)
         self.title.accept(post.title)
         self.content.accept(post.content)
@@ -57,15 +58,15 @@ class PostCellViewModel {
     }
     
     func like() {
+        FeedbackManager.impactFeedback(style: .medium)
         self.services.likePost(postId: post.id)
             .asObservable()
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.isLiked.accept(true)
                 self.likeCount.accept((self.likeCount.value ?? 0) + 1)
-//                self.post.likeCount = (self.likeCount.value ?? 0) + 1
-            }, onError: { [weak self] error in
-//                self?.unLike()
+            }, onError: { error in
+                print(error)
             }).disposed(by: disposeBag)
     }
     
@@ -76,9 +77,8 @@ class PostCellViewModel {
                 guard let self = self else { return }
                 self.isLiked.accept(false)
                 self.likeCount.accept((self.likeCount.value ?? 0) - 1)
-//                self.post.likeCount = (self.likeCount.value ?? 0) - 1
-            }, onError: { [weak self] error in
-//                self?.like()
+            }, onError: { error in
+                print(error)
             }).disposed(by: disposeBag)
     }
     

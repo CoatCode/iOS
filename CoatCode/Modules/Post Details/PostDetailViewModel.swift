@@ -11,12 +11,12 @@ import RxCocoa
 
 class PostDetailViewModel: BaseViewModel {
     
-    let post: BehaviorRelay<Post>
+    let cellViewModel: BehaviorRelay<PostCellViewModel>
     let comments = PublishSubject<[Comment]>()
     let commentText = BehaviorRelay(value: "")
     
-    init(with post: Post) {
-        self.post = BehaviorRelay(value: post)
+    init(with cellViewModel: PostCellViewModel) {
+        self.cellViewModel = BehaviorRelay(value: cellViewModel)
     }
     
     struct Input {
@@ -38,8 +38,7 @@ extension PostDetailViewModel {
                 self?.writeCommentRequest()
             }).disposed(by: disposeBag)
         
-        
-        post.subscribe(onNext: { [weak self] _ in
+        cellViewModel.subscribe(onNext: { [weak self] cellViewModel in
             self?.getCommentsRequest()
         }).disposed(by: disposeBag)
         
@@ -55,9 +54,11 @@ extension PostDetailViewModel {
         let items = comments.map { comments -> [PostDetailSection] in
             var items: [PostDetailSectionItem] = []
             
-            let postDetailCellViewModel = PostDetailCellViewModel(post: self.post.value, services: self.services)
-            items.append(PostDetailSectionItem.postDetailItem(viewModel: postDetailCellViewModel))
+            // 게시물 viewModel
+            let postCellViewModel = self.cellViewModel
+            items.append(PostDetailSectionItem.postDetailItem(viewModel: postCellViewModel.value))
             
+            // 댓글 viewModel
             let commentCellViewModels = comments.map { CommentCellViewModel(with: $0) }
             commentCellViewModels.forEach { (cellViewModel) in
                 items.append(PostDetailSectionItem.commentItem(viewModel: cellViewModel))
@@ -77,7 +78,7 @@ extension PostDetailViewModel {
 extension PostDetailViewModel {
     
     func writeCommentRequest() {
-        self.services.writeComment(postId: self.post.value.id, content: self.commentText.value)
+        self.services.writeComment(postId: self.cellViewModel.value.post.id, content: self.commentText.value)
             .trackActivity(self.loading)
             .subscribe(onNext: { [weak self] in
                 print("write comment successfully")
@@ -88,10 +89,22 @@ extension PostDetailViewModel {
     }
     
     func getCommentsRequest() {
-        self.services.postComments(postId: self.post.value.id)
+        self.services.postComments(postId: self.cellViewModel.value.post.id)
             .trackActivity(self.loading)
             .subscribe(onNext: { [weak self] comments in
                 self?.comments.onNext(comments)
+            }).disposed(by: disposeBag)
+    }
+    
+    func editComment() {
+        
+    }
+    
+    func deleteComment(commentId: Int) {
+        self.services.deleteComment(postId: self.cellViewModel.value.post.id, commentId: commentId)
+            .trackActivity(self.loading)
+            .subscribe(onNext: {
+                
             }).disposed(by: disposeBag)
     }
 }

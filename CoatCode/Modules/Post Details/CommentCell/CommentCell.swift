@@ -30,7 +30,10 @@ class CommentCell: UICollectionViewCell {
         self.contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
     }
     
-    func bind(to viewModel: CommentCellViewModel) {
+    func bind(to viewModel: CommentCellViewModel, parentView: UIViewController) {
+        
+        guard let parentView = parentView as? PostDetailViewController else { return }
+        
         viewModel.writerName.asDriver().drive(nameLabel.rx.text).disposed(by: disposeBag)
         
         viewModel.writerImageUrl.asDriver()
@@ -47,8 +50,8 @@ class CommentCell: UICollectionViewCell {
         viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
         
         self.moreButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                //                self?.showAler
+            .subscribe(onNext: {
+                parentView.commentMore(viewModel.comment)
             }).disposed(by: disposeBag)
     }
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
+import RxFlow
 
 class CommentCellViewModel {
     
@@ -23,7 +23,7 @@ class CommentCellViewModel {
         self.comment = comment
         
         self.writerName.accept(comment.owner.username)
-        self.writerImageUrl.accept(comment.owner.profile)
+        self.writerImageUrl.accept(comment.owner.image)
         self.content.accept(comment.content)
         self.createTime.accept(comment.createdAt)
     }

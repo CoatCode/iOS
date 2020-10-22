@@ -19,8 +19,9 @@ struct Post: Codable {
     var likeCount: Int // 좋아요 수
     var commentCount: Int // 댓글 수
     var viewCount: Int // 조회수
-    var tag: String? // 태그
+    var tag: [String]? // 태그
     var createdAt: Date // 생성날짜
+    var commentPreview: [Comment]?
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -34,5 +35,6 @@ struct Post: Codable {
         case viewCount = "view_count"
         case tag
         case createdAt = "created_at"
+        case commentPreview = "comment_preview"
     }
 }

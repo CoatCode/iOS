@@ -14,7 +14,7 @@ class User: Object, Codable {
     @objc dynamic var id = -1
     @objc dynamic var email = ""
     @objc dynamic var username = ""
-    @objc dynamic var profile: String? = ""
+    @objc dynamic var image: String? = ""
     @objc dynamic var followers = -1
     @objc dynamic var following = -1
     
@@ -22,7 +22,7 @@ class User: Object, Codable {
         case id
         case email
         case username
-        case profile
+        case image
         case followers
         case following
     }

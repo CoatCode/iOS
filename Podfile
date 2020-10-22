@@ -41,4 +41,6 @@ target 'CoatCode' do
   pod 'ImageSlideshow/Kingfisher'
   pod 'SkeletonView'
   pod 'RxTags'
+  pod 'RxKeyboard'
+  
 end

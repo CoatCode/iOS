@@ -24,7 +24,7 @@ enum CoatCodeStep: Step {
     // MARK: - Profile
     case profileIsRequired(uesrId: Int)
     
-    case postDetailIsRequired(post: Post)
+    case postDetailIsRequired(cellViewModel: PostCellViewModel)
     case productDetailIsRequired(productId: Int)
     
     // MARK: - Search

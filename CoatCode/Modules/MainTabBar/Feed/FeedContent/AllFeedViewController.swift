@@ -72,14 +72,7 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         output.items
             .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        //            .asDriver(onErrorJustReturn: [])
-        //            .drive(collectionView.rx.items(cellIdentifier: "FeedCell", cellType: FeedCell.self)) { tableView, viewModel, cell in
-        //                viewmodel
-        ////                cell.bind(to: viewModel)
-        //            }.disposed(by: disposeBag)
-        
+            .disposed(by: disposeBag)  
     }
     
     func bindTableView() {

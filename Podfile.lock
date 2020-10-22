@@ -53,6 +53,9 @@ PODS:
   - NVActivityIndicatorView/Base (5.1.1)
   - NVActivityIndicatorView/Extended (5.1.1):
     - NVActivityIndicatorView/Base
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
   - Realm (10.0.0):
     - Realm/Headers (= 10.0.0)
   - Realm/Headers (10.0.0)
@@ -99,6 +102,7 @@ DEPENDENCIES:
   - Kingfisher
   - Moya/RxSwift
   - NVActivityIndicatorView/Extended
+  - R.swift
   - RealmSwift
   - Reusable
   - RxCocoa
@@ -122,6 +126,8 @@ SPEC REPOS:
     - Kingfisher
     - Moya
     - NVActivityIndicatorView
+    - R.swift
+    - R.swift.Library
     - Realm
     - RealmSwift
     - Reusable
@@ -147,6 +153,8 @@ SPEC CHECKSUMS:
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
   RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
@@ -162,6 +170,6 @@ SPEC CHECKSUMS:
   Tags: 77420a200531fb338563b07279858edb51d080c5
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 18fad1958cfe99d82ef9357ae41696c55faf8eb4
+PODFILE CHECKSUM: ab90bbdee245cd81afd4c341f7a938c8bf59b664
 
 COCOAPODS: 1.9.3

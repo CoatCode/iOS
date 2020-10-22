@@ -20,6 +20,7 @@ target 'CoatCode' do
   pod 'Moya/RxSwift'
   
   # Tools
+  pod 'R.swift'
   pod 'Reusable'
   
   # Image

@@ -82,13 +82,10 @@ extension CreateProfileViewModel {
 // MARK: - Functions
 extension CreateProfileViewModel {
     func signUpRequest() {
-        let imageData = self.profileImage.value.jpegData(compressionQuality: 0.5)
-        let imageBase64String = imageData?.base64EncodedString()
-        
         return self.services.signUp(email: self.email,
                                 password: self.password,
                                 username: self.username.value,
-                                profile: imageBase64String)
+                                image: self.profileImage.value)
         .trackActivity(self.loading)
         .subscribe(onNext: { [weak self] in
             self?.steps.accept(CoatCodeStep.createProfileIsComplete)

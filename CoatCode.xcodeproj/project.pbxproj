@@ -13,6 +13,7 @@
 		F205419E24F73715000F932F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205419D24F73715000F932F /* FavoritesViewModel.swift */; };
 		F20541A124F7372F000F932F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20541A024F7372F000F932F /* SettingsViewModel.swift */; };
 		F2105939253C29DB00528A7B /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2105938253C29DB00528A7B /* PostCellViewModel.swift */; };
+		F213A53B2541617800D964BB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F213A53A2541617800D964BB /* R.generated.swift */; };
 		F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2153B9224D26A9000BFD08F /* IntroViewController.swift */; };
 		F2153B9524D272A100BFD08F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2153B9424D272A100BFD08F /* SignInViewController.swift */; };
 		F21DF69624DD7B9900F44B96 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF69524DD7B9900F44B96 /* DatabaseManager.swift */; };
@@ -113,6 +114,7 @@
 		F205419D24F73715000F932F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		F20541A024F7372F000F932F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F2105938253C29DB00528A7B /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
+		F213A53A2541617800D964BB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		F2153B9224D26A9000BFD08F /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		F2153B9424D272A100BFD08F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F21DF69524DD7B9900F44B96 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				F2762A2C24ED19D500CB6434 /* Fonts */,
+				F213A53A2541617800D964BB /* R.generated.swift */,
 				F231AF0024A893CD00BA720B /* Info.plist */,
 				F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */,
 				F231AEFB24A893CD00BA720B /* Assets.xcassets */,
@@ -691,6 +694,7 @@
 			buildConfigurationList = F231AF0324A893CD00BA720B /* Build configuration list for PBXNativeTarget "CoatCode" */;
 			buildPhases = (
 				2B532230BCB02003F1C35B73 /* [CP] Check Pods Manifest.lock */,
+				F213A5382541603900D964BB /* ShellScript */,
 				F231AEEB24A893CB00BA720B /* Sources */,
 				F231AEEC24A893CB00BA720B /* Frameworks */,
 				F231AEED24A893CB00BA720B /* Resources */,
@@ -804,6 +808,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F213A5382541603900D964BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -817,6 +840,7 @@
 				F2EC1A2525025045000FC848 /* AllFeedViewController.swift in Sources */,
 				F22D9FF124FB809A00CE0F8C /* BaseViewController.swift in Sources */,
 				F24905D32503526700BD86FF /* ProfileViewController.swift in Sources */,
+				F213A53B2541617800D964BB /* R.generated.swift in Sources */,
 				F2153B9324D26A9000BFD08F /* IntroViewController.swift in Sources */,
 				F264C9B724D3F07400CE0251 /* RequestLoggingPlugin.swift in Sources */,
 				F2762A3E24EE949700CB6434 /* FeedViewModel.swift in Sources */,

@@ -15,7 +15,7 @@ enum FeedSection {
 
 enum FeedSectionItem {
     case postItem(viewModel: PostCellViewModel)
-    case commentPreviewItem(viewModel: )
+    case commentPreviewItem(viewModel: CommentPreviewCellViewModel)
 }
 
 extension FeedSection: SectionModelType {
@@ -23,14 +23,14 @@ extension FeedSection: SectionModelType {
     
     var title: String {
         switch self {
-        case .post(let title, _):
+        case .feed(let title, _):
             return title
         }
     }
     
     var items: [Item] {
         switch self {
-        case .post(_, let items):
+        case .feed(_, let items):
             return items.map { $0 }
         }
     }

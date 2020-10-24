@@ -90,15 +90,27 @@ extension PostDetailViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func editComment() {
-        
+//    func editComment(_ comment: Comment) {
+//        let postId = self.cellViewModel.value.post.id
+//        let commentContent = self.commentText.value
+//        self.services.editComment(postId: postId, commentId: comment.id, content: commentContent)
+//            .trackActivity(self.loading)
+//            .subscribe(onNext: { [weak self] in
+//
+//                self?.getCommentsRequest()
+//            }).disposed(by: disposeBag)
+//    }
+    
+    func deleteComment(_ commentId: Int) {
+        let postId = self.cellViewModel.value.post.id
+        self.services.deleteComment(postId: postId, commentId: commentId)
+            .trackActivity(self.loading)
+            .subscribe(onNext: { [weak self] in
+                self?.getCommentsRequest()
+            }).disposed(by: disposeBag)
     }
     
-    func deleteComment(commentId: Int) {
-        self.services.deleteComment(postId: self.cellViewModel.value.post.id, commentId: commentId)
-            .trackActivity(self.loading)
-            .subscribe(onNext: {
-                
-            }).disposed(by: disposeBag)
+    func reportComment(_ comment: Comment) {
+        print("report comment")
     }
 }

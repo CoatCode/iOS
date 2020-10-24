@@ -23,6 +23,9 @@ class BaseViewModel: ServicesViewModel, Stepper {
     
     var page = 1
     
+    let headerLoading = ActivityIndicator()
+    let footerLoading = ActivityIndicator()
+    
     // MARK: - Dummy
     struct Input {
     }

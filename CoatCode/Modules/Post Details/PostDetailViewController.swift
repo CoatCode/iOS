@@ -11,6 +11,7 @@ import Reusable
 import RxDataSources
 import RxSwift
 import RxCocoa
+import RxKeyboard
 
 class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     
@@ -19,6 +20,7 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var commentBottomConstraint: NSLayoutConstraint!
     
     var dataSource: RxCollectionViewSectionedReloadDataSource<PostDetailSection>!
     
@@ -32,6 +34,20 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         //            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         //        }
         
+        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] visibleHeight in
+            guard let self = self else { return }
+            
+            if visibleHeight == 0 {
+                self.commentBottomConstraint.constant = 0
+            } else {
+                let height = visibleHeight - self.view.safeAreaInsets.bottom
+                self.commentBottomConstraint.constant = height
+            }
+            
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }).disposed(by: disposeBag)
+        
     }
     
     override func bindViewModel() {
@@ -43,12 +59,7 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
             .bind(to: viewModel.commentText)
             .disposed(by: disposeBag)
         
-        sendButton.rx.tap
-            .bind(onNext: { [weak self] in
-                self?.view.endEditing(true)
-            }).disposed(by: disposeBag)
-        
-        let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asDriver())
+        let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         
         self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
@@ -71,27 +82,35 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         output.sendButtonEnabled
             .drive(self.sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        output.sendComplete
+            .drive(onNext: { [weak self] (isComplete) in
+                if isComplete {
+                    self?.view.endEditing(true)
+                    self?.commentField.text = nil
+                }
+            }).disposed(by: disposeBag)
     }
     
     func commentMore(_ comment: Comment) {
-//        guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
-//        
-//        self.showAlert(title: "무엇이 하고 싶은가요?", message: "message", style: .actionSheet,
-//                       actions: [
-//                        AlertAction.action(title: "Delete", style: .destructive),
-//                        AlertAction.action(title: "Edit"),
-//                        AlertAction.action(title: "Cancel", style: .cancel)
-//                       ]
-//        ).subscribe(onNext: { selectedIndex in
-//            switch selectedIndex {
-//            case 0:
-//                
-//            case 1:
-//                
-//            default:
-//                break
-//            }
-//            
-//        }).disposed(by: disposeBag)
+        //        guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
+        //
+        //        self.showAlert(title: "무엇이 하고 싶은가요?", message: "message", style: .actionSheet,
+        //                       actions: [
+        //                        AlertAction.action(title: "Delete", style: .destructive),
+        //                        AlertAction.action(title: "Edit"),
+        //                        AlertAction.action(title: "Cancel", style: .cancel)
+        //                       ]
+        //        ).subscribe(onNext: { selectedIndex in
+        //            switch selectedIndex {
+        //            case 0:
+        //
+        //            case 1:
+        //
+        //            default:
+        //                break
+        //            }
+        //
+        //        }).disposed(by: disposeBag)
     }
 }

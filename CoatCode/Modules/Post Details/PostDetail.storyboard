@@ -83,6 +83,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="FqM-wD-7QI" id="Z01-Kd-Za0"/>
+                        <outlet property="commentBottomConstraint" destination="3CF-SY-sCP" id="GUL-YO-la3"/>
                         <outlet property="commentField" destination="lHH-U6-iAt" id="DJf-AG-0eS"/>
                         <outlet property="sendButton" destination="zzX-Bq-bHj" id="xL0-lj-P60"/>
                     </connections>

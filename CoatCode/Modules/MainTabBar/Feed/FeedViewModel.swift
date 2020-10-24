@@ -42,7 +42,7 @@ extension FeedViewModel {
             guard let self = self else { return Observable.just([]) }
             self.page = 1
             return self.request()
-                .trackActivity(self.loading)
+                .trackActivity(self.headerLoading)
         }).subscribe(onNext: { posts in
             var sections: [FeedSection] = []
             
@@ -65,7 +65,7 @@ extension FeedViewModel {
             guard let self = self else { return Observable.just([]) }
             self.page += 1
             return self.request()
-                .trackActivity(self.loading)
+                .trackActivity(self.footerLoading)
         }).subscribe(onNext: { posts in
             var items: [FeedSectionItem] = []
             

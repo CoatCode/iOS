@@ -12,18 +12,14 @@ import RxCocoa
 import Reusable
 import XLPagerTabStrip
 import RxDataSources
-import KafkaRefresh
 
-class AllFeedViewController: BaseViewController, StoryboardSceneBased, IndicatorInfoProvider {
+class AllFeedViewController: CollectionViewController, StoryboardSceneBased, IndicatorInfoProvider {
     
-    static let sceneStoryboard = UIStoryboard(name: "Feed", bundle: nil)
+    static let sceneStoryboard = R.storyboard.feed()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dataSource: RxCollectionViewSectionedReloadDataSource<FeedSection>!
-    
-    let headerRefreshTrigger = PublishSubject<Void>()
-    let footerRefreshTrigger = PublishSubject<Void>()
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "전체"
@@ -32,11 +28,13 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.bindTableView()
+        
         self.collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        collectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
-        collectionView.register(UINib(nibName: "CommentPreviewCell", bundle: nil), forCellWithReuseIdentifier: "CommentPreviewCell")
+        collectionView.register(R.nib.feedCell)
+        collectionView.register(R.nib.commentPreviewCell)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +49,8 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         
-        let input = FeedViewModel.Input(headerRefresh: Observable.of(Observable.just(()), headerRefreshTrigger).merge(),
+        let refresh = Observable.of(Observable.just(()), headerRefreshTrigger).merge()
+        let input = FeedViewModel.Input(headerRefresh: refresh,
                                         footerRefresh: footerRefreshTrigger,
                                         selection: collectionView.rx.modelSelected(FeedSectionItem.self).asDriver())
         let output = viewModel.transform(input: input)
@@ -59,12 +58,12 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         self.dataSource = RxCollectionViewSectionedReloadDataSource<FeedSection>(configureCell: { dataSource, collectionView, indexPath, item in
             switch item {
             case .postItem(let cellViewModel):
-                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as? FeedCell)!
+                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.feedCell.identifier, for: indexPath) as? FeedCell)!
                 cell.bind(to: cellViewModel)
                 return cell
                 
             case .commentPreviewItem(let cellViewModel):
-                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "CommentPreviewCell", for: indexPath) as? CommentPreviewCell)!
+                let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.commentPreviewCell.identifier, for: indexPath) as? CommentPreviewCell)!
                 cell.bind(to: cellViewModel)
                 return cell
             }
@@ -72,7 +71,7 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
         
         output.items
             .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)  
+            .disposed(by: disposeBag)
     }
     
     func bindTableView() {
@@ -85,6 +84,9 @@ class AllFeedViewController: BaseViewController, StoryboardSceneBased, Indicator
             print("footerRefresh")
             self?.footerRefreshTrigger.onNext(())
         })
+        
+        isHeaderLoading.bind(to: collectionView.headRefreshControl.rx.isAnimating).disposed(by: disposeBag)
+        isFooterLoading.bind(to: collectionView.footRefreshControl.rx.isAnimating).disposed(by: disposeBag)
     }
 }
 
@@ -121,6 +123,5 @@ extension AllFeedViewController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
 //        return CGSize(width: collectionView.frame.width, height: 10)
 //    }
-    
     
 }

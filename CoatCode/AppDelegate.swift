@@ -11,6 +11,7 @@ import RxFlow
 import RxSwift
 import RxCocoa
 import RealmSwift
+import KafkaRefresh
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,9 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.makeKeyAndVisible()
 //        }
         
+        // MARK: - SetUp
+        self.setupKafkaRefresh()
+        
         return true
     }
     
-
+    func setupKafkaRefresh() {
+        if let defaults = KafkaRefreshDefaults.standard() {
+            defaults.headDefaultStyle = .animatableRing
+            defaults.footDefaultStyle = .replicatorDot
+        }
+    }
 }
-

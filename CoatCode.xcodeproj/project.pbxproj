@@ -66,6 +66,7 @@
 		F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70924E15024008F70A9 /* SocialLoginViewController.swift */; };
 		F2694A79252B542C007D8796 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2694A78252B542C007D8796 /* KeychainManager.swift */; };
 		F272FE842544A0CD00308A3F /* KafkaRefresh+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272FE832544A0CD00308A3F /* KafkaRefresh+Rx.swift */; };
+		F272FE882544D48B00308A3F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272FE872544D48B00308A3F /* CollectionViewController.swift */; };
 		F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */; };
 		F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */; };
 		F2762A3E24EE949700CB6434 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A3D24EE949700CB6434 /* FeedViewModel.swift */; };
@@ -170,6 +171,7 @@
 		F265B70924E15024008F70A9 /* SocialLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginViewController.swift; sourceTree = "<group>"; };
 		F2694A78252B542C007D8796 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		F272FE832544A0CD00308A3F /* KafkaRefresh+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KafkaRefresh+Rx.swift"; sourceTree = "<group>"; };
+		F272FE872544D48B00308A3F /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratSubrayada-Regular.ttf"; sourceTree = "<group>"; };
 		F2762A3D24EE949700CB6434 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				F2EC1A1B250233D7000FC848 /* CustomTabBarViewController.swift */,
 				F24905D82503837100BD86FF /* ImageBarButton.swift */,
 				F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */,
+				F272FE872544D48B00308A3F /* CollectionViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F272FE882544D48B00308A3F /* CollectionViewController.swift in Sources */,
 				F23CE60724DB0BFB00717A3F /* User.swift in Sources */,
 				F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */,
 				F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */,

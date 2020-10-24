@@ -14,7 +14,7 @@ import RxCocoa
 class SignInViewController: BaseViewController, StoryboardSceneBased {
     
     // MARK: - Properties
-    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.intro()
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!

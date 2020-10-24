@@ -13,7 +13,7 @@ import Reusable
 
 class ProfileViewController: BaseViewController, StoryboardSceneBased {
 
-    static let sceneStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+    static let sceneStoryboard = R.storyboard.profile()
     
     override func viewDidLoad() {
         super.viewDidLoad()

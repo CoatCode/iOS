@@ -13,7 +13,7 @@ import Reusable
 
 class WritingViewController: BaseViewController, StoryboardSceneBased {
 
-    static let sceneStoryboard = UIStoryboard(name: "Writing" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.writing()
     
     override func viewDidLoad() {
         super.viewDidLoad()

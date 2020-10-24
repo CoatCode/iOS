@@ -16,7 +16,7 @@ import RxGesture
 class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
 
     // MARK: - Properties
-    static let sceneStoryboard = UIStoryboard(name: "Feed" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.feed()
     
     @IBOutlet weak var feedTableView: UITableView!
     

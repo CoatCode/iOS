@@ -13,7 +13,7 @@ import Reusable
 
 class FavoritesViewController: BaseViewController, StoryboardSceneBased {
 
-    static let sceneStoryboard = UIStoryboard(name: "Favorites" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.favorites()
     
     override func viewDidLoad() {
         super.viewDidLoad()

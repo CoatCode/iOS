@@ -13,7 +13,7 @@ import Reusable
 
 class StoreViewController: BaseViewController, StoryboardSceneBased {
 
-    static let sceneStoryboard = UIStoryboard(name: "Store" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.store()
     
     override func viewDidLoad() {
         super.viewDidLoad()

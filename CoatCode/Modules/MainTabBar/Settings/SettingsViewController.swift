@@ -13,7 +13,7 @@ import Reusable
 
 class SettingsViewController: BaseViewController, StoryboardSceneBased {
 
-    static let sceneStoryboard = UIStoryboard(name: "Settings" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.settings()
     
     override func viewDidLoad() {
         super.viewDidLoad()

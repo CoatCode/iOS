@@ -15,7 +15,7 @@ import RxFlow
 class IntroViewController: UIViewController, StoryboardSceneBased, Stepper {
     
     // MARK: - Properties
-    static let sceneStoryboard = UIStoryboard(name: "Intro" , bundle: nil)
+    static let sceneStoryboard = R.storyboard.intro()
     
     @IBOutlet weak var socialLoginButton: UIButton!
     @IBOutlet weak var emailSignInButton: UIButton!

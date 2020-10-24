@@ -12,7 +12,7 @@ import XLPagerTabStrip
 
 class PopularFeedViewController: BaseViewController, StoryboardSceneBased, IndicatorInfoProvider {
     
-    static let sceneStoryboard = UIStoryboard(name: "Feed", bundle: nil)
+    static let sceneStoryboard = R.storyboard.feed()
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "인기"

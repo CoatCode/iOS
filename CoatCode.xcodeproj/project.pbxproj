@@ -65,6 +65,7 @@
 		F265B70824E14F8C008F70A9 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */; };
 		F265B70A24E15024008F70A9 /* SocialLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265B70924E15024008F70A9 /* SocialLoginViewController.swift */; };
 		F2694A79252B542C007D8796 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2694A78252B542C007D8796 /* KeychainManager.swift */; };
+		F272FE842544A0CD00308A3F /* KafkaRefresh+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272FE832544A0CD00308A3F /* KafkaRefresh+Rx.swift */; };
 		F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */; };
 		F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */; };
 		F2762A3E24EE949700CB6434 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A3D24EE949700CB6434 /* FeedViewModel.swift */; };
@@ -168,6 +169,7 @@
 		F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F265B70924E15024008F70A9 /* SocialLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginViewController.swift; sourceTree = "<group>"; };
 		F2694A78252B542C007D8796 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		F272FE832544A0CD00308A3F /* KafkaRefresh+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KafkaRefresh+Rx.swift"; sourceTree = "<group>"; };
 		F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratSubrayada-Regular.ttf"; sourceTree = "<group>"; };
 		F2762A3D24EE949700CB6434 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				F278FF6424F28EA4001F27E9 /* UIImagePickerController+Rx.swift */,
+				F272FE832544A0CD00308A3F /* KafkaRefresh+Rx.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				F278FF6524F28EA4001F27E9 /* UIImagePickerController+Rx.swift in Sources */,
 				F21DF6B524DFA77A00F44B96 /* FeedViewController.swift in Sources */,
 				F22D9FF324FBBA0400CE0F8C /* BaseViewModel.swift in Sources */,
+				F272FE842544A0CD00308A3F /* KafkaRefresh+Rx.swift in Sources */,
 				F2828F9624F0A6E800F14BDB /* CreateProfileViewModel.swift in Sources */,
 				F2EC1A2925025166000FC848 /* PopularFeedViewController.swift in Sources */,
 				F27A9B2C24D123AB00960043 /* AuthManager.swift in Sources */,

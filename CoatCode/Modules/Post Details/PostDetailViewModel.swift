@@ -20,12 +20,13 @@ class PostDetailViewModel: BaseViewModel {
     }
     
     struct Input {
-        let sendButtonTrigger: Driver<Void>
+        let sendButtonTrigger: Observable<Void>
     }
     
     struct Output {
         let items: Observable<[PostDetailSection]>
         let sendButtonEnabled: Driver<Bool>
+        let sendComplete: Driver<Bool>
     }
     
 }
@@ -33,23 +34,27 @@ class PostDetailViewModel: BaseViewModel {
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
         
-        input.sendButtonTrigger
-            .drive(onNext: { [weak self] in
-                self?.writeCommentRequest()
-            }).disposed(by: disposeBag)
+        let sendComplete = PublishSubject<Bool>()
+        
+        let commentSent = input.sendButtonTrigger.flatMapLatest { [weak self] () -> Observable<Void> in
+            guard let self = self else { return Observable.just(()) }
+            let postId = self.cellViewModel.value.post.id
+            let commentContent = self.commentText.value
+            return self.services.writeComment(postId: postId, content: commentContent)
+                .trackActivity(self.loading)
+                .share()
+        }
+        
+        commentSent.subscribe(onNext: { [weak self] in
+            sendComplete.onNext(true)
+            self?.getCommentsRequest()
+        }, onError: { (error) in
+            sendComplete.onNext(false)
+        }).disposed(by: disposeBag)
         
         cellViewModel.subscribe(onNext: { [weak self] cellViewModel in
             self?.getCommentsRequest()
         }).disposed(by: disposeBag)
-        
-        
-//        post.flatMapLatest { [weak self] post -> Observable<[Comment]> in
-//            guard let self = self else { return Observable.just([]) }
-//            return self.services.postComments(postId: post.id)
-//                .trackActivity(self.loading)
-//        }.subscribe(onNext: { [weak self] comments in
-//            self?.comments.onNext(comments)
-//        }).disposed(by: disposeBag)
         
         let items = comments.map { comments -> [PostDetailSection] in
             var items: [PostDetailSectionItem] = []
@@ -71,22 +76,11 @@ extension PostDetailViewModel {
             return !$0.isEmpty && !$1
         }.asDriver(onErrorJustReturn: false)
         
-        return Output(items: items, sendButtonEnabled: sendButtonEnabled)
+        return Output(items: items, sendButtonEnabled: sendButtonEnabled, sendComplete: sendComplete.asDriver(onErrorJustReturn: false))
     }
 }
 
 extension PostDetailViewModel {
-    
-    func writeCommentRequest() {
-        self.services.writeComment(postId: self.cellViewModel.value.post.id, content: self.commentText.value)
-            .trackActivity(self.loading)
-            .subscribe(onNext: { [weak self] in
-                print("write comment successfully")
-                self?.getCommentsRequest()
-            }, onError: { [weak self] error in
-                self?.error.onNext(error as! ErrorResponse)
-            }).disposed(by: disposeBag)
-    }
     
     func getCommentsRequest() {
         self.services.postComments(postId: self.cellViewModel.value.post.id)

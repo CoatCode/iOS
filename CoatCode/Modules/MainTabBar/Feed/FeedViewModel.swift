@@ -67,18 +67,19 @@ extension FeedViewModel {
             return self.request()
                 .trackActivity(self.footerLoading)
         }).subscribe(onNext: { posts in
-            var items: [FeedSectionItem] = []
+            var sections: [FeedSection] = []
             
             posts.forEach { (post) in
+                var items: [FeedSectionItem] = []
                 let postCellViewModel = PostCellViewModel(post: post, services: self.services)
                 items.append(FeedSectionItem.postItem(viewModel: postCellViewModel))
                 
                 post.commentPreview?.forEach { (comment) in
                     items.append(FeedSectionItem.commentPreviewItem(viewModel: CommentPreviewCellViewModel(comment: comment)))
                 }
+                sections.append(FeedSection.feed(title: "", items: items))
             }
-            
-            elements.accept(elements.value + [FeedSection.feed(title: "", items: items)])
+            elements.accept(elements.value + sections)
         }).disposed(by: disposeBag)
         
         // 선택된 게시물의 내용을 상세보기 화면으로 넘겨줌

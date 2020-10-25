@@ -45,6 +45,7 @@ class FeedCell: UICollectionViewCell {
         
         viewModel.imageUrls.asDriver()
             .drive(onNext: { [weak self] imageUrl in
+                self?.thumbnailImageView.kf.indicatorType = .activity
                 self?.thumbnailImageView.kf.setImage(with: imageUrl?.first)
             }).disposed(by: disposeBag)
         

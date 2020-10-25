@@ -28,7 +28,7 @@ class AllFeedViewController: CollectionViewController, StoryboardSceneBased, Ind
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.bindTableView()
+        self.bindCollectionView()
         
         self.collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -74,7 +74,7 @@ class AllFeedViewController: CollectionViewController, StoryboardSceneBased, Ind
             .disposed(by: disposeBag)
     }
     
-    func bindTableView() {
+    func bindCollectionView() {
         collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
             print("headerRefresh")
             self?.headerRefreshTrigger.onNext(())

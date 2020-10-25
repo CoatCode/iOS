@@ -90,6 +90,7 @@ PODS:
     - RxSwift
     - Tags
   - SkeletonView (1.10.0)
+  - SwiftLint (0.40.3)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - RxSwift
   - RxTags
   - SkeletonView
+  - SwiftLint
   - SwiftMessages
   - XLPagerTabStrip
 
@@ -144,6 +146,7 @@ SPEC REPOS:
     - RxSwift
     - RxTags
     - SkeletonView
+    - SwiftLint
     - SwiftMessages
     - Tags
     - XLPagerTabStrip
@@ -172,10 +175,11 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxTags: 100689fecd5002276b0bfcc7513a0d07a692a16d
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   Tags: 77420a200531fb338563b07279858edb51d080c5
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 7777c72336797213e19535f96575bb24889efb7d
+PODFILE CHECKSUM: 7db650b8d24f952d674d067570a5d6fe4628f81e
 
 COCOAPODS: 1.9.3

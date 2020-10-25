@@ -22,6 +22,7 @@ target 'CoatCode' do
   # Tools
   pod 'R.swift'
   pod 'Reusable'
+  pod 'SwiftLint'
   
   # Image
   pod 'Kingfisher'

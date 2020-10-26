@@ -23,14 +23,14 @@ extension AuthAPI: BaseAPI {
             return "/auth/renewal-token"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         case .renewalToken:
             return .post
         }
     }
-    
+
     var task: Task {
         switch self {
         case let .renewalToken(refreshToken):

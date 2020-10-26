@@ -11,9 +11,9 @@ import Reusable
 import XLPagerTabStrip
 
 class PopularFeedViewController: BaseViewController, StoryboardSceneBased, IndicatorInfoProvider {
-    
+
     static let sceneStoryboard = R.storyboard.feed()
-    
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "인기"
     }
@@ -25,9 +25,9 @@ class PopularFeedViewController: BaseViewController, StoryboardSceneBased, Indic
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         viewModel.filter.accept(FeedFilter.popularContent)
     }
-    
+
 }

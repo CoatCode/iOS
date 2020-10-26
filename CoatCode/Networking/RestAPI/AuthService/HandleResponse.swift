@@ -20,16 +20,16 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
             if let newToken = try? response.map(Token.self, using: decoder) {
                 AuthManager.setToken(token: newToken)
             }
-            
+
             if (200...299) ~= response.statusCode {
                 return Single.just(response)
             }
-            
+
             if var error = try? response.map(ErrorResponse.self) {
                 error.status = response.statusCode
                 return Single.error(error)
             }
-            
+
             // Its an error and can't decode error details from server, push generic message
             let genericError = ErrorResponse(
                 status: response.statusCode,

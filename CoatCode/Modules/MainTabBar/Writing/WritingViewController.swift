@@ -14,7 +14,7 @@ import Reusable
 class WritingViewController: BaseViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = R.storyboard.writing()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,9 +23,8 @@ class WritingViewController: BaseViewController, StoryboardSceneBased {
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        
+
         guard let viewModel = self.viewModel as? WritingViewModel else { fatalError("ViewModel Casting Falid!") }
-        
-        
+
     }
 }

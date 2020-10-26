@@ -14,19 +14,18 @@ import Reusable
 class SettingsViewController: BaseViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = R.storyboard.settings()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
+
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        
+
         guard let viewModel = self.viewModel as? SettingsViewModel else { fatalError("ViewModel Casting Falid!") }
-        
-        
+
     }
 
 }

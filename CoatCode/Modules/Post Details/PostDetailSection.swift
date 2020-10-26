@@ -20,21 +20,21 @@ enum PostDetailSectionItem {
 
 extension PostDetailSection: SectionModelType {
     typealias Item = PostDetailSectionItem
-    
+
     var title: String {
         switch self {
         case .post(let title, _):
             return title
         }
     }
-    
+
     var items: [Item] {
         switch self {
         case .post(_, let items):
             return items.map { $0 }
         }
     }
-    
+
     init(original: PostDetailSection, items: [Item]) {
         switch original {
         case .post(let title, let items):

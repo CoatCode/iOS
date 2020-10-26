@@ -10,31 +10,31 @@ import RxSwift
 import RxCocoa
 
 class CreateProfileViewModel: BaseViewModel {
-    
+
     // MARK: - Properties
     let profileImage = BehaviorRelay(value: UIImage())
     let buttonStatus = BehaviorRelay(value: false)
     let username = BehaviorRelay(value: "")
     let email: String
     let password: String
-    
+
     // MARK: - Init
     init(email: String, password: String) {
         self.email = email
         self.password = password
     }
-    
+
     // MARK: - Struct
     struct Input {
         let signUpTrigger: Driver<Void>
         let nameEvents: Observable<Bool>
     }
-    
+
     struct Output {
         let signUpButtonEnabled: Driver<Bool>
         let nameValidation: Driver<String>
     }
-    
+
     // MARK: - Regular Expression
     func validateName(_ string: String) -> Bool {
         return string.range(of: "^[가-힣]{2,4}+$", options: .regularExpression) != nil
@@ -44,13 +44,13 @@ class CreateProfileViewModel: BaseViewModel {
 // MARK: - Transform
 extension CreateProfileViewModel {
     func transform(input: Input) -> Output {
-        
+
         // MARK: - Button Trigger
         input.signUpTrigger
             .drive(onNext: { [weak self] in
                 self?.signUpRequest()
             }).disposed(by: disposeBag)
-        
+
         // MARK: - Valid Check
         let isNameValid = username
             .throttle(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
@@ -58,7 +58,7 @@ extension CreateProfileViewModel {
                 guard let isValid = self?.validateName(text) else { return false }
                 return !text.isEmpty && isValid
         }.distinctUntilChanged()
-        
+
         // MARK: - Validation Observable
         let nameValidation = Observable.combineLatest(isNameValid, input.nameEvents).flatMap { [weak self] (isValid: Bool, editingDidEnd: Bool) -> Observable<String> in
             if isValid {
@@ -72,7 +72,7 @@ extension CreateProfileViewModel {
                 return .empty()
             }
         }.distinctUntilChanged()
-        
+
         // MARK: - Return Output
         return Output(signUpButtonEnabled: buttonStatus.asDriver(onErrorJustReturn: false),
                       nameValidation: nameValidation.asDriver(onErrorJustReturn: ""))

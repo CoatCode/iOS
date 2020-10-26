@@ -9,7 +9,7 @@
 import Foundation
 
 struct Post: Codable {
-    
+
     var id: Int // 게시물 아이디
     var owner: User // 작성자 모델 (get User와 동일한 값)
     var title: String // 제목
@@ -22,7 +22,7 @@ struct Post: Codable {
     var tag: [String]? // 태그
     var createdAt: Date // 생성날짜
     var commentPreview: [Comment]?
-    
+
     private enum CodingKeys: String, CodingKey {
         case id
         case owner

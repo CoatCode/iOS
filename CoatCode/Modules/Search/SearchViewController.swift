@@ -10,12 +10,12 @@ import UIKit
 import Reusable
 
 class SearchViewController: BaseViewController, StoryboardSceneBased {
-    
+
     static let sceneStoryboard = R.storyboard.search()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
+
 }

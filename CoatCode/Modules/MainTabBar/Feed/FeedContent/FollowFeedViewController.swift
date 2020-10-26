@@ -11,21 +11,21 @@ import Reusable
 import XLPagerTabStrip
 
 class FollowFeedViewController: BaseViewController, StoryboardSceneBased, IndicatorInfoProvider {
-    
+
     static let sceneStoryboard = R.storyboard.feed()
-    
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "팔로우"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         guard let viewModel = self.viewModel as? FeedViewModel else { fatalError("ViewModel Casting Falid!") }
         viewModel.filter.accept(FeedFilter.followContent)
     }

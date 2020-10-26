@@ -17,7 +17,7 @@ class User: Object, Codable {
     @objc dynamic var image: String? = ""
     @objc dynamic var followers = -1
     @objc dynamic var following = -1
-    
+
     private enum CodingKeys: String, CodingKey {
         case id
         case email

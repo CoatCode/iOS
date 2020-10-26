@@ -13,7 +13,7 @@ struct Comment: Codable {
     var owner: User // 작성자
     var content: String // 댓글 내용
     var createdAt: Date // 생성날짜
-    
+
     private enum CodingKeys: String, CodingKey {
         case id = "comment_id"
         case owner

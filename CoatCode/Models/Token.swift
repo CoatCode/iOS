@@ -14,7 +14,7 @@ struct Token: Codable {
     var expiresAt: Date
     var refreshToken: String
     var refreshTokenExpiresAt: Date
-    
+
     private enum CodingKeys: String, CodingKey {
         case tokenType = "token_type"
         case accessToken = "access_token"

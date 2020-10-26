@@ -10,16 +10,15 @@ import RxSwift
 import RxCocoa
 
 class WritingViewModel: BaseViewModel {
-    
+
     struct Input {
-        
+
     }
-    
+
     struct Output {
-        
+
     }
-    
-    
+
 }
 
 // MARK: - Transform

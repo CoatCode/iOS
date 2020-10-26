@@ -14,7 +14,7 @@ import RxSwift
 final class AuthService: BaseService<AuthAPI> {
     static let shared = AuthService()
     private override init() {}
-    
+
     /// 토큰 재발급
     func renewalToken(refreshToken: String) -> Single<Response> {
         return request(.renewalToken(refreshToken))

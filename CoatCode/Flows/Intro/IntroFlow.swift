@@ -11,14 +11,14 @@ import UIKit
 import RxFlow
 
 class IntroFlow: Flow {
-    
+
     // MARK: - Properties
     private let services: CoatCodeService
-    
+
     var root: Presentable {
         return self.rootViewController
     }
-    
+
     private lazy var rootViewController: UINavigationController = {
         let viewController = UINavigationController()
         // Navigation Bar를 transparent하게
@@ -27,20 +27,20 @@ class IntroFlow: Flow {
         viewController.navigationBar.isTranslucent = true
         return viewController
     }()
-    
+
     // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-    
+
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-    
+
     // MARK: - Navigation Switch
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
-        
+
         switch step {
         // 첫 인트로 화면
         case .introIsRequired:
@@ -72,7 +72,7 @@ class IntroFlow: Flow {
 extension IntroFlow {
     private func navigateToIntro() -> FlowContributors {
         let introViewController = IntroViewController.instantiate()
-        
+
         self.rootViewController.pushViewController(introViewController, animated: false)
         return .one(flowContributor: .contribute(withNext: introViewController))
     }
@@ -83,7 +83,7 @@ extension IntroFlow {
     private func navigateToSocialLogin() -> FlowContributors {
         let socialLoginViewModel = SocialLoginViewModel()
         let socialLoginViewController = SocialLoginViewController.instantiate(withViewModel: socialLoginViewModel)
-        
+
         self.rootViewController.present(socialLoginViewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: socialLoginViewController,
                                                  withNextStepper: socialLoginViewModel))
@@ -96,9 +96,9 @@ extension IntroFlow {
         let signInViewModel = SignInViewModel()
         let signInViewController = SignInViewController.instantiate(withViewModel: signInViewModel,
                                                                     andServices: self.services)
-        
+
         self.rootViewController.pushViewController(signInViewController, animated: true)
-        
+
         return .one(flowContributor: .contribute(withNextPresentable: signInViewController,
                                                  withNextStepper: signInViewModel))
     }
@@ -109,7 +109,7 @@ extension IntroFlow {
     private func navigateToEmailSignUp() -> FlowContributors {
         let signUpViewModel = SignUpViewModel()
         let signUpViewControlelr = SignUpViewController.instantiate(withViewModel: signUpViewModel)
-        
+
         self.rootViewController.pushViewController(signUpViewControlelr, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: signUpViewControlelr,
                                                  withNextStepper: signUpViewModel))
@@ -122,7 +122,7 @@ extension IntroFlow {
         let createProfileViewModel = CreateProfileViewModel(email: email, password: password)
         let createProfileViewController = CreateProfileViewController.instantiate(withViewModel: createProfileViewModel,
                                                                                   andServices: self.services)
-        
+
         self.rootViewController.pushViewController(createProfileViewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: createProfileViewController,
                                                  withNextStepper: createProfileViewModel))

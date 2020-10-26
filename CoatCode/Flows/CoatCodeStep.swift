@@ -9,10 +9,10 @@
 import RxFlow
 
 enum CoatCodeStep: Step {
-    
+
     case tabBarIsRequired
     case introIsRequired
-    
+
     // MARK: - Intro
     case socialLoginIsRequired
     case emailSignInIsRequired
@@ -20,32 +20,31 @@ enum CoatCodeStep: Step {
     case socialLoginIsComplete
     case createProfileIsRequired(email: String, password: String)
     case createProfileIsComplete
-    
+
     // MARK: - Profile
     case profileIsRequired(uesrId: Int)
-    
+
     case postDetailIsRequired(cellViewModel: PostCellViewModel)
     case productDetailIsRequired(productId: Int)
-    
+
     // MARK: - Search
     case searchIsRequired
-    
+
     // MARK: - Feed
     case feedHomeIsRequired
-    
+
     // MARK: - Store
     case storeHomeIsRequired
-    
+
     // MARK: - Writing
     case writingHomeIsRequired
 //    case postIsRequired
 //    case productIsRequired
-    
+
     // MARK: - Favorites
     case favoritesHomeIsRequired
-    
+
     // MARK: - Setting
     case settingHomeIsRequired
-    
-    
+
 }

@@ -12,24 +12,24 @@ import RxCocoa
 import UIKit
 
 class WritingFlow: Flow {
-    
+
     // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
     }
-    
+
     private let rootViewController = UINavigationController()
     private let services: CoatCodeService
-    
+
     // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-    
+
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-    
+
     // MARK: - Navigation Switch
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
@@ -48,7 +48,7 @@ extension WritingFlow {
         let viewModel = WritingViewModel()
         let viewController = WritingViewController.instantiate(withViewModel: viewModel,
                                                                andServices: self.services)
-        
+
 //        DispatchQueue.main.async {
 //            self.rootViewController.present(viewController, animated: true, completion: nil)
 //        }
@@ -56,5 +56,5 @@ extension WritingFlow {
 
         return .none
     }
-    
+
 }

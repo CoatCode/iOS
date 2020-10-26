@@ -10,7 +10,5 @@ import RxSwift
 import RxCocoa
 
 class SearchViewModel: BaseViewModel {
-    
-    
-    
+
 }

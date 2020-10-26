@@ -17,22 +17,22 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
 
     // MARK: - Properties
     static let sceneStoryboard = R.storyboard.feed()
-    
+
     @IBOutlet weak var feedTableView: UITableView!
-    
+
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureBaseNaviBar()
     }
-    
+
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        
+
         let allContentView = AllFeedViewController.instantiate(withViewModel: self.viewModel)
         let followContentView = FollowFeedViewController.instantiate(withViewModel: self.viewModel)
         let popularContentView = PopularFeedViewController.instantiate(withViewModel: self.viewModel)
-        
+
         return [allContentView, followContentView, popularContentView]
     }
 }

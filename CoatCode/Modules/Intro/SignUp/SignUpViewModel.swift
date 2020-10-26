@@ -10,34 +10,34 @@ import RxSwift
 import RxCocoa
 
 class SignUpViewModel: BaseViewModel {
-    
+
     // MARK: - Properties
     let email = BehaviorRelay(value: "")
     let password = BehaviorRelay(value: "")
-    
+
     let emailValid = BehaviorRelay(value: false)
     let passwordValid = BehaviorRelay(value: false)
-    
+
     // MARK: - Struct
     struct Input {
         let nextTrigger: Driver<Void>
         let emailEvents: Observable<Bool>
         let passwordEvents: Observable<Bool>
     }
-    
+
     struct Output {
         let nextButtonEnabled: Driver<Bool>
         let emailValidation: Driver<String>
         let passwordValidation: Driver<String>
     }
-    
+
     // MARK: - Regular Expression
     func validateEmail(_ string: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return string.range(of: emailRegEx, options: .regularExpression) != nil
     }
-    
-    func validatePassword(text : String, size : (min : Int, max : Int)) -> Bool {
+
+    func validatePassword(text: String, size : (min: Int, max: Int)) -> Bool {
         return (size.min...size.max).contains(text.count)
     }
 }
@@ -51,12 +51,12 @@ extension SignUpViewModel {
                 guard let self = self else { return }
                 self.steps.accept(CoatCodeStep.createProfileIsRequired(email: self.email.value, password: self.password.value))
             }).disposed(by: disposeBag)
-        
+
         // MARK: - Button Status
         let buttonStatus = BehaviorRelay.combineLatest(self.emailValid, self.passwordValid) {
             return $0 && $1
         }.asDriver(onErrorJustReturn: false)
-        
+
         // MARK: - Valid Check
         let isEmailValid = email
             .throttle(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
@@ -64,14 +64,14 @@ extension SignUpViewModel {
                 guard let isValid = self?.validateEmail(text) else { return false }
                 return !text.isEmpty && isValid
         }.distinctUntilChanged()
-        
+
         let isPasswordValid = password
             .throttle(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
                 .map { [weak self] text -> Bool in
                     guard let isValid = self?.validatePassword(text: text, size: (8, 15)) else { return false }
                     return !text.isEmpty && isValid
             }.distinctUntilChanged()
-        
+
         // MARK: - Validation Observable
         let emailValidation = Observable.combineLatest(isEmailValid, input.emailEvents).flatMap { [weak self] (isValid: Bool, editingDidEnd: Bool) -> Observable<String> in
             if isValid {
@@ -85,7 +85,7 @@ extension SignUpViewModel {
                 return .empty()
             }
         }.distinctUntilChanged()
-        
+
         let passwordValidation = Observable.combineLatest(isPasswordValid, input.passwordEvents).flatMap { [weak self] (isValid: Bool, editingDidEnd: Bool) -> Observable<String> in
             if isValid {
                 self?.passwordValid.accept(true)
@@ -98,7 +98,7 @@ extension SignUpViewModel {
                 return .empty()
             }
         }.distinctUntilChanged()
-        
+
         // MARK: - Return Output
         return Output(nextButtonEnabled: buttonStatus,
                       emailValidation: emailValidation.asDriver(onErrorJustReturn: ""),

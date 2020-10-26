@@ -10,25 +10,25 @@ import UIKit
 import RxFlow
 
 class TabBarFlow: Flow {
-    
+
     var root: Presentable {
         return self.rootViewController
     }
-    
+
     let rootViewController = UITabBarController()
     private let services: CoatCodeService
-    
+
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-    
+
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-    
+
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
-        
+
         switch step {
         case .tabBarIsRequired:
             return navigateToTabBar()
@@ -36,18 +36,18 @@ class TabBarFlow: Flow {
             return .none
         }
     }
-    
+
     private func navigateToTabBar() -> FlowContributors {
         // stepper
-        
+
         let feedFlow = FeedFlow(withServices: self.services)
         let storeFlow = StoreFlow(withServices: self.services)
         let writingFlow = WritingFlow(withServices: self.services)
         let favoriteFlow = FavoriteFlow(withServices: self.services)
         let settingFlow = SettingFlow(withServices: self.services)
-        
-        Flows.use(feedFlow, storeFlow, writingFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5 : UINavigationController) in
-            
+
+        Flows.use(feedFlow, storeFlow, writingFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5: UINavigationController) in
+
             let tabBarItem1 = UITabBarItem(title: nil, image: UIImage(named: "Feed_Icon"), selectedImage: nil)
             let tabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "Store_Icon"), selectedImage: nil)
             let tabBarItem3 = UITabBarItem(title: nil, image: UIImage(named: "Writing_Icon"), selectedImage: nil)
@@ -63,10 +63,10 @@ class TabBarFlow: Flow {
             root4.title = "Favorite"
             root5.tabBarItem = tabBarItem5
             root5.title = "Setting"
-            
+
             self.rootViewController.setViewControllers([root1, root2, root3, root4, root5], animated: false)
         }
-        
+
         return .multiple(flowContributors: [
             .contribute(withNextPresentable: feedFlow,
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.feedHomeIsRequired)),
@@ -79,6 +79,6 @@ class TabBarFlow: Flow {
             .contribute(withNextPresentable: settingFlow,
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.settingHomeIsRequired))
         ])
-        
+
     }
 }

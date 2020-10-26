@@ -10,15 +10,15 @@ import Foundation
 import KeychainAccess
 
 class KeychainManager {
-    
+
     static let shared = KeychainManager()
-    
+
     fileprivate let usernameKey = "usernameKey"
-    
+
     private init() { }
-    
+
     let keychain = Keychain(service: Configs.App.bundleIdentifier)
-    
+
     var username: String? {
         get {
             return keychain[usernameKey]
@@ -27,5 +27,5 @@ class KeychainManager {
             keychain[usernameKey] = "\(newValue!)"
         }
     }
-    
+
 }

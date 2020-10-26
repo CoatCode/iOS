@@ -12,28 +12,28 @@ import RxCocoa
 import UIKit
 
 class FeedFlow: Flow {
-    
+
     // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
     }
-    
+
     let rootViewController = UINavigationController()
     private let services: CoatCodeService
-    
+
     // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-    
+
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-    
+
     // MARK: - Navigation Switch
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
-        
+
         switch step {
         case .feedHomeIsRequired:
             return navigateToFeed()
@@ -47,7 +47,7 @@ class FeedFlow: Flow {
             return .none
         }
     }
-    
+
 }
 
 // MARK: - Navigate to Feed(Home)
@@ -56,7 +56,7 @@ extension FeedFlow {
         let viewModel = FeedViewModel()
         let viewController = FeedViewController.instantiate(withViewModel: viewModel,
                                                             andServices: self.services)
-        
+
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))
@@ -69,7 +69,7 @@ extension FeedFlow {
         let viewModel = ProfileViewModel(userId: userId)
         let viewController = ProfileViewController.instantiate(withViewModel: viewModel,
                                                                andServices: self.services)
-        
+
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))
@@ -81,7 +81,7 @@ extension FeedFlow {
     private func navigateToSearch() -> FlowContributors {
         let viewModel = SearchViewModel()
         let viewController = SearchViewController.instantiate(withViewModel: viewModel, andServices: self.services)
-        
+
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))
@@ -93,7 +93,7 @@ extension FeedFlow {
     private func navigateToPostDetail(with cellViewModel: PostCellViewModel) -> FlowContributors {
         let viewModel = PostDetailViewModel(with: cellViewModel)
         let viewController = PostDetailViewController.instantiate(withViewModel: viewModel, andServices: self.services)
-        
+
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
     }
@@ -101,5 +101,5 @@ extension FeedFlow {
 
 // MARK: - Navigate to Search Result
 extension FeedFlow {
-    
+
 }

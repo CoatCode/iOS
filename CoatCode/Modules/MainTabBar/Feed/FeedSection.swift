@@ -20,21 +20,21 @@ enum FeedSectionItem {
 
 extension FeedSection: SectionModelType {
     typealias Item = FeedSectionItem
-    
+
     var title: String {
         switch self {
         case .feed(let title, _):
             return title
         }
     }
-    
+
     var items: [Item] {
         switch self {
         case .feed(_, let items):
             return items.map { $0 }
         }
     }
-    
+
     init(original: FeedSection, items: [Item]) {
         switch original {
         case .feed(let title, let items):

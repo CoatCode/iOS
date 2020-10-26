@@ -10,16 +10,15 @@ import RxSwift
 import RxCocoa
 
 class StoreViewModel: BaseViewModel {
-    
+
     struct Input {
-        
+
     }
-    
+
     struct Output {
-        
+
     }
-    
-    
+
 }
 
 // MARK: - Transform

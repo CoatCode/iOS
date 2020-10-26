@@ -10,19 +10,19 @@ import RxSwift
 import RxCocoa
 
 class CommentPreviewCellViewModel {
-    
+
     let writerName = BehaviorRelay<String?>(value: nil)
     let writerImageUrl = BehaviorRelay<String?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
-    
+
     let comment: Comment
-    
+
     init(comment: Comment) {
         self.comment = comment
-        
+
         self.writerName.accept(comment.owner.username)
         self.writerImageUrl.accept(comment.owner.image)
         self.content.accept(comment.content)
     }
-    
+
 }

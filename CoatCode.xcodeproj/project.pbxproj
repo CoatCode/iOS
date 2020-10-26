@@ -94,6 +94,7 @@
 		F2D7FCAC251A42AF00AB3CEF /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D7FCAA251A42AF00AB3CEF /* CommentCell.xib */; };
 		F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */; };
 		F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D91C1524DAF30000D36E17 /* AuthAPI.swift */; };
+		F2DFB19D254662D300BB6AAC /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F2DFB19C254662D300BB6AAC /* .swiftlint.yml */; };
 		F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EC1A0F250203BA000FC848 /* Feed.storyboard */; };
 		F2EC1A12250204C2000FC848 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EC1A11250204C2000FC848 /* Store.storyboard */; };
 		F2EC1A14250204EB000FC848 /* Writing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EC1A13250204EB000FC848 /* Writing.storyboard */; };
@@ -116,7 +117,7 @@
 		F205419D24F73715000F932F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		F20541A024F7372F000F932F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F2105938253C29DB00528A7B /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
-		F213A53A2541617800D964BB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		F213A53A2541617800D964BB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = CoatCode/Resources/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		F2153B9224D26A9000BFD08F /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		F2153B9424D272A100BFD08F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F21DF69524DD7B9900F44B96 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		F2D7FCAA251A42AF00AB3CEF /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		F2D91C1224DAF27F00D36E17 /* CoatCodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatCodeAPI.swift; sourceTree = "<group>"; };
 		F2D91C1524DAF30000D36E17 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		F2DFB19C254662D300BB6AAC /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		F2EC1A0F250203BA000FC848 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		F2EC1A11250204C2000FC848 /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		F2EC1A13250204EB000FC848 /* Writing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing.storyboard; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		F231AEF124A893CB00BA720B /* CoatCode */ = {
 			isa = PBXGroup;
 			children = (
+				F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */,
 				F231AEF224A893CB00BA720B /* AppDelegate.swift */,
 				F259256724E690F700A09270 /* Flows */,
 				F27A9B2524D0FEC400960043 /* Common */,
@@ -338,7 +341,7 @@
 				F2728F8A24D004F900123723 /* Modules */,
 				F264C9A924D3BB2100CE0251 /* Networking */,
 				F28EE8B224D6F1D500D9A9DD /* Third Party */,
-				F27A9B2924D1039B00960043 /* Resources */,
+				F272FEAE25464E0C00308A3F /* Resources */,
 			);
 			path = CoatCode;
 			sourceTree = "<group>";
@@ -504,12 +507,25 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		F272FEAE25464E0C00308A3F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2762A2C24ED19D500CB6434 /* Fonts */,
+				F231AEFB24A893CD00BA720B /* Assets.xcassets */,
+				F231AF0024A893CD00BA720B /* Info.plist */,
+				F213A53A2541617800D964BB /* R.generated.swift */,
+				F2DFB19C254662D300BB6AAC /* .swiftlint.yml */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F2762A2C24ED19D500CB6434 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				F2762A2D24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf */,
 			);
 			name = Fonts;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F2788D3924D4170E00BD74D7 /* CoatCodeService */ = {
@@ -566,18 +582,6 @@
 				F272FE872544D48B00308A3F /* CollectionViewController.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		F27A9B2924D1039B00960043 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F2762A2C24ED19D500CB6434 /* Fonts */,
-				F213A53A2541617800D964BB /* R.generated.swift */,
-				F231AF0024A893CD00BA720B /* Info.plist */,
-				F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */,
-				F231AEFB24A893CD00BA720B /* Assets.xcassets */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		F288AB4A24EA36AE00D8D274 /* Intro */ = {
@@ -700,7 +704,8 @@
 			buildConfigurationList = F231AF0324A893CD00BA720B /* Build configuration list for PBXNativeTarget "CoatCode" */;
 			buildPhases = (
 				2B532230BCB02003F1C35B73 /* [CP] Check Pods Manifest.lock */,
-				F213A5382541603900D964BB /* ShellScript */,
+				F213A5382541603900D964BB /* R.swift */,
+				F272FEA925464ADA00308A3F /* SwiftLint */,
 				F231AEEB24A893CB00BA720B /* Sources */,
 				F231AEEC24A893CB00BA720B /* Frameworks */,
 				F231AEED24A893CB00BA720B /* Resources */,
@@ -762,6 +767,7 @@
 				F2EC1A1625020500000FC848 /* Favorites.storyboard in Resources */,
 				F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
+				F2DFB19D254662D300BB6AAC /* .swiftlint.yml in Resources */,
 				F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */,
 				F24905DE2503A94600BD86FF /* Search.storyboard in Resources */,
 				F2EC1A14250204EB000FC848 /* Writing.storyboard in Resources */,
@@ -814,7 +820,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F213A5382541603900D964BB /* ShellScript */ = {
+		F213A5382541603900D964BB /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -824,6 +830,7 @@
 			inputPaths = (
 				"$TEMP_DIR/rswift-lastrun",
 			);
+			name = R.swift;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -832,6 +839,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		F272FEA925464ADA00308A3F /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1059,7 +1084,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75FNRKTJ9S;
-				INFOPLIST_FILE = CoatCode/Info.plist;
+				INFOPLIST_FILE = CoatCode/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1078,7 +1103,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75FNRKTJ9S;
-				INFOPLIST_FILE = CoatCode/Info.plist;
+				INFOPLIST_FILE = CoatCode/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

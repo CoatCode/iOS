@@ -12,13 +12,13 @@ import RxSwift
 /// 네트워크 호출 상속용
 /// https://github.com/Moya/Moya
 class BaseService<API: TargetType> {
-    
+
     // moya에서 지원하는 로깅 플러그인
     //  private let provider = MoyaProvider<API>(plugins: [NetworkLoggerPlugin()])
-    
+
     // 커스텀 로깅 플러그인
     private let provider = MoyaProvider<API>(plugins: [RequestLoggingPlugin()])
-    
+
     /// 네트워크 호출
     /// help from https://github.com/Moya/Moya/issues/1177#issuecomment-345132374
     func request(_ api: API) -> Single<Response> {

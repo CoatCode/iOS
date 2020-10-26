@@ -14,17 +14,17 @@ import Reusable
 class StoreViewController: BaseViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = R.storyboard.store()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
+
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        
+
         guard let viewModel = self.viewModel as? StoreViewModel else { fatalError("ViewModel Casting Falid!") }
-        
+
     }
 }

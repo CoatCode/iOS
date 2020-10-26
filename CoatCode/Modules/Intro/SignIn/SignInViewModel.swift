@@ -10,17 +10,17 @@ import RxSwift
 import RxCocoa
 
 class SignInViewModel: BaseViewModel {
-    
+
     // MARK: - Properties
     var tokenSaved = PublishSubject<Void>()
     let email = BehaviorRelay(value: "")
     let password = BehaviorRelay(value: "")
-    
+
     // MARK: - Struct
     struct Input {
         let signInTrigger: Driver<Void>
     }
-    
+
     struct Output {
         let loginButtonEnabled: Driver<Bool>
     }
@@ -34,11 +34,11 @@ extension SignInViewModel {
             .drive(onNext: {
                 self.signInRequest()
             }).disposed(by: disposeBag)
-        
+
         let loginButtonEnabled = BehaviorRelay.combineLatest(email, password, self.loading.asObservable()) {
             return !$0.isEmpty && !$1.isEmpty && !$2
         }.asDriver(onErrorJustReturn: false)
-        
+
         return Output(loginButtonEnabled: loginButtonEnabled)
     }
 }
@@ -59,7 +59,7 @@ extension SignInViewModel {
                     AuthManager.removeToken()
             }).disposed(by: disposeBag)
     }
-    
+
     func profileRequest() {
         return self.services.profile()
             .trackActivity(self.loading)
@@ -67,10 +67,10 @@ extension SignInViewModel {
                 onNext: { profile in
                     // user response값 저장
                     DatabaseManager.shared.saveUser(profile)
-                    
+
                     // keychain에 username값 저장
                     KeychainManager.shared.username = profile.username
-                    
+
                     // Stepping (callback to AppStepper)
                     UserDefaults.standard.set(true, forKey: "loginState")
                     loggedIn.accept(true)

@@ -10,15 +10,15 @@ import Foundation
 import RealmSwift
 
 class DatabaseManager {
-    
+
     static let shared = DatabaseManager()
-    
+
     private let realm: Realm
-    
+
     private init() {
         self.realm = try! Realm()
     }
-    
+
     /**
      realm 로컬 DB로 사용자 정보를 저장합니다.
      
@@ -34,15 +34,12 @@ class DatabaseManager {
             fatalError("DB Error!")
         }
     }
-    
+
     func removeCurrentUser() {
-        
     }
-    
+
     func getCurrentUser() -> User {
         realm.objects(User.self).filter("username == '\(KeychainManager.shared.username ?? "")'").first!
     }
-    
-    
-    
+
 }

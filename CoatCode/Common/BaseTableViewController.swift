@@ -9,10 +9,5 @@
 import Foundation
 
 class BaseTableViewController: BaseViewController {
-    
-    
-    
-    
-    
-    
+
 }

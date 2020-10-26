@@ -13,19 +13,19 @@ import RxCocoa
 import RxGesture
 
 class CreateProfileViewController: BaseViewController, StoryboardSceneBased {
-    
+
     // MARK: - Properties
     static let sceneStoryboard = R.storyboard.intro()
-    
+
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var nameValidationLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
-    
+
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         bindProfileImage()
         backBarButton()
         setProfileImageView()
@@ -34,26 +34,26 @@ class CreateProfileViewController: BaseViewController, StoryboardSceneBased {
     // MARK: - BindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-        
+
         guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("ViewModel Casting Falid!") }
-        
+
         let nameControlEvents: Observable<Bool> = Observable.merge([
             nameField.rx.controlEvent(.editingDidBegin).map { true },
             nameField.rx.controlEvent(.editingDidEnd).map { false }
         ])
-        
+
         let input = CreateProfileViewModel.Input(signUpTrigger: signUpButton.rx.tap.asDriver(),
                                                  nameEvents: nameControlEvents)
         let output = viewModel.transform(input: input)
-        
+
         nameField.rx.text.orEmpty
             .bind(to: viewModel.username)
             .disposed(by: disposeBag)
-        
+
         output.signUpButtonEnabled
             .drive(signUpButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         output.nameValidation
             .drive(nameValidationLabel.rx.text)
             .disposed(by: disposeBag)
@@ -64,7 +64,7 @@ class CreateProfileViewController: BaseViewController, StoryboardSceneBased {
 extension CreateProfileViewController {
     func bindProfileImage() {
         guard let viewModel = viewModel as? CreateProfileViewModel else { fatalError("FatalError!") }
-        
+
         let imagePicker = imagePickerScene(
             on: self,
             modalPresentationStyle: .formSheet,
@@ -91,7 +91,7 @@ extension CreateProfileViewController {
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         profileImageView.clipsToBounds = true
-        
+
         self.profileImageView.image = UIImage(named: "Default_Profile")
     }
 }

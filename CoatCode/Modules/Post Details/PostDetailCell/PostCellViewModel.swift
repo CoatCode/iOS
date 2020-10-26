@@ -11,33 +11,33 @@ import RxCocoa
 import RxFlow
 
 class PostCellViewModel {
-    
+
     // writer profile
     let username = BehaviorRelay<String?>(value: nil)
     let profileImageUrl = BehaviorRelay<String?>(value: nil)
-    
+
     // Post Content
     let imageUrls = BehaviorRelay<[URL]?>(value: nil)
     let title = BehaviorRelay<String?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
-    
+
     let likeCount = BehaviorRelay<Int?>(value: nil)
     let commentCount = BehaviorRelay<Int?>(value: nil)
     let viewCount = BehaviorRelay<Int?>(value: nil)
-    
+
     let tag = BehaviorRelay<[String]?>(value: nil)
     let createdTime = BehaviorRelay<Date?>(value: nil)
-    
+
     let isLiked = BehaviorRelay<Bool?>(value: nil)
-    
+
     let disposeBag = DisposeBag()
     var services: CoatCodeService
     var post: Post
-    
+
     init(post: Post, services: CoatCodeService) {
         self.post = post
         self.services = services
-        
+
         self.username.accept(post.owner.username)
         self.profileImageUrl.accept(post.owner.image)
         self.imageUrls.accept(post.imageURLs)
@@ -48,7 +48,7 @@ class PostCellViewModel {
         self.viewCount.accept(post.viewCount)
         self.tag.accept(post.tag)
         self.createdTime.accept(post.createdAt)
-        
+
         // 좋아요 여부
         if let isLiked = post.likedPeople?.contains(DatabaseManager.shared.getCurrentUser().id) {
             self.isLiked.accept(isLiked)
@@ -56,7 +56,7 @@ class PostCellViewModel {
             self.isLiked.accept(false)
         }
     }
-    
+
     func like() {
         FeedbackManager.impactFeedback(style: .medium)
         self.services.likePost(postId: post.id)
@@ -69,7 +69,7 @@ class PostCellViewModel {
                 print(error)
             }).disposed(by: disposeBag)
     }
-    
+
     func unLike() {
         self.services.unlikePost(postId: post.id)
             .asObservable()
@@ -81,7 +81,7 @@ class PostCellViewModel {
                 print(error)
             }).disposed(by: disposeBag)
     }
-    
+
     func checkLiking() {
         self.services.isLikedPost(postId: post.id)
             .asObservable()

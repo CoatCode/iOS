@@ -12,24 +12,24 @@ import RxCocoa
 import UIKit
 
 class FavoriteFlow: Flow {
-    
+
     // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
     }
-    
+
     private let rootViewController = UINavigationController()
     private let services: CoatCodeService
-    
+
     // MARK: - Init
     init(withServices services: CoatCodeService) {
         self.services = services
     }
-    
+
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-    
+
     // MARK: - Navigation Switch
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
@@ -39,9 +39,9 @@ class FavoriteFlow: Flow {
         default:
             return .none
         }
-        
+
     }
-    
+
 }
 
 // MARK: - Navigate to Favorites
@@ -50,7 +50,7 @@ extension FavoriteFlow {
         let viewModel = FavoritesViewModel()
         let viewController = FavoritesViewController.instantiate(withViewModel: viewModel,
                                                                  andServices: self.services)
-        
+
         self.rootViewController.pushViewController(viewController, animated: true)
         return .none
     }

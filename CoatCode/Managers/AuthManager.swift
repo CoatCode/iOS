@@ -13,7 +13,7 @@ import RxCocoa
 let loggedIn = BehaviorRelay<Bool>(value: false)
 
 class AuthManager {
-    
+
     /// The default singleton instance.
     static let shared = AuthManager()
 
@@ -42,7 +42,7 @@ class AuthManager {
             tokenChanged.onNext(newValue)
         }
     }
-    
+
     class func getAccessToken() -> String {
         if let token = AuthManager.shared.token {
             return token.accessToken
@@ -50,7 +50,7 @@ class AuthManager {
             return "AccessTokenError"
         }
     }
-    
+
     class func getRefreshToken() -> String {
         if let token = AuthManager.shared.token {
             return token.refreshToken
@@ -66,7 +66,7 @@ class AuthManager {
     class func removeToken() {
         AuthManager.shared.token = nil
     }
-    
+
     /// refreshToken의 만료일을 확인합니다.
 //    @discardableResult
 //    class func checkRefreshTokenValid() -> Bool {

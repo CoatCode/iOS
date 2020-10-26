@@ -10,16 +10,15 @@ import RxSwift
 import RxCocoa
 
 class FavoritesViewModel: BaseViewModel {
-    
+
     struct Input {
-        
+
     }
-    
+
     struct Output {
-        
+
     }
-    
-    
+
 }
 
 // MARK: - Transform

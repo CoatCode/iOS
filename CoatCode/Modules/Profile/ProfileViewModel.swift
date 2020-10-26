@@ -10,12 +10,11 @@ import RxSwift
 import RxCocoa
 
 class ProfileViewModel: BaseViewModel {
-    
+
     let userId: Int
-    
+
     init(userId: Int) {
         self.userId = userId
     }
-    
-    
+
 }

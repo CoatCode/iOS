@@ -14,54 +14,54 @@ import RxCocoa
 import RxKeyboard
 
 class PostDetailViewController: BaseViewController, StoryboardSceneBased {
-    
+
     static let sceneStoryboard = R.storyboard.postDetail()
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var commentBottomConstraint: NSLayoutConstraint!
-    
+
     var dataSource: RxCollectionViewSectionedReloadDataSource<PostDetailSection>!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         collectionView.register(R.nib.postDetailCell)
         collectionView.register(R.nib.commentCell)
-        
+
         //        if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
         //            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         //        }
-        
+
         RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] visibleHeight in
             guard let self = self else { return }
-            
+
             if visibleHeight == 0 {
                 self.commentBottomConstraint.constant = 0
             } else {
                 let height = visibleHeight - self.view.safeAreaInsets.bottom
                 self.commentBottomConstraint.constant = height
             }
-            
+
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }).disposed(by: disposeBag)
-        
+
     }
-    
+
     override func bindViewModel() {
         super.bindViewModel()
-        
+
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
-        
+
         commentField.rx.text.orEmpty
             .bind(to: viewModel.commentText)
             .disposed(by: disposeBag)
-        
+
         let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
-        
+
         self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
             switch item {
             case .postDetailItem(let cellViewModel):
@@ -74,15 +74,15 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
                 return cell
             }
         })
-        
+
         output.items
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
         output.sendButtonEnabled
             .drive(self.sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         output.sendComplete
             .drive(onNext: { [weak self] (isComplete) in
                 if isComplete {
@@ -91,15 +91,15 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
                 }
             }).disposed(by: disposeBag)
     }
-    
+
 }
 
 // MARK: - 댓글 삭제 / 신고
 extension PostDetailViewController {
-    
+
     func commentMore(_ comment: Comment) {
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
-        
+
         if comment.owner.id == DatabaseManager.shared.getCurrentUser().id {
             self.showAlert(title: "무엇이 하고 싶은가요?", message: nil, style: .actionSheet,
                            actions: [

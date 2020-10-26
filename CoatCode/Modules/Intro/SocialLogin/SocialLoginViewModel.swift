@@ -13,14 +13,14 @@ class SocialLoginViewModel: BaseViewModel {
 
     struct Input {
     }
-    
+
     struct Output {
     }
-    
+
     func transform(input: Input) -> Output {
         return Output()
     }
-    
+
     func dismiss() {
         steps.accept(CoatCodeStep.socialLoginIsComplete)
     }

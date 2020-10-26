@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedbackManager {
-    
+
     /**
      충격이 발생했음을 나타내기위한 햅틱 피드백.
      
@@ -21,7 +21,7 @@ class FeedbackManager {
         generator.prepare()
         generator.impactOccurred()
     }
-    
+
     /**
      선택 변경을 나타내기위한 햅틱 피드백.
      */
@@ -30,7 +30,7 @@ class FeedbackManager {
         generator.prepare()
         generator.selectionChanged()
     }
-    
+
     /**
      성공, 실패 및 경고를 나타내기위한 햅틱 피드백.
      
@@ -42,5 +42,5 @@ class FeedbackManager {
         generator.prepare()
         generator.notificationOccurred(type)
     }
-    
+
 }

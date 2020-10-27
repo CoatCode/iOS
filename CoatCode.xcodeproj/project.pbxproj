@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3FE9012010AFA416A5EBB44B /* Pods_CoatCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E6D3FC4C5AF1E109FEDE98 /* Pods_CoatCode.framework */; };
+		2411108A09BDBE96424C30C6 /* Pods_CoatCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA0BA4867FC794BEA1ADDEA /* Pods_CoatCode.framework */; };
 		F205419A24F736E8000F932F /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205419924F736E8000F932F /* StoreViewModel.swift */; };
 		F205419C24F736FD000F932F /* WritingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205419B24F736FD000F932F /* WritingViewModel.swift */; };
 		F205419E24F73715000F932F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205419D24F73715000F932F /* FavoritesViewModel.swift */; };
@@ -109,9 +109,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		249176EF3C2590EDDDE35285 /* Pods-CoatCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.debug.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.debug.xcconfig"; sourceTree = "<group>"; };
-		84E6D3FC4C5AF1E109FEDE98 /* Pods_CoatCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoatCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.release.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.release.xcconfig"; sourceTree = "<group>"; };
+		1BFB88D234B85A201AF105B9 /* Pods-CoatCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.debug.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.debug.xcconfig"; sourceTree = "<group>"; };
+		47CA80D652FE7521470EE62C /* Pods-CoatCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoatCode.release.xcconfig"; path = "Target Support Files/Pods-CoatCode/Pods-CoatCode.release.xcconfig"; sourceTree = "<group>"; };
+		4FA0BA4867FC794BEA1ADDEA /* Pods_CoatCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoatCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F205419924F736E8000F932F /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
 		F205419B24F736FD000F932F /* WritingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewModel.swift; sourceTree = "<group>"; };
 		F205419D24F73715000F932F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -219,17 +219,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE9012010AFA416A5EBB44B /* Pods_CoatCode.framework in Frameworks */,
+				2411108A09BDBE96424C30C6 /* Pods_CoatCode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DC51867AD536A4967629BA74 /* Frameworks */ = {
+		4BD1F87CABE918FB4E667D9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84E6D3FC4C5AF1E109FEDE98 /* Pods_CoatCode.framework */,
+				4FA0BA4867FC794BEA1ADDEA /* Pods_CoatCode.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -237,8 +237,8 @@
 		F19DEFCC85BA2122904FA01B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				249176EF3C2590EDDDE35285 /* Pods-CoatCode.debug.xcconfig */,
-				C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */,
+				1BFB88D234B85A201AF105B9 /* Pods-CoatCode.debug.xcconfig */,
+				47CA80D652FE7521470EE62C /* Pods-CoatCode.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				F231AEF124A893CB00BA720B /* CoatCode */,
 				F231AEF024A893CB00BA720B /* Products */,
 				F19DEFCC85BA2122904FA01B /* Pods */,
-				DC51867AD536A4967629BA74 /* Frameworks */,
+				4BD1F87CABE918FB4E667D9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -703,13 +703,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F231AF0324A893CD00BA720B /* Build configuration list for PBXNativeTarget "CoatCode" */;
 			buildPhases = (
-				2B532230BCB02003F1C35B73 /* [CP] Check Pods Manifest.lock */,
+				300E4011558B82FDEDD67EDF /* [CP] Check Pods Manifest.lock */,
 				F213A5382541603900D964BB /* R.swift */,
 				F272FEA925464ADA00308A3F /* SwiftLint */,
 				F231AEEB24A893CB00BA720B /* Sources */,
 				F231AEEC24A893CB00BA720B /* Frameworks */,
 				F231AEED24A893CB00BA720B /* Resources */,
-				15E53298F3E76C989AB0CA3B /* [CP] Embed Pods Frameworks */,
+				097AE6466A569C6B86DE4FF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -781,7 +781,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15E53298F3E76C989AB0CA3B /* [CP] Embed Pods Frameworks */ = {
+		097AE6466A569C6B86DE4FF7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -798,7 +798,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoatCode/Pods-CoatCode-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2B532230BCB02003F1C35B73 /* [CP] Check Pods Manifest.lock */ = {
+		300E4011558B82FDEDD67EDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -834,7 +834,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -999,6 +999,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1059,6 +1060,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1079,7 +1081,7 @@
 		};
 		F231AF0424A893CD00BA720B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 249176EF3C2590EDDDE35285 /* Pods-CoatCode.debug.xcconfig */;
+			baseConfigurationReference = 1BFB88D234B85A201AF105B9 /* Pods-CoatCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1098,7 +1100,7 @@
 		};
 		F231AF0524A893CD00BA720B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5AD3DD0458F10859CFB875D /* Pods-CoatCode.release.xcconfig */;
+			baseConfigurationReference = 47CA80D652FE7521470EE62C /* Pods-CoatCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

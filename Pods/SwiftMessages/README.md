@@ -48,6 +48,10 @@ And check out our blog post [Elegant Custom UIViewController Transitioning](http
 
 ## Installation
 
+### Swift Package Manager
+
+Go to `File | Swift Packages | Add Package Dependency...` in Xcode and search for "SwiftMessages". If multiple results are found, select the one owned by SwiftKick Mobile.
+
 ### CocoaPods
 
 Add the following line to your Podfile:
@@ -63,6 +67,8 @@ Add the following line to your Cartfile:
 ````ruby
 github "SwiftKickMobile/SwiftMessages"
 ````
+
+If the Carthage build fails, [try using the script](https://github.com/Carthage/Carthage/issues/3019).
 
 ### Manual
 

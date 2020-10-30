@@ -26,6 +26,8 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = ""
 
         collectionView.register(R.nib.postDetailCell)
         collectionView.register(R.nib.commentCell)
@@ -55,11 +57,20 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
 
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
 
+        setNavigationBar(profile: viewModel.cellViewModel.value.post.owner)
+
         commentField.rx.text.orEmpty
             .bind(to: viewModel.commentText)
             .disposed(by: disposeBag)
 
-        let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable())
+        let profileClick = self.navigationItem.titleView!.rx
+            .tapGesture()
+            .when(.recognized)
+            .map { _ in Void() }
+            .asDriver(onErrorJustReturn: ())
+
+        let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable(),
+                                              profileTrigger: profileClick)
         let output = viewModel.transform(input: input)
 
         self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
@@ -83,6 +94,13 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
             .drive(self.sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
+        output.deleteComplete
+            .drive(onNext: { [weak self] isComplete in
+                if isComplete {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }).disposed(by: disposeBag)
+
         output.sendComplete
             .drive(onNext: { [weak self] (isComplete) in
                 if isComplete {
@@ -91,7 +109,6 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
                 }
             }).disposed(by: disposeBag)
     }
-
 }
 
 // MARK: - 댓글 삭제 / 신고
@@ -123,7 +140,56 @@ extension PostDetailViewController {
             ).subscribe(onNext: { selectedIndex in
                 switch selectedIndex {
                 case 0:
-                    viewModel.reportComment(comment)
+                    viewModel.reportComment(comment.id)
+                default:
+                    break
+                }
+            }).disposed(by: disposeBag)
+        }
+    }
+}
+
+// MARK: - 게시물 신고 / 삭제 - 수정
+extension PostDetailViewController {
+    func setNavigationBar(profile: User) {
+        guard let url = URL(string: profile.image ?? "") else { return }
+        self.setTitle(profile.username, url)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.more_Icon(), style: .plain, target: self, action: #selector(postMore))
+    }
+
+    @objc func postMore() {
+        guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
+
+        let post = viewModel.cellViewModel.value.post
+
+        if post.owner.id == DatabaseManager.shared.getCurrentUser().id {
+            self.showAlert(title: "무엇이 하고 싶은가요?", message: nil, style: .actionSheet,
+                           actions: [
+                            AlertAction.action(title: "Edit"),
+                            AlertAction.action(title: "Delete", style: .destructive),
+                            AlertAction.action(title: "Cancel", style: .cancel)
+                           ]
+            ).subscribe(onNext: { selectedIndex in
+                switch selectedIndex {
+                case 0:
+                    viewModel.editPost(post)
+                case 1:
+                    viewModel.deletePost(post.id)
+                default:
+                    break
+                }
+            }).disposed(by: disposeBag)
+        } else {
+            self.showAlert(title: "무엇이 하고 싶은가요?", message: nil, style: .actionSheet,
+                           actions: [
+                            AlertAction.action(title: "Report this Post", style: .destructive),
+                            AlertAction.action(title: "Cancel", style: .cancel)
+                           ]
+            ).subscribe(onNext: { selectedIndex in
+                switch selectedIndex {
+                case 0:
+                    viewModel.reportPost(post.id)
                 default:
                     break
                 }

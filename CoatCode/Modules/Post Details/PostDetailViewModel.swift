@@ -15,18 +15,23 @@ class PostDetailViewModel: BaseViewModel {
     let comments = PublishSubject<[Comment]>()
     let commentText = BehaviorRelay(value: "")
 
+    let sendComplete = PublishSubject<Bool>()
+    let deleteComplete = PublishSubject<Bool>()
+
     init(with cellViewModel: PostCellViewModel) {
         self.cellViewModel = BehaviorRelay(value: cellViewModel)
     }
 
     struct Input {
         let sendButtonTrigger: Observable<Void>
+        let profileTrigger: Driver<Void>
     }
 
     struct Output {
         let items: Observable<[PostDetailSection]>
         let sendButtonEnabled: Driver<Bool>
         let sendComplete: Driver<Bool>
+        let deleteComplete: Driver<Bool>
     }
 
 }
@@ -34,7 +39,11 @@ class PostDetailViewModel: BaseViewModel {
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
 
-        let sendComplete = PublishSubject<Bool>()
+        input.profileTrigger
+            .drive(onNext: { [weak self] in
+                let userId = self?.cellViewModel.value.post.owner.id
+                self?.steps.accept(CoatCodeStep.profileIsRequired(uesrId: userId ?? 0))
+            }).disposed(by: disposeBag)
 
         let commentSent = input.sendButtonTrigger.flatMapLatest { [weak self] () -> Observable<Void> in
             guard let self = self else { return Observable.just(()) }
@@ -46,10 +55,10 @@ extension PostDetailViewModel {
         }
 
         commentSent.subscribe(onNext: { [weak self] in
-            sendComplete.onNext(true)
+            self?.sendComplete.onNext(true)
             self?.getCommentsRequest()
-        }, onError: { (error) in
-            sendComplete.onNext(false)
+        }, onError: { [weak self] _ in
+            self?.sendComplete.onNext(false)
         }).disposed(by: disposeBag)
 
         cellViewModel.subscribe(onNext: { [weak self] cellViewModel in
@@ -76,7 +85,10 @@ extension PostDetailViewModel {
             return !$0.isEmpty && !$1
         }.asDriver(onErrorJustReturn: false)
 
-        return Output(items: items, sendButtonEnabled: sendButtonEnabled, sendComplete: sendComplete.asDriver(onErrorJustReturn: false))
+        return Output(items: items,
+                      sendButtonEnabled: sendButtonEnabled,
+                      sendComplete: self.sendComplete.asDriver(onErrorJustReturn: false),
+                      deleteComplete: deleteComplete.asDriver(onErrorJustReturn: false))
     }
 }
 
@@ -110,7 +122,27 @@ extension PostDetailViewModel {
             }).disposed(by: disposeBag)
     }
 
-    func reportComment(_ comment: Comment) {
-        print("report comment")
+    func reportComment(_ commentId: Int) {
+        print("report comment \(commentId)")
+    }
+}
+
+extension PostDetailViewModel {
+    func editPost(_ post: Post) {
+//        self.steps.accept(CoatCodeStep.editPostIsRequired(post))
+    }
+
+    func deletePost(_ postId: Int) {
+        self.services.deletePost(postId: postId)
+            .trackActivity(self.loading)
+            .subscribe(onNext: { [weak self] in
+                self?.deleteComplete.onNext(true)
+            }, onError: { [weak self] _ in
+                self?.deleteComplete.onNext(false)
+            }).disposed(by: disposeBag)
+    }
+
+    func reportPost(_ postId: Int) {
+        print("report post \(postId)")
     }
 }

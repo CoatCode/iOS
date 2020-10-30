@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 struct AlertAction {
     var title: String
@@ -37,5 +38,27 @@ extension UIViewController {
 
             return Disposables.create { alertController.dismiss(animated: true, completion: nil) }
         }
+    }
+
+    func setTitle(_ title: String, _ imageURL: URL) {
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        imageView.clipsToBounds = true
+//        imageView.contentMode = .scaleAspectFill
+
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 30, height: 30)) |> RoundCornerImageProcessor(cornerRadius: 15)
+        imageView.kf.setImage(with: imageURL, options: [.processor(processor)])
+
+        let titleView = UIStackView(arrangedSubviews: [imageView, titleLabel])
+        titleView.axis = .horizontal
+        titleView.alignment = .center
+        titleView.distribution = .fillProportionally
+        titleView.spacing = 5.0
+
+        navigationItem.titleView = titleView
     }
 }

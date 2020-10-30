@@ -24,6 +24,7 @@ class FeedViewController: CustomTabBarViewController, StoryboardSceneBased {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = ""
         configureBaseNaviBar()
     }
 

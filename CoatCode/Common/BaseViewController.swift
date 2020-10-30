@@ -25,6 +25,9 @@ class BaseViewController: UIViewController, ViewModelBased, NVActivityIndicatorV
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.backIndicatorImage = R.image.bt_LeftArrow()
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = R.image.bt_LeftArrow()
+
         bindViewModel()
     }
 

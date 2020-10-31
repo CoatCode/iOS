@@ -76,7 +76,6 @@ extension CreateProfileViewController {
             .flatMapLatest { _ in Observable.create(imagePicker) }
             .compactMap { $0[.originalImage] as? UIImage }
             .bind { image in
-                self.profileImageView.clipsToBounds = true
                 self.profileImageView.image = image
                 viewModel.profileImage.accept(image)
             }

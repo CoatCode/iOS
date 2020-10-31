@@ -94,6 +94,7 @@ extension TabBarFlow {
         let viewModel = UploadPostViewModel()
         let viewController = UploadPostViewController.instantiate(withViewModel: viewModel, andServices: self.services)
 
+        viewController.modalPresentationStyle = .fullScreen
         self.rootViewController?.present(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))
@@ -106,6 +107,7 @@ extension TabBarFlow {
         let viewModel = UploadProductViewModel()
         let viewController = UploadProductViewController.instantiate(withViewModel: viewModel, andServices: self.services)
 
+        viewController.modalPresentationStyle = .fullScreen
         self.rootViewController?.present(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController,
                                                  withNextStepper: viewModel))

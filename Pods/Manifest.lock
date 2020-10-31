@@ -94,6 +94,7 @@ PODS:
   - SwiftMessages (8.0.3):
     - SwiftMessages/App (= 8.0.3)
   - SwiftMessages/App (8.0.3)
+  - Tagging (0.5.0)
   - Tags (0.3.1)
   - XLPagerTabStrip (9.0.0)
 
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - SkeletonView
   - SwiftLint
   - SwiftMessages
+  - Tagging
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -148,6 +150,7 @@ SPEC REPOS:
     - SkeletonView
     - SwiftLint
     - SwiftMessages
+    - Tagging
     - Tags
     - XLPagerTabStrip
 
@@ -177,9 +180,10 @@ SPEC CHECKSUMS:
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
+  Tagging: 51afaf28d0d49ea7cf8600b2bda33cb7bff1c5ff
   Tags: 77420a200531fb338563b07279858edb51d080c5
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 7db650b8d24f952d674d067570a5d6fe4628f81e
+PODFILE CHECKSUM: a9bda09b86c43a77fc7ea706e492f38437b9f237
 
 COCOAPODS: 1.10.0

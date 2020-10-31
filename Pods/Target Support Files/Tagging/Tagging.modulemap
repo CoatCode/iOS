@@ -1,0 +1,6 @@
+framework module Tagging {
+  umbrella header "Tagging-umbrella.h"
+
+  export *
+  module * { export * }
+}

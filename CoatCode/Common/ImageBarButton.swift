@@ -28,21 +28,11 @@ class ImageBarButton: UIView {
         button.setTitle("", for: .normal)
         addSubview(button)
 
-        self.imageView.image = image
-
-        // Kingfisher를 사용하여 이미지 url을 UIImage로 변환하여 이미지 뷰에 넣을 예정
-
-//        if let url = imageURL {
-//            URLSession(configuration: .default).dataTask(with: URL(string: url.absoluteString)!) {[weak self] (data, response, error) in
-//                if let data = data , let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        self?.imgView.image = image
-//                    }
-//                }
-//            }.resume()
-//        } else if let image = image {
-//            self.imageView.image = image
-//        }
+        if let url = imageURL {
+            self.imageView.kf.setImage(with: url)
+        } else if let image = image {
+            self.imageView.image = image
+        }
     }
 
     func load() -> UIBarButtonItem {

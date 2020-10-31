@@ -86,11 +86,13 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
     }
 
     func setIconBar() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "cocoIcon"), style: .plain, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.cocoIcon(), style: .plain, target: nil, action: nil)
     }
 
     func setProfileShortcutBar() {
-        let profileBarButton = ImageBarButton(withImage: UIImage(named: "Default_Profile"))
+        let user = DatabaseManager.shared.getCurrentUser()
+        let profileURL = URL(fileURLWithPath: user.image ?? "")
+        let profileBarButton = ImageBarButton(withUrl: profileURL, withImage: R.image.default_Profile())
         profileBarButton.button.addTarget(self, action: #selector(requestProfileView), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = profileBarButton.load()
     }

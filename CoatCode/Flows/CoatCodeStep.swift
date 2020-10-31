@@ -10,6 +10,7 @@ import RxFlow
 
 enum CoatCodeStep: Step {
 
+    // MARK: - App
     case tabBarIsRequired
     case introIsRequired
 
@@ -36,10 +37,10 @@ enum CoatCodeStep: Step {
     // MARK: - Store
     case storeHomeIsRequired
 
-    // MARK: - Writing
+    // MARK: - Upload
     case writingHomeIsRequired
-//    case postIsRequired
-//    case productIsRequired
+    case uploadPostIsRequired
+    case uploadProductIsRequired
 
     // MARK: - Favorites
     case favoritesHomeIsRequired

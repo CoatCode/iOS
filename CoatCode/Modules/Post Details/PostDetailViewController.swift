@@ -26,7 +26,7 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         self.navigationItem.title = ""
 
         collectionView.register(R.nib.postDetailCell)

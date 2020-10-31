@@ -41,8 +41,6 @@ class TabBarFlow: Flow {
             return .none
         }
     }
-
-    
 }
 
 // MARK: - Navigate to TabBar
@@ -50,11 +48,11 @@ extension TabBarFlow {
     private func navigateToTabBar() -> FlowContributors {
         let feedFlow = FeedFlow(withServices: self.services)
         let storeFlow = StoreFlow(withServices: self.services)
-        let writingFlow = WritingFlow(withServices: self.services)
+        let uploadFlow = UploadFlow(withServices: self.services)
         let favoriteFlow = FavoriteFlow(withServices: self.services)
         let settingFlow = SettingFlow(withServices: self.services)
 
-        Flows.use(feedFlow, storeFlow, writingFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5: UINavigationController) in
+        Flows.use(feedFlow, storeFlow, uploadFlow, favoriteFlow, settingFlow, when: .created) { [unowned self] (root1, root2, root3, root4, root5: UINavigationController) in
 
             let tabBarItem1 = UITabBarItem(title: nil, image: UIImage(named: "Feed_Icon"), selectedImage: nil)
             let tabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "Store_Icon"), selectedImage: nil)
@@ -80,8 +78,8 @@ extension TabBarFlow {
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.feedHomeIsRequired)),
             .contribute(withNextPresentable: storeFlow,
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.storeHomeIsRequired)),
-            .contribute(withNextPresentable: writingFlow,
-                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.writingHomeIsRequired)),
+            .contribute(withNextPresentable: uploadFlow,
+                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.uploadIsRequired)),
             .contribute(withNextPresentable: favoriteFlow,
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.favoritesHomeIsRequired)),
             .contribute(withNextPresentable: settingFlow,
@@ -90,14 +88,26 @@ extension TabBarFlow {
     }
 }
 
-func navigateToUploadPost() -> FlowContributors {
-    
-    
-    return
+// MARK: - Navigate to UploadPost
+extension TabBarFlow {
+    func navigateToUploadPost() -> FlowContributors {
+        let viewModel = UploadPostViewModel()
+        let viewController = UploadPostViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+
+        self.rootViewController?.present(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController,
+                                                 withNextStepper: viewModel))
+    }
 }
 
-func navigateToUploadProduct() -> FlowContributors {
-      
-    
-    return
+// MARK: - Navigate to UploadProduct
+extension TabBarFlow {
+    func navigateToUploadProduct() -> FlowContributors {
+        let viewModel = UploadProductViewModel()
+        let viewController = UploadProductViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+
+        self.rootViewController?.present(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController,
+                                                 withNextStepper: viewModel))
+    }
 }

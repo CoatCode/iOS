@@ -38,7 +38,7 @@ enum CoatCodeStep: Step {
     case storeHomeIsRequired
 
     // MARK: - Upload
-    case writingHomeIsRequired
+    case uploadIsRequired
     case uploadPostIsRequired
     case uploadProductIsRequired
 

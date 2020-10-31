@@ -110,8 +110,8 @@ struct R: Rswift.Validatable {
     static let settings = _R.storyboard.settings()
     /// Storyboard `Store`.
     static let store = _R.storyboard.store()
-    /// Storyboard `Writing`.
-    static let writing = _R.storyboard.writing()
+    /// Storyboard `Upload`.
+    static let upload = _R.storyboard.upload()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "Favorites", bundle: ...)`
@@ -177,9 +177,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "Writing", bundle: ...)`
-    static func writing(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.writing)
+    /// `UIStoryboard(name: "Upload", bundle: ...)`
+    static func upload(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.upload)
     }
     #endif
 
@@ -651,7 +651,7 @@ struct _R: Rswift.Validatable {
       try store.validate()
       #endif
       #if os(iOS) || os(tvOS)
-      try writing.validate()
+      try upload.validate()
       #endif
     }
 
@@ -881,19 +881,31 @@ struct _R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    struct writing: Rswift.StoryboardResourceType, Rswift.Validatable {
+    struct upload: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let name = "Writing"
-      let writingViewController = StoryboardViewControllerResource<WritingViewController>(identifier: "WritingViewController")
+      let name = "Upload"
+      let uploadPostViewController = StoryboardViewControllerResource<UploadPostViewController>(identifier: "UploadPostViewController")
+      let uploadProductViewController = StoryboardViewControllerResource<UploadProductViewController>(identifier: "UploadProductViewController")
+      let uploadViewController = StoryboardViewControllerResource<UploadViewController>(identifier: "UploadViewController")
 
-      func writingViewController(_: Void = ()) -> WritingViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: writingViewController)
+      func uploadPostViewController(_: Void = ()) -> UploadPostViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: uploadPostViewController)
+      }
+
+      func uploadProductViewController(_: Void = ()) -> UploadProductViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: uploadProductViewController)
+      }
+
+      func uploadViewController(_: Void = ()) -> UploadViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: uploadViewController)
       }
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
-        if _R.storyboard.writing().writingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'writingViewController' could not be loaded from storyboard 'Writing' as 'WritingViewController'.") }
+        if _R.storyboard.upload().uploadPostViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'uploadPostViewController' could not be loaded from storyboard 'Upload' as 'UploadPostViewController'.") }
+        if _R.storyboard.upload().uploadProductViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'uploadProductViewController' could not be loaded from storyboard 'Upload' as 'UploadProductViewController'.") }
+        if _R.storyboard.upload().uploadViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'uploadViewController' could not be loaded from storyboard 'Upload' as 'UploadViewController'.") }
       }
 
       fileprivate init() {}

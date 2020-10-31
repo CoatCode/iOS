@@ -22,8 +22,8 @@ class TabBarViewController: UITabBarController, Stepper {
         self.delegate = self
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         self.steps.accept(CoatCodeStep.tabBarIsRequired)
     }
@@ -31,7 +31,7 @@ class TabBarViewController: UITabBarController, Stepper {
 
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController.children.first!.isKind(of: WritingViewController.self) {
+        if viewController.children.first!.isKind(of: UploadViewController.self) {
 
             self.showAlert(title: "무엇이 하고 싶은가요?", message: nil, style: .actionSheet,
                            actions: [
@@ -42,9 +42,9 @@ extension TabBarViewController: UITabBarControllerDelegate {
             ).subscribe(onNext: { selectedIndex in
                 switch selectedIndex {
                 case 0:
-                    self.steps.accept()
+                    self.steps.accept(CoatCodeStep.uploadPostIsRequired)
                 case 1:
-                    self.steps.accept()
+                    self.steps.accept(CoatCodeStep.uploadProductIsRequired)
                 default:
                     break
                 }

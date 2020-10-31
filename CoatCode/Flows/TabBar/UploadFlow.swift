@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-class WritingFlow: Flow {
+class UploadFlow: Flow {
 
     // MARK: - Properties
     var root: Presentable {
@@ -34,7 +34,7 @@ class WritingFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? CoatCodeStep else { return .none }
         switch step {
-        case .writingHomeIsRequired:
+        case .uploadIsRequired:
             return navigateToWriting()
         default:
             return .none
@@ -42,19 +42,12 @@ class WritingFlow: Flow {
     }
 }
 
-// MARK: - Navigate to Writing
-extension WritingFlow {
+// MARK: - Navigate to Upload
+extension UploadFlow {
     func navigateToWriting() -> FlowContributors {
-        let viewModel = WritingViewModel()
-        let viewController = WritingViewController.instantiate(withViewModel: viewModel,
-                                                               andServices: self.services)
+        let viewController = UploadViewController()
 
-//        DispatchQueue.main.async {
-//            self.rootViewController.present(viewController, animated: true, completion: nil)
-//        }
         self.rootViewController.pushViewController(viewController, animated: true)
-
         return .none
     }
-
 }

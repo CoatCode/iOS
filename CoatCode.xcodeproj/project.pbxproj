@@ -29,6 +29,7 @@
 		F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFB24A893CD00BA720B /* Assets.xcassets */; };
 		F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231AEFD24A893CD00BA720B /* LaunchScreen.storyboard */; };
 		F23CE60724DB0BFB00717A3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CE60624DB0BFB00717A3F /* User.swift */; };
+		F23D9DB4254CE58600699B4C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D9DB3254CE58600699B4C /* TabBarViewController.swift */; };
 		F24905D32503526700BD86FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24905D22503526700BD86FF /* ProfileViewController.swift */; };
 		F24905D52503527700BD86FF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24905D42503527700BD86FF /* ProfileViewModel.swift */; };
 		F24905D72503550900BD86FF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24905D62503550900BD86FF /* Profile.storyboard */; };
@@ -135,6 +136,7 @@
 		F231AEFE24A893CD00BA720B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F231AF0024A893CD00BA720B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F23CE60624DB0BFB00717A3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F23D9DB3254CE58600699B4C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F24905D22503526700BD86FF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F24905D42503527700BD86FF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F24905D62503550900BD86FF /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		F24E952424E84847009B06BD /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				F23D9DB3254CE58600699B4C /* TabBarViewController.swift */,
 				F24E952224E82C27009B06BD /* TabBarFlow.swift */,
 				F24E952624E8486F009B06BD /* FeedFlow.swift */,
 				F24E952824E8487D009B06BD /* StoreFlow.swift */,
@@ -897,6 +900,7 @@
 				F2694A79252B542C007D8796 /* KeychainManager.swift in Sources */,
 				F264C9BA24D3F12E00CE0251 /* AuthService.swift in Sources */,
 				F277AD85253E6989005D30E9 /* CommentPreviewCellViewModel.swift in Sources */,
+				F23D9DB4254CE58600699B4C /* TabBarViewController.swift in Sources */,
 				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,
 				F24905D52503527700BD86FF /* ProfileViewModel.swift in Sources */,
 				F25161172504F1FF00932004 /* PostDetailViewModel.swift in Sources */,

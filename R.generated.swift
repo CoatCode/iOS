@@ -243,8 +243,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 20 images.
+  /// This `R.image` struct is generated, and contains static references to 22 images.
   struct image {
+    /// Image `Add_Icon`.
+    static let add_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add_Icon")
     /// Image `BT_Black`.
     static let bt_Black = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_Black")
     /// Image `BT_Cancel`.
@@ -269,6 +271,8 @@ struct R: Rswift.Validatable {
     static let more_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "More_Icon")
     /// Image `Plane_Icon`.
     static let plane_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Plane_Icon")
+    /// Image `Plus_Icon`.
+    static let plus_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Plus_Icon")
     /// Image `Settings_Icon`.
     static let settings_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Settings_Icon")
     /// Image `Share_Icon`.
@@ -285,6 +289,13 @@ struct R: Rswift.Validatable {
     static let writing_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Writing_Icon")
     /// Image `cocoIcon`.
     static let cocoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "cocoIcon")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Add_Icon", bundle: ..., traitCollection: ...)`
+    static func add_Icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add_Icon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "BT_Black", bundle: ..., traitCollection: ...)`
@@ -371,6 +382,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Plus_Icon", bundle: ..., traitCollection: ...)`
+    static func plus_Icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.plus_Icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Settings_Icon", bundle: ..., traitCollection: ...)`
     static func settings_Icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.settings_Icon, compatibleWith: traitCollection)
@@ -429,7 +447,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
   struct nib {
     /// Nib `CommentCell`.
     static let commentCell = _R.nib._CommentCell()
@@ -439,6 +457,8 @@ struct R: Rswift.Validatable {
     static let feedCell = _R.nib._FeedCell()
     /// Nib `PostDetailCell`.
     static let postDetailCell = _R.nib._PostDetailCell()
+    /// Nib `UploadImageCell`.
+    static let uploadImageCell = _R.nib._UploadImageCell()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "CommentCell", in: bundle)`
@@ -472,6 +492,14 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "UploadImageCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.uploadImageCell) instead")
+    static func uploadImageCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.uploadImageCell)
+    }
+    #endif
+
     static func commentCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CommentCell? {
       return R.nib.commentCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CommentCell
     }
@@ -488,10 +516,14 @@ struct R: Rswift.Validatable {
       return R.nib.postDetailCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PostDetailCell
     }
 
+    static func uploadImageCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UploadImageCell? {
+      return R.nib.uploadImageCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UploadImageCell
+    }
+
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 4 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CommentCell`.
     static let commentCell: Rswift.ReuseIdentifier<CommentCell> = Rswift.ReuseIdentifier(identifier: "CommentCell")
@@ -501,6 +533,8 @@ struct R: Rswift.Validatable {
     static let feedCell: Rswift.ReuseIdentifier<FeedCell> = Rswift.ReuseIdentifier(identifier: "FeedCell")
     /// Reuse identifier `PostDetailCell`.
     static let postDetailCell: Rswift.ReuseIdentifier<PostDetailCell> = Rswift.ReuseIdentifier(identifier: "PostDetailCell")
+    /// Reuse identifier `UploadImageCell`.
+    static let uploadImageCell: Rswift.ReuseIdentifier<UploadImageCell> = Rswift.ReuseIdentifier(identifier: "UploadImageCell")
 
     fileprivate init() {}
   }
@@ -534,6 +568,7 @@ struct _R: Rswift.Validatable {
       try _CommentCell.validate()
       try _FeedCell.validate()
       try _PostDetailCell.validate()
+      try _UploadImageCell.validate()
     }
 
     struct _CommentCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
@@ -610,6 +645,26 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "UnLike_Icon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'UnLike_Icon' is used in nib 'PostDetailCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Signature", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Signature' is used in storyboard 'PostDetailCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _UploadImageCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = UploadImageCell
+
+      let bundle = R.hostingBundle
+      let identifier = "UploadImageCell"
+      let name = "UploadImageCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UploadImageCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UploadImageCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "BT_Cancel", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'BT_Cancel' is used in nib 'UploadImageCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
 
@@ -901,6 +956,8 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "BT_Black", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'BT_Black' is used in storyboard 'Upload', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "BT_Cancel", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'BT_Cancel' is used in storyboard 'Upload', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.upload().uploadPostViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'uploadPostViewController' could not be loaded from storyboard 'Upload' as 'UploadPostViewController'.") }

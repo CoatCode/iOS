@@ -20,6 +20,9 @@
 		F21DF6B924DFA79800F44B96 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6B824DFA79800F44B96 /* UploadViewController.swift */; };
 		F21DF6BB24DFA7B700F44B96 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */; };
 		F21DF6BD24DFA7C300F44B96 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */; };
+		F22686C3254DB85500EDBCCF /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C1254DB85500EDBCCF /* UploadImageCell.swift */; };
+		F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22686C2254DB85500EDBCCF /* UploadImageCell.xib */; };
+		F22686C8254DB95B00EDBCCF /* UploadImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */; };
 		F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */; };
 		F22D9FF124FB809A00CE0F8C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF024FB809A00CE0F8C /* BaseViewController.swift */; };
 		F22D9FF324FBBA0400CE0F8C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF224FBBA0400CE0F8C /* BaseViewModel.swift */; };
@@ -128,6 +131,9 @@
 		F21DF6B824DFA79800F44B96 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F22686C1254DB85500EDBCCF /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
+		F22686C2254DB85500EDBCCF /* UploadImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageCell.xib; sourceTree = "<group>"; };
+		F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCellViewModel.swift; sourceTree = "<group>"; };
 		F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessage.swift; sourceTree = "<group>"; };
 		F22D9FF024FB809A00CE0F8C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F22D9FF224FBBA0400CE0F8C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -316,6 +322,16 @@
 				F2B177EB254D0DF20074C378 /* Product */,
 			);
 			path = Upload;
+			sourceTree = "<group>";
+		};
+		F22686C0254DB80C00EDBCCF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F22686C2254DB85500EDBCCF /* UploadImageCell.xib */,
+				F22686C1254DB85500EDBCCF /* UploadImageCell.swift */,
+				F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F231AEE624A893CB00BA720B = {
@@ -637,6 +653,7 @@
 		F2B177EA254D0DEA0074C378 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				F22686C0254DB80C00EDBCCF /* Cell */,
 				F2B177E3254D0DBB0074C378 /* UploadPostViewController.swift */,
 				F2B177EC254D0E180074C378 /* UploadPostViewModel.swift */,
 			);
@@ -800,6 +817,7 @@
 				F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */,
 				F24905D72503550900BD86FF /* Profile.storyboard in Resources */,
 				F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */,
+				F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */,
 				F2EC1A1625020500000FC848 /* Favorites.storyboard in Resources */,
 				F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
@@ -957,6 +975,7 @@
 				F24905D92503837100BD86FF /* ImageBarButton.swift in Sources */,
 				F205419E24F73715000F932F /* FavoritesViewModel.swift in Sources */,
 				F24E953124E8566E009B06BD /* IntroFlow.swift in Sources */,
+				F22686C8254DB95B00EDBCCF /* UploadImageCellViewModel.swift in Sources */,
 				F261F6A52533FB8A000F6B4D /* UIViewController.swift in Sources */,
 				F21DF6B924DFA79800F44B96 /* UploadViewController.swift in Sources */,
 				F2B177E8254D0DDD0074C378 /* UploadProductViewController.swift in Sources */,
@@ -973,6 +992,7 @@
 				F24905DC2503A93100BD86FF /* SearchViewController.swift in Sources */,
 				F27BA55A253C8B9D0004EF79 /* FeedbackManager.swift in Sources */,
 				F2F71A53251C485A00B10371 /* Comment.swift in Sources */,
+				F22686C3254DB85500EDBCCF /* UploadImageCell.swift in Sources */,
 				F24E952B24E8488A009B06BD /* UploadFlow.swift in Sources */,
 				F2EC1A1C250233D7000FC848 /* CustomTabBarViewController.swift in Sources */,
 				F24E952724E8486F009B06BD /* FeedFlow.swift in Sources */,

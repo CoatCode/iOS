@@ -16,11 +16,9 @@ class AppFlow: Flow {
     // MARK: - Properties
     private let window: UIWindow
     private let services: CoatCodeService
+    private let tabBarViewController = TabBarViewController()
 
-    // dummy
-    var root: Presentable {
-        return UIViewController()
-    }
+    lazy var root: Presentable = self.tabBarViewController
 
     // MARK: - Init
     init(window: UIWindow, services: CoatCodeService) {
@@ -50,7 +48,7 @@ class AppFlow: Flow {
 // MARK: - Navigate to TabBar
 extension AppFlow {
     private func navigationToTabBar() -> FlowContributors {
-        let tabBarFlow = TabBarFlow(withServices: self.services)
+        let tabBarFlow = TabBarFlow(tabBarController: self.tabBarViewController, withServices: self.services)
 
         Flows.use(tabBarFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root
@@ -63,7 +61,7 @@ extension AppFlow {
         }
 
         return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
-                                                 withNextStepper: OneStepper(withSingleStep: CoatCodeStep.tabBarIsRequired)))
+                                                 withNextStepper: tabBarViewController))
     }
 }
 

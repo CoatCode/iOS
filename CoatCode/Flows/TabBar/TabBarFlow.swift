@@ -12,13 +12,14 @@ import RxFlow
 class TabBarFlow: Flow {
 
     var root: Presentable {
-        return self.rootViewController
+        return rootViewController!
     }
 
-    let rootViewController = UITabBarController()
+    private weak var rootViewController: UITabBarController?
     private let services: CoatCodeService
 
-    init(withServices services: CoatCodeService) {
+    init(tabBarController: UITabBarController, withServices services: CoatCodeService) {
+        self.rootViewController = tabBarController
         self.services = services
     }
 
@@ -32,14 +33,21 @@ class TabBarFlow: Flow {
         switch step {
         case .tabBarIsRequired:
             return navigateToTabBar()
+        case .uploadPostIsRequired:
+            return navigateToUploadPost()
+        case .uploadProductIsRequired:
+            return navigateToUploadProduct()
         default:
             return .none
         }
     }
 
-    private func navigateToTabBar() -> FlowContributors {
-        // stepper
+    
+}
 
+// MARK: - Navigate to TabBar
+extension TabBarFlow {
+    private func navigateToTabBar() -> FlowContributors {
         let feedFlow = FeedFlow(withServices: self.services)
         let storeFlow = StoreFlow(withServices: self.services)
         let writingFlow = WritingFlow(withServices: self.services)
@@ -64,7 +72,7 @@ class TabBarFlow: Flow {
             root5.tabBarItem = tabBarItem5
             root5.title = "Setting"
 
-            self.rootViewController.setViewControllers([root1, root2, root3, root4, root5], animated: false)
+            self.rootViewController?.setViewControllers([root1, root2, root3, root4, root5], animated: true)
         }
 
         return .multiple(flowContributors: [
@@ -79,6 +87,17 @@ class TabBarFlow: Flow {
             .contribute(withNextPresentable: settingFlow,
                         withNextStepper: OneStepper(withSingleStep: CoatCodeStep.settingHomeIsRequired))
         ])
-
     }
+}
+
+func navigateToUploadPost() -> FlowContributors {
+    
+    
+    return
+}
+
+func navigateToUploadProduct() -> FlowContributors {
+      
+    
+    return
 }

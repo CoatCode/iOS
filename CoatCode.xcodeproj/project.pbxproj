@@ -380,11 +380,7 @@
 			children = (
 				F23D9DB3254CE58600699B4C /* TabBarViewController.swift */,
 				F24E952224E82C27009B06BD /* TabBarFlow.swift */,
-				F24E952624E8486F009B06BD /* FeedFlow.swift */,
-				F24E952824E8487D009B06BD /* StoreFlow.swift */,
-				F24E952A24E8488A009B06BD /* UploadFlow.swift */,
-				F24E952C24E8489D009B06BD /* FavoriteFlow.swift */,
-				F24E952E24E848A8009B06BD /* SettingFlow.swift */,
+				F2B17835254D4DAF0074C378 /* Tabs */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -654,6 +650,18 @@
 				F2B177F0254D0E2F0074C378 /* UploadProductViewModel.swift */,
 			);
 			path = Product;
+			sourceTree = "<group>";
+		};
+		F2B17835254D4DAF0074C378 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				F24E952624E8486F009B06BD /* FeedFlow.swift */,
+				F24E952824E8487D009B06BD /* StoreFlow.swift */,
+				F24E952A24E8488A009B06BD /* UploadFlow.swift */,
+				F24E952C24E8489D009B06BD /* FavoriteFlow.swift */,
+				F24E952E24E848A8009B06BD /* SettingFlow.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		F2C00F602535FD5400EAE60C /* UIKit */ = {

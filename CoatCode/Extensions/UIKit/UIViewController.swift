@@ -40,25 +40,22 @@ extension UIViewController {
         }
     }
 
-    func setTitle(_ title: String, _ imageURL: URL) {
-        let titleLabel = UILabel()
-        titleLabel.text = title
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+    // profile image size 안맞음
+    func setTitleButton(_ title: String, _ imageURL: URL) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 48)
 
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-//        imageView.clipsToBounds = true
-//        imageView.contentMode = .scaleAspectFill
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 40, height: 40)) |> RoundCornerImageProcessor(cornerRadius: 20)
+        button.kf.setImage(with: imageURL,
+                                for: .normal,
+                                options: [.processor(processor)])
 
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 30, height: 30)) |> RoundCornerImageProcessor(cornerRadius: 15)
-        imageView.kf.setImage(with: imageURL, options: [.processor(processor)])
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 12)
+        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 10)
 
-        let titleView = UIStackView(arrangedSubviews: [imageView, titleLabel])
-        titleView.axis = .horizontal
-        titleView.alignment = .center
-        titleView.distribution = .fillProportionally
-        titleView.spacing = 5.0
-
-        navigationItem.titleView = titleView
+        self.navigationItem.titleView = button
+        return button
     }
 }

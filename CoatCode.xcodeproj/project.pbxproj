@@ -23,6 +23,9 @@
 		F22686C3254DB85500EDBCCF /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C1254DB85500EDBCCF /* UploadImageCell.swift */; };
 		F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22686C2254DB85500EDBCCF /* UploadImageCell.xib */; };
 		F22686C8254DB95B00EDBCCF /* UploadImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */; };
+		F2268715254E6BDB00EDBCCF /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268713254E6BDB00EDBCCF /* PostPreviewCell.swift */; };
+		F2268716254E6BDB00EDBCCF /* PostPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2268714254E6BDB00EDBCCF /* PostPreviewCell.xib */; };
+		F226871A254E6C3D00EDBCCF /* PostPreviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268719254E6C3D00EDBCCF /* PostPreviewCellViewModel.swift */; };
 		F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */; };
 		F22D9FF124FB809A00CE0F8C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF024FB809A00CE0F8C /* BaseViewController.swift */; };
 		F22D9FF324FBBA0400CE0F8C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D9FF224FBBA0400CE0F8C /* BaseViewModel.swift */; };
@@ -134,6 +137,9 @@
 		F22686C1254DB85500EDBCCF /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		F22686C2254DB85500EDBCCF /* UploadImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageCell.xib; sourceTree = "<group>"; };
 		F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCellViewModel.swift; sourceTree = "<group>"; };
+		F2268713254E6BDB00EDBCCF /* PostPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewCell.swift; sourceTree = "<group>"; };
+		F2268714254E6BDB00EDBCCF /* PostPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPreviewCell.xib; sourceTree = "<group>"; };
+		F2268719254E6C3D00EDBCCF /* PostPreviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewCellViewModel.swift; sourceTree = "<group>"; };
 		F22D9FEE24FB79EF00CE0F8C /* SwiftMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessage.swift; sourceTree = "<group>"; };
 		F22D9FF024FB809A00CE0F8C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F22D9FF224FBBA0400CE0F8C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -334,6 +340,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		F226870E254E6B4E00EDBCCF /* PostPreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F2268714254E6BDB00EDBCCF /* PostPreviewCell.xib */,
+				F2268713254E6BDB00EDBCCF /* PostPreviewCell.swift */,
+				F2268719254E6C3D00EDBCCF /* PostPreviewCellViewModel.swift */,
+			);
+			path = PostPreviewCell;
+			sourceTree = "<group>";
+		};
 		F231AEE624A893CB00BA720B = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +390,7 @@
 		F24905D0250351FF00BD86FF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F226870E254E6B4E00EDBCCF /* PostPreviewCell */,
 				F24905D62503550900BD86FF /* Profile.storyboard */,
 				F24905D22503526700BD86FF /* ProfileViewController.swift */,
 				F24905D42503527700BD86FF /* ProfileViewModel.swift */,
@@ -818,6 +835,7 @@
 				F24905D72503550900BD86FF /* Profile.storyboard in Resources */,
 				F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */,
 				F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */,
+				F2268716254E6BDB00EDBCCF /* PostPreviewCell.xib in Resources */,
 				F2EC1A1625020500000FC848 /* Favorites.storyboard in Resources */,
 				F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
@@ -935,9 +953,11 @@
 				F2D91C1324DAF27F00D36E17 /* CoatCodeAPI.swift in Sources */,
 				F259256924E692F600A09270 /* AppFlow.swift in Sources */,
 				F259256B24E6952300A09270 /* CoatCodeStep.swift in Sources */,
+				F2268715254E6BDB00EDBCCF /* PostPreviewCell.swift in Sources */,
 				F2153B9524D272A100BFD08F /* SignInViewController.swift in Sources */,
 				F22D9FEF24FB79EF00CE0F8C /* SwiftMessage.swift in Sources */,
 				F21DF6B724DFA78700F44B96 /* StoreViewController.swift in Sources */,
+				F226871A254E6C3D00EDBCCF /* PostPreviewCellViewModel.swift in Sources */,
 				F2C90563250DB71400B485BA /* FeedCell.swift in Sources */,
 				F2A74B71251B8EF8007E3298 /* CommentCellViewModel.swift in Sources */,
 				F20541A124F7372F000F932F /* SettingsViewModel.swift in Sources */,

@@ -243,7 +243,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 22 images.
+  /// This `R.image` struct is generated, and contains static references to 23 images.
   struct image {
     /// Image `Add_Icon`.
     static let add_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add_Icon")
@@ -251,6 +251,8 @@ struct R: Rswift.Validatable {
     static let bt_Black = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_Black")
     /// Image `BT_Cancel`.
     static let bt_Cancel = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_Cancel")
+    /// Image `BT_Follow`.
+    static let bt_Follow = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_Follow")
     /// Image `BT_LeftArrow`.
     static let bt_LeftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_LeftArrow")
     /// Image `BT_White`.
@@ -308,6 +310,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "BT_Cancel", bundle: ..., traitCollection: ...)`
     static func bt_Cancel(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.bt_Cancel, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "BT_Follow", bundle: ..., traitCollection: ...)`
+    static func bt_Follow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bt_Follow, compatibleWith: traitCollection)
     }
     #endif
 
@@ -447,7 +456,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 6 nibs.
   struct nib {
     /// Nib `CommentCell`.
     static let commentCell = _R.nib._CommentCell()
@@ -457,6 +466,8 @@ struct R: Rswift.Validatable {
     static let feedCell = _R.nib._FeedCell()
     /// Nib `PostDetailCell`.
     static let postDetailCell = _R.nib._PostDetailCell()
+    /// Nib `PostPreviewCell`.
+    static let postPreviewCell = _R.nib._PostPreviewCell()
     /// Nib `UploadImageCell`.
     static let uploadImageCell = _R.nib._UploadImageCell()
 
@@ -493,6 +504,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "PostPreviewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.postPreviewCell) instead")
+    static func postPreviewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.postPreviewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "UploadImageCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.uploadImageCell) instead")
     static func uploadImageCell(_: Void = ()) -> UIKit.UINib {
@@ -516,6 +535,10 @@ struct R: Rswift.Validatable {
       return R.nib.postDetailCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PostDetailCell
     }
 
+    static func postPreviewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PostPreviewCell? {
+      return R.nib.postPreviewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PostPreviewCell
+    }
+
     static func uploadImageCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UploadImageCell? {
       return R.nib.uploadImageCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UploadImageCell
     }
@@ -523,7 +546,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CommentCell`.
     static let commentCell: Rswift.ReuseIdentifier<CommentCell> = Rswift.ReuseIdentifier(identifier: "CommentCell")
@@ -533,6 +556,8 @@ struct R: Rswift.Validatable {
     static let feedCell: Rswift.ReuseIdentifier<FeedCell> = Rswift.ReuseIdentifier(identifier: "FeedCell")
     /// Reuse identifier `PostDetailCell`.
     static let postDetailCell: Rswift.ReuseIdentifier<PostDetailCell> = Rswift.ReuseIdentifier(identifier: "PostDetailCell")
+    /// Reuse identifier `PostPreviewCell`.
+    static let postPreviewCell: Rswift.ReuseIdentifier<PostPreviewCell> = Rswift.ReuseIdentifier(identifier: "PostPreviewCell")
     /// Reuse identifier `UploadImageCell`.
     static let uploadImageCell: Rswift.ReuseIdentifier<UploadImageCell> = Rswift.ReuseIdentifier(identifier: "UploadImageCell")
 
@@ -646,6 +671,20 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Signature", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Signature' is used in storyboard 'PostDetailCell', but couldn't be loaded.") }
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _PostPreviewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = PostPreviewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "PostPreviewCell"
+      let name = "PostPreviewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PostPreviewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PostPreviewCell
       }
 
       fileprivate init() {}

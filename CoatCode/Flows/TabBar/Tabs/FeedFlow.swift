@@ -37,8 +37,8 @@ class FeedFlow: Flow {
         switch step {
         case .feedHomeIsRequired:
             return navigateToFeed()
-        case .profileIsRequired(let userId):
-            return navigateToProfile(with: userId)
+        case .profileIsRequired(let user):
+            return navigateToProfile(with: user)
         case .searchIsRequired:
             return navigateToSearch()
         case .postDetailIsRequired(let cellViewModel):
@@ -65,8 +65,8 @@ extension FeedFlow {
 
 // MARK: - Navigate to Profile
 extension FeedFlow {
-    private func navigateToProfile(with userId: Int) -> FlowContributors {
-        let viewModel = ProfileViewModel(userId: userId)
+    private func navigateToProfile(with user: User) -> FlowContributors {
+        let viewModel = ProfileViewModel(user: user)
         let viewController = ProfileViewController.instantiate(withViewModel: viewModel,
                                                                andServices: self.services)
 

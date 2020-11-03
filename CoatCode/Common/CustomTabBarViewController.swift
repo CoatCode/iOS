@@ -98,7 +98,8 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
     }
 
     @objc func requestProfileView() {
-        self.viewModel.steps.accept(CoatCodeStep.profileIsRequired(uesrId: 1234)) // 사용자 userId
+        let user = DatabaseManager.shared.getCurrentUser()
+        self.viewModel.steps.accept(CoatCodeStep.profileIsRequired(user: user))
     }
 
     func setSearchBar() {

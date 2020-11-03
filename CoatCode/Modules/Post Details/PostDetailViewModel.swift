@@ -41,8 +41,8 @@ extension PostDetailViewModel {
 
         input.profileTrigger
             .drive(onNext: { [weak self] in
-                let userId = self?.cellViewModel.value.post.owner.id
-                self?.steps.accept(CoatCodeStep.profileIsRequired(uesrId: userId ?? 0))
+                let user = self?.cellViewModel.value.post.owner
+                self?.steps.accept(CoatCodeStep.profileIsRequired(user: user ?? User()))
             }).disposed(by: disposeBag)
 
         let commentSent = input.sendButtonTrigger.flatMapLatest { [weak self] () -> Observable<Void> in

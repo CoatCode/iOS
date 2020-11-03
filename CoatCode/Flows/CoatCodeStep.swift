@@ -23,7 +23,7 @@ enum CoatCodeStep: Step {
     case createProfileIsComplete
 
     // MARK: - Profile
-    case profileIsRequired(uesrId: Int)
+    case profileIsRequired(user: User)
 
     case postDetailIsRequired(cellViewModel: PostCellViewModel)
     case productDetailIsRequired(productId: Int)

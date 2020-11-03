@@ -12,6 +12,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 import RxKeyboard
+import Kingfisher
 
 class PostDetailViewController: BaseViewController, StoryboardSceneBased {
 
@@ -35,42 +36,26 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         //        if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
         //            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         //        }
-
-        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] visibleHeight in
-            guard let self = self else { return }
-
-            if visibleHeight == 0 {
-                self.commentBottomConstraint.constant = 0
-            } else {
-                let height = visibleHeight - self.view.safeAreaInsets.bottom
-                self.commentBottomConstraint.constant = height
-            }
-
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-        }).disposed(by: disposeBag)
-
+        
+        setNavigationBar()
+        dynamicKeyboard()
     }
 
     override func bindViewModel() {
         super.bindViewModel()
 
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
-
-        setNavigationBar(profile: viewModel.cellViewModel.value.post.owner)
-
+        
+        let user = viewModel.cellViewModel.value.post.owner
+        guard let url = URL(string: user.image ?? "") else { return }
+        let titleButton = self.setTitleButton(user.username, url)
+        
         commentField.rx.text.orEmpty
             .bind(to: viewModel.commentText)
             .disposed(by: disposeBag)
 
-        let profileClick = self.navigationItem.titleView!.rx
-            .tapGesture()
-            .when(.recognized)
-            .map { _ in Void() }
-            .asDriver(onErrorJustReturn: ())
-
         let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable(),
-                                              profileTrigger: profileClick)
+                                              profileTrigger: titleButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
 
         self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
@@ -107,6 +92,32 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
                     self?.view.endEditing(true)
                     self?.commentField.text = nil
                 }
+            }).disposed(by: disposeBag)
+    }
+    
+    func dynamicKeyboard() {
+        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] visibleHeight in
+            guard let self = self else { return }
+
+            if visibleHeight == 0 {
+                self.commentBottomConstraint.constant = 0
+            } else {
+                let height = visibleHeight - self.view.safeAreaInsets.bottom
+                self.commentBottomConstraint.constant = height
+            }
+
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }).disposed(by: disposeBag)
+    }
+    
+    func setNavigationBar() {
+        let moreButton =  UIBarButtonItem(image: R.image.more_Icon(), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = moreButton
+        
+        moreButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.postMore()
             }).disposed(by: disposeBag)
     }
 }
@@ -151,14 +162,8 @@ extension PostDetailViewController {
 
 // MARK: - 게시물 신고 / 삭제 - 수정
 extension PostDetailViewController {
-    func setNavigationBar(profile: User) {
-        guard let url = URL(string: profile.image ?? "") else { return }
-        self.setTitle(profile.username, url)
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.more_Icon(), style: .plain, target: self, action: #selector(postMore))
-    }
-
-    @objc func postMore() {
+    func postMore() {
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
 
         let post = viewModel.cellViewModel.value.post

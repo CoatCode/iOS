@@ -243,7 +243,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 23 images.
+  /// This `R.image` struct is generated, and contains static references to 25 images.
   struct image {
     /// Image `Add_Icon`.
     static let add_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add_Icon")
@@ -255,6 +255,8 @@ struct R: Rswift.Validatable {
     static let bt_Follow = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_Follow")
     /// Image `BT_LeftArrow`.
     static let bt_LeftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_LeftArrow")
+    /// Image `BT_UnFollow`.
+    static let bt_UnFollow = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_UnFollow")
     /// Image `BT_White`.
     static let bt_White = Rswift.ImageResource(bundle: R.hostingBundle, name: "BT_White")
     /// Image `Background`.
@@ -291,6 +293,8 @@ struct R: Rswift.Validatable {
     static let writing_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Writing_Icon")
     /// Image `cocoIcon`.
     static let cocoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "cocoIcon")
+    /// Image `followers12`.
+    static let followers12 = Rswift.ImageResource(bundle: R.hostingBundle, name: "followers12")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Add_Icon", bundle: ..., traitCollection: ...)`
@@ -324,6 +328,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "BT_LeftArrow", bundle: ..., traitCollection: ...)`
     static func bt_LeftArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.bt_LeftArrow, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "BT_UnFollow", bundle: ..., traitCollection: ...)`
+    static func bt_UnFollow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bt_UnFollow, compatibleWith: traitCollection)
     }
     #endif
 
@@ -450,6 +461,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "cocoIcon", bundle: ..., traitCollection: ...)`
     static func cocoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.cocoIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "followers12", bundle: ..., traitCollection: ...)`
+    static func followers12(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.followers12, compatibleWith: traitCollection)
     }
     #endif
 

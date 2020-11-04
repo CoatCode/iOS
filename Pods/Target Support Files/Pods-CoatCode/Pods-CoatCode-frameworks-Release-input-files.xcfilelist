@@ -22,6 +22,5 @@ ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/RxTags/RxTags.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework
-${BUILT_PRODUCTS_DIR}/Tagging/Tagging.framework
 ${BUILT_PRODUCTS_DIR}/Tags/Tags.framework
 ${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework

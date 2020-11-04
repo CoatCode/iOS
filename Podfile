@@ -43,6 +43,5 @@ target 'CoatCode' do
   pod 'SkeletonView'
   pod 'RxTags'
   pod 'RxKeyboard'
-  pod 'Tagging'
   
 end

@@ -21,12 +21,6 @@ class TabBarViewController: UITabBarController, Stepper {
 
         self.delegate = self
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        self.steps.accept(CoatCodeStep.tabBarIsRequired)
-    }
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {

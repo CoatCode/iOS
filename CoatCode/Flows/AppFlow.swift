@@ -60,8 +60,15 @@ extension AppFlow {
                               completion: nil)
         }
 
-        return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
-                                                 withNextStepper: tabBarViewController))
+//        return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow,
+//                                                 withNextStepper: tabBarViewController))
+        
+        return .multiple(flowContributors: [
+                            .contribute(withNextPresentable: tabBarFlow,
+                                        withNextStepper: tabBarViewController),
+                            .contribute(withNextPresentable: tabBarFlow,
+                                        withNextStepper: OneStepper(withSingleStep: CoatCodeStep.tabBarIsRequired))
+        ])
     }
 }
 

@@ -243,7 +243,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 25 images.
+  /// This `R.image` struct is generated, and contains static references to 24 images.
   struct image {
     /// Image `Add_Icon`.
     static let add_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add_Icon")
@@ -293,8 +293,6 @@ struct R: Rswift.Validatable {
     static let writing_Icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "Writing_Icon")
     /// Image `cocoIcon`.
     static let cocoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "cocoIcon")
-    /// Image `followers12`.
-    static let followers12 = Rswift.ImageResource(bundle: R.hostingBundle, name: "followers12")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Add_Icon", bundle: ..., traitCollection: ...)`
@@ -461,13 +459,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "cocoIcon", bundle: ..., traitCollection: ...)`
     static func cocoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.cocoIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "followers12", bundle: ..., traitCollection: ...)`
-    static func followers12(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.followers12, compatibleWith: traitCollection)
     }
     #endif
 

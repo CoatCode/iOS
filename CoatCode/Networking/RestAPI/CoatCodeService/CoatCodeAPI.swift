@@ -163,7 +163,7 @@ extension CoatCodeAPI: BaseAPI {
              .editPost(_, let images, let title, let content, let tag):
             var formData = [MultipartFormData]()
 
-            images.enumerated().forEach { index, image in
+            images.enumerated().forEach { (index, image) in
                 if let data = image.jpegData(compressionQuality: 1.0) {
                     formData.append(.init(provider: .data(data), name: "image\(index)", fileName: "image\(index).jpeg", mimeType: "image/jpeg"))
                 }
@@ -176,8 +176,8 @@ extension CoatCodeAPI: BaseAPI {
             }
 
             if let tag = tag {
-                tag.forEach { (tag) in
-                    formData.append(.init(provider: .data(tag.data(using: .utf8)!), name: "tag[]"))
+                tag.enumerated().forEach { (index, tag) in
+                    formData.append(.init(provider: .data(tag.data(using: .utf8)!), name: "tag[\(index)]"))
                 }
             }
 

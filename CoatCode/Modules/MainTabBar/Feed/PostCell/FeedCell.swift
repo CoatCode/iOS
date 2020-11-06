@@ -22,7 +22,7 @@ class FeedCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var likeImageView: UIImageView!
+    @IBOutlet weak var likeImageButton: UIButton!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var viewCountLabel: UILabel!
@@ -54,9 +54,9 @@ class FeedCell: UICollectionViewCell {
         viewModel.isLiked.asDriver()
             .drive(onNext: { [weak self] isLiked in
                 if isLiked ?? false {
-                    self?.likeImageView.image = UIImage(named: "Like_Icon") // Like
+                    self?.likeImageButton.setImage(R.image.like_Icon(), for: .normal)
                 } else {
-                    self?.likeImageView.image = UIImage(named: "UnLike_Icon") // UnLike
+                    self?.likeImageButton.setImage(R.image.unLike_Icon(), for: .normal)
                 }
             }).disposed(by: disposeBag)
 
@@ -79,10 +79,9 @@ class FeedCell: UICollectionViewCell {
             .drive(onNext: { [weak self] date in
                 self?.createdTimeLabel.text = date?.timeAgoDisplay()
             }).disposed(by: disposeBag)
-
-        self.likeImageView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { _ in
+        
+        self.likeImageButton.rx.tap
+            .subscribe(onNext: {
                 if viewModel.isLiked.value ?? false {
                     viewModel.unLike()
                 } else {

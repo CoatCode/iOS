@@ -24,6 +24,8 @@ class BaseViewController: UIViewController, ViewModelBased, NVActivityIndicatorV
     // MARK: - View life cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = ""
 
         self.navigationController?.navigationBar.backIndicatorImage = R.image.bt_LeftArrow()
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = R.image.bt_LeftArrow()

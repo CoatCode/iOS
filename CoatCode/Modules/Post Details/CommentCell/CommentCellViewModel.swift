@@ -13,7 +13,7 @@ import RxFlow
 class CommentCellViewModel {
 
     let writerName = BehaviorRelay<String?>(value: nil)
-    let writerImageUrl = BehaviorRelay<String?>(value: nil)
+    let writerImageUrl = BehaviorRelay<URL?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
     let createTime = BehaviorRelay<Date?>(value: nil)
 
@@ -23,7 +23,7 @@ class CommentCellViewModel {
         self.comment = comment
 
         self.writerName.accept(comment.owner.username)
-        self.writerImageUrl.accept(comment.owner.image)
+        self.writerImageUrl.accept(Configs.Network.baseURL.appendingPathComponent(comment.owner.image!))
         self.content.accept(comment.content)
         self.createTime.accept(comment.createdAt)
     }

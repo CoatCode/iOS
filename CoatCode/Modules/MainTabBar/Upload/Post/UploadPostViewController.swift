@@ -10,15 +10,16 @@ import UIKit
 import Reusable
 import RxSwift
 import RxCocoa
-import Tagging
+import RxKeyboard
 
 class UploadPostViewController: BaseViewController, StoryboardSceneBased {
 
     static let sceneStoryboard = R.storyboard.upload()
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-    @IBOutlet weak var taggingView: Tagging!
+    @IBOutlet weak var tagField: UITextField!
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var imageFrame: UIView!
@@ -34,7 +35,11 @@ class UploadPostViewController: BaseViewController, StoryboardSceneBased {
         setUI()
         setCollectionView()
         bindUploadImage()
-        setTaggingView()
+        
+        RxKeyboard.instance.willShowVisibleHeight
+            .drive(onNext: { keyboardVisibleHeight in
+                self.scrollView.contentOffset.y += keyboardVisibleHeight
+            }).disposed(by: disposeBag)
     }
 
     override func bindViewModel() {
@@ -53,6 +58,10 @@ class UploadPostViewController: BaseViewController, StoryboardSceneBased {
 
         self.contentTextView.rx.text.orEmpty
             .bind(to: viewModel.content)
+            .disposed(by: disposeBag)
+        
+        self.tagField.rx.text.orEmpty
+            .bind(to: viewModel.tags)
             .disposed(by: disposeBag)
 
         let input = UploadPostViewModel.Input(uploadTrigger: self.uploadButton.rx.tap.asObservable())
@@ -109,11 +118,6 @@ class UploadPostViewController: BaseViewController, StoryboardSceneBased {
             layout.scrollDirection = .horizontal
         }
     }
-
-    func setTaggingView() {
-        self.taggingView.dataSource = self
-        self.taggingView.symbol = "#"
-    }
 }
 
 extension UploadPostViewController: UICollectionViewDelegateFlowLayout {
@@ -125,12 +129,5 @@ extension UploadPostViewController: UICollectionViewDelegateFlowLayout {
     // 지정된 섹션의 여백을 반환하는 메서드.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    }
-}
-
-extension UploadPostViewController: TaggingDataSource {
-    func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
-        guard let viewModel = self.viewModel as? UploadPostViewModel else { fatalError("ViewModel Casting Falid!") }
-        viewModel.tags.accept(tagableList)
     }
 }

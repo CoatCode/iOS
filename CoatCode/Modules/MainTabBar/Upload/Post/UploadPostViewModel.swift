@@ -16,7 +16,7 @@ class UploadPostViewModel: BaseViewModel {
     let imageList = BehaviorRelay(value: [R.image.add_Icon()!])
     let title = BehaviorRelay(value: "")
     let content = BehaviorRelay(value: "")
-    let tags = BehaviorRelay(value: [""])
+    let tags = BehaviorRelay(value: "")
 
     let uploadComplete = PublishSubject<Bool>()
 
@@ -54,7 +54,7 @@ extension UploadPostViewModel {
             let images = self.imageList.value
             let title = self.title.value
             let content = self.content.value
-            let tag = self.tags.value
+            let tag = self.tags.value.components(separatedBy: ",")
             return self.services.writePost(images: images, title: title, content: content, tag: tag)
                 .trackActivity(self.loading)
         }.subscribe(onNext: { [weak self] in

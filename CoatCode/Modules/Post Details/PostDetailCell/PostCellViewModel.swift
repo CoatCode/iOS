@@ -59,7 +59,7 @@ class PostCellViewModel {
 
     func like() {
         FeedbackManager.impactFeedback(style: .medium)
-        self.services.likePost(postId: post.id)
+        self.services.likePost(postId: self.post.id)
             .asObservable()
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -71,7 +71,7 @@ class PostCellViewModel {
     }
 
     func unLike() {
-        self.services.unlikePost(postId: post.id)
+        self.services.unlikePost(postId: self.post.id)
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -83,7 +83,7 @@ class PostCellViewModel {
     }
 
     func checkLiking() {
-        self.services.isLikedPost(postId: post.id)
+        self.services.isLikedPost(postId: self.post.id)
             .asObservable()
             .subscribe(onNext: { [weak self] _ in
                 self?.isLiked.accept(true)

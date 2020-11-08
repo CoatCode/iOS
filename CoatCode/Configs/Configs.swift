@@ -17,7 +17,7 @@ struct Configs {
     // 외부 IP: https://coatcode.herokuapp.com
     // 내부 IP: http://10.80.161.202:8080
     struct Network {
-        static let baseURL = URL(string: "https://coatcode.herokuapp.com")!
+        static let baseURL = URL(string: "http://10.80.161.202:8080")!
     }
 
     struct BaseDimensions {

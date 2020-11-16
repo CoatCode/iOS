@@ -22,7 +22,7 @@ class User: Object, Codable {
         case id
         case email
         case username
-        case image
+        case image = "profile"
         case followers
         case following
     }

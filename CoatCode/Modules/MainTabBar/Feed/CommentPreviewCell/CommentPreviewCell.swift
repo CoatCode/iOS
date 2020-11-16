@@ -28,8 +28,7 @@ class CommentPreviewCell: UICollectionViewCell {
     func bind(to viewModel: CommentPreviewCellViewModel) {
 
         viewModel.writerImageUrl.asDriver()
-            .drive(onNext: { [weak self] urlString in
-                guard let url = URL(string: urlString ?? "") else { return }
+            .drive(onNext: { [weak self] url in
                 self?.profileImageView.kf.setImage(with: url)
             }).disposed(by: disposeBag)
 

@@ -23,7 +23,7 @@ class CommentCellViewModel {
         self.comment = comment
 
         self.writerName.accept(comment.owner.username)
-        self.writerImageUrl.accept(Configs.Network.baseURL.appendingPathComponent(comment.owner.image!))
+        self.writerImageUrl.accept(URL(string: comment.owner.image!))
         self.content.accept(comment.content)
         self.createTime.accept(comment.createdAt)
     }

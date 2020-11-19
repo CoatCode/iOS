@@ -91,7 +91,7 @@ class CustomTabBarViewController: ButtonBarPagerTabStripViewController, ViewMode
 
     func setProfileShortcutBar() {
         let user = DatabaseManager.shared.getCurrentUser()
-        let profileURL = URL(fileURLWithPath: user.image ?? "")
+        let profileURL = URL(string: user.image!)
         let profileBarButton = ImageBarButton(withUrl: profileURL, withImage: R.image.default_Profile())
         profileBarButton.button.addTarget(self, action: #selector(requestProfileView), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = profileBarButton.load()

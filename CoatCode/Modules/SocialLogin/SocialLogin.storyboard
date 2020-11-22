@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Social Login View Controller-->
+        <scene sceneID="dzu-l7-Br1">
+            <objects>
+                <viewController storyboardIdentifier="SocialLoginViewController" id="bNr-bX-Bc1" customClass="SocialLoginViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1re-Yq-dOl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="80" affinity="minX"/>
+                            <userLayoutGuide location="334" affinity="minX"/>
+                        </userGuides>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxe-U2-d8G">
+                                <rect key="frame" x="28" y="85" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="JM2-rk-4GF"/>
+                                    <constraint firstAttribute="width" constant="24" id="djS-oa-zh4"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="BT_Cancel"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-E5-7Kk">
+                                <rect key="frame" x="82" y="355" width="250" height="186"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-Of-xxf">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="MYi-Cx-cd1"/>
+                                            <constraint firstAttribute="height" constant="50" id="wxl-cJ-xRB"/>
+                                        </constraints>
+                                        <state key="normal" title="구글" backgroundImage="BT_White">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA4-AO-xhH">
+                                        <rect key="frame" x="0.0" y="68" width="250" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="3Co-od-3mS"/>
+                                            <constraint firstAttribute="height" constant="50" id="GQJ-Gc-nC4"/>
+                                        </constraints>
+                                        <state key="normal" title="애플" backgroundImage="BT_White">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2S-F3-1F2">
+                                        <rect key="frame" x="0.0" y="136" width="250" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="7Da-t2-wje"/>
+                                            <constraint firstAttribute="height" constant="50" id="Hcq-PX-uUc"/>
+                                        </constraints>
+                                        <state key="normal" title="이메일 로그인" backgroundImage="BT_White">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5KD-X1-aMP"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uxe-U2-d8G" firstAttribute="top" secondItem="5KD-X1-aMP" secondAttribute="top" constant="41" id="P01-EG-JHL"/>
+                            <constraint firstItem="gOC-E5-7Kk" firstAttribute="centerX" secondItem="1re-Yq-dOl" secondAttribute="centerX" id="YDJ-h1-g1z"/>
+                            <constraint firstItem="uxe-U2-d8G" firstAttribute="leading" secondItem="5KD-X1-aMP" secondAttribute="leading" constant="28" id="kdQ-nG-mNR"/>
+                            <constraint firstItem="gOC-E5-7Kk" firstAttribute="centerY" secondItem="1re-Yq-dOl" secondAttribute="centerY" id="ve2-o8-OOJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dismissButton" destination="uxe-U2-d8G" id="JzH-ew-Hxj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uzb-4d-7bs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.9275362318845" y="-504.24107142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BT_Cancel" width="26" height="25"/>
+        <image name="BT_White" width="500" height="100"/>
+    </resources>
+</document>

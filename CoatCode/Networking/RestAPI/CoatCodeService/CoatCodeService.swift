@@ -53,8 +53,8 @@ final class CoatCodeService: BaseService<CoatCodeAPI> {
         return requestWithoutMapping(.deletePost(postId: postId))
     }
 
-    func likedPeoples(postId: Int) -> Single<Void> {
-        return requestWithoutMapping(.likes(postId: postId))
+    func likedPeoples(postId: Int) -> Single<[User]> {
+        return requestArray(.likes(postId: postId), type: User.self)
     }
 
     func likePost(postId: Int) -> Single<Void> {

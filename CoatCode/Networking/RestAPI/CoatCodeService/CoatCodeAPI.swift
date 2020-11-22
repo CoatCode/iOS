@@ -19,7 +19,6 @@ enum CoatCodeAPI {
     case userPosts(userId: Int)
 
     case allFeedPosts(page: Int)
-    case followFeedPosts(page: Int)
     case popularFeedPosts(page: Int)
 
     case likes(postId: Int)
@@ -34,6 +33,8 @@ enum CoatCodeAPI {
 
     // MARK: - Authentication is required
     case profile
+    
+    case followFeedPosts(page: Int)
 
     case writePost(images: [UIImage], title: String, content: String?, tag: [String]?)
     case editPost(postId: Int, images: [UIImage], title: String, content: String?, tag: [String]?)
@@ -126,7 +127,7 @@ extension CoatCodeAPI: BaseAPI {
     var headers: [String: String]? {
         switch self {
         // None Authentication
-        case .signIn, .signUp, .userPosts, .allFeedPosts, .followFeedPosts, .popularFeedPosts, .likes, .comments, .searchPost, .searchProduct, .searchUser, .follower, .following:
+        case .signIn, .signUp, .userPosts, .allFeedPosts, .popularFeedPosts, .likes, .comments, .searchPost, .searchProduct, .searchUser, .follower, .following:
             break
         // Authentication
         default:

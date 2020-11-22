@@ -43,6 +43,11 @@ class FeedFlow: Flow {
             return navigateToSearch()
         case .postDetailIsRequired(let cellViewModel):
             return navigateToPostDetail(with: cellViewModel)
+        case .likesIsRequired(let postId):
+            return navigateToLikes(postId: postId)
+        case .popViewIsRequired:
+            self.rootViewController.popViewController(animated: true)
+            return .none
         default:
             return .none
         }
@@ -102,4 +107,15 @@ extension FeedFlow {
 // MARK: - Navigate to Search Result
 extension FeedFlow {
 
+}
+
+// MARK: - Navigate to Likes
+extension FeedFlow {
+    private func navigateToLikes(postId: Int) -> FlowContributors {
+        let viewModel = LikesViewModel(with: postId)
+        let viewController = LikesViewController.instantiate(withViewModel: viewModel, andServices: self.services)
+
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
+    }
 }

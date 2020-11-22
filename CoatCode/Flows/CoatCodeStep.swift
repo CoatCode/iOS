@@ -9,6 +9,8 @@
 import RxFlow
 
 enum CoatCodeStep: Step {
+    
+    case popViewIsRequired
 
     // MARK: - App
     case tabBarIsRequired
@@ -47,5 +49,8 @@ enum CoatCodeStep: Step {
 
     // MARK: - Setting
     case settingHomeIsRequired
+    
+    // MARK: - Likes
+    case likesIsRequired(postId: Int)
 
 }

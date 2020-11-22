@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Profile View Controller-->
+        <scene sceneID="iIi-BF-F7d">
+            <objects>
+                <viewController storyboardIdentifier="CreateProfileViewController" id="HtT-il-vxh" customClass="CreateProfileViewController" customModule="CoatCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hRh-hj-ytq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="52" affinity="minX"/>
+                            <userLayoutGuide location="362" affinity="minX"/>
+                            <userLayoutGuide location="125" affinity="minX"/>
+                            <userLayoutGuide location="289" affinity="minX"/>
+                        </userGuides>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXU-kO-8cr">
+                                <rect key="frame" x="147" y="237.5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="lsb-bT-419"/>
+                                    <constraint firstAttribute="width" constant="120" id="opN-AZ-wLT"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zHi-pG-bE0">
+                                <rect key="frame" x="125" y="377.5" width="164" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="eZh-lm-z9J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="올바르지 않은 이름 형식입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vR-5E-uI5">
+                                <rect key="frame" x="132.5" y="411.5" width="149" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRw-6L-Lw9">
+                                <rect key="frame" x="52" y="490" width="310" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Kby-ZE-X8w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="CoatCode 시작하기" backgroundImage="BT_Black">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jFo-Bu-gDd"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NRw-6L-Lw9" firstAttribute="leading" secondItem="jFo-Bu-gDd" secondAttribute="leading" constant="52" id="Do4-P3-2Pg"/>
+                            <constraint firstItem="jFo-Bu-gDd" firstAttribute="bottom" secondItem="NRw-6L-Lw9" secondAttribute="bottom" constant="320" id="GEm-i9-hai"/>
+                            <constraint firstItem="NRw-6L-Lw9" firstAttribute="top" secondItem="7vR-5E-uI5" secondAttribute="bottom" constant="64" id="Ggs-uy-dpg"/>
+                            <constraint firstItem="zHi-pG-bE0" firstAttribute="top" secondItem="EXU-kO-8cr" secondAttribute="bottom" constant="20" id="Ifh-VK-IAq"/>
+                            <constraint firstItem="jFo-Bu-gDd" firstAttribute="trailing" secondItem="NRw-6L-Lw9" secondAttribute="trailing" constant="52" id="LKY-4t-aLt"/>
+                            <constraint firstItem="zHi-pG-bE0" firstAttribute="leading" secondItem="jFo-Bu-gDd" secondAttribute="leading" constant="125" id="Sns-dn-Jd9"/>
+                            <constraint firstItem="7vR-5E-uI5" firstAttribute="centerX" secondItem="hRh-hj-ytq" secondAttribute="centerX" id="hiK-cL-EdP"/>
+                            <constraint firstItem="EXU-kO-8cr" firstAttribute="centerX" secondItem="hRh-hj-ytq" secondAttribute="centerX" id="il3-5N-DQS"/>
+                            <constraint firstItem="jFo-Bu-gDd" firstAttribute="trailing" secondItem="zHi-pG-bE0" secondAttribute="trailing" constant="125" id="j2T-hO-yTY"/>
+                            <constraint firstItem="7vR-5E-uI5" firstAttribute="top" secondItem="zHi-pG-bE0" secondAttribute="bottom" constant="10" id="kgb-O7-HwU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qf5-kE-Ucj">
+                        <barButtonItem key="leftBarButtonItem" title="back" id="E2O-KW-mse"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameField" destination="zHi-pG-bE0" id="7mt-Qq-2ZX"/>
+                        <outlet property="nameValidationLabel" destination="7vR-5E-uI5" id="hvr-fL-e5s"/>
+                        <outlet property="profileImageView" destination="EXU-kO-8cr" id="1ag-VC-kob"/>
+                        <outlet property="signUpButton" destination="NRw-6L-Lw9" id="av1-jF-YDq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldO-Uu-HmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2555" y="176"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BT_Black" width="250" height="50"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

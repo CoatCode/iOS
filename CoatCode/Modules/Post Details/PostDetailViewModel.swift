@@ -11,12 +11,12 @@ import RxCocoa
 
 class PostDetailViewModel: BaseViewModel {
 
-    let cellViewModel: BehaviorRelay<PostCellViewModel>
     let comments = PublishSubject<[Comment]>()
     let commentText = BehaviorRelay(value: "")
-
-    let sendComplete = PublishSubject<Bool>()
-    let deleteComplete = PublishSubject<Bool>()
+    
+    let commentMore = PublishSubject<Comment>()
+    
+    let cellViewModel: BehaviorRelay<PostCellViewModel>
 
     init(with cellViewModel: PostCellViewModel) {
         self.cellViewModel = BehaviorRelay(value: cellViewModel)
@@ -25,105 +25,86 @@ class PostDetailViewModel: BaseViewModel {
     struct Input {
         let sendButtonTrigger: Observable<Void>
         let profileTrigger: Driver<Void>
+        let deleteComment: Observable<Comment>
+        let reportComment: Observable<Comment>
     }
 
     struct Output {
         let items: Observable<[PostDetailSection]>
         let sendButtonEnabled: Driver<Bool>
-        let sendComplete: Driver<Bool>
-        let deleteComplete: Driver<Bool>
+        let commentMoreSelected: Driver<Comment>
+        let dismissKeyboard: Driver<Void>
     }
-
 }
 
 extension PostDetailViewModel {
     func transform(input: Input) -> Output {
-
+        
+        let elements = BehaviorRelay<[PostDetailSection]>(value: [])
+        let sendComplete = PublishSubject<Void>()
+        
         input.profileTrigger
             .drive(onNext: { [weak self] in
-                let user = self?.cellViewModel.value.post.owner
-                self?.steps.accept(CoatCodeStep.profileIsRequired(user: user ?? User()))
+                guard let self = self else { return }
+                let user = self.cellViewModel.value.post.owner
+                self.steps.accept(CoatCodeStep.profileIsRequired(user: user))
             }).disposed(by: disposeBag)
-
-        let commentSent = input.sendButtonTrigger.flatMapLatest { [weak self] () -> Observable<Void> in
+        
+        let sendComment = input.sendButtonTrigger.flatMapLatest { [weak self] () -> Observable<Void> in
             guard let self = self else { return Observable.just(()) }
             let postId = self.cellViewModel.value.post.id
             let commentContent = self.commentText.value
             return self.services.writeComment(postId: postId, content: commentContent)
                 .trackActivity(self.loading)
-                .share()
+        }.share()
+        
+        let deleteComment = input.deleteComment.flatMapLatest { [weak self] (comment) -> Observable<Void> in
+            guard let self = self else { return Observable.just(()) }
+            guard let commentId = comment.id else { return Observable.just(()) }
+            let postId = self.cellViewModel.value.post.id
+            return self.services.deleteComment(postId: postId, commentId: commentId)
+                .trackActivity(self.loading)
         }
-
-        commentSent.subscribe(onNext: { [weak self] in
-            self?.sendComplete.onNext(true)
-            self?.getCommentsRequest()
-        }, onError: { [weak self] _ in
-            self?.sendComplete.onNext(false)
-        }).disposed(by: disposeBag)
-
-        cellViewModel.subscribe(onNext: { [weak self] cellViewModel in
-            self?.getCommentsRequest()
-        }).disposed(by: disposeBag)
-
-        let items = comments.map { comments -> [PostDetailSection] in
+        
+        // 댓글 신고 후 refresh
+//        let reportComment = self.reportComment.flatMapLatest { [weak self] (comment) -> Observable<Void> in
+//            guard let self = self else { return Observable.just(()) }
+//        }
+        
+        sendComment.bind(to: sendComplete).disposed(by: disposeBag)
+        
+        let refresh = Observable.of(Observable.just(()), sendComment, deleteComment).merge()
+        
+        refresh.flatMapLatest { [weak self] () -> Observable<[CommentCellViewModel]> in
+            guard let self = self else { return Observable.just([]) }
+            let postId = self.cellViewModel.value.post.id
+            return self.services.postComments(postId: postId)
+                .trackActivity(self.loading)
+                .map { $0.map({ (comment) -> CommentCellViewModel in
+                    let viewModel = CommentCellViewModel(with: comment)
+                    viewModel.commentMore.bind(to: self.commentMore).disposed(by: self.disposeBag)
+                    return viewModel
+                })}
+        }.subscribe(onNext: { (commentCellViewModels) in
             var items: [PostDetailSectionItem] = []
-
             // 게시물 viewModel
-            let postCellViewModel = self.cellViewModel
-            items.append(PostDetailSectionItem.postDetailItem(viewModel: postCellViewModel.value))
-
+            items.append(.postDetailItem(viewModel: self.cellViewModel.value))
+            
             // 댓글 viewModel
-            let commentCellViewModels = comments.map { CommentCellViewModel(with: $0) }
-            commentCellViewModels.forEach { (cellViewModel) in
-                items.append(PostDetailSectionItem.commentItem(viewModel: cellViewModel))
+            commentCellViewModels.forEach { (viewModel) in
+                items.append(.commentItem(viewModel: viewModel))
             }
-
-            return [PostDetailSection.post(title: "", items: items)]
-        }
+            elements.accept([PostDetailSection.post(title: "", items: items)])
+        }).disposed(by: disposeBag)
 
         let sendButtonEnabled = BehaviorRelay.combineLatest(self.commentText, self.loading.asObservable()) {
             return !$0.isEmpty && !$1
         }.asDriver(onErrorJustReturn: false)
 
-        return Output(items: items,
+        return Output(items: elements.asObservable(),
                       sendButtonEnabled: sendButtonEnabled,
-                      sendComplete: self.sendComplete.asDriver(onErrorJustReturn: false),
-                      deleteComplete: deleteComplete.asDriver(onErrorJustReturn: false))
-    }
-}
-
-extension PostDetailViewModel {
-
-    func getCommentsRequest() {
-        self.services.postComments(postId: self.cellViewModel.value.post.id)
-            .trackActivity(self.loading)
-            .subscribe(onNext: { [weak self] comments in
-                self?.comments.onNext(comments)
-            }).disposed(by: disposeBag)
-    }
-
-//    func editComment(_ comment: Comment) {
-//        let postId = self.cellViewModel.value.post.id
-//        let commentContent = self.commentText.value
-//        self.services.editComment(postId: postId, commentId: comment.id, content: commentContent)
-//            .trackActivity(self.loading)
-//            .subscribe(onNext: { [weak self] in
-//
-//                self?.getCommentsRequest()
-//            }).disposed(by: disposeBag)
-//    }
-
-    func deleteComment(_ commentId: Int) {
-        let postId = self.cellViewModel.value.post.id
-        self.services.deleteComment(postId: postId, commentId: commentId)
-            .trackActivity(self.loading)
-            .subscribe(onNext: { [weak self] in
-                self?.getCommentsRequest()
-            }).disposed(by: disposeBag)
-    }
-
-    func reportComment(_ commentId: Int) {
-        print("report comment \(commentId)")
+                      commentMoreSelected: commentMore.asDriver(onErrorJustReturn: Comment()),
+                      dismissKeyboard: sendComplete.asDriver(onErrorJustReturn: ()))
     }
 }
 
@@ -136,9 +117,7 @@ extension PostDetailViewModel {
         self.services.deletePost(postId: postId)
             .trackActivity(self.loading)
             .subscribe(onNext: { [weak self] in
-                self?.deleteComplete.onNext(true)
-            }, onError: { [weak self] _ in
-                self?.deleteComplete.onNext(false)
+                self?.steps.accept(CoatCodeStep.popViewIsRequired)
             }).disposed(by: disposeBag)
     }
 

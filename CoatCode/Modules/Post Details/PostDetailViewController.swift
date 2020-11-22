@@ -24,6 +24,9 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
     @IBOutlet weak var commentBottomConstraint: NSLayoutConstraint!
 
     var dataSource: RxCollectionViewSectionedReloadDataSource<PostDetailSection>!
+    
+    let deleteCommentSelected = PublishSubject<Comment>()
+    let reportCommentSelected = PublishSubject<Comment>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +36,9 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         collectionView.register(R.nib.postDetailCell)
         collectionView.register(R.nib.commentCell)
 
-        //        if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-        //            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        //        }
+//        if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        }
         
         setNavigationBar()
         dynamicKeyboard()
@@ -55,7 +58,9 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
             .disposed(by: disposeBag)
 
         let input = PostDetailViewModel.Input(sendButtonTrigger: sendButton.rx.tap.asObservable(),
-                                              profileTrigger: titleButton.rx.tap.asDriver())
+                                              profileTrigger: titleButton.rx.tap.asDriver(),
+                                              deleteComment: deleteCommentSelected.asObservable(),
+                                              reportComment: reportCommentSelected.asObservable())
         let output = viewModel.transform(input: input)
 
         self.dataSource = RxCollectionViewSectionedReloadDataSource<PostDetailSection>(configureCell: { dataSource, collectionView, indexPath, item in
@@ -66,7 +71,7 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
                 return cell
             case .commentItem(let viewModel):
                 let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.commentCell.identifier, for: indexPath) as? CommentCell)!
-                cell.bind(to: viewModel, parentView: self)
+                cell.bind(to: viewModel)
                 return cell
             }
         })
@@ -78,20 +83,17 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
         output.sendButtonEnabled
             .drive(self.sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
-
-        output.deleteComplete
-            .drive(onNext: { [weak self] isComplete in
-                if isComplete {
-                    self?.navigationController?.popViewController(animated: true)
-                }
+        
+        output.dismissKeyboard
+            .drive(onNext: { [weak self] () in
+                self?.commentField.resignFirstResponder()
+                self?.commentField.text = nil
+                viewModel.commentText.accept("")
             }).disposed(by: disposeBag)
-
-        output.sendComplete
-            .drive(onNext: { [weak self] (isComplete) in
-                if isComplete {
-                    self?.view.endEditing(true)
-                    self?.commentField.text = nil
-                }
+        
+        output.commentMoreSelected
+            .drive(onNext: { [weak self] (comment) in
+                self?.commentMore(comment)
             }).disposed(by: disposeBag)
     }
     
@@ -124,11 +126,8 @@ class PostDetailViewController: BaseViewController, StoryboardSceneBased {
 
 // MARK: - 댓글 삭제 / 신고
 extension PostDetailViewController {
-
     func commentMore(_ comment: Comment) {
-        guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
-
-        if comment.owner.id == DatabaseManager.shared.getCurrentUser().id {
+        if comment.owner?.id == DatabaseManager.shared.getCurrentUser().id {
             self.showAlert(title: "무엇이 하고 싶은가요?", message: nil, style: .actionSheet,
                            actions: [
                             AlertAction.action(title: "Delete", style: .destructive),
@@ -137,7 +136,7 @@ extension PostDetailViewController {
             ).subscribe(onNext: { selectedIndex in
                 switch selectedIndex {
                 case 0:
-                    viewModel.deleteComment(comment.id)
+                    self.deleteCommentSelected.onNext(comment)
                 default:
                     break
                 }
@@ -151,7 +150,7 @@ extension PostDetailViewController {
             ).subscribe(onNext: { selectedIndex in
                 switch selectedIndex {
                 case 0:
-                    viewModel.reportComment(comment.id)
+                    self.reportCommentSelected.onNext(comment)
                 default:
                     break
                 }
@@ -162,7 +161,6 @@ extension PostDetailViewController {
 
 // MARK: - 게시물 신고 / 삭제 - 수정
 extension PostDetailViewController {
-
     func postMore() {
         guard let viewModel = self.viewModel as? PostDetailViewModel else { fatalError("ViewModel Casting Falid!") }
 

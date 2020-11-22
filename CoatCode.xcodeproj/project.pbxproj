@@ -20,6 +20,9 @@
 		F21DF6B924DFA79800F44B96 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6B824DFA79800F44B96 /* UploadViewController.swift */; };
 		F21DF6BB24DFA7B700F44B96 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */; };
 		F21DF6BD24DFA7C300F44B96 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */; };
+		F223D4052562EF6300BAECEA /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F223D4042562EF6300BAECEA /* SignUp.storyboard */; };
+		F223D4082562EF7500BAECEA /* CreateProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F223D4072562EF7500BAECEA /* CreateProfile.storyboard */; };
+		F223D4102562EF9800BAECEA /* SocialLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F223D40F2562EF9800BAECEA /* SocialLogin.storyboard */; };
 		F22686C3254DB85500EDBCCF /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C1254DB85500EDBCCF /* UploadImageCell.swift */; };
 		F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22686C2254DB85500EDBCCF /* UploadImageCell.xib */; };
 		F22686C8254DB95B00EDBCCF /* UploadImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */; };
@@ -99,6 +102,11 @@
 		F2C90559250CDF7C00B485BA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */; };
 		F2C90563250DB71400B485BA /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C90561250DB71400B485BA /* FeedCell.swift */; };
 		F2C90564250DB71400B485BA /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C90562250DB71400B485BA /* FeedCell.xib */; };
+		F2CE37442565AE71007D428B /* Likes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2CE37432565AE71007D428B /* Likes.storyboard */; };
+		F2CE37472565AE82007D428B /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CE37462565AE82007D428B /* LikesViewController.swift */; };
+		F2CE374F2565AEB1007D428B /* LikesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CE374E2565AEB1007D428B /* LikesViewModel.swift */; };
+		F2CE37562565B0A6007D428B /* LikesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CE37542565B0A6007D428B /* LikesCell.swift */; };
+		F2CE37572565B0A6007D428B /* LikesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2CE37552565B0A6007D428B /* LikesCell.xib */; };
 		F2D7FCA6251A424D00AB3CEF /* PostDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */; };
 		F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */; };
 		F2D7FCAB251A42AF00AB3CEF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7FCA9251A42AF00AB3CEF /* CommentCell.swift */; };
@@ -115,6 +123,7 @@
 		F2EC1A2725025058000FC848 /* FollowFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */; };
 		F2EC1A2925025166000FC848 /* PopularFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */; };
 		F2ECF8DD253E667800F0E830 /* FeedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECF8DC253E667800F0E830 /* FeedSection.swift */; };
+		F2EE595D2562EC8B00F74B3F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE595C2562EC8B00F74B3F /* SignIn.storyboard */; };
 		F2F71A53251C485A00B10371 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F71A52251C485A00B10371 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +143,9 @@
 		F21DF6B824DFA79800F44B96 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		F21DF6BA24DFA7B700F44B96 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		F21DF6BC24DFA7C300F44B96 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F223D4042562EF6300BAECEA /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		F223D4072562EF7500BAECEA /* CreateProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateProfile.storyboard; sourceTree = "<group>"; };
+		F223D40F2562EF9800BAECEA /* SocialLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialLogin.storyboard; sourceTree = "<group>"; };
 		F22686C1254DB85500EDBCCF /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		F22686C2254DB85500EDBCCF /* UploadImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageCell.xib; sourceTree = "<group>"; };
 		F22686C7254DB95B00EDBCCF /* UploadImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCellViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +227,11 @@
 		F2C90558250CDF7C00B485BA /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		F2C90561250DB71400B485BA /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F2C90562250DB71400B485BA /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		F2CE37432565AE71007D428B /* Likes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Likes.storyboard; sourceTree = "<group>"; };
+		F2CE37462565AE82007D428B /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		F2CE374E2565AEB1007D428B /* LikesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewModel.swift; sourceTree = "<group>"; };
+		F2CE37542565B0A6007D428B /* LikesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCell.swift; sourceTree = "<group>"; };
+		F2CE37552565B0A6007D428B /* LikesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikesCell.xib; sourceTree = "<group>"; };
 		F2D7FCA4251A424D00AB3CEF /* PostDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCell.swift; sourceTree = "<group>"; };
 		F2D7FCA5251A424D00AB3CEF /* PostDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailCell.xib; sourceTree = "<group>"; };
 		F2D7FCA9251A42AF00AB3CEF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -231,6 +248,7 @@
 		F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedViewController.swift; sourceTree = "<group>"; };
 		F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFeedViewController.swift; sourceTree = "<group>"; };
 		F2ECF8DC253E667800F0E830 /* FeedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSection.swift; sourceTree = "<group>"; };
+		F2EE595C2562EC8B00F74B3F /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		F2F71A52251C485A00B10371 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,18 +281,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F21DF69724DF9D3200F44B96 /* MainTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				F21DF69B24DF9EA500F44B96 /* Feed */,
-				F21DF69C24DF9EBF00F44B96 /* Store */,
-				F21DF69F24DF9EF300F44B96 /* Upload */,
-				F21DF69D24DF9ECA00F44B96 /* Favorites */,
-				F21DF69E24DF9ED900F44B96 /* Settings */,
-			);
-			path = MainTabBar;
-			sourceTree = "<group>";
-		};
 		F21DF69B24DF9EA500F44B96 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +290,7 @@
 				F2EC1A0F250203BA000FC848 /* Feed.storyboard */,
 				F21DF6B424DFA77A00F44B96 /* FeedViewController.swift */,
 				F2762A3D24EE949700CB6434 /* FeedViewModel.swift */,
-				F2EC1A1F25024FAE000FC848 /* FeedContent */,
+				F2EC1A1F25024FAE000FC848 /* FeedMenu */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 		F265B70424E14B71008F70A9 /* SocialLogin */ = {
 			isa = PBXGroup;
 			children = (
+				F223D40F2562EF9800BAECEA /* SocialLogin.storyboard */,
 				F265B70924E15024008F70A9 /* SocialLoginViewController.swift */,
 				F281DC9D24EA269100DFE1BC /* SocialLoginViewModel.swift */,
 			);
@@ -538,8 +545,17 @@
 			isa = PBXGroup;
 			children = (
 				F27A9B1324D0562800960043 /* Intro */,
-				F21DF69724DF9D3200F44B96 /* MainTabBar */,
+				F27A9B1424D0565C00960043 /* SignIn */,
+				F27A9B1524D0589300960043 /* SignUp */,
+				F2EE595A2562EBB800F74B3F /* CreateProfile */,
+				F265B70424E14B71008F70A9 /* SocialLogin */,
+				F21DF69B24DF9EA500F44B96 /* Feed */,
 				F25161112504EC8A00932004 /* Post Details */,
+				F2CE37422565AE4A007D428B /* Likes */,
+				F21DF69C24DF9EBF00F44B96 /* Store */,
+				F21DF69F24DF9EF300F44B96 /* Upload */,
+				F21DF69D24DF9ECA00F44B96 /* Favorites */,
+				F21DF69E24DF9ED900F44B96 /* Settings */,
 				F24905DA2503A8A100BD86FF /* Search */,
 				F24905D0250351FF00BD86FF /* Profile */,
 			);
@@ -581,9 +597,6 @@
 			children = (
 				F27A9B1624D0595200960043 /* Intro.storyboard */,
 				F2153B9224D26A9000BFD08F /* IntroViewController.swift */,
-				F27A9B1424D0565C00960043 /* SignIn */,
-				F27A9B1524D0589300960043 /* SignUp */,
-				F265B70424E14B71008F70A9 /* SocialLogin */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -591,6 +604,7 @@
 		F27A9B1424D0565C00960043 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				F2EE595C2562EC8B00F74B3F /* SignIn.storyboard */,
 				F2153B9424D272A100BFD08F /* SignInViewController.swift */,
 				F264C99624D2878A00CE0251 /* SignInViewModel.swift */,
 			);
@@ -600,10 +614,9 @@
 		F27A9B1524D0589300960043 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				F223D4042562EF6300BAECEA /* SignUp.storyboard */,
 				F265B70524E14EF1008F70A9 /* SignUpViewController.swift */,
 				F2762A2A24EB97C200CB6434 /* SignUpViewModel.swift */,
-				F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */,
-				F2828F9524F0A6E800F14BDB /* CreateProfileViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -716,6 +729,26 @@
 			path = PostCell;
 			sourceTree = "<group>";
 		};
+		F2CE37422565AE4A007D428B /* Likes */ = {
+			isa = PBXGroup;
+			children = (
+				F2CE37522565AEB5007D428B /* LikesCell */,
+				F2CE37432565AE71007D428B /* Likes.storyboard */,
+				F2CE37462565AE82007D428B /* LikesViewController.swift */,
+				F2CE374E2565AEB1007D428B /* LikesViewModel.swift */,
+			);
+			path = Likes;
+			sourceTree = "<group>";
+		};
+		F2CE37522565AEB5007D428B /* LikesCell */ = {
+			isa = PBXGroup;
+			children = (
+				F2CE37552565B0A6007D428B /* LikesCell.xib */,
+				F2CE37542565B0A6007D428B /* LikesCell.swift */,
+			);
+			path = LikesCell;
+			sourceTree = "<group>";
+		};
 		F2D91C1124DAF17C00D36E17 /* BaseService */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,14 +779,14 @@
 			path = RestAPI;
 			sourceTree = "<group>";
 		};
-		F2EC1A1F25024FAE000FC848 /* FeedContent */ = {
+		F2EC1A1F25024FAE000FC848 /* FeedMenu */ = {
 			isa = PBXGroup;
 			children = (
 				F2EC1A2425025045000FC848 /* AllFeedViewController.swift */,
 				F2EC1A2625025058000FC848 /* FollowFeedViewController.swift */,
 				F2EC1A2825025166000FC848 /* PopularFeedViewController.swift */,
 			);
-			path = FeedContent;
+			path = FeedMenu;
 			sourceTree = "<group>";
 		};
 		F2ECF8DF253E671200F0E830 /* CommentPreviewCell */ = {
@@ -764,6 +797,16 @@
 				F277AD84253E6989005D30E9 /* CommentPreviewCellViewModel.swift */,
 			);
 			path = CommentPreviewCell;
+			sourceTree = "<group>";
+		};
+		F2EE595A2562EBB800F74B3F /* CreateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				F223D4072562EF7500BAECEA /* CreateProfile.storyboard */,
+				F265B70724E14F8C008F70A9 /* CreateProfileViewController.swift */,
+				F2828F9524F0A6E800F14BDB /* CreateProfileViewModel.swift */,
+			);
+			path = CreateProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -832,18 +875,24 @@
 				F231AEFF24A893CD00BA720B /* LaunchScreen.storyboard in Resources */,
 				F25161152504ED3300932004 /* PostDetail.storyboard in Resources */,
 				F231AEFC24A893CD00BA720B /* Assets.xcassets in Resources */,
+				F223D4102562EF9800BAECEA /* SocialLogin.storyboard in Resources */,
 				F24905D72503550900BD86FF /* Profile.storyboard in Resources */,
+				F2CE37572565B0A6007D428B /* LikesCell.xib in Resources */,
 				F2D7FCA7251A424D00AB3CEF /* PostDetailCell.xib in Resources */,
+				F2CE37442565AE71007D428B /* Likes.storyboard in Resources */,
 				F22686C4254DB85500EDBCCF /* UploadImageCell.xib in Resources */,
 				F2268716254E6BDB00EDBCCF /* PostPreviewCell.xib in Resources */,
 				F2EC1A1625020500000FC848 /* Favorites.storyboard in Resources */,
 				F2EC1A10250203BA000FC848 /* Feed.storyboard in Resources */,
 				F27A9B1724D0595200960043 /* Intro.storyboard in Resources */,
 				F2DFB19D254662D300BB6AAC /* .swiftlint.yml in Resources */,
+				F223D4082562EF7500BAECEA /* CreateProfile.storyboard in Resources */,
 				F2762A2E24ED1A4100CB6434 /* MontserratSubrayada-Regular.ttf in Resources */,
 				F24905DE2503A94600BD86FF /* Search.storyboard in Resources */,
 				F2B177E1254D0D4D0074C378 /* Upload.storyboard in Resources */,
 				F277AD82253E693E005D30E9 /* CommentPreviewCell.xib in Resources */,
+				F2EE595D2562EC8B00F74B3F /* SignIn.storyboard in Resources */,
+				F223D4052562EF6300BAECEA /* SignUp.storyboard in Resources */,
 				F2C90564250DB71400B485BA /* FeedCell.xib in Resources */,
 				F2EC1A12250204C2000FC848 /* Store.storyboard in Resources */,
 				F2EC1A1825020519000FC848 /* Settings.storyboard in Resources */,
@@ -941,6 +990,7 @@
 				F23CE60724DB0BFB00717A3F /* User.swift in Sources */,
 				F231AEF324A893CB00BA720B /* AppDelegate.swift in Sources */,
 				F2762A2B24EB97C200CB6434 /* SignUpViewModel.swift in Sources */,
+				F2CE374F2565AEB1007D428B /* LikesViewModel.swift in Sources */,
 				F2EC1A2525025045000FC848 /* AllFeedViewController.swift in Sources */,
 				F22D9FF124FB809A00CE0F8C /* BaseViewController.swift in Sources */,
 				F24905D32503526700BD86FF /* ProfileViewController.swift in Sources */,
@@ -974,10 +1024,12 @@
 				F277AD85253E6989005D30E9 /* CommentPreviewCellViewModel.swift in Sources */,
 				F23D9DB4254CE58600699B4C /* TabBarViewController.swift in Sources */,
 				F2D91C1624DAF30000D36E17 /* AuthAPI.swift in Sources */,
+				F2CE37562565B0A6007D428B /* LikesCell.swift in Sources */,
 				F24905D52503527700BD86FF /* ProfileViewModel.swift in Sources */,
 				F25161172504F1FF00932004 /* PostDetailViewModel.swift in Sources */,
 				F281DC9E24EA269100DFE1BC /* SocialLoginViewModel.swift in Sources */,
 				F278FF6524F28EA4001F27E9 /* UIImagePickerController+Rx.swift in Sources */,
+				F2CE37472565AE82007D428B /* LikesViewController.swift in Sources */,
 				F21DF6B524DFA77A00F44B96 /* FeedViewController.swift in Sources */,
 				F22D9FF324FBBA0400CE0F8C /* BaseViewModel.swift in Sources */,
 				F272FE842544A0CD00308A3F /* KafkaRefresh+Rx.swift in Sources */,

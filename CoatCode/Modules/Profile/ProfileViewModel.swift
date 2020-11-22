@@ -100,7 +100,7 @@ class ProfileViewModel: BaseViewModel {
         
         let profileUrl = user.map { URL(string: $0.image!) }.asDriver(onErrorJustReturn: URL(fileURLWithPath: ""))
         let username = user.map { $0.username }.asDriver(onErrorJustReturn: "")
-        let description = user.map { $0.username  }.asDriver(onErrorJustReturn: "") // user 모델에 추가해야함
+        let description = user.map { $0.userDescription  }.asDriver(onErrorJustReturn: "")
         let folllowerCount = user.map { "\($0.followers)" }.asDriver(onErrorJustReturn: "0")
         let followingCount = user.map { "\($0.following)" }.asDriver(onErrorJustReturn: "0")
                                                                                         

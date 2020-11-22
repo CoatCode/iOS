@@ -15,7 +15,7 @@ import RxTags
 
 class PostDetailCell: UICollectionViewCell {
 
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 
     @IBOutlet weak var slideshow: ImageSlideshow!
 
@@ -48,6 +48,12 @@ class PostDetailCell: UICollectionViewCell {
         self.tagView.paddingVertical = 0
         self.tagView.marginHorizontal = 0
         self.tagView.marginVertical = 0
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.disposeBag = DisposeBag()
     }
 
     func bind(to viewModel: PostCellViewModel, parentView: UIViewController) {
@@ -113,7 +119,7 @@ class PostDetailCell: UICollectionViewCell {
                 self?.createdTimeLabel.text = date?.timeAgoDisplay()
             }).disposed(by: disposeBag)
 
-        // tag result로 이동
+        // tag result로 이동 (검색 재활용)
         tagView.rx.touchAction()
             .subscribe(onNext: { tag in
 //                parentView.viewModel.steps.accept(<#T##event: Step##Step#>)
@@ -123,7 +129,8 @@ class PostDetailCell: UICollectionViewCell {
         self.likeCountLabel.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-//                parentView.viewModel.steps.accept(<#T##event: Step##Step#>)
+                let postId = viewModel.post.id
+                parentView.viewModel.steps.accept(CoatCodeStep.likesIsRequired(postId: postId))
             }).disposed(by: disposeBag)
 
         // 좋아요 기능

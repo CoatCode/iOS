@@ -13,7 +13,7 @@ import Kingfisher
 
 class CommentCell: UICollectionViewCell {
 
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,10 +29,14 @@ class CommentCell: UICollectionViewCell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.disposeBag = DisposeBag()
+    }
 
-    func bind(to viewModel: CommentCellViewModel, parentView: UIViewController) {
-
-        guard let parentView = parentView as? PostDetailViewController else { return }
+    func bind(to viewModel: CommentCellViewModel) {
 
         viewModel.writerName.asDriver().drive(nameLabel.rx.text).disposed(by: disposeBag)
 
@@ -48,9 +52,8 @@ class CommentCell: UICollectionViewCell {
 
         viewModel.content.asDriver().drive(contentLabel.rx.text).disposed(by: disposeBag)
 
-        self.moreButton.rx.tap
-            .subscribe(onNext: {
-                parentView.commentMore(viewModel.comment)
-            }).disposed(by: disposeBag)
+        moreButton.rx.tap.map { _ in viewModel.comment }
+            .bind(to: viewModel.commentMore)
+            .disposed(by: disposeBag)
     }
 }

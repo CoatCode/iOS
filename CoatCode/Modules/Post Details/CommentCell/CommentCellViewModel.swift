@@ -16,16 +16,17 @@ class CommentCellViewModel {
     let writerImageUrl = BehaviorRelay<URL?>(value: nil)
     let content = BehaviorRelay<String?>(value: nil)
     let createTime = BehaviorRelay<Date?>(value: nil)
+    
+    let commentMore = PublishSubject<Comment>()
 
     let comment: Comment
 
     init(with comment: Comment) {
         self.comment = comment
 
-        self.writerName.accept(comment.owner.username)
-        self.writerImageUrl.accept(URL(string: comment.owner.image!))
+        self.writerName.accept(comment.owner?.username)
+        self.writerImageUrl.accept(URL(string: comment.owner?.image ?? ""))
         self.content.accept(comment.content)
         self.createTime.accept(comment.createdAt)
     }
-
 }

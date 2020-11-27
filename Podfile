@@ -16,7 +16,6 @@ target 'CoatCode' do
   pod 'RxDataSources'
 
   # Networking
-  pod 'Alamofire'
   pod 'Moya/RxSwift'
   
   # Tools
@@ -43,5 +42,8 @@ target 'CoatCode' do
   pod 'SkeletonView'
   pod 'RxTags'
   pod 'RxKeyboard'
+  
+  # Code Quality
+  pod 'FLEX'
   
 end

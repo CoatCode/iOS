@@ -41,7 +41,12 @@ target 'CoatCode' do
   pod 'ImageSlideshow/Kingfisher'
   pod 'SkeletonView'
   pod 'RxTags'
+  
+  # Keyboard
   pod 'RxKeyboard'
+  
+  # Auto Layout
+  pod 'SnapKit', '~> 5.0'
   
   # Code Quality
   pod 'FLEX'

@@ -1,4 +1,5 @@
-# 의류디자인 서비스의 새로움을 열다 CoatCode - iOS
+# CoatCode - iOS
+의류디자인 서비스의 새로움을 열다 
 
 ## About
 

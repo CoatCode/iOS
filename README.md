@@ -28,7 +28,7 @@
 
 의류 디자인 공유 및 판매 서비스 CoatCode
 
-여러분의 피드백을 통해 더욱더 편리한 어플로 발전됩니다. 많은 피드백 부탁드립니다. ;)
+여러분의 피드백을 통해 더욱더 편리한 서비스로 발전됩니다. 많은 피드백 부탁드립니다 ;)
 
 문의 및 피드백 메일 : teamdaedo@gmail.com
 
@@ -62,6 +62,7 @@
 
 ## Develop Environment
 
+- IDE: Xcode12
 - Language: Swift 5
 - Architecture: MVVM-C
 

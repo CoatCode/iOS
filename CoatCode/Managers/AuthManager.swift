@@ -29,7 +29,7 @@ class AuthManager {
         get {
             guard let jsonString = keychain[tokenKey] else { return nil }
             let jsonData = jsonString.data(using: .utf8)!
-            let token = try! JSONDecoder().decode(Token.self, from: jsonData)
+            let token = try? JSONDecoder().decode(Token.self, from: jsonData)
             return token
         }
         set {

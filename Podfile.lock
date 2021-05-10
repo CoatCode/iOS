@@ -1,10 +1,9 @@
 PODS:
-  - Alamofire (5.4.0)
-  - CryptoSwift (1.3.2)
+  - Alamofire (5.4.3)
+  - CryptoSwift (1.4.0)
   - Differentiator (4.0.1)
-  - FLEX (4.2.2)
-  - ImageSlideshow/Core (1.9.1)
-  - ImageSlideshow/Kingfisher (1.9.1):
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/Kingfisher (1.9.2):
     - ImageSlideshow/Core
     - Kingfisher (> 3.0)
   - KafkaRefresh (1.5.0):
@@ -42,10 +41,8 @@ PODS:
   - KafkaRefresh/UIKit/LayerKit (1.5.0):
     - KafkaRefresh/Category
     - KafkaRefresh/Default
-  - KeychainAccess (4.2.1)
-  - Kingfisher (5.15.6):
-    - Kingfisher/Core (= 5.15.6)
-  - Kingfisher/Core (5.15.6)
+  - KeychainAccess (4.2.2)
+  - Kingfisher (6.3.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -54,14 +51,14 @@ PODS:
   - NVActivityIndicatorView/Base (5.1.1)
   - NVActivityIndicatorView/Extended (5.1.1):
     - NVActivityIndicatorView/Base
-  - R.swift (5.2.2):
-    - R.swift.Library (~> 5.2.0)
-  - R.swift.Library (5.2.0)
-  - Realm (10.1.0):
-    - Realm/Headers (= 10.1.0)
-  - Realm/Headers (10.1.0)
-  - RealmSwift (10.1.0):
-    - Realm (= 10.1.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - Realm (10.7.5):
+    - Realm/Headers (= 10.7.5)
+  - Realm/Headers (10.7.5)
+  - RealmSwift (10.7.5):
+    - Realm (= 10.7.5)
   - Reusable (4.1.1):
     - Reusable/Storyboard (= 4.1.1)
     - Reusable/View (= 4.1.1)
@@ -85,23 +82,21 @@ PODS:
     - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.1.1)
+  - RxSwift (5.1.2)
   - RxTags (0.3.0):
     - RxCocoa
     - RxSwift
     - Tags
-  - SkeletonView (1.10.0)
-  - SnapKit (5.0.1)
-  - SwiftLint (0.40.3)
-  - SwiftMessages (8.0.3):
-    - SwiftMessages/App (= 8.0.3)
-  - SwiftMessages/App (8.0.3)
-  - Tags (0.3.1)
+  - SkeletonView (1.15.0)
+  - SwiftLint (0.43.1)
+  - SwiftMessages (9.0.2):
+    - SwiftMessages/App (= 9.0.2)
+  - SwiftMessages/App (9.0.2)
+  - Tags (0.3.2)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - CryptoSwift
-  - FLEX
   - ImageSlideshow/Kingfisher
   - KafkaRefresh
   - KeychainAccess
@@ -119,7 +114,6 @@ DEPENDENCIES:
   - RxSwift
   - RxTags
   - SkeletonView
-  - SnapKit (~> 5.0)
   - SwiftLint
   - SwiftMessages
   - XLPagerTabStrip
@@ -129,7 +123,6 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - Differentiator
-    - FLEX
     - ImageSlideshow
     - KafkaRefresh
     - KeychainAccess
@@ -150,27 +143,25 @@ SPEC REPOS:
     - RxSwift
     - RxTags
     - SkeletonView
-    - SnapKit
     - SwiftLint
     - SwiftMessages
     - Tags
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  CryptoSwift: 093499be1a94b0cae36e6c26b70870668cb56060
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
-  FLEX: dbd68ae9c67fcc872c79c9e5a728f38243dfaa78
-  ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   KafkaRefresh: 01645b1509b8647809f6bb666629c80855bd3fdd
-  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
-  Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
-  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
-  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
-  Realm: 100df88a0faf5328f48477427e4b3e1a1598bae3
-  RealmSwift: 725d1c10df64964b04aaa0058c19ce0f4b4c3f5a
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Realm: 06f5c67f87cb8c5f27b122218ce22e9a77314517
+  RealmSwift: b46535b52e69b9ed33912f0fcb3182ab0a5743ee
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -178,15 +169,14 @@ SPEC CHECKSUMS:
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   RxTags: 100689fecd5002276b0bfcc7513a0d07a692a16d
-  SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
-  SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
-  Tags: 77420a200531fb338563b07279858edb51d080c5
+  SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
+  Tags: e1d330baa83b7c855ef1eb47b04532771e32b5f5
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: b6b85c0bc201c2ebfe859d0e896b5cd20cc30527
+PODFILE CHECKSUM: b97195fedb5bf08de19515d8c6b4b6c9490b6f1c
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

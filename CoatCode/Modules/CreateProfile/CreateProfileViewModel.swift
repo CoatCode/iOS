@@ -94,14 +94,3 @@ extension CreateProfileViewModel {
         }).disposed(by: self.disposeBag)
     }
 }
-
-//func resize(image: UIImage, scale: CGFloat, completionHandler: ((UIImage?) -> Void)?) {
-//    let transform = CGAffineTransform(scaleX: scale, y: scale)
-//    let size = image.size.applying(transform)
-//    UIGraphicsBeginImageContext(size)
-//    image.draw(in: CGRect(origin: .zero, size: size))
-//    let resultImage = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//
-//    completionHandler!(resultImage)
-//}
